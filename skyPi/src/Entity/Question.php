@@ -42,5 +42,69 @@ class Question
      */
     private $nameT;
 
+    /**
+     * @return int
+     */
+    public function getIdQ(): int
+    {
+        return $this->idQ;
+    }
+
+    /**
+     * @param int $idQ
+     */
+    public function setIdQ(int $idQ): void
+    {
+        $this->idQ = $idQ;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTextQ(): ?string
+    {
+        return $this->textQ;
+    }
+
+    /**
+     * @param string|null $textQ
+     */
+    public function setTextQ(?string $textQ): void
+    {
+        $this->textQ = $textQ;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNbrPoint(): ?int
+    {
+        return $this->nbrPoint;
+    }
+
+    /**
+     * @param int|null $nbrPoint
+     */
+    public function setNbrPoint(?int $nbrPoint): void
+    {
+        $this->nbrPoint = $nbrPoint;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNameT(): ?string
+    {
+        return $this->nameT;
+    }
+
+    /**
+     * @param string|null $nameT
+     */
+    public function setNameT(?string $nameT): void
+    {
+        $this->nameT = $nameT;
+    }
+
 
 }

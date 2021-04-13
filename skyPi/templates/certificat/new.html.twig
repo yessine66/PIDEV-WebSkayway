@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Certificat</title>
+
+{% block body %}
+    <h1>Create new Certificat</h1>
+
+    {{ include('certificat/_form.html.twig') }}
+
+    <a href="{{ path('certificat_index') }}">back to list</a>
+{% endblock %}
