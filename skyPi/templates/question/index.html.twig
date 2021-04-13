@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>Question index</title>
+
+{% block body %}
+    <h1>Question index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdQ</th>
+                <th>TextQ</th>
+                <th>NbrPoint</th>
+                <th>NameT</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td>{{ question.idQ }}</td>
+                <td>{{ question.textQ }}</td>
+                <td>{{ question.nbrPoint }}</td>
+                <td>{{ question.nameT }}</td>
+                <td>
+                    <a href="{{ path('question_show', {'idQ': question.idQ}) }}">show</a>
+                    <a href="{{ path('question_edit', {'idQ': question.idQ}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('question_new') }}">Create new</a>
+{% endblock %}

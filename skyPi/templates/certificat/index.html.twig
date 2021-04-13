@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<title>Certificat index</title>
+
+{% block body %}
+    <h1>Certificat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdCertif</th>
+                <th>TitreCertif</th>
+                <th>DateCertif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for certificat in certificats %}
+            <tr>
+                <td>{{ certificat.idCertif }}</td>
+                <td>{{ certificat.titreCertif }}</td>
+                <td>{{ certificat.dateCertif }}</td>
+                <td>
+                    <a href="{{ path('certificat_show', {'idCertif': certificat.idCertif}) }}">show</a>
+                    <a href="{{ path('certificat_edit', {'idCertif': certificat.idCertif}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('certificat_new') }}">Create new</a>
+{% endblock %}

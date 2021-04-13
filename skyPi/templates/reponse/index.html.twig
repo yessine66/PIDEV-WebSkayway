@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<title>Reponse index</title>
+
+{% block body %}
+    <h1>Reponse index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdR</th>
+                <th>TextR1</th>
+                <th>TextR2</th>
+                <th>TextR3</th>
+                <th>TextR4</th>
+                <th>IdQ</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+            <tr>
+                <td>{{ reponse.idR }}</td>
+                <td>{{ reponse.textR1 }}</td>
+                <td>{{ reponse.textR2 }}</td>
+                <td>{{ reponse.textR3 }}</td>
+                <td>{{ reponse.textR4 }}</td>
+                <td>{{ reponse.idQ }}</td>
+                <td>
+                    <a href="{{ path('reponse_show', {'idR': reponse.idR}) }}">show</a>
+                    <a href="{{ path('reponse_edit', {'idR': reponse.idR}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reponse_new') }}">Create new</a>
+{% endblock %}
