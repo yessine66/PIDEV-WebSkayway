@@ -49,130 +49,57 @@ class Partenaire
      */
     private $id;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="mailP", type="string", length=250, nullable=true)
-     */
-    private $mailp;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="logoP", type="string", length=250, nullable=true)
-     */
-    private $logop;
-
-    /**
-     * @return int
-     */
-    public function getIdP(): int
+    public function getIdP(): ?int
     {
         return $this->idP;
     }
 
-    /**
-     * @param int $idP
-     */
-    public function setIdP(int $idP): void
-    {
-        $this->idP = $idP;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getNomP(): ?string
     {
         return $this->nomP;
     }
 
-    /**
-     * @param string|null $nomP
-     */
-    public function setNomP(?string $nomP): void
+    public function setNomP(?string $nomP): self
     {
         $this->nomP = $nomP;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDomaine(): ?string
     {
         return $this->domaine;
     }
 
-    /**
-     * @param string|null $domaine
-     */
-    public function setDomaine(?string $domaine): void
+    public function setDomaine(?string $domaine): self
     {
         $this->domaine = $domaine;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDateP(): ?string
     {
         return $this->dateP;
     }
 
-    /**
-     * @param string|null $dateP
-     */
-    public function setDateP(?string $dateP): void
+    public function setDateP(?string $dateP): self
     {
         $this->dateP = $dateP;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int|null $id
-     */
-    public function setId(?int $id): void
+    public function setId(?int $id): self
     {
         $this->id = $id;
-    }
 
-    /**
-     * @return string|null
-     */
-    public function getMailp(): ?string
-    {
-        return $this->mailp;
-    }
-
-    /**
-     * @param string|null $mailp
-     */
-    public function setMailp(?string $mailp): void
-    {
-        $this->mailp = $mailp;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLogop(): ?string
-    {
-        return $this->logop;
-    }
-
-    /**
-     * @param string|null $logop
-     */
-    public function setLogop(?string $logop): void
-    {
-        $this->logop = $logop;
+        return $this;
     }
 
 

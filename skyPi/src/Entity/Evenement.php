@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Evenement
  *
- * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id_ac", columns={"id_ac"})})
  * @ORM\Entity
  */
 class Evenement
@@ -36,25 +36,52 @@ class Evenement
     private $dateEv;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="espace", type="string", length=255, nullable=false)
+     * @ORM\Column(name="id_ac", type="integer", nullable=false)
      */
-    private $espace;
+    private $idAc;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="nombre_pl", type="integer", nullable=true)
-     */
-    private $nombrePl;
+    public function getIdEv(): ?int
+    {
+        return $this->idEv;
+    }
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="id", type="integer", nullable=true)
-     */
-    private $id;
+    public function getNomEv(): ?string
+    {
+        return $this->nomEv;
+    }
+
+    public function setNomEv(?string $nomEv): self
+    {
+        $this->nomEv = $nomEv;
+
+        return $this;
+    }
+
+    public function getDateEv(): ?\DateTimeInterface
+    {
+        return $this->dateEv;
+    }
+
+    public function setDateEv(?\DateTimeInterface $dateEv): self
+    {
+        $this->dateEv = $dateEv;
+
+        return $this;
+    }
+
+    public function getIdAc(): ?int
+    {
+        return $this->idAc;
+    }
+
+    public function setIdAc(int $idAc): self
+    {
+        $this->idAc = $idAc;
+
+        return $this;
+    }
 
     /**
      * @return int
