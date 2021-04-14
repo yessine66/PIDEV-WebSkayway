@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Actualite
  *
- * @ORM\Table(name="actualite", indexes={@ORM\Index(name="id_ev", columns={"id_ev"}), @ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="actualite", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Actualite
@@ -31,9 +31,9 @@ class Actualite
     /**
      * @var string|null
      *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true)
+     * @ORM\Column(name="desc", type="string", length=250, nullable=true)
      */
-    private $description;
+    private $desc;
 
     /**
      * @var string|null
@@ -43,25 +43,64 @@ class Actualite
     private $image;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_ev", type="integer", nullable=false)
-     */
-    private $idEv;
-
-    /**
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
      */
     private $id;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="date_ajout", type="string", length=255, nullable=true)
-     */
-    private $dateAjout;
+    public function getIdAc(): ?int
+    {
+        return $this->idAc;
+    }
+
+    public function getTitreAc(): ?string
+    {
+        return $this->titreAc;
+    }
+
+    public function setTitreAc(?string $titreAc): self
+    {
+        $this->titreAc = $titreAc;
+
+        return $this;
+    }
+
+    public function getDesc(): ?string
+    {
+        return $this->desc;
+    }
+
+    public function setDesc(?string $desc): self
+    {
+        $this->desc = $desc;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
 
 }

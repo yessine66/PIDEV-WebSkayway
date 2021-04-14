@@ -28,5 +28,22 @@ class Commantaire
      */
     private $statut;
 
+    public function getIdMes(): ?int
+    {
+        return $this->idMes;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
 
 }
