@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Promotion
  *
  * @ORM\Table(name="promotion", indexes={@ORM\Index(name="FK_nomPartProm", columns={"nom_p"}), @ORM\Index(name="id_p", columns={"id_p"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"codeP"},
+ * message="le code  doit etre unique"
+ * )
  */
 class Promotion
 {
@@ -32,6 +37,10 @@ class Promotion
      * @var int|null
      *
      * @ORM\Column(name="reduction", type="integer", nullable=true)
+     * @Assert\NotEqualTo(
+     * value = 0,
+     * message = "La reduction  ne doit pas être égal à 0 "
+     * )
      */
     private $reduction;
 
@@ -63,139 +72,81 @@ class Promotion
      */
     private $nomP;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="desc_p", type="text", length=65535, nullable=true)
-     */
-    private $descP;
-
-    /**
-     * @return int
-     */
-    public function getIdProm(): int
+    public function getIdProm(): ?int
     {
         return $this->idProm;
     }
 
-    /**
-     * @param int $idProm
-     */
-    public function setIdProm(int $idProm): void
-    {
-        $this->idProm = $idProm;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getCodeP(): ?string
     {
         return $this->codeP;
     }
 
-    /**
-     * @param string|null $codeP
-     */
-    public function setCodeP(?string $codeP): void
+    public function setCodeP(?string $codeP): self
     {
         $this->codeP = $codeP;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getReduction(): ?int
     {
         return $this->reduction;
     }
 
-    /**
-     * @param int|null $reduction
-     */
-    public function setReduction(?int $reduction): void
+    public function setReduction(?int $reduction): self
     {
         $this->reduction = $reduction;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDated(): ?string
     {
         return $this->dated;
     }
 
-    /**
-     * @param string|null $dated
-     */
-    public function setDated(?string $dated): void
+    public function setDated(?string $dated): self
     {
         $this->dated = $dated;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDatef(): ?string
     {
         return $this->datef;
     }
 
-    /**
-     * @param string|null $datef
-     */
-    public function setDatef(?string $datef): void
+    public function setDatef(?string $datef): self
     {
         $this->datef = $datef;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getIdP(): ?int
     {
         return $this->idP;
     }
 
-    /**
-     * @param int|null $idP
-     */
-    public function setIdP(?int $idP): void
+    public function setIdP(?int $idP): self
     {
         $this->idP = $idP;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNomP(): ?string
     {
         return $this->nomP;
     }
 
-    /**
-     * @param string|null $nomP
-     */
-    public function setNomP(?string $nomP): void
+    public function setNomP(?string $nomP): self
     {
         $this->nomP = $nomP;
-    }
 
-    /**
-     * @return string|null
-     */
-    public function getDescP(): ?string
-    {
-        return $this->descP;
-    }
-
-    /**
-     * @param string|null $descP
-     */
-    public function setDescP(?string $descP): void
-    {
-        $this->descP = $descP;
+        return $this;
     }
 
 

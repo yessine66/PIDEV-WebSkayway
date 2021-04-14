@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cours
@@ -18,6 +19,7 @@ class Cours
      * @ORM\Column(name="id_c", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *
      */
     private $idC;
 
@@ -32,6 +34,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="pdf", type="string", length=500, nullable=false)
+     *      * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $pdf;
 
@@ -39,6 +48,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=false)
+     *      * @Assert\Length(
+     *      min = 10,
+     *      max = 200,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $description;
 
@@ -60,6 +76,8 @@ class Cours
      * @var int|null
      *
      * @ORM\Column(name="id_t", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
+
      */
     private $idT;
 
@@ -67,6 +85,8 @@ class Cours
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
+
      */
     private $id;
 
@@ -89,7 +109,7 @@ class Cours
     /**
      * @return string
      */
-    public function getNomC(): string
+    public function getNomC(): ?string
     {
         return $this->nomC;
     }
