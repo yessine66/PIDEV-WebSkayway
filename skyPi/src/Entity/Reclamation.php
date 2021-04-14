@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Reclamation
  *
@@ -25,6 +25,13 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="objet", type="string", length=50, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $objet;
 
@@ -32,6 +39,7 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="text_r", type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ text ")
      */
     private $textR;
 
