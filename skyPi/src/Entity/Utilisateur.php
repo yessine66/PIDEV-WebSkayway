@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Utilisateur
  *
  * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"mail"},
+ * message="le mail doit etre unique"
+ * )
  */
 class Utilisateur
 {
@@ -18,6 +23,7 @@ class Utilisateur
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $id;
 
@@ -25,6 +31,7 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $nom;
 
@@ -32,6 +39,7 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="prenom", type="string", length=50, nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $prenom;
 
@@ -39,6 +47,13 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="mail", type="string", length=70, nullable=true)
+     * @Assert\Email(message="l'email {{ value }} est non valide")
+     * @Assert\Length(min="5",
+     *     max="20",
+     *     minMessage="Doit contenir au min {{ limit }}",
+     *     maxMessage="Doit contenir au max {{ limit }}"
+     * )
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $mail;
 
@@ -46,6 +61,7 @@ class Utilisateur
      * @var int|null
      *
      * @ORM\Column(name="age", type="integer", nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $age;
 
@@ -53,6 +69,7 @@ class Utilisateur
      * @var int|null
      *
      * @ORM\Column(name="tel", type="integer", nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $tel;
 
@@ -60,6 +77,7 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="genre", type="string", length=10, nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $genre;
 
@@ -67,6 +85,7 @@ class Utilisateur
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_naiss", type="date", nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $dateNaiss;
 
@@ -74,6 +93,7 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $username;
 
@@ -88,6 +108,7 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="role", type="string", length=0, nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $role;
 
@@ -95,199 +116,145 @@ class Utilisateur
      * @var \DateTime|null
      *
      * @ORM\Column(name="cre_compte", type="date", nullable=true)
+     *@Assert\NotBlank(message="Ce champ doit être rempli")
      */
     private $creCompte;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
-    /**
-     * @param string|null $nom
-     */
-    public function setNom(?string $nom): void
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPrenom(): ?string
     {
         return $this->prenom;
     }
 
-    /**
-     * @param string|null $prenom
-     */
-    public function setPrenom(?string $prenom): void
+    public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMail(): ?string
     {
         return $this->mail;
     }
 
-    /**
-     * @param string|null $mail
-     */
-    public function setMail(?string $mail): void
+    public function setMail(?string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getAge(): ?int
     {
         return $this->age;
     }
 
-    /**
-     * @param int|null $age
-     */
-    public function setAge(?int $age): void
+    public function setAge(?int $age): self
     {
         $this->age = $age;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getTel(): ?int
     {
         return $this->tel;
     }
 
-    /**
-     * @param int|null $tel
-     */
-    public function setTel(?int $tel): void
+    public function setTel(?int $tel): self
     {
         $this->tel = $tel;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGenre(): ?string
     {
         return $this->genre;
     }
 
-    /**
-     * @param string|null $genre
-     */
-    public function setGenre(?string $genre): void
+    public function setGenre(?string $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDateNaiss(): ?\DateTime
+    public function getDateNaiss(): ?\DateTimeInterface
     {
         return $this->dateNaiss;
     }
 
-    /**
-     * @param \DateTime|null $dateNaiss
-     */
-    public function setDateNaiss(?\DateTime $dateNaiss): void
+    public function setDateNaiss(?\DateTimeInterface $dateNaiss): self
     {
         $this->dateNaiss = $dateNaiss;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $username
-     */
-    public function setUsername(?string $username): void
+    public function setUsername(?string $username): self
     {
         $this->username = $username;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    /**
-     * @param string|null $password
-     */
-    public function setPassword(?string $password): void
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRole(): ?string
     {
         return $this->role;
     }
 
-    /**
-     * @param string|null $role
-     */
-    public function setRole(?string $role): void
+    public function setRole(?string $role): self
     {
         $this->role = $role;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getCreCompte(): ?\DateTime
+    public function getCreCompte(): ?\DateTimeInterface
     {
         return $this->creCompte;
     }
 
-    /**
-     * @param \DateTime|null $creCompte
-     */
-    public function setCreCompte(?\DateTime $creCompte): void
+    public function setCreCompte(?\DateTimeInterface $creCompte): self
     {
         $this->creCompte = $creCompte;
+
+        return $this;
     }
 
 

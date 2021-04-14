@@ -56,5 +56,70 @@ class Messagerie
      */
     private $id;
 
+    public function getIdMes(): ?int
+    {
+        return $this->idMes;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getDatePub(): ?\DateTimeInterface
+    {
+        return $this->datePub;
+    }
+
+    public function setDatePub(?\DateTimeInterface $datePub): self
+    {
+        $this->datePub = $datePub;
+
+        return $this;
+    }
+
+    public function getDestinataire(): ?string
+    {
+        return $this->destinataire;
+    }
+
+    public function setDestinataire(?string $destinataire): self
+    {
+        $this->destinataire = $destinataire;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

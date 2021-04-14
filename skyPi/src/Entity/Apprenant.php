@@ -28,12 +28,22 @@ class Apprenant
      */
     private $id;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="string", length=50, nullable=true)
-     */
-    private $description;
+    public function getIdApp(): ?int
+    {
+        return $this->idApp;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
 
 }
