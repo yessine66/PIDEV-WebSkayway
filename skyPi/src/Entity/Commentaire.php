@@ -5,42 +5,42 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Messagerie
+ * Commentaire
  *
- * @ORM\Table(name="messagerie", indexes={@ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
-class Messagerie
+class Commentaire
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id_mes", type="integer", nullable=false)
+     * @ORM\Column(name="id_com", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idMes;
+    private $idCom;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="text", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="text", type="string", length=500, nullable=true)
      */
     private $text;
 
     /**
-     * @var \DateTime|null
+     * @var string|null
      *
-     * @ORM\Column(name="date_pub", type="datetime", nullable=true)
+     * @ORM\Column(name="date_pub", type="string", length=30, nullable=true)
      */
     private $datePub;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="destinataire", type="string", length=100, nullable=true)
+     * @ORM\Column(name="destinatire", type="string", length=250, nullable=true)
      */
-    private $destinataire;
+    private $destinatire;
 
     /**
      * @var string|null
@@ -56,9 +56,9 @@ class Messagerie
      */
     private $id;
 
-    public function getIdMes(): ?int
+    public function getIdCom(): ?int
     {
-        return $this->idMes;
+        return $this->idCom;
     }
 
     public function getText(): ?string
@@ -73,26 +73,26 @@ class Messagerie
         return $this;
     }
 
-    public function getDatePub(): ?\DateTimeInterface
+    public function getDatePub(): ?string
     {
         return $this->datePub;
     }
 
-    public function setDatePub(?\DateTimeInterface $datePub): self
+    public function setDatePub(?string $datePub): self
     {
         $this->datePub = $datePub;
 
         return $this;
     }
 
-    public function getDestinataire(): ?string
+    public function getDestinatire(): ?string
     {
-        return $this->destinataire;
+        return $this->destinatire;
     }
 
-    public function setDestinataire(?string $destinataire): self
+    public function setDestinatire(?string $destinatire): self
     {
-        $this->destinataire = $destinataire;
+        $this->destinatire = $destinatire;
 
         return $this;
     }
