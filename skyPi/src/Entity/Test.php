@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Test
  *
- * @ORM\Table(name="test")
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="id_c", columns={"id_c"})})
  * @ORM\Entity
  */
 class Test
@@ -29,9 +29,9 @@ class Test
     private $id;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="date_test", type="string", length=250, nullable=true)
+     * @ORM\Column(name="date_test", type="date", nullable=true)
      */
     private $dateTest;
 
@@ -43,90 +43,63 @@ class Test
     private $score;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="name_t", type="string", length=250, nullable=false)
+     * @ORM\Column(name="id_c", type="integer", nullable=false)
      */
-    private $nameT;
+    private $idC;
 
-    /**
-     * @return int
-     */
-    public function getIdTest(): int
+    public function getIdTest(): ?int
     {
         return $this->idTest;
     }
 
-    /**
-     * @param int $idTest
-     */
-    public function setIdTest(int $idTest): void
-    {
-        $this->idTest = $idTest;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getDateTest(): ?string
+    public function getDateTest(): ?\DateTimeInterface
     {
         return $this->dateTest;
     }
 
-    /**
-     * @param string|null $dateTest
-     */
-    public function setDateTest(?string $dateTest): void
+    public function setDateTest(?\DateTimeInterface $dateTest): self
     {
         $this->dateTest = $dateTest;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getScore(): ?int
     {
         return $this->score;
     }
 
-    /**
-     * @param int|null $score
-     */
-    public function setScore(?int $score): void
+    public function setScore(?int $score): self
     {
         $this->score = $score;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getNameT(): string
+    public function getIdC(): ?int
     {
-        return $this->nameT;
+        return $this->idC;
     }
 
-    /**
-     * @param string $nameT
-     */
-    public function setNameT(string $nameT): void
+    public function setIdC(int $idC): self
     {
-        $this->nameT = $nameT;
+        $this->idC = $idC;
+
+        return $this;
     }
 
 

@@ -35,75 +35,33 @@ class Question
      */
     private $nbrPoint;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="name_t", type="string", length=250, nullable=true)
-     */
-    private $nameT;
-
-    /**
-     * @return int
-     */
-    public function getIdQ(): int
+    public function getIdQ(): ?int
     {
         return $this->idQ;
     }
 
-    /**
-     * @param int $idQ
-     */
-    public function setIdQ(int $idQ): void
-    {
-        $this->idQ = $idQ;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getTextQ(): ?string
     {
         return $this->textQ;
     }
 
-    /**
-     * @param string|null $textQ
-     */
-    public function setTextQ(?string $textQ): void
+    public function setTextQ(?string $textQ): self
     {
         $this->textQ = $textQ;
+
+        return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNbrPoint(): ?int
     {
         return $this->nbrPoint;
     }
 
-    /**
-     * @param int|null $nbrPoint
-     */
-    public function setNbrPoint(?int $nbrPoint): void
+    public function setNbrPoint(?int $nbrPoint): self
     {
         $this->nbrPoint = $nbrPoint;
-    }
 
-    /**
-     * @return string|null
-     */
-    public function getNameT(): ?string
-    {
-        return $this->nameT;
-    }
-
-    /**
-     * @param string|null $nameT
-     */
-    public function setNameT(?string $nameT): void
-    {
-        $this->nameT = $nameT;
+        return $this;
     }
 
 
