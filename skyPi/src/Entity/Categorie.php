@@ -42,45 +42,68 @@ class Categorie
      */
     private $idT;
 
-    public function getIdCategorie(): ?int
+    /**
+     * @return int
+     */
+    public function getIdCategorie(): int
     {
         return $this->idCategorie;
     }
 
-    public function getNomCategorie(): ?string
+    /**
+     * @param int $idCategorie
+     */
+    public function setIdCategorie(int $idCategorie): void
+    {
+        $this->idCategorie = $idCategorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomCategorie(): string
     {
         return $this->nomCategorie;
     }
 
-    public function setNomCategorie(string $nomCategorie): self
+    /**
+     * @param string $nomCategorie
+     */
+    public function setNomCategorie(string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
-
-        return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
     {
         $this->image = $image;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getIdT(): ?int
     {
         return $this->idT;
     }
 
-    public function setIdT(?int $idT): self
+    /**
+     * @param int|null $idT
+     */
+    public function setIdT(?int $idT): void
     {
         $this->idT = $idT;
-
-        return $this;
     }
 
 

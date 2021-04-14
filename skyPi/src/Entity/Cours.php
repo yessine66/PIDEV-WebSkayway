@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cours
  *
- * @ORM\Table(name="cours", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="id_t", columns={"id_t"})})
+ * @ORM\Table(name="cours", indexes={@ORM\Index(name="id_t", columns={"id_t"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Cours
@@ -22,141 +22,180 @@ class Cours
     private $idC;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="nom_c", type="string", length=100, nullable=true)
+     * @ORM\Column(name="nom_c", type="string", length=100, nullable=false)
      */
     private $nomC;
 
     /**
-     * @var int|null
+     * @var string
      *
-     * @ORM\Column(name="numero", type="integer", nullable=true)
+     * @ORM\Column(name="pdf", type="string", length=500, nullable=false)
      */
-    private $numero;
+    private $pdf;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="description", type="string", length=250, nullable=true)
+     * @ORM\Column(name="description", type="string", length=250, nullable=false)
      */
     private $description;
 
     /**
-     * @var \DateTime|null
+     * @var int|null
      *
-     * @ORM\Column(name="duree", type="time", nullable=true)
+     * @ORM\Column(name="nbparticipant", type="integer", nullable=true)
      */
-    private $duree;
+    private $nbparticipant;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="contenu", type="string", length=250, nullable=true)
+     * @ORM\Column(name="image", type="string", length=250, nullable=true)
      */
-    private $contenu;
+    private $image;
 
     /**
-     * @var int
+     * @var int|null
      *
-     * @ORM\Column(name="id_t", type="integer", nullable=false)
+     * @ORM\Column(name="id_t", type="integer", nullable=true)
      */
     private $idT;
 
     /**
-     * @var int
+     * @var int|null
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=true)
      */
     private $id;
 
-    public function getIdC(): ?int
+    /**
+     * @return int
+     */
+    public function getIdC(): int
     {
         return $this->idC;
     }
 
-    public function getNomC(): ?string
+    /**
+     * @param int $idC
+     */
+    public function setIdC(int $idC): void
+    {
+        $this->idC = $idC;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomC(): string
     {
         return $this->nomC;
     }
 
-    public function setNomC(?string $nomC): self
+    /**
+     * @param string $nomC
+     */
+    public function setNomC(string $nomC): void
     {
         $this->nomC = $nomC;
-
-        return $this;
     }
 
-    public function getNumero(): ?int
+    /**
+     * @return string
+     */
+    public function getPdf(): string
     {
-        return $this->numero;
+        return $this->pdf;
     }
 
-    public function setNumero(?int $numero): self
+    /**
+     * @param string $pdf
+     */
+    public function setPdf(string $pdf): void
     {
-        $this->numero = $numero;
-
-        return $this;
+        $this->pdf = $pdf;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return string
+     */
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
     {
         $this->description = $description;
-
-        return $this;
     }
 
-    public function getDuree(): ?\DateTimeInterface
+    /**
+     * @return int|null
+     */
+    public function getNbparticipant(): ?int
     {
-        return $this->duree;
+        return $this->nbparticipant;
     }
 
-    public function setDuree(?\DateTimeInterface $duree): self
+    /**
+     * @param int|null $nbparticipant
+     */
+    public function setNbparticipant(?int $nbparticipant): void
     {
-        $this->duree = $duree;
-
-        return $this;
+        $this->nbparticipant = $nbparticipant;
     }
 
-    public function getContenu(): ?string
+    /**
+     * @return string|null
+     */
+    public function getImage(): ?string
     {
-        return $this->contenu;
+        return $this->image;
     }
 
-    public function setContenu(?string $contenu): self
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
     {
-        $this->contenu = $contenu;
-
-        return $this;
+        $this->image = $image;
     }
 
+    /**
+     * @return int|null
+     */
     public function getIdT(): ?int
     {
         return $this->idT;
     }
 
-    public function setIdT(int $idT): self
+    /**
+     * @param int|null $idT
+     */
+    public function setIdT(?int $idT): void
     {
         $this->idT = $idT;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): self
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
 
