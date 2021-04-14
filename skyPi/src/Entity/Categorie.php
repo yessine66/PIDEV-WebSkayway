@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categorie
@@ -25,7 +26,15 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom_categorie", type="string", length=50, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
+
     private $nomCategorie;
 
     /**
@@ -39,6 +48,7 @@ class Categorie
      * @var int|null
      *
      * @ORM\Column(name="id_t", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $idT;
 
