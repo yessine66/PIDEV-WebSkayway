@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Evenement
  *
- * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id_ac", columns={"id_ac"})})
+ * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Evenement
@@ -36,51 +36,120 @@ class Evenement
     private $dateEv;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id_ac", type="integer", nullable=false)
+     * @ORM\Column(name="espace", type="string", length=255, nullable=false)
      */
-    private $idAc;
+    private $espace;
 
-    public function getIdEv(): ?int
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="nombre_pl", type="integer", nullable=true)
+     */
+    private $nombrePl;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id", type="integer", nullable=true)
+     */
+    private $id;
+
+    /**
+     * @return int
+     */
+    public function getIdEv(): int
     {
         return $this->idEv;
     }
 
+    /**
+     * @param int $idEv
+     */
+    public function setIdEv(int $idEv): void
+    {
+        $this->idEv = $idEv;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getNomEv(): ?string
     {
         return $this->nomEv;
     }
 
-    public function setNomEv(?string $nomEv): self
+    /**
+     * @param string|null $nomEv
+     */
+    public function setNomEv(?string $nomEv): void
     {
         $this->nomEv = $nomEv;
-
-        return $this;
     }
 
-    public function getDateEv(): ?\DateTimeInterface
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateEv(): ?\DateTime
     {
         return $this->dateEv;
     }
 
-    public function setDateEv(?\DateTimeInterface $dateEv): self
+    /**
+     * @param \DateTime|null $dateEv
+     */
+    public function setDateEv(?\DateTime $dateEv): void
     {
         $this->dateEv = $dateEv;
-
-        return $this;
     }
 
-    public function getIdAc(): ?int
+    /**
+     * @return string|null
+     */
+    public function getEspace(): ?string
     {
-        return $this->idAc;
+        return $this->espace;
     }
 
-    public function setIdAc(int $idAc): self
+    /**
+     * @param string|null $espace
+     */
+    public function setEspace(?string $espace): void
     {
-        $this->idAc = $idAc;
+        $this->espace = $espace;
+    }
 
-        return $this;
+    /**
+     * @return int|null
+     */
+    public function getNombrePl(): ?int
+    {
+        return $this->nombrePl;
+    }
+
+    /**
+     * @param int|null $nombrePl
+     */
+    public function setNombrePl(?int $nombrePl): void
+    {
+        $this->nombrePl = $nombrePl;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
     }
 
 

@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Actualite
  *
- * @ORM\Table(name="actualite", indexes={@ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="actualite", indexes={@ORM\Index(name="id_ev", columns={"id_ev"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Actualite
@@ -25,15 +26,32 @@ class Actualite
      * @var string|null
      *
      * @ORM\Column(name="titre_ac", type="string", length=100, nullable=true)
+     *
+     *   @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *  )
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $titreAc;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="desc", type="string", length=250, nullable=true)
+     * @ORM\Column(name="description", type="string", length=250, nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *  )
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
-    private $desc;
+    private $description;
 
     /**
      * @var string|null
@@ -43,64 +61,139 @@ class Actualite
     private $image;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_ev", type="integer", nullable=false)
+     * @Assert\NotBlank(message="vous devez le champ text ")
+     */
+    private $idEv;
+
+    /**
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
      */
     private $id;
 
-    public function getIdAc(): ?int
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="date_ajout", type="string", length=255, nullable=true)
+     */
+    private $dateAjout;
+
+    /**
+     * @return int
+     */
+    public function getIdAc(): int
     {
         return $this->idAc;
     }
 
+    /**
+     * @param int $idAc
+     */
+    public function setIdAc(int $idAc): void
+    {
+        $this->idAc = $idAc;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getTitreAc(): ?string
     {
         return $this->titreAc;
     }
 
-    public function setTitreAc(?string $titreAc): self
+    /**
+     * @param string|null $titreAc
+     */
+    public function setTitreAc(?string $titreAc): void
     {
         $this->titreAc = $titreAc;
-
-        return $this;
     }
 
-    public function getDesc(): ?string
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
-        return $this->desc;
+        return $this->description;
     }
 
-    public function setDesc(?string $desc): self
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
     {
-        $this->desc = $desc;
-
-        return $this;
+        $this->description = $description;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
     {
         $this->image = $image;
-
-        return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getIdEv(): ?int
+    {
+        return $this->idEv;
+    }
+
+    /**
+     * @param int $idEv
+     */
+    public function setIdEv(?int $idEv): void
+    {
+        $this->idEv = $idEv;
+    }
+
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(?int $id): self
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getDateAjout(): ?string
+    {
+        return $this->dateAjout;
+    }
+
+    /**
+     * @param string|null $dateAjout
+     */
+    public function setDateAjout(?string $dateAjout): void
+    {
+        $this->dateAjout = $dateAjout;
+    }
+
 
 
 }
