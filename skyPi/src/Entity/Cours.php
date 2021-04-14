@@ -89,7 +89,7 @@ class Cours
     /**
      * @return string
      */
-    public function getNomC(): string
+    public function getNomC(): ?string
     {
         return $this->nomC;
     }

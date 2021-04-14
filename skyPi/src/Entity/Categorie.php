@@ -61,7 +61,7 @@ class Categorie
     /**
      * @return string
      */
-    public function getNomCategorie(): string
+    public function getNomCategorie(): ?string
     {
         return $this->nomCategorie;
     }

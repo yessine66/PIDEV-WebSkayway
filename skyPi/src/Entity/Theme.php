@@ -68,7 +68,7 @@ class Theme
     /**
      * @return string
      */
-    public function getNomT(): string
+    public function getNomT(): ?string
     {
         return $this->nomT;
     }
