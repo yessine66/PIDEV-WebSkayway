@@ -56,5 +56,101 @@ class Evenement
      */
     private $id;
 
+    /**
+     * @return int
+     */
+    public function getIdEv(): int
+    {
+        return $this->idEv;
+    }
+
+    /**
+     * @param int $idEv
+     */
+    public function setIdEv(int $idEv): void
+    {
+        $this->idEv = $idEv;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNomEv(): ?string
+    {
+        return $this->nomEv;
+    }
+
+    /**
+     * @param string|null $nomEv
+     */
+    public function setNomEv(?string $nomEv): void
+    {
+        $this->nomEv = $nomEv;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateEv(): ?\DateTime
+    {
+        return $this->dateEv;
+    }
+
+    /**
+     * @param \DateTime|null $dateEv
+     */
+    public function setDateEv(?\DateTime $dateEv): void
+    {
+        $this->dateEv = $dateEv;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEspace(): ?string
+    {
+        return $this->espace;
+    }
+
+    /**
+     * @param string|null $espace
+     */
+    public function setEspace(?string $espace): void
+    {
+        $this->espace = $espace;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNombrePl(): ?int
+    {
+        return $this->nombrePl;
+    }
+
+    /**
+     * @param int|null $nombrePl
+     */
+    public function setNombrePl(?int $nombrePl): void
+    {
+        $this->nombrePl = $nombrePl;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
+
 
 }
