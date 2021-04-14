@@ -39,7 +39,6 @@ class Question
      */
     /**
      * @Assert\LessThanOrEqual(5)
-     * message ="La dade de début ne devrait pas être antérieure à la date du jour "
      */
 
     private $nbrPoint;
