@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Evenement
  *
- * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id_ac", columns={"id_ac"})})
+ * @ORM\Table(name="evenement", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Evenement
@@ -36,52 +36,25 @@ class Evenement
     private $dateEv;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id_ac", type="integer", nullable=false)
+     * @ORM\Column(name="espace", type="string", length=255, nullable=false)
      */
-    private $idAc;
+    private $espace;
 
-    public function getIdEv(): ?int
-    {
-        return $this->idEv;
-    }
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="nombre_pl", type="integer", nullable=true)
+     */
+    private $nombrePl;
 
-    public function getNomEv(): ?string
-    {
-        return $this->nomEv;
-    }
-
-    public function setNomEv(?string $nomEv): self
-    {
-        $this->nomEv = $nomEv;
-
-        return $this;
-    }
-
-    public function getDateEv(): ?\DateTimeInterface
-    {
-        return $this->dateEv;
-    }
-
-    public function setDateEv(?\DateTimeInterface $dateEv): self
-    {
-        $this->dateEv = $dateEv;
-
-        return $this;
-    }
-
-    public function getIdAc(): ?int
-    {
-        return $this->idAc;
-    }
-
-    public function setIdAc(int $idAc): self
-    {
-        $this->idAc = $idAc;
-
-        return $this;
-    }
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id", type="integer", nullable=true)
+     */
+    private $id;
 
     /**
      * @return int
