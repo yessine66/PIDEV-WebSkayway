@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Theme
  *
- * @ORM\Table(name="theme", indexes={@ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="theme", indexes={@ORM\Index(name="id_cat", columns={"id_cat"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Theme
@@ -22,47 +22,41 @@ class Theme
     private $idT;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="nom_t", type="string", length=100, nullable=true)
+     * @ORM\Column(name="nom_t", type="string", length=100, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomT;
 
     /**
-     * @var int
+     * @var string|null
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id_cat", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
+     */
+    private $idCat;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $id;
-
-    public function getIdT(): ?int
-    {
-        return $this->idT;
-    }
-
-    public function getNomT(): ?string
-    {
-        return $this->nomT;
-    }
-
-    public function setNomT(?string $nomT): self
-    {
-        $this->nomT = $nomT;
-
-        return $this;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * @return int
@@ -83,7 +77,7 @@ class Theme
     /**
      * @return string
      */
-    public function getNomT(): string
+    public function getNomT(): ?string
     {
         return $this->nomT;
     }
