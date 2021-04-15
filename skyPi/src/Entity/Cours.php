@@ -27,6 +27,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="nom_c", type="string", length=100, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomC;
 
@@ -125,7 +132,7 @@ class Cours
     /**
      * @return string
      */
-    public function getPdf(): string
+    public function getPdf(): ?string
     {
         return $this->pdf;
     }
@@ -141,7 +148,7 @@ class Cours
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
