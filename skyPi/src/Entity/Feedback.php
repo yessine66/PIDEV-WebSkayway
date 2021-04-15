@@ -25,13 +25,7 @@ class Feedback
      * @var string
      *
      * @ORM\Column(name="objet", type="string", length=80, nullable=false)
-     * @Assert\Length(
-     *      min = 5,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
-     *      allowEmptyString = false
-     * )
+     * @Assert\NotBlank(message="vous devez remplir le champ objet ")
      */
     private $objet;
 
@@ -47,6 +41,7 @@ class Feedback
      * @var int
      *
      * @ORM\Column(name="avis", type="integer", nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ avis ")
      */
     private $avis;
 

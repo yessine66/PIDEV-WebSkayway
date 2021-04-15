@@ -26,12 +26,12 @@ class Reclamation
      *
      * @ORM\Column(name="objet", type="string", length=50, nullable=false)
      * @Assert\Length(
-     *      min = 5,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      min = 10,
+     *      max = 25,
+     *      minMessage = "l objet doit contenir au moins {{ limit }} caractéres ",
+     *      maxMessage = "l objet doit contenir au maximum {{ limit }} caractéres ",
      *      allowEmptyString = false
-     * )
+     *  )
      */
     private $objet;
 
@@ -61,6 +61,7 @@ class Reclamation
      * @var string|null
      *
      * @ORM\Column(name="cours", type="string", length=50, nullable=true)
+     * @Assert\NotBlank(message="vous devez remplir le champ cours ")
      */
     private $cours;
 
@@ -68,6 +69,7 @@ class Reclamation
      * @var string|null
      *
      * @ORM\Column(name="enseignant", type="string", length=50, nullable=true)
+     * @Assert\NotBlank(message="vous devez remplir le champ enseignant ")
      */
     private $enseignant;
 
