@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<title>Question</title>
+{% block title %}Question{% endblock %}
 
 {% block body %}
     <h1>Question</h1>
@@ -10,14 +10,6 @@
             <tr>
                 <th>IdQ</th>
                 <td>{{ question.idQ }}</td>
-            </tr>
-            <tr>
-                <th>TextQ</th>
-                <td>{{ question.textQ }}</td>
-            </tr>
-            <tr>
-                <th>NbrPoint</th>
-                <td>{{ question.nbrPoint }}</td>
             </tr>
             <tr>
                 <th>NameT</th>

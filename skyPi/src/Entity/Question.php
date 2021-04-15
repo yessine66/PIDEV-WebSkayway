@@ -39,6 +39,7 @@ class Question
      */
     /**
      * @Assert\LessThanOrEqual(5)
+     * message ="La dade de début ne devrait pas être antérieure à la date du jour "
      */
 
     private $nbrPoint;
@@ -46,7 +47,7 @@ class Question
     /**
      * @var string|null
      *
-     * @ORM\Column(name="name_t", type="string", length=250, nullable=true)
+     * @ORM\Column(name="name_t", type="string", length=100, nullable=false)
      */
     /**
      * @Assert\NotNull
@@ -61,28 +62,60 @@ class Question
         return $this->idQ;
     }
 
+    /**
+     * @param int $idQ
+     */
+    public function setIdQ(int $idQ): void
+    {
+        $this->idQ = $idQ;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getTextQ(): ?string
     {
         return $this->textQ;
     }
 
-    public function setTextQ(?string $textQ): self
+    /**
+     * @param string|null $textQ
+     */
+    public function setTextQ(?string $textQ): void
     {
         $this->textQ = $textQ;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNbrPoint(): ?int
     {
         return $this->nbrPoint;
     }
 
-    public function setNbrPoint(?int $nbrPoint): self
+    /**
+     * @param int|null $nbrPoint
+     */
+    public function setNbrPoint(?int $nbrPoint): void
     {
         $this->nbrPoint = $nbrPoint;
+    }
 
-        return $this;
+    /**
+     * @return string|null
+     */
+    public function getNameT(): ?string
+    {
+        return $this->nameT;
+    }
+
+    /**
+     * @param string|null $nameT
+     */
+    public function setNameT(?string $nameT): void
+    {
+        $this->nameT = $nameT;
     }
 
 
