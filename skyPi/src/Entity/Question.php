@@ -27,9 +27,7 @@ class Question
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
      */
-    /**
-     * @Assert\NotNull
-     */
+   
     private $textQ;
 
     /**
@@ -37,20 +35,16 @@ class Question
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
      */
-    /**
-     * @Assert\LessThanOrEqual(5)
-     */
+
 
     private $nbrPoint;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="name_t", type="string", length=250, nullable=true)
+     * @ORM\Column(name="name_t", type="string", length=100, nullable=false)
      */
-    /**
-     * @Assert\NotNull
-     */
+
     private $nameT;
 
     /**
@@ -61,28 +55,60 @@ class Question
         return $this->idQ;
     }
 
+    /**
+     * @param int $idQ
+     */
+    public function setIdQ(int $idQ): void
+    {
+        $this->idQ = $idQ;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getTextQ(): ?string
     {
         return $this->textQ;
     }
 
-    public function setTextQ(?string $textQ): self
+    /**
+     * @param string|null $textQ
+     */
+    public function setTextQ(?string $textQ): void
     {
         $this->textQ = $textQ;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNbrPoint(): ?int
     {
         return $this->nbrPoint;
     }
 
-    public function setNbrPoint(?int $nbrPoint): self
+    /**
+     * @param int|null $nbrPoint
+     */
+    public function setNbrPoint(?int $nbrPoint): void
     {
         $this->nbrPoint = $nbrPoint;
+    }
 
-        return $this;
+    /**
+     * @return string|null
+     */
+    public function getNameT(): ?string
+    {
+        return $this->nameT;
+    }
+
+    /**
+     * @param string $nameT
+     */
+    public function setNameT(?string $nameT): void
+    {
+        $this->nameT = $nameT;
     }
 
 
