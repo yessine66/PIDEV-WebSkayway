@@ -24,44 +24,132 @@ class Reponse
     /**
      * @var string|null
      *
-     * @ORM\Column(name="text_r", type="string", length=250, nullable=true)
+     * @ORM\Column(name="text_r1", type="string", length=250, nullable=true)
      */
-    private $textR;
+    private $textR1;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id_q", type="integer", nullable=false)
+     * @ORM\Column(name="text_r2", type="string", length=250, nullable=false)
+     */
+    private $textR2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text_r3", type="string", length=250, nullable=false)
+     */
+    private $textR3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text_r4", type="string", length=250, nullable=false)
+     */
+    private $textR4;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id_q", type="integer", nullable=true)
      */
     private $idQ;
 
-    public function getIdR(): ?int
+    /**
+     * @return int
+     */
+    public function getIdR(): int
     {
         return $this->idR;
     }
 
-    public function getTextR(): ?string
+    /**
+     * @param int $idR
+     */
+    public function setIdR(int $idR): void
     {
-        return $this->textR;
+        $this->idR = $idR;
     }
 
-    public function setTextR(?string $textR): self
+    /**
+     * @return string|null
+     */
+    public function getTextR1(): ?string
     {
-        $this->textR = $textR;
-
-        return $this;
+        return $this->textR1;
     }
 
+    /**
+     * @param string|null $textR1
+     */
+    public function setTextR1(?string $textR1): void
+    {
+        $this->textR1 = $textR1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTextR2(): string
+    {
+        return $this->textR2;
+    }
+
+    /**
+     * @param string $textR2
+     */
+    public function setTextR2(string $textR2): void
+    {
+        $this->textR2 = $textR2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTextR3(): string
+    {
+        return $this->textR3;
+    }
+
+    /**
+     * @param string $textR3
+     */
+    public function setTextR3(string $textR3): void
+    {
+        $this->textR3 = $textR3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTextR4(): string
+    {
+        return $this->textR4;
+    }
+
+    /**
+     * @param string $textR4
+     */
+    public function setTextR4(string $textR4): void
+    {
+        $this->textR4 = $textR4;
+    }
+
+    /**
+     * @return int|null
+     */
     public function getIdQ(): ?int
     {
         return $this->idQ;
     }
 
-    public function setIdQ(int $idQ): self
+    /**
+     * @param int|null $idQ
+     */
+    public function setIdQ(?int $idQ): void
     {
         $this->idQ = $idQ;
-
-        return $this;
     }
 
 
