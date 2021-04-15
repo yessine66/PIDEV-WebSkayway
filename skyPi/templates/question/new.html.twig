@@ -1,5 +1,6 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
+<<<<<<< HEAD
 {% block title %}New Question{% endblock %}
  {% block content %}
      {% block body %}
@@ -25,3 +26,14 @@
          {{ form_end (form) }}
      {% endblock %}
  {% endblock %}
+=======
+<title>New Question</title>
+
+{% block body %}
+    <h1>Create new Question</h1>
+
+    {{ include('question/_form.html.twig') }}
+
+    <a href="{{ path('question_index') }}">back to list</a>
+{% endblock %}
+>>>>>>> parent of e6f4196 (-)

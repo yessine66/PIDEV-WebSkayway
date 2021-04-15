@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Question
@@ -27,9 +26,6 @@ class Question
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
      */
-    /**
-     * @Assert\NotNull
-     */
     private $textQ;
 
     /**
@@ -37,20 +33,12 @@ class Question
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
      */
-    /**
-     * @Assert\LessThanOrEqual(5)
-     * message ="La dade de début ne devrait pas être antérieure à la date du jour "
-     */
-
     private $nbrPoint;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="name_t", type="string", length=100, nullable=false)
-     */
-    /**
-     * @Assert\NotNull
      */
     private $nameT;
 
