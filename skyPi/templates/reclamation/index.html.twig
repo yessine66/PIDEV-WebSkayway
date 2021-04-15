@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
+ {% block content %}
 
-{% block title %}Reclamation index{% endblock %}
+     {% block title %}
 
-{% block body %}
+     {% endblock %}
+
+
+
+     {% block body %}
     <h1>Reclamation index</h1>
 
     <table class="table">
@@ -43,3 +48,4 @@
 
     <a href="{{ path('reclamation_new') }}">Create new</a>
 {% endblock %}
+ {% endblock %}
