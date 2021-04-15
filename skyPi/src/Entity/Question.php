@@ -26,14 +26,16 @@ class Question
      * @var string|null
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
+     * @Assert\NotNull
      */
-   
+
     private $textQ;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
+     * @Assert\LessThanOrEqual(5)
      */
 
 
@@ -43,6 +45,7 @@ class Question
      * @var string
      *
      * @ORM\Column(name="name_t", type="string", length=100, nullable=false)
+     * @Assert\NotNull
      */
 
     private $nameT;

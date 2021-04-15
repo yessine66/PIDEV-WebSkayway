@@ -26,12 +26,11 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="nom_t", type="string", length=100, nullable=false)
-     * @Assert\NotBlank(message="vous devez remplir le champ Nom Theme ")
      * @Assert\Length(
-     *      min = 3,
+     *      min = 5,
      *      max = 50,
-     *      minMessage = "Le nom de theme doit contenir au moins {{ limit }} characters long",
-     *      maxMessage = "Le nom de theme doit contenir au plus {{ limit }} characters",
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
      *      allowEmptyString = false
      * )
      */
@@ -48,7 +47,7 @@ class Theme
      * @var int|null
      *
      * @ORM\Column(name="id_cat", type="integer", nullable=true)
-     * @Assert\NotBlank(message="vous devez remplir le champ id categorie ")
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $idCat;
 
@@ -56,7 +55,7 @@ class Theme
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
-     * @Assert\NotBlank(message="vous devez remplir le champ id  ")
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $id;
 

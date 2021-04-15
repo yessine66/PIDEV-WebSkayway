@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reponse
@@ -25,27 +26,31 @@ class Reponse
      * @var string|null
      *
      * @ORM\Column(name="text_r1", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textR1;
 
     /**
-     * @var string
+     * @var  string|null
      *
-     * @ORM\Column(name="text_r2", type="string", length=250, nullable=false)
+     * @ORM\Column(name="text_r2", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textR2;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="text_r3", type="string", length=250, nullable=false)
+     * @ORM\Column(name="text_r3",type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textR3;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="text_r4", type="string", length=250, nullable=false)
+     * @ORM\Column(name="text_r4", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textR4;
 
@@ -53,6 +58,8 @@ class Reponse
      * @var int|null
      *
      * @ORM\Column(name="id_q", type="integer", nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Unique message ("choisissez une autre question")
      */
     private $idQ;
 
@@ -91,13 +98,13 @@ class Reponse
     /**
      * @return string
      */
-    public function getTextR2(): string
+    public function getTextR2(): ?string
     {
         return $this->textR2;
     }
 
     /**
-     * @param string $textR2
+     * @param string|null $textR2
      */
     public function setTextR2(string $textR2): void
     {
@@ -107,13 +114,13 @@ class Reponse
     /**
      * @return string
      */
-    public function getTextR3(): string
+    public function getTextR3(): ?string
     {
         return $this->textR3;
     }
 
     /**
-     * @param string $textR3
+     * @param string|null $textR3
      */
     public function setTextR3(string $textR3): void
     {
@@ -123,13 +130,13 @@ class Reponse
     /**
      * @return string
      */
-    public function getTextR4(): string
+    public function getTextR4(): ?string
     {
         return $this->textR4;
     }
 
     /**
-     * @param string $textR4
+     * @param string|null $textR4
      */
     public function setTextR4(string $textR4): void
     {
