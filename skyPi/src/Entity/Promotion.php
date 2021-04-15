@@ -70,7 +70,30 @@ class Promotion
      *
      * @ORM\Column(name="nom_p", type="string", length=100, nullable=true)
      */
+
     private $nomP;
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="desc_p", type="text", length=65535, nullable=true)
+     */
+    private $descP;
+
+    /**
+     * @return string|null
+     */
+    public function getDescP(): ?string
+    {
+        return $this->descP;
+    }
+
+    /**
+     * @param string|null $descP
+     */
+    public function setDescP(?string $descP): void
+    {
+        $this->descP = $descP;
+    }
 
     public function getIdProm(): ?int
     {
