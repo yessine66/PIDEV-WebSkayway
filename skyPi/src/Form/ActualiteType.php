@@ -19,11 +19,7 @@ class ActualiteType extends AbstractType
             ->add('image')
             ->add('idEv')
             /*->add('id')*/
-            ->add('dateAjout',DateType::class, [
-        'placeholder' => [
-            'day' => 'Day', 'month' => 'Month','year' => 'Year',
-        ]
-    ])
+            ->add('dateAjout')
         ;
     }
 
