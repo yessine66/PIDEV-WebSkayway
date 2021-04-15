@@ -25,6 +25,13 @@ class Theme
      * @var string
      *
      * @ORM\Column(name="nom_t", type="string", length=100, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomT;
 
@@ -39,7 +46,7 @@ class Theme
      * @var int|null
      *
      * @ORM\Column(name="id_cat", type="integer", nullable=true)
-
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $idCat;
 
@@ -47,6 +54,7 @@ class Theme
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $id;
 

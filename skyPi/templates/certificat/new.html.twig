@@ -1,11 +1,20 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<title>New Certificat</title>
-
+{% block title %}New Certificate{% endblock %}
+ {% block content %}
 {% block body %}
     <h1>Create new Certificat</h1>
+    {{ form_start(form) }}
+    {{form_label (form.titreCertif, "Titre de la certification:")}}
+    {{form_widget(form.titreCertif,{'attr':{'placeholder' : ' titre'}} )}}
+    {{form_errors (form.titreCertif) }}
+    <br>
 
+    {{form_label (form.dateCertif, "Date de certif:")}}
+    {{form_widget(form.dateCertif,{'attr':{'placeholder' : ' date'}} )}}
+    {{form_errors (form.dateCertif) }}
     {{ include('certificat/_form.html.twig') }}
 
     <a href="{{ path('certificat_index') }}">back to list</a>
 {% endblock %}
+ {% endblock %}

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<title>Certificat</title>
-
+{% block title %}Certificat{% endblock %}
+{% block content %}
 {% block body %}
     <h1>Certificat</h1>
 
@@ -27,4 +27,5 @@
     <a href="{{ path('certificat_edit', {'idCertif': certificat.idCertif}) }}">edit</a>
 
     {{ include('certificat/_delete_form.html.twig') }}
+{% endblock %}
 {% endblock %}

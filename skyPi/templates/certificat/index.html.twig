@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<title>Certificat index</title>
-
-{% block body %}
+{% block title %}Certificat index{% endblock %}
+ {% block content %}
+     {% block body %}
     <h1>Certificat index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>IdCertif</th>
-                <th>TitreCertif</th>
-                <th>DateCertif</th>
+                <th>ID </th>
+                <th>Titre Certif</th>
+                <th>Date Certif</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -35,3 +35,4 @@
 
     <a href="{{ path('certificat_new') }}">Create new</a>
 {% endblock %}
+ {% endblock %}

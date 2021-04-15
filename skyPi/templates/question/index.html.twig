@@ -1,18 +1,17 @@
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-
-<title>Question index</title>
-
-{% block body %}
+{% block title %}Question index{% endblock %}
+ {% block content %}
+     {% block body %}
     <h1>Question index</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>IdQ</th>
-            <th>TextQ</th>
-            <th>NbrPoint</th>
-            <th>NameT</th>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Nbre des points</th>
+            <th>categorie</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -38,3 +37,5 @@
 
     <a href="{{ path('question_new') }}">Create new</a>
 {% endblock %}
+
+ {% endblock %}
