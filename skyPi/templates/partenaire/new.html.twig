@@ -6,9 +6,27 @@
 
          <h1>Create new Partenaire</h1>
 
+         {{ form_start (form, {'attr':{'novalidate':'novalidate'}})}}
          {{ include('partenaire/_form.html.twig') }}
 
-         <a href="{{ path('partenaire_index') }}">back to list</a>
+<button type=“button” class="button-back"><a href="{{ path('partenaire_index') }}">back to list</a></button>
 
+         <style>
+
+             .button-back {
+                 display: inline-block;
+                 padding: 12px 18px;
+                 cursor: pointer;
+                 border-radius: 5px;
+                 background-color: #fff3cd;
+                 font-size: 16px;
+                 font-weight: bold;
+                 color: red;
+             }
+
+
+         </style>
+
+         {{ form_end (form) }}
      {% endblock %}
  {% endblock %}

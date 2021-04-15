@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Promotion
  *
  * @ORM\Table(name="promotion", indexes={@ORM\Index(name="FK_nomPartProm", columns={"nom_p"}), @ORM\Index(name="id_p", columns={"id_p"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"codeP"},
+ * message="le code  doit etre unique"
+ * )
  */
 class Promotion
 {
@@ -32,6 +37,10 @@ class Promotion
      * @var int|null
      *
      * @ORM\Column(name="reduction", type="integer", nullable=true)
+     * @Assert\NotEqualTo(
+     * value = 0,
+     * message = "La reduction  ne doit pas être égal à 0 "
+     * )
      */
     private $reduction;
 
@@ -61,7 +70,30 @@ class Promotion
      *
      * @ORM\Column(name="nom_p", type="string", length=100, nullable=true)
      */
+
     private $nomP;
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="desc_p", type="text", length=65535, nullable=true)
+     */
+    private $descP;
+
+    /**
+     * @return string|null
+     */
+    public function getDescP(): ?string
+    {
+        return $this->descP;
+    }
+
+    /**
+     * @param string|null $descP
+     */
+    public function setDescP(?string $descP): void
+    {
+        $this->descP = $descP;
+    }
 
     public function getIdProm(): ?int
     {
