@@ -43,13 +43,13 @@ class Actualite
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=true)
      * @Assert\Length(
-     *      min = 5,
-     *      max = 50,
+     *      min = 10,
+     *      max = 250,
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
      *      allowEmptyString = false
      *  )
-     * @Assert\NotBlank(message="vous devez le champ text ")
+     * @Assert\NotBlank(message="vous devez remplir le champ")
      */
     private $description;
 
