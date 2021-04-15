@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Question
@@ -26,6 +27,7 @@ class Question
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
      */
+   
     private $textQ;
 
     /**
@@ -33,13 +35,16 @@ class Question
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
      */
+
+
     private $nbrPoint;
 
     /**
-     * @var string|null
+     * @var string
      *
      * @ORM\Column(name="name_t", type="string", length=100, nullable=false)
      */
+
     private $nameT;
 
     /**
@@ -99,7 +104,7 @@ class Question
     }
 
     /**
-     * @param string|null $nameT
+     * @param string $nameT
      */
     public function setNameT(?string $nameT): void
     {

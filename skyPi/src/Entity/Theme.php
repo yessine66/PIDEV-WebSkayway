@@ -47,7 +47,6 @@ class Theme
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
-     * @Assert\NotBlank(message="vous devez le champ text ")
      */
     private $id;
 
