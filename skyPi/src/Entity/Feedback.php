@@ -51,9 +51,9 @@ class Feedback
     private $avis;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Column(name="id_user", type="string", length=80, nullable=false)
      */
     private $idUser;
 
@@ -86,12 +86,12 @@ class Feedback
         return $this;
     }
 
-    public function getAvis(): ?int
+    public function getAvis(): ?string
     {
         return $this->avis;
     }
 
-    public function setAvis(int $avis): self
+    public function setAvis(string $avis): self
     {
         $this->avis = $avis;
 
