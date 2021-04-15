@@ -27,6 +27,15 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="nom_c", type="string", length=100, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ nom cours ")
+
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Le nom de theme doit contenir au moins{{ limit }} characters long",
+     *      maxMessage = "Le nom de theme doit contenir au plus {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomC;
 
@@ -34,11 +43,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="pdf", type="string", length=500, nullable=false)
-     *      * @Assert\Length(
+     * @Assert\NotBlank(message="vous devez remplir le champ pdf ")
+
+     *   @Assert\Length(
      *      min = 5,
      *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      minMessage = "Le nom de theme doit contenir au moins {{ limit }} characters long",
+     *      maxMessage = "Le nom de theme doit contenir au plus {{ limit }} characters",
      *      allowEmptyString = false
      * )
      */
@@ -48,11 +59,13 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ description ")
+
      *      * @Assert\Length(
      *      min = 10,
      *      max = 200,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      minMessage = "Le nom de theme doit contenir au moins {{ limit }} characters long",
+     *      maxMessage = "Le nom de theme doit contenir au plus {{ limit }} characters",
      *      allowEmptyString = false
      * )
      */
@@ -76,7 +89,7 @@ class Cours
      * @var int|null
      *
      * @ORM\Column(name="id_t", type="integer", nullable=true)
-     * @Assert\NotBlank(message="vous devez le champ text ")
+     * @Assert\NotBlank(message="vous devez remplir le champ id categorie ")
 
      */
     private $idT;
@@ -85,7 +98,7 @@ class Cours
      * @var int|null
      *
      * @ORM\Column(name="id", type="integer", nullable=true)
-     * @Assert\NotBlank(message="vous devez le champ text ")
+     * @Assert\NotBlank(message="vous devez le champ id ")
 
      */
     private $id;
@@ -125,7 +138,7 @@ class Cours
     /**
      * @return string
      */
-    public function getPdf(): string
+    public function getPdf(): ?string
     {
         return $this->pdf;
     }
@@ -141,7 +154,7 @@ class Cours
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

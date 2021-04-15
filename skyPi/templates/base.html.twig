@@ -48,7 +48,7 @@
                 <a href="{{ path('partenaire_index') }}"class="nav-link">A propos</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ path('promotion_index') }}"class="nav-link">Actualités</a>
+                <a href="{{ path('actualite_index') }}"class="nav-link">Actualités</a>
             </li>
 
             <li class="nav-item d-none d-sm-inline-block">
@@ -311,19 +311,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="{{ path('categorie_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Catégorie</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
+                                <a href="{{ path('theme_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Théme</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/editors.html" class="nav-link">
+                                <a href="{{ path('cours_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Cours</p>
                                 </a>
@@ -340,27 +340,27 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                              Géstion Test
+                              Gestion Test
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="{{ path('question_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Question</p>
+                                    <p>Gestion questions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="{{ path('reponse_index') }}"class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Reponse</p>
+                                    <p>Gestion reponses</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                <a href="{{ path('certificat_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Certificat</p>
+                                    <p>Gestion certificats</p>
                                 </a>
                             </li>
                         </ul>
@@ -445,13 +445,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="{{ path('actualite_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Actualités</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="{{ path('evenement_index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Evenement</p>
                                 </a>

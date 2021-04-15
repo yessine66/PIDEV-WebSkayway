@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Certificat
  *
@@ -25,6 +25,8 @@ class Certificat
      * @var string|null
      *
      * @ORM\Column(name="titre_certif", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Unique
      */
     private $titreCertif;
 
@@ -32,6 +34,7 @@ class Certificat
      * @var string|null
      *
      * @ORM\Column(name="date_certif", type="string", length=40, nullable=true)
+     * @Assert\NotBlank
      */
     private $dateCertif;
 
