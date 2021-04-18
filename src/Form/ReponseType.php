@@ -19,8 +19,8 @@ class ReponseType extends AbstractType
             ->add('textR2')
             ->add('textR3')
             ->add('textR4')
-            ->add('id',EntityType::class,['class'=>Utilisateur::class,'choice_label'=>'id'])
-            ->add('idQ',EntityType::class,['class'=>Question::class,'choice_label'=>'idQ'])
+            ->add('id',EntityType::class,['class'=>Utilisateur::class,'choice_label'=>'username'])
+            ->add('idQ',EntityType::class,['class'=>Question::class,'choice_label'=>'textQ'])
         ;
     }
 

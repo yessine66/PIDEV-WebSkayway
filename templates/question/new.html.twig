@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Question{% endblock %}
+ {% block content %}
+     {% block body %}
+         <h1>Create new Question</h1>
+         {{ form_start(form) }}
+         {{form_label (form.textQ, "la question à demander:")}}
+         {{form_widget(form.textQ,{'attr':{'placeholder' : ' Votre question'}} )}}
+         {{form_errors (form.textQ) }}
+         <br>
 
-{% block body %}
-    <h1>Create new Question</h1>
+         {{form_label (form.nbrPoint, "Nombre des points:")}}
+         {{form_widget(form.nbrPoint,{'attr':{'placeholder' : ' Points<6 '}} )}}
+         {{form_errors (form.nbrPoint) }}
+         <br>
+         {{form_label (form.nameT, "Catégorie:")}}
+         {{form_widget(form.nameT )}}
+         {{ include('question/_form.html.twig') }}
 
-    {{ include('question/_form.html.twig') }}
+         <button type=“button” class="button-back"><a href="{{ path('question_index') }}">back to list</a></button>
 
-    <a href="{{ path('question_index') }}">back to list</a>
-{% endblock %}
+         <style>
+
+             .button-back {
+                 display: inline-block;
+                 padding: 12px 18px;
+                 cursor: pointer;
+                 border-radius: 5px;
+                 background-color: #fff3cd;
+                 font-size: 16px;
+                 font-weight: bold;
+                 color: #ff0000;
+             }
+
+
+         </style>
+
+
+         {{ form_end (form) }}
+     {% endblock %}
+ {% endblock %}
