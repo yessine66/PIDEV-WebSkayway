@@ -76,93 +76,132 @@ class Cours
      */
     private $idCategorie;
 
-    public function getIdC(): ?int
+    /**
+     * @return int
+     */
+    public function getIdC(): int
     {
         return $this->idC;
     }
 
+    /**
+     * @param int $idC
+     */
+    public function setIdC(int $idC): void
+    {
+        $this->idC = $idC;
+    }
+
+    /**
+     * @return string
+     */
     public function getNomC(): ?string
     {
         return $this->nomC;
     }
 
-    public function setNomC(string $nomC): self
+    /**
+     * @param string $nomC
+     */
+    public function setNomC(string $nomC): void
     {
         $this->nomC = $nomC;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getPdf(): ?string
     {
         return $this->pdf;
     }
 
-    public function setPdf(string $pdf): self
+    /**
+     * @param string $pdf
+     */
+    public function setPdf(string $pdf): void
     {
         $this->pdf = $pdf;
-
-        return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
     {
         $this->description = $description;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNbparticipant(): ?int
     {
         return $this->nbparticipant;
     }
 
-    public function setNbparticipant(?int $nbparticipant): self
+    /**
+     * @param int|null $nbparticipant
+     */
+    public function setNbparticipant(?int $nbparticipant): void
     {
         $this->nbparticipant = $nbparticipant;
-
-        return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
     {
         $this->image = $image;
-
-        return $this;
     }
 
+    /**
+     * @return \Utilisateur
+     */
     public function getId(): ?Utilisateur
     {
         return $this->id;
     }
 
-    public function setId(?Utilisateur $id): self
+    /**
+     * @param \Utilisateur $id
+     */
+    public function setId(\Utilisateur $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
+    /**
+     * @return \Categorie
+     */
     public function getIdCategorie(): ?Categorie
     {
         return $this->idCategorie;
     }
 
-    public function setIdCategorie(?Categorie $idCategorie): self
+    /**
+     * @param \Categorie $idCategorie
+     */
+    public function setIdCategorie(\Categorie $idCategorie): void
     {
         $this->idCategorie = $idCategorie;
-
-        return $this;
     }
 
 
