@@ -41,5 +41,34 @@ class Participation
      */
     private $idUser;
 
+    public function getIdParticiper(): ?int
+    {
+        return $this->idParticiper;
+    }
+
+    public function getIdCours(): ?Cours
+    {
+        return $this->idCours;
+    }
+
+    public function setIdCours(?Cours $idCours): self
+    {
+        $this->idCours = $idCours;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?Utilisateur
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?Utilisateur $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
 
 }
