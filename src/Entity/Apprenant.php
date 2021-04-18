@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Apprenant
+ *
+ * @ORM\Table(name="apprenant", uniqueConstraints={@ORM\UniqueConstraint(name="id", columns={"id"})})
+ * @ORM\Entity
+ */
+class Apprenant
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_app", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idApp;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="description", type="string", length=50, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * })
+     */
+    private $id;
+
+
+}

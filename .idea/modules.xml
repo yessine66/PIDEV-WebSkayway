@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PIDEV-WebSkayway.iml" filepath="$PROJECT_DIR$/.idea/PIDEV-WebSkayway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/skyPi.iml" filepath="$PROJECT_DIR$/.idea/skyPi.iml" />
     </modules>
   </component>
 </project>

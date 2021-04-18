@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reponse{% endblock %}
+{% block content %}
+{% block body %}
+
+
+    <h1>Create new Reponse</h1>
+    <style
+        link rel="stylesheet" href ="{{ asset ("dist/css/StylesheetB.css") }}" >
+    </style>
+    {{ include('reponse/_form.html.twig') }}
+
+    <a href="{{ path('reponse_index') }}">back to list
+
+
+{% endblock %}
+{% endblock %}
