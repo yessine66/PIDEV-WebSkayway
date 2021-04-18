@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cours
@@ -25,6 +26,15 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="nom_c", type="string", length=100, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ nom cours ")
+
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 50,
+     *      minMessage = "Le nom de cours doit contenir au moins{{ limit }} characters long",
+     *      maxMessage = "Le nom de cours doit contenir au plus {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomC;
 
@@ -32,6 +42,8 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="pdf", type="string", length=500, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ pdf ")
+
      */
     private $pdf;
 
@@ -39,6 +51,15 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=false)
+     *  * @Assert\NotBlank(message="vous devez remplir le champ description ")
+
+     *       @Assert\Length(
+     *      min = 10,
+     *      max = 200,
+     *      minMessage = "La description doit contenir au moins {{ limit }} characters long",
+     *      maxMessage = "La description doit contenir au plus {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $description;
 
@@ -46,6 +67,8 @@ class Cours
      * @var int|null
      *
      * @ORM\Column(name="nbparticipant", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez remplir le champ nombre de participant ")
+
      */
     private $nbparticipant;
 
@@ -53,6 +76,8 @@ class Cours
      * @var string|null
      *
      * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     * @Assert\NotBlank(message="vous devez remplir le champ image ")
+
      */
     private $image;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categorie
@@ -25,6 +26,14 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom_categorie", type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ nom categorie ")
+     *      @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Le nom de categorie doit contenir au moins {{ limit }} characters long",
+     *      maxMessage = "Le nom de categorie doit contenir au plus {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomCategorie;
 
@@ -32,6 +41,7 @@ class Categorie
      * @var string|null
      *
      * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     * @Assert\NotBlank(message="Vous devez remplir le champ image ")
      */
     private $image;
 
