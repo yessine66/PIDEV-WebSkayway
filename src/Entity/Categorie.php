@@ -45,5 +45,46 @@ class Categorie
      */
     private $idT;
 
+    public function getIdCategorie(): ?int
+    {
+        return $this->idCategorie;
+    }
+
+    public function getNomCategorie(): ?string
+    {
+        return $this->nomCategorie;
+    }
+
+    public function setNomCategorie(string $nomCategorie): self
+    {
+        $this->nomCategorie = $nomCategorie;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIdT(): ?Theme
+    {
+        return $this->idT;
+    }
+
+    public function setIdT(?Theme $idT): self
+    {
+        $this->idT = $idT;
+
+        return $this;
+    }
+
 
 }

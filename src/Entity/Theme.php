@@ -45,5 +45,46 @@ class Theme
      */
     private $id;
 
+    public function getIdT(): ?int
+    {
+        return $this->idT;
+    }
+
+    public function getNomT(): ?string
+    {
+        return $this->nomT;
+    }
+
+    public function setNomT(string $nomT): self
+    {
+        $this->nomT = $nomT;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

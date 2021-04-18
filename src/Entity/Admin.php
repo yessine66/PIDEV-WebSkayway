@@ -31,5 +31,22 @@ class Admin
      */
     private $id;
 
+    public function getIdAdm(): ?int
+    {
+        return $this->idAdm;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }
