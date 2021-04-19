@@ -29,6 +29,20 @@ class ActualiteController extends AbstractController
     }
 
     /**
+     * @Route("/index", name="actualite_indexF", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $actualites = $this->getDoctrine()
+            ->getRepository(Actualite::class)
+            ->findAll();
+
+        return $this->render('actualite/indexF.html.twig', [
+            'actualites' => $actualites,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="actualite_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -57,6 +71,15 @@ class ActualiteController extends AbstractController
     public function show(Actualite $actualite): Response
     {
         return $this->render('actualite/show.html.twig', [
+            'actualite' => $actualite,
+        ]);
+    }
+    /**
+     * @Route("/{idAc}", name="actualite_showF", methods={"GET"})
+     */
+    public function showF(Actualite $actualite): Response
+    {
+        return $this->render('actualite/showF.html.twig', [
             'actualite' => $actualite,
         ]);
     }
