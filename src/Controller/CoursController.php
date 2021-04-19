@@ -27,6 +27,19 @@ class CoursController extends AbstractController
             'cours' => $cours,
         ]);
     }
+    /**
+     * @Route("/", name="coursF_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $cours = $this->getDoctrine()
+            ->getRepository(Cours::class)
+            ->findAll();
+
+        return $this->render('cours/indexF.html.twig', [
+            'cours' => $cours,
+        ]);
+    }
 
     /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
