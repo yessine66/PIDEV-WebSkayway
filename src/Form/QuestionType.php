@@ -6,6 +6,7 @@ use App\Entity\Question;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class QuestionType extends AbstractType
 {
@@ -14,8 +15,16 @@ class QuestionType extends AbstractType
         $builder
             ->add('textQ')
             ->add('nbrPoint')
-            ->add('nameT')
-            ->add('id')
+            ->add('nameT', ChoiceType::class, [
+                'choices'  => [
+                    'POO' => 'POO',
+                    'MATHS' => 'MATHS',
+                    'SVT' => 'SVT',
+                    'PHYSIQUE' => 'PHYSIQUE',
+                    'ART' => 'ART',
+                ],
+            ]);
+
         ;
     }
 

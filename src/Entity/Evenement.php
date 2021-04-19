@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Evenement
@@ -25,6 +26,14 @@ class Evenement
      * @var string|null
      *
      * @ORM\Column(name="nom_ev", type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 250,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *  )
+     * @Assert\NotBlank(message="vous devez remplir le champ ")
      */
     private $nomEv;
 
@@ -39,6 +48,14 @@ class Evenement
      * @var string
      *
      * @ORM\Column(name="espace", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 250,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *  )
+     * @Assert\NotBlank(message="vous devez remplir le champ espace ")
      */
     private $espace;
 
@@ -46,6 +63,7 @@ class Evenement
      * @var int|null
      *
      * @ORM\Column(name="nombre_pl", type="integer", nullable=true)
+     * @Assert\NotBlank(message="vous devez saisir le nombre de places ")
      */
     private $nombrePl;
 

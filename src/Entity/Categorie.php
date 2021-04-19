@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categorie
@@ -25,6 +26,14 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom_categorie", type="string", length=50, nullable=false)
+     * @Assert\NotBlank(message="vous devez remplir le champ nom categorie ")
+     *      @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Le nom de categorie doit contenir au moins {{ limit }} characters long",
+     *      maxMessage = "Le nom de categorie doit contenir au plus {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $nomCategorie;
 
@@ -32,6 +41,7 @@ class Categorie
      * @var string|null
      *
      * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     * @Assert\NotBlank(message="Vous devez remplir le champ image ")
      */
     private $image;
 
@@ -45,45 +55,68 @@ class Categorie
      */
     private $idT;
 
-    public function getIdCategorie(): ?int
+    /**
+     * @return int
+     */
+    public function getIdCategorie(): int
     {
         return $this->idCategorie;
     }
 
+    /**
+     * @param int $idCategorie
+     */
+    public function setIdCategorie(int $idCategorie): void
+    {
+        $this->idCategorie = $idCategorie;
+    }
+
+    /**
+     * @return string
+     */
     public function getNomCategorie(): ?string
     {
         return $this->nomCategorie;
     }
 
-    public function setNomCategorie(string $nomCategorie): self
+    /**
+     * @param string $nomCategorie
+     */
+    public function setNomCategorie(string $nomCategorie): void
     {
         $this->nomCategorie = $nomCategorie;
-
-        return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    /**
+     * @param string|null $image
+     */
+    public function setImage(?string $image): void
     {
         $this->image = $image;
-
-        return $this;
     }
 
+    /**
+     * @return \Theme
+     */
     public function getIdT(): ?Theme
     {
         return $this->idT;
     }
 
-    public function setIdT(?Theme $idT): self
+    /**
+     * @param \Theme $idT
+     */
+    public function setIdT(\Theme $idT): void
     {
         $this->idT = $idT;
-
-        return $this;
     }
 
 

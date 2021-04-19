@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Reponse
  *
@@ -25,6 +25,7 @@ class Reponse
      * @var string
      *
      * @ORM\Column(name="text_r1", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textR1;
 
@@ -32,6 +33,7 @@ class Reponse
      * @var string
      *
      * @ORM\Column(name="text_r2", type="string", length=250, nullable=false)
+     * @Assert\NotBlank
      */
     private $textR2;
 
@@ -39,6 +41,7 @@ class Reponse
      * @var string
      *
      * @ORM\Column(name="text_r3", type="string", length=250, nullable=false)
+     * @Assert\NotBlank
      */
     private $textR3;
 
@@ -46,6 +49,7 @@ class Reponse
      * @var string
      *
      * @ORM\Column(name="text_r4", type="string", length=250, nullable=false)
+     * @Assert\NotBlank
      */
     private $textR4;
 

@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Question
  *
@@ -25,6 +25,7 @@ class Question
      * @var string|null
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
+     * @Assert\NotBlank
      */
     private $textQ;
 
@@ -32,6 +33,7 @@ class Question
      * @var int|null
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
+     * @Assert\LessThanOrEqual(5)
      */
     private $nbrPoint;
 
@@ -39,6 +41,13 @@ class Question
      * @var string|null
      *
      * @ORM\Column(name="name_t", type="string", length=250, nullable=true)
+     * Assert\Length([
+    'min' => 0,
+    'minMessage' => "La question ne peut pas être vide.",
+    'max' => 120,
+    'maxMessage' => "La question doit faire moins de 120 caractères.",
+    ])
+     * )
      */
     private $nameT;
 
