@@ -144,7 +144,7 @@ class Evenement
 
     public function __toString(): string
     {
-        return $this->nomEv;
+        return $this->nomEv ;
     }
 
 
