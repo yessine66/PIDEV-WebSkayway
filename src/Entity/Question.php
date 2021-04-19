@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Question
  *
  * @ORM\Table(name="question", indexes={@ORM\Index(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
  */
 class Question
 {
