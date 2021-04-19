@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReclamationController extends AbstractController
 {
     /**
-     * @Route("/", name="reclamation_index", methods={"GET"})
+     * @Route("/index", name="reclamation_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -24,6 +24,19 @@ class ReclamationController extends AbstractController
             ->findAll();
 
         return $this->render('reclamation/index.html.twig', [
+            'reclamations' => $reclamations,
+        ]);
+    }
+    /**
+     * @Route("/", name="reclamationF_index", methods={"GET"})
+     */
+    public function indexf(): Response
+    {
+        $reclamations = $this->getDoctrine()
+            ->getRepository(Reclamation::class)
+            ->findAll();
+
+        return $this->render('reclamation/indexF.html.twig', [
             'reclamations' => $reclamations,
         ]);
     }

@@ -15,22 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class CoursController extends AbstractController
 {
     /**
-     * @Route("/", name="cours_index", methods={"GET"})
-     */
-    public function index(): Response
-    {
-        $cours = $this->getDoctrine()
-            ->getRepository(Cours::class)
-            ->findAll();
-
-        return $this->render('cours/index.html.twig', [
-            'cours' => $cours,
-        ]);
-    }
-    /**
      * @Route("/", name="coursF_index", methods={"GET"})
      */
-    public function indexF(): Response
+    public function index(): Response
     {
         $cours = $this->getDoctrine()
             ->getRepository(Cours::class)
@@ -40,6 +27,20 @@ class CoursController extends AbstractController
             'cours' => $cours,
         ]);
     }
+    /**
+     * @Route("/index", name="cours_index", methods={"GET"})
+     */
+    public function test(): Response
+    {
+        $cours = $this->getDoctrine()
+            ->getRepository(Cours::class)
+            ->findAll();
+
+        return $this->render('cours/index.html.twig', [
+            'cours' => $cours,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
