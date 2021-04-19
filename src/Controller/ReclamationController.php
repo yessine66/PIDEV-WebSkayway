@@ -41,7 +41,7 @@ class ReclamationController extends AbstractController
         ]);
     }
 
-    /**
+     /**
      * @Route("/new", name="reclamation_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -65,11 +65,21 @@ class ReclamationController extends AbstractController
     }
 
     /**
-     * @Route("/{idRec}", name="reclamation_show", methods={"GET"})
+     * @Route("/index/{idRec}", name="reclamation_show", methods={"GET"})
      */
     public function show(Reclamation $reclamation): Response
     {
         return $this->render('reclamation/show.html.twig', [
+            'reclamation' => $reclamation,
+        ]);
+    }
+
+        /**
+         * @Route("/{idRec}", name="reclamation_showF", methods={"GET"})
+         */
+        public function showF(Reclamation $reclamation): Response
+    {
+        return $this->render('reclamation/showF.html.twig', [
             'reclamation' => $reclamation,
         ]);
     }
@@ -105,6 +115,6 @@ class ReclamationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('reclamation_index');
+        return $this->redirectToRoute('reclamationF_index');
     }
 }
