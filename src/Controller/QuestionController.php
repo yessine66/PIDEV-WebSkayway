@@ -94,4 +94,24 @@ class QuestionController extends AbstractController
 
         return $this->redirectToRoute('question_index');
     }
+    /**
+     * @Route("/question/tri", name="/question/tri")
+     */
+    public function Tri(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT q FROM App\Entity\Question q 
+            ORDER BY q.nbrPoint ASC'
+        );
+
+        $question = $query->getResult();
+
+
+        return $this->render('question/index.html.twig',
+            array('questions' => $question));
+
+    }
+
 }
