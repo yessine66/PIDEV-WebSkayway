@@ -52,5 +52,58 @@ class Enseignant
      */
     private $id;
 
+    public function getIdEns(): ?int
+    {
+        return $this->idEns;
+    }
+
+    public function getMatiere(): ?string
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(?string $matiere): self
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    public function getBibliographie(): ?string
+    {
+        return $this->bibliographie;
+    }
+
+    public function setBibliographie(?string $bibliographie): self
+    {
+        $this->bibliographie = $bibliographie;
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?string $specialite): self
+    {
+        $this->specialite = $specialite;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

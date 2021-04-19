@@ -52,5 +52,58 @@ class Feedback
      */
     private $id;
 
+    public function getIdF(): ?int
+    {
+        return $this->idF;
+    }
+
+    public function getObjet(): ?string
+    {
+        return $this->objet;
+    }
+
+    public function setObjet(string $objet): self
+    {
+        $this->objet = $objet;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getAvis(): ?string
+    {
+        return $this->avis;
+    }
+
+    public function setAvis(string $avis): self
+    {
+        $this->avis = $avis;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

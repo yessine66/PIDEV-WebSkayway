@@ -55,5 +55,58 @@ class Test
      */
     private $id;
 
+    public function getIdTest(): ?int
+    {
+        return $this->idTest;
+    }
+
+    public function getDateTest(): ?string
+    {
+        return $this->dateTest;
+    }
+
+    public function setDateTest(?string $dateTest): self
+    {
+        $this->dateTest = $dateTest;
+
+        return $this;
+    }
+
+    public function getScore(): ?int
+    {
+        return $this->score;
+    }
+
+    public function setScore(?int $score): self
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    public function getIdC(): ?Certificat
+    {
+        return $this->idC;
+    }
+
+    public function setIdC(?Certificat $idC): self
+    {
+        $this->idC = $idC;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

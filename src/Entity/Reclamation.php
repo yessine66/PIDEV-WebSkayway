@@ -66,5 +66,82 @@ class Reclamation
      */
     private $id;
 
+    public function getIdRec(): ?int
+    {
+        return $this->idRec;
+    }
+
+    public function getObjet(): ?string
+    {
+        return $this->objet;
+    }
+
+    public function setObjet(string $objet): self
+    {
+        $this->objet = $objet;
+
+        return $this;
+    }
+
+    public function getTextR(): ?string
+    {
+        return $this->textR;
+    }
+
+    public function setTextR(string $textR): self
+    {
+        $this->textR = $textR;
+
+        return $this;
+    }
+
+    public function getDateEnvoi(): ?string
+    {
+        return $this->dateEnvoi;
+    }
+
+    public function setDateEnvoi(string $dateEnvoi): self
+    {
+        $this->dateEnvoi = $dateEnvoi;
+
+        return $this;
+    }
+
+    public function getCours(): ?string
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?string $cours): self
+    {
+        $this->cours = $cours;
+
+        return $this;
+    }
+
+    public function getEnseignant(): ?string
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?string $enseignant): self
+    {
+        $this->enseignant = $enseignant;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }

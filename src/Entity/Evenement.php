@@ -59,5 +59,70 @@ class Evenement
      */
     private $id;
 
+    public function getIdEv(): ?int
+    {
+        return $this->idEv;
+    }
+
+    public function getNomEv(): ?string
+    {
+        return $this->nomEv;
+    }
+
+    public function setNomEv(?string $nomEv): self
+    {
+        $this->nomEv = $nomEv;
+
+        return $this;
+    }
+
+    public function getDateEv(): ?\DateTimeInterface
+    {
+        return $this->dateEv;
+    }
+
+    public function setDateEv(?\DateTimeInterface $dateEv): self
+    {
+        $this->dateEv = $dateEv;
+
+        return $this;
+    }
+
+    public function getEspace(): ?string
+    {
+        return $this->espace;
+    }
+
+    public function setEspace(string $espace): self
+    {
+        $this->espace = $espace;
+
+        return $this;
+    }
+
+    public function getNombrePl(): ?int
+    {
+        return $this->nombrePl;
+    }
+
+    public function setNombrePl(?int $nombrePl): self
+    {
+        $this->nombrePl = $nombrePl;
+
+        return $this;
+    }
+
+    public function getId(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setId(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
 }
