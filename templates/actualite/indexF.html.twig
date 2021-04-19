@@ -38,24 +38,14 @@
                         <article class="blog_item">
                             <div class="blog_item_img">
                                 <a href="{{ asset('#') }}" class="blog_item_date">
-                                    <h3>{{ actualite.dateAjout }}</h3>
+                                    <h3>{{ actualite.titreAc }}</h3>
                                 </a>
-                                <aside class="single_sidebar_widget search_widget">
-                                    <div class="form-group">
-                                        <div class="col-lg-6 mb-12 mb-lg-0">
-                                            <div class="input-group-append">
-                                                <button class="btns" type="button"><i class="ti-search"></i> add</button>
-                                                <button class="btns" type="button"><i class="ti-search"></i>delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>
                             </div>
                             <div class="blog_details">
                                 <a class="d-inline-block" href="{{ asset('blog_details.html') }}">
-                                    <h2 class="blog-head" style="color: #2d2d2d;">{{ actualite.titreAc }}</h2>
+                                    <h2 class="blog-head" style="color: #2d2d2d;">{{ actualite.description }}</h2>
                                 </a>
-                                <p>{{ actualite.description }}</p>
+                                <p>{{ actualite.dateAjout }}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="{{ asset('#') }}"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                                     <li><a href="{{ asset('#') }}"><i class="fa fa-comments"></i> 03 Comments</a></li>

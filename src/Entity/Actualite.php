@@ -68,8 +68,7 @@ class Actualite
     private $dateAjout;
 
     /**
-     * @var \Utilisateur
-     *
+     * @var string
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
