@@ -87,7 +87,7 @@ class Utilisateur
     /**
      * @var string|null
      *
-     * @ORM\Column(name="role", type="string", length=0, nullable=true)
+     * @ORM\Column(name="role", type="string", length=25, nullable=true)
      */
     private $role;
 
