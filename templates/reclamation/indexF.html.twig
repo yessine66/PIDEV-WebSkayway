@@ -43,30 +43,22 @@
                             <article class="blog_item">
                                 <div class="blog_item_img">
                                     <a href="{{ asset('#') }}" class="blog_item_date">
-                                        <h3>{{ reclamation.dateEnvoi}}</h3>
+                                        <h3>{{ reclamation.objet}}</h3>
                                     </a>
-                                    <aside class="single_sidebar_widget search_widget">
-                                        <div class="form-group">
-                                            <div class="col-lg-12 mb-6 mb-lg-0">
-                                                <div class="input-group-append">
-                                                    <button class="btns" type="button"><i class="ti-search"></i> <a href="{{ path('reclamation_new') }}">add</a>   </button>
-                                                    <button class="btns" type="button"><i class="ti-search"></i> <a href="{{ path('reclamation_delete', {'idRec': reclamation.idRec}) }}">delete</a>   </button>
-                                                    <button class="btns" type="button"><i class="ti-search"></i> <a href="{{ path('reclamation_showF', {'idRec': reclamation.idRec}) }}">show</a>   </button>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </aside>
                                 </div>
                                 <div class="blog_details">
                                     <a class="d-inline-block" href="{{ asset('blog_details.html') }}">
-                                        <h2 class="blog-head" style="color: #2d2d2d;">{{ reclamation.objet }}</h2>
+                                        <h2 class="blog-head" style="color: #2d2d2d;">{{ reclamation.textR }}</h2>
                                     </a>
-                                    <p>{{ reclamation.textR }}</p>
+
                                     <p>{{ reclamation.enseignant }}{{ reclamation.cours }}</p>
+                                    <p style="float: right">{{ reclamation.dateEnvoi }}</p>
+                                    <br>
                                     <ul class="blog-info-link">
-                                        <li><a href="{{ asset('#') }}"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="{{ asset('#') }}"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                        <li><a href="{{ path('reclamation_showF', {'idRec': reclamation.idRec}) }}"><i class="fa fa-user"></i> show</a></li>
+                                        <li><a href="{{ path('reclamation_delete', {'idRec': reclamation.idRec}) }}"><i class="fa fa-trash"></i> delete</a></li>
+                                        <li><a href="{{ path('reclamation_edit', {'idRec': reclamation.idRec}) }}"><i class="fa fa-edit"></i> edit</a></li>
                                     </ul>
                                 </div>
 
@@ -74,7 +66,7 @@
                         {% else %}
                             <h1>no records found</h1>
                         {% endfor %}
-                        <button class="btns" type="button"><a href="{{ path('reclamation_new') }}">Create new</a></button>
+                        <button class="btn" type="button"><a href="{{ path('reclamation_new') }}">Create new</a></button>
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
