@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Actualite;
-use App\Form\ActualiteType;
+use App\Form\Actualite1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,9 +27,8 @@ class ActualiteController extends AbstractController
             'actualites' => $actualites,
         ]);
     }
-
     /**
-     * @Route("/index", name="actualite_indexF", methods={"GET"})
+     * @Route("/index", name="actualite_index", methods={"GET"})
      */
     public function indexF(): Response
     {
@@ -75,7 +74,7 @@ class ActualiteController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{idAc}", name="actualite_showF", methods={"GET"})
+     * @Route("/index/{idAc}", name="actualite_show", methods={"GET"})
      */
     public function showF(Actualite $actualite): Response
     {

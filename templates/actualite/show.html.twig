@@ -2,11 +2,11 @@
 
 {% block title %}Actualite{% endblock %}
 {% block content %}
-{% block body %}
-    <h1>Actualite</h1>
+    {% block body %}
+        <h1>Actualite</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
                 <th>IdAc</th>
                 <td>{{ actualite.idAc }}</td>
@@ -25,15 +25,15 @@
             </tr>
             <tr>
                 <th>DateAjout</th>
-                <td>{{ actualite.dateAjout }}</td>
+                <td>{{ actualite.dateAjout ? actualite.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('actualite_index') }}">back to list</a>
+        <a href="{{ path('actualite_index') }}">back to list</a>
 
-    <a href="{{ path('actualite_edit', {'idAc': actualite.idAc}) }}">edit</a>
+        <a href="{{ path('actualite_edit', {'idAc': actualite.idAc}) }}">edit</a>
 
-    {{ include('actualite/_delete_form.html.twig') }}
-{% endblock %}
+        {{ include('actualite/_delete_form.html.twig') }}
+    {% endblock %}
 {% endblock %}

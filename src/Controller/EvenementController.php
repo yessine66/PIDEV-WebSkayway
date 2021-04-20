@@ -29,6 +29,20 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * @Route("/index", name="evenement_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $evenements = $this->getDoctrine()
+            ->getRepository(Evenement::class)
+            ->findAll();
+
+        return $this->render('evenement/indexF.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
+
+    /**
      * @Route("/new", name="evenement_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -57,6 +71,16 @@ class EvenementController extends AbstractController
     public function show(Evenement $evenement): Response
     {
         return $this->render('evenement/show.html.twig', [
+            'evenement' => $evenement,
+        ]);
+    }
+
+    /**
+     * @Route("/index/{idEv}", name="evenement_show", methods={"GET"})
+     */
+    public function showF(Evenement $evenement): Response
+    {
+        return $this->render('evenement/showF.html.twig', [
             'evenement' => $evenement,
         ]);
     }
