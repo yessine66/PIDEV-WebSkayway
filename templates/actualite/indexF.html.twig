@@ -12,12 +12,12 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Company insights</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Actualités</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ asset('index.html') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ asset('#') }}">Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('actualite_index') }}">News</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -37,18 +37,17 @@
                         {% for actualite in actualites %}
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <a href="{{ asset('#') }}" class="blog_item_date">
+                                <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
+                                <a href="{{ path('actualite_show', {'idAc': actualite.idAc}) }}" class="blog_item_date">
                                     <h3>{{ actualite.titreAc }}</h3>
                                 </a>
                             </div>
                             <div class="blog_details">
-                                <a class="d-inline-block" href="{{ asset('blog_details.html') }}">
+                                <ul>
+                                <li>
                                     <h2 class="blog-head" style="color: #2d2d2d;">{{ actualite.description }}</h2>
-                                </a>
-                                <p>{{ actualite.dateAjout }}</p>
-                                <ul class="blog-info-link">
-                                    <li><a href="{{ asset('#') }}"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="{{ asset('#') }}"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                </li>
+                                <li><i class="blog-info-link" style="float: right;">{{ actualite.dateAjout ? actualite.dateAjout|date('Y-m-d') : '' }}</i></li>
                                 </ul>
                             </div>
 
@@ -94,17 +93,6 @@
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Search</button>
-                            </form>
-                        </aside>
-                        <aside class="single_sidebar_widget newsletter_widget">
-                            <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
-                            <form action="#">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Subscribe</button>
                             </form>
                         </aside>
                     </div>

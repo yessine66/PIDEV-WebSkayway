@@ -1,39 +1,84 @@
 {% extends 'baseF.html.twig' %}
 
 {% block title %}Actualite{% endblock %}
-{% block content %}
-{% block body %}
-    <h1>Actualite</h1>
+{% block contentfr %}
+{% block bodyfr %}
+<main>
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Actualité: {{ actualite.titreAc }}</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('actualite_index') }}">News</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start -->
+    <section class="blog_area single-post-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="assets/img/blog/single_blog_1.png" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h2 class="blog-head">{{ actualite.titreAc }}
+                            </h2>
+                            <h2 class="blog-head" style="color: #2d2d2d;">
+                                {{ actualite.description }}
+                            </h2>
+                            <h2 class="blog-head" style="color: #2d2d2d;">
+                                <a href="{{ path('evenement_show', {'idEv': actualite.idEv}) }}"> {{ actualite.idEv }}</a>
+                            </h2>
+                            <h2 class="blog-head" style="color: #2d2d2d;">
+                                {{ actualite.dateAjout ? actualite.dateAjout|date('Y-m-d') : ''  }}
+                            </h2>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button class="btn"><a href="{{ path('actualite_index') }}">Back</a></button>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btns" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Area End -->
+</main>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>IdAc</th>
-                <td>{{ actualite.idAc }}</td>
-            </tr>
-            <tr>
-                <th>TitreAc</th>
-                <td>{{ actualite.titreAc }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ actualite.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ actualite.image }}</td>
-            </tr>
-            <tr>
-                <th>DateAjout</th>
-                <td>{{ actualite.dateAjout }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('actualite_index') }}">back to list</a>
-
-    <a href="{{ path('actualite_edit', {'idAc': actualite.idAc}) }}">edit</a>
-
-    {{ include('actualite/_delete_form.html.twig') }}
 {% endblock %}
 {% endblock %}

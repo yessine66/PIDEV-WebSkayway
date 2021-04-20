@@ -293,4 +293,9 @@ class Utilisateur
         $this->creCompte = $creCompte;
     }
 
+    public function __toString(): string
+    {
+        return $this->username;
+    }
+
 }

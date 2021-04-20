@@ -61,15 +61,14 @@ class Actualite
     private $image;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="date_ajout", type="string", length=255, nullable=true)
+     * @ORM\Column(name="date_ajout", type="datetime", nullable=true)
      */
     private $dateAjout;
 
     /**
-     * @var \Utilisateur
-     *
+     * @var string
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
@@ -128,12 +127,12 @@ class Actualite
         return $this;
     }
 
-    public function getDateAjout(): ?string
+    public function getDateAjout(): ?\DateTimeInterface
     {
         return $this->dateAjout;
     }
 
-    public function setDateAjout(?string $dateAjout): self
+    public function setDateAjout(?\DateTimeInterface $dateAjout): self
     {
         $this->dateAjout = $dateAjout;
 
