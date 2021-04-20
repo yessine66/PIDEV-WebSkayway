@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReclamationController extends AbstractController
 {
     /**
-     * @Route("/", name="reclamation_index", methods={"GET"})
+     * @Route("/index", name="reclamation_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -27,8 +27,21 @@ class ReclamationController extends AbstractController
             'reclamations' => $reclamations,
         ]);
     }
-
     /**
+     * @Route("/", name="reclamationF_index", methods={"GET"})
+     */
+    public function indexf(): Response
+    {
+        $reclamations = $this->getDoctrine()
+            ->getRepository(Reclamation::class)
+            ->findAll();
+
+        return $this->render('reclamation/indexF.html.twig', [
+            'reclamations' => $reclamations,
+        ]);
+    }
+
+     /**
      * @Route("/new", name="reclamation_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -52,11 +65,21 @@ class ReclamationController extends AbstractController
     }
 
     /**
-     * @Route("/{idRec}", name="reclamation_show", methods={"GET"})
+     * @Route("/index/{idRec}", name="reclamation_show", methods={"GET"})
      */
     public function show(Reclamation $reclamation): Response
     {
         return $this->render('reclamation/show.html.twig', [
+            'reclamation' => $reclamation,
+        ]);
+    }
+
+        /**
+         * @Route("/{idRec}", name="reclamation_showF", methods={"GET"})
+         */
+        public function showF(Reclamation $reclamation): Response
+    {
+        return $this->render('reclamation/showF.html.twig', [
             'reclamation' => $reclamation,
         ]);
     }
@@ -92,6 +115,6 @@ class ReclamationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('reclamation_index');
+        return $this->redirectToRoute('reclamationF_index');
     }
 }

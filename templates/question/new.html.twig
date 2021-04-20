@@ -16,6 +16,7 @@
          <br>
          {{form_label (form.nameT, "Catégorie:")}}
          {{form_widget(form.nameT )}}
+
          {{ include('question/_form.html.twig') }}
 
          <button type=“button” class="button-back"><a href="{{ path('question_index') }}">back to list</a></button>

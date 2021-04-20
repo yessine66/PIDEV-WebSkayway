@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Actualite;
-use App\Form\ActualiteType;
+use App\Form\Actualite1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +24,19 @@ class ActualiteController extends AbstractController
             ->findAll();
 
         return $this->render('actualite/index.html.twig', [
+            'actualites' => $actualites,
+        ]);
+    }
+    /**
+     * @Route("/index", name="actualite_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $actualites = $this->getDoctrine()
+            ->getRepository(Actualite::class)
+            ->findAll();
+
+        return $this->render('actualite/indexF.html.twig', [
             'actualites' => $actualites,
         ]);
     }
@@ -57,6 +70,15 @@ class ActualiteController extends AbstractController
     public function show(Actualite $actualite): Response
     {
         return $this->render('actualite/show.html.twig', [
+            'actualite' => $actualite,
+        ]);
+    }
+    /**
+     * @Route("/index/{idAc}", name="actualite_show", methods={"GET"})
+     */
+    public function showF(Actualite $actualite): Response
+    {
+        return $this->render('actualite/showF.html.twig', [
             'actualite' => $actualite,
         ]);
     }

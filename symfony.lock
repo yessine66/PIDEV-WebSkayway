@@ -85,8 +85,14 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "fakerphp/faker": {
+        "version": "v1.14.1"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.4"
     },
     "laminas/laminas-code": {
         "version": "4.1.0"
@@ -96,6 +102,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
+    },
+    "mbezhanov/faker-provider-collection": {
+        "version": "2.0.1"
     },
     "monolog/monolog": {
         "version": "1.26.0"

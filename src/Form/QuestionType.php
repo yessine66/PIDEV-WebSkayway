@@ -9,8 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
-use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 class QuestionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -27,6 +26,7 @@ class QuestionType extends AbstractType
                     'ART' => 'ART',
                 ],
             ])
+            ->add('captcha', CaptchaType::class);
 
 
         ;

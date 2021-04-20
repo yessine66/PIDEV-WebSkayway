@@ -2,11 +2,11 @@
 
 {% block title %}New Actualite{% endblock %}
 {% block content %}
-{% block body %}
-    <h1>Create new Actualite</h1>
+    {% block body %}
+        <h1>Create new Actualite</h1>
 
-    {{ include('actualite/_form.html.twig') }}
+        {{ include('actualite/_form.html.twig') }}
 
-    <a href="{{ path('actualite_index') }}">back to list</a>
-{% endblock %}
+        <a href="{{ path('actualite_index') }}">back to list</a>
+    {% endblock %}
 {% endblock %}
