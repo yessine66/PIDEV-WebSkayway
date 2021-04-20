@@ -87,7 +87,7 @@ class Utilisateur
     /**
      * @var string|null
      *
-     * @ORM\Column(name="role", type="string", length=0, nullable=true)
+     * @ORM\Column(name="role", type="string", length=25, nullable=true)
      */
     private $role;
 
@@ -98,36 +98,7 @@ class Utilisateur
      */
     private $creCompte;
 
-    /**
-     * Utilisateur constructor.
-     * @param int $id
-     * @param string|null $nom
-     * @param string|null $prenom
-     * @param string|null $mail
-     * @param int|null $age
-     * @param int|null $tel
-     * @param string|null $genre
-     * @param \DateTime|null $dateNaiss
-     * @param string|null $username
-     * @param string|null $password
-     * @param string|null $role
-     * @param \DateTime|null $creCompte
-     */
-    public function __construct(int $id, ?string $nom, ?string $prenom, ?string $mail, ?int $age, ?int $tel, ?string $genre, ?\DateTime $dateNaiss, ?string $username, ?string $password, ?string $role, ?\DateTime $creCompte)
-    {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->mail = $mail;
-        $this->age = $age;
-        $this->tel = $tel;
-        $this->genre = $genre;
-        $this->dateNaiss = $dateNaiss;
-        $this->username = $username;
-        $this->password = $password;
-        $this->role = $role;
-        $this->creCompte = $creCompte;
-    }
+
 
     /**
      * @return int
