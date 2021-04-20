@@ -71,7 +71,13 @@
                                                             <li><a href="{{path('evenement_index')}}">Events</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="{{path('reclamationF_index')}}">Contact</a></li>
+                                                    <li><a href="#">Contact</a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{path('reclamationF_index')}}">Reclamation</a></li>
+                                                            <li><a href="{{path('feedbackF_index')}}">FeedBack</a></li>
+
+                                                        </ul>
+                                                    </li>
                                                     <!-- Button -->
                                                     <li class="button-header margin-left "><a href="{{asset('#')}}" class="btn">Join</a></li>
                                                     <li class="button-header"><a href="{{asset('login.html')}}" class="btn btn3">Log in</a></li>
