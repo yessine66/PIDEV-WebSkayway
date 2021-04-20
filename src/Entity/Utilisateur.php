@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Utilisateur
@@ -92,9 +93,8 @@ class Utilisateur
     private $role;
 
     /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="cre_compte", type="date", nullable=true)
+     * @var \DateTime $creCompte
+     * @ORM\Column(name="cre_compte", type="datetime", nullable=false)
      */
     private $creCompte;
 
@@ -292,6 +292,8 @@ class Utilisateur
     {
         $this->creCompte = $creCompte;
     }
+
+
 
     public function __toString(): string
     {
