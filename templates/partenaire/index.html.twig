@@ -2,11 +2,11 @@
 
 {% block title %}Partenaire index{% endblock %}
 {% block content %}
-{% block body %}
-    <h1>Partenaire index</h1>
+    {% block body %}
+        <h1>Partenaire index</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>IdP</th>
                 <th>NomP</th>
@@ -16,29 +16,29 @@
                 <th>Logop</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for partenaire in partenaires %}
-            <tr>
-                <td>{{ partenaire.idP }}</td>
-                <td>{{ partenaire.nomP }}</td>
-                <td>{{ partenaire.domaine }}</td>
-                <td>{{ partenaire.dateP }}</td>
-                <td>{{ partenaire.mailp }}</td>
-                <td>{{ partenaire.logop }}</td>
-                <td>
-                    <a href="{{ path('partenaire_show', {'idP': partenaire.idP}) }}">show</a>
-                    <a href="{{ path('partenaire_edit', {'idP': partenaire.idP}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for partenaire in partenaires %}
+                <tr>
+                    <td>{{ partenaire.idP }}</td>
+                    <td>{{ partenaire.nomP }}</td>
+                    <td>{{ partenaire.domaine }}</td>
+                    <td>{{ partenaire.dateP }}</td>
+                    <td>{{ partenaire.mailp }}</td>
+                    <td>{{ partenaire.logop }}</td>
+                    <td>
+                        <a href="{{ path('partenaire_show', {'idP': partenaire.idP}) }}">show</a>
+                        <a href="{{ path('partenaire_edit', {'idP': partenaire.idP}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('partenaire_new') }}">Create new</a>
-{% endblock %}
+        <a href="{{ path('partenaire_new') }}">Create new</a>
+    {% endblock %}
 {% endblock %}
