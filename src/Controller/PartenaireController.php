@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Partenaire;
 use App\Form\PartenaireType;
+use App\Repository\PartenaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+
 
 /**
  * @Route("/partenaire")
@@ -109,4 +112,90 @@ class PartenaireController extends AbstractController
 
         return $this->redirectToRoute('partenaire_index');
     }
+
+
+
+
+
+
+    /**
+     * @param PatenaireRepository $Repository
+     * @return Response
+     * @Route ("stat", name="stat")
+     */
+
+
+    public function statistiques(PartenaireRepository $PartenaireRepository){
+        $repository = $this->getDoctrine()->getRepository(Partenaire::class);
+        $Partenaire = $repository->findAll();
+        $em = $this->getDoctrine()->getManager();
+
+        $rd=0;
+        $qu=0;
+        $es=0;
+
+
+        foreach ($Partenaire as $Partenaire)
+        {
+            if (  $Partenaire->getDomaine()=="education")  :
+
+                $rd+=1;
+            elseif ($Partenaire->getDomaine()=="sante"):
+
+                $qu+=1;
+            else :
+                $es +=1;
+
+            endif;
+
+        }
+
+
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable(
+            [['Domaine', 'nombres'],
+                ['education',     $rd],
+                ['sante',      $qu],
+                ['alimentation',   $es]
+            ]
+        );
+        $pieChart->getOptions()->setTitle('Top domaines');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('partenaire/statPart.html.twig', array('piechart' => $pieChart));
+    }
+
+
+
+
+    /**
+     * @param PartenaireRepository $repository
+     * @return Response
+     * @Route ("list" , name="triM")
+     */
+
+    function OrderByMailQB(PartenaireRepository $repository)
+    {
+
+        $partenaires=$repository->OrderByMailQB();
+        return $this->render('partenaire/index.html.twig', [
+            'partenaires' => $partenaires,
+        ]);
+
+
+    }
+
+
+
+
+
+
+
+
 }
