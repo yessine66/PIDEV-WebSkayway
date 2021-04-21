@@ -3,17 +3,20 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Utilisateur
  *
  * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})})
  * @ORM\Entity
+ * @ORM\Entity (repositoryClass="App\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur implements UserInterface ,\Serializable
 {
     /**
      * @var int
@@ -313,6 +316,49 @@ class Utilisateur
     public function __toString(): string
     {
         return $this->username;
+
     }
 
+    /**
+     * Construct the object
+     * @param string $serialized <p>
+     * the string representation of the object
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password
+            ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+    public function eraseCredentials()
+    {
+
+    }
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_ADMIN'];
+    }
+
+    /**
+     * String of representation of object
+     * @return string the string representation of the object or null
+     * @since 5.1.0
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password
+        ]);
+    }
 }
