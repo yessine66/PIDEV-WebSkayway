@@ -95,7 +95,7 @@ class ReclamationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reclamation_index');
+            return $this->redirectToRoute('reclamationF_index');
         }
 
         return $this->render('reclamation/edit.html.twig', [

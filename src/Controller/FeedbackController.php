@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Repository\FeedbackRepository;
 /**
  * @Route("/feedback")
  */
@@ -32,12 +32,12 @@ class FeedbackController extends AbstractController
      */
     public function indexf(): Response
     {
-        $feedbacks = $this->getDoctrine()
+        $feedback = $this->getDoctrine()
             ->getRepository(Feedback::class)
             ->findAll();
 
         return $this->render('feedback/indexF.html.twig', [
-            'feedbacks' => $feedbacks,
+            'feedback' => $feedback,
         ]);
     }
 
@@ -116,4 +116,16 @@ class FeedbackController extends AbstractController
 
         return $this->redirectToRoute('feedbackF_index');
     }
+    /**
+     * @Route("/recherche" , name="Recherche",methods={"GET","POST"})
+     */
+    function Recherche(Request $request, FeedbackRepository $feedbackRepository): Response
+    {
+        $data=$request->get('Recherche');
+        $feedbacks=$feedbackRepository->findBy(['avis'=>$data]);
+        return $this->render('feedback/indexF.html.twig',[
+            'feedback'=>$feedbacks ]);
+
+    }
+
 }
