@@ -6,6 +6,8 @@ use App\Entity\Admin;
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -33,7 +35,7 @@ class UtilisateurController extends AbstractController
     /**
      * @Route("/new", name="utilisateur_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,UserPasswordEncoderInterface $encoder): Response
     {
         $todaya = new \DateTime();
 
@@ -42,6 +44,9 @@ class UtilisateurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $form->get('password')->getData();
+          //  $utilisateur->setPassword($this->encoder->encodePassword($utilisateur,$password));
+            $utilisateur->setPassword($encoder->encodePassword($utilisateur,$password));
             $utilisateur->setCreCompte($todaya);
             $rolex = $form->get('role')->getData();
            if($rolex=="admin"){
