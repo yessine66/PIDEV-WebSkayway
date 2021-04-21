@@ -44,14 +44,14 @@ class UtilisateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $utilisateur->setCreCompte($todaya);
             $rolex = $form->get('role')->getData();
-         /*   if($rolex=="admin"){
+           if($rolex=="admin"){
                 $admin = new Admin();
                 $admin->setId($utilisateur);
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($admin);
                 $entityManager->flush();
 
-            }*/
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($utilisateur);
             $entityManager->flush();
