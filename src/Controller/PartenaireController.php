@@ -29,6 +29,21 @@ class PartenaireController extends AbstractController
     }
 
     /**
+     * @Route("/Front", name="partenaire_indexR", methods={"GET"})
+     */
+    public function indexR(): Response
+    {
+        $partenaires = $this->getDoctrine()
+            ->getRepository(Partenaire::class)
+            ->findAll();
+
+        return $this->render('partenaire/indexR.html.twig', [
+            'partenaires' => $partenaires,
+        ]);
+    }
+
+
+    /**
      * @Route("/new", name="partenaire_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
