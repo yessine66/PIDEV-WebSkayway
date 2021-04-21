@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -23,6 +24,7 @@ class UtilisateurController extends AbstractController
      */
     public function index(): Response
     {
+
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
@@ -113,4 +115,7 @@ class UtilisateurController extends AbstractController
 
         return $this->redirectToRoute('utilisateur_index');
     }
+
+ 
+
 }
