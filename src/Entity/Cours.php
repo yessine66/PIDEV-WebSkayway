@@ -208,9 +208,10 @@ class Cours
     /**
      * @param \Utilisateur $id
      */
-    public function setId(\Utilisateur $id): void
+    public function setId(?Utilisateur $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -224,9 +225,15 @@ class Cours
     /**
      * @param \Categorie $idCategorie
      */
-    public function setIdCategorie(\Categorie $idCategorie): void
+    public function setIdCategorie(?Categorie $idCategorie): self
     {
         $this->idCategorie = $idCategorie;
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return  $this->nomC;
     }
 
 

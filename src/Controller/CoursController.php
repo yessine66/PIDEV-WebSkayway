@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+
+
 use App\Entity\Cours;
 use App\Form\CoursType;
+use App\Entity\Theme;
+use App\Form\ThemeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -108,4 +112,6 @@ class CoursController extends AbstractController
 
         return $this->redirectToRoute('cours_index');
     }
+
+
 }

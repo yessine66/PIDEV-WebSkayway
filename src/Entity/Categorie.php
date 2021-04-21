@@ -114,9 +114,15 @@ class Categorie
     /**
      * @param \Theme $idT
      */
-    public function setIdT(\Theme $idT): void
+    public function setIdT(?Theme $idT): self
     {
         $this->idT = $idT;
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nomCategorie ;
     }
 
 

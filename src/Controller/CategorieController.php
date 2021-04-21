@@ -27,6 +27,20 @@ class CategorieController extends AbstractController
             'categories' => $categories,
         ]);
     }
+    /**
+     * @Route("/index", name="categorieF_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $categories = $this->getDoctrine()
+            ->getRepository(Categorie::class)
+            ->findAll();
+
+        return $this->render('categorie/indexF.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="categorie_new", methods={"GET","POST"})

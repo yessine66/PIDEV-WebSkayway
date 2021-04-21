@@ -27,6 +27,19 @@ class ThemeController extends AbstractController
             'themes' => $themes,
         ]);
     }
+    /**
+     * @Route("/index", name="themeF_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $themes = $this->getDoctrine()
+            ->getRepository(Theme::class)
+            ->findAll();
+
+        return $this->render('theme/indexF.html.twig', [
+            'themes' => $themes,
+        ]);
+    }
 
     /**
      * @Route("/new", name="theme_new", methods={"GET","POST"})

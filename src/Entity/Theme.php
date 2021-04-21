@@ -116,9 +116,15 @@ class Theme
     /**
      * @param \Utilisateur $id
      */
-    public function setId(\Utilisateur $id): void
+    public function setId(?Utilisateur $id): self
     {
         $this->id = $id;
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nomT ;
     }
 
 
