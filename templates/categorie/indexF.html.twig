@@ -35,7 +35,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-7 col-lg-8">
                             <div class="section-tittle text-center mb-55">
-                                <h2>Our featured courses</h2>
+                                <h2>Nos Catégories</h2>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                                             <a href="#"><img src="{{ asset('assets/img/gallery/featured1.png') }}" alt=""></a>
                                         </div>
                                         <div class="properties__caption">
-                                            <p>User Experience</p>
+                                            <p></p>
                                             <h3><a href="{{ asset('#') }}">{{ categorie.nomCategorie }}</a></h3>
                                             <p>
                                             </p>
@@ -67,7 +67,7 @@
                                                 <div class="price">
                                                 </div>
                                             </div>
-                                            <a href="{{ path('coursF_index', {'idCategorie': categorie.idCategorie}) }}" class="border-btn border-btn2">Voir les Cours</a>
+                                            <a href="{{ path('coursF_index', {'idCategorie': categorie.idCategorie}) }}" class="border-btn border-btn2">Voir les Cours de Catégorie {{ categorie.nomCategorie }}</a>
                                         </div>
                                     </div>
                                 </div>
