@@ -107,6 +107,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mbezhanov/faker-provider-collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/behat/transliterator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/gedmo/doctrine-extensions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

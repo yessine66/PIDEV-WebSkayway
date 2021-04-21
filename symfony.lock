@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
@@ -85,8 +88,20 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "fakerphp/faker": {
+        "version": "v1.14.1"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v3.0.4"
+    },
+    "gregwar/captcha": {
+        "version": "v1.1.9"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.4"
     },
     "laminas/laminas-code": {
         "version": "4.1.0"
@@ -96,6 +111,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
+    },
+    "mbezhanov/faker-provider-collection": {
+        "version": "2.0.1"
     },
     "monolog/monolog": {
         "version": "1.26.0"

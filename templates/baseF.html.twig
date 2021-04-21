@@ -65,13 +65,25 @@
                                                     <li class="active" ><a href="{{asset('index.html')}}">Home</a></li>
                                                     <li><a href="{{path('themeF_index')}}">Courses</a></li>
                                                     <li><a href="{{path('coursF_index')}}">About</a></li>
+                                                    <li><a href="{{asset('#')}}">Parteneriat & Promotion </a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{path('partenaire_indexR')}}">Partenire</a></li>
+                                                            <li><a href="{{path('promotion_index')}}">Promotion</a></li>
+                                                        </ul>
+                                                    </li>
                                                     <li><a href="{{asset('#')}}">News & Events</a>
                                                         <ul class="submenu">
                                                             <li><a href="{{path('actualite_index')}}">News</a></li>
                                                             <li><a href="{{path('evenement_index')}}">Events</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="{{path('reclamationF_index')}}">Contact</a></li>
+                                                    <li><a href="#">Contact</a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{path('reclamationF_index')}}">Reclamation</a></li>
+                                                            <li><a href="{{path('feedbackF_index')}}">FeedBack</a></li>
+
+                                                        </ul>
+                                                    </li>
                                                     <!-- Button -->
                                                     <li class="button-header margin-left "><a href="{{asset('#')}}" class="btn">Join</a></li>
                                                     <li class="button-header"><a href="{{asset('login.html')}}" class="btn btn3">Log in</a></li>
@@ -104,7 +116,7 @@
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-7 col-md-12">
                                         <div class="hero__caption">
-                                            <h1 data-animation="fadeInLeft" data-delay="0.2s">Online learning<br> platform</h1>
+                                            <h1 data-animation="fadeInLeft" data-delay="0.2s">SKYWAY<br> platform</h1>
                                             <p data-animation="fadeInLeft" data-delay="0.4s">Build skills with courses, certificates, and degrees online from world-class universities and companies</p>
                                             <a href="{{ asset('#') }}" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Join for Free</a>
                                         </div>

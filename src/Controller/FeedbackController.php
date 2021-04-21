@@ -27,6 +27,19 @@ class FeedbackController extends AbstractController
             'feedback' => $feedback,
         ]);
     }
+    /**
+     * @Route("/index", name="feedbackF_index", methods={"GET"})
+     */
+    public function indexf(): Response
+    {
+        $feedbacks = $this->getDoctrine()
+            ->getRepository(Feedback::class)
+            ->findAll();
+
+        return $this->render('feedback/indexF.html.twig', [
+            'feedbacks' => $feedbacks,
+        ]);
+    }
 
     /**
      * @Route("/new", name="feedback_new", methods={"GET","POST"})
@@ -42,7 +55,7 @@ class FeedbackController extends AbstractController
             $entityManager->persist($feedback);
             $entityManager->flush();
 
-            return $this->redirectToRoute('feedback_index');
+            return $this->redirectToRoute('feedbackF_index');
         }
 
         return $this->render('feedback/new.html.twig', [
@@ -60,9 +73,18 @@ class FeedbackController extends AbstractController
             'feedback' => $feedback,
         ]);
     }
+    /**
+     * @Route("/index/{idF}", name="feedback_showF", methods={"GET"})
+     */
+    public function showF(Feedback $feedback): Response
+    {
+        return $this->render('feedback/showF.html.twig', [
+            'feedback' => $feedback,
+        ]);
+    }
 
     /**
-     * @Route("/{idF}/edit", name="feedback_edit", methods={"GET","POST"})
+     * @Route("/index/{idF}/edit", name="feedback_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Feedback $feedback): Response
     {
@@ -72,7 +94,7 @@ class FeedbackController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('feedback_index');
+            return $this->redirectToRoute('feedbackF_index');
         }
 
         return $this->render('feedback/edit.html.twig', [
@@ -82,7 +104,7 @@ class FeedbackController extends AbstractController
     }
 
     /**
-     * @Route("/{idF}", name="feedback_delete", methods={"POST"})
+     * @Route("/index/{idF}", name="feedback_delete", methods={"POST"})
      */
     public function delete(Request $request, Feedback $feedback): Response
     {
@@ -92,6 +114,6 @@ class FeedbackController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('feedback_index');
+        return $this->redirectToRoute('feedbackF_index');
     }
 }

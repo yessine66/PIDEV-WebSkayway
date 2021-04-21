@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,12 +20,27 @@ class UtilisateurType extends AbstractType
             ->add('mail')
             ->add('age')
             ->add('tel')
-            ->add('genre')
-            ->add('dateNaiss')
+            ->add('genre', ChoiceType::class, [
+                'choices'  => [
+                    'Homme' => 'Homme',
+                    'Femme' => 'Femme',
+                    'Autre' => 'Autre',
+                ],
+            ])
+            ->add('dateNaiss',DateType::class, [
+        'widget'=>'single_text',
+    ])
             ->add('username')
-            ->add('password')
-            ->add('role')
-            ->add('creCompte')
+            ->add('password',PasswordType::class
+            )
+            ->add('role', ChoiceType::class, [
+                'choices'  => [
+                    'Admin' => 'admin',
+                    'Apprenant' => 'apprenant',
+                    'Enseignant' => 'enseignant',
+                ],
+            ])
+            //->add('creCompte')
         ;
     }
 

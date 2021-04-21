@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin;
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UtilisateurController extends AbstractController
 {
+
     /**
      * @Route("/", name="utilisateur_index", methods={"GET"})
      */
@@ -33,11 +35,23 @@ class UtilisateurController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $todaya = new \DateTime();
+
         $utilisateur = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $utilisateur->setCreCompte($todaya);
+            $rolex = $form->get('role')->getData();
+           if($rolex=="admin"){
+                $admin = new Admin();
+                $admin->setId($utilisateur);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($admin);
+                $entityManager->flush();
+
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($utilisateur);
             $entityManager->flush();

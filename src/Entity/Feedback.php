@@ -50,7 +50,7 @@ class Feedback
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
