@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+
 use App\Entity\Cours;
 use App\Form\CoursType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class CoursController extends AbstractController
 {
     /**
-     * @Route("/", name="coursF_index", methods={"GET"})
+     * @Route("/index", name="coursF_index", methods={"GET"})
      */
-    public function index(): Response
+    public function indexF(): Response
     {
         $cours = $this->getDoctrine()
             ->getRepository(Cours::class)
@@ -28,9 +30,9 @@ class CoursController extends AbstractController
         ]);
     }
     /**
-     * @Route("/index", name="cours_index", methods={"GET"})
+     * @Route("/", name="cours_index", methods={"GET"})
      */
-    public function test(): Response
+    public function index(): Response
     {
         $cours = $this->getDoctrine()
             ->getRepository(Cours::class)
@@ -53,10 +55,16 @@ class CoursController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            //$file=$cour->getPdf();
+            $file = $form->get('pdf')->getData();
+
+            $filename=md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'),$filename);
+            $cour->setPdf($filename);
             $entityManager->persist($cour);
             $entityManager->flush();
 
-            return $this->redirectToRoute('cours_index');
+            return $this->redirectToRoute('cours_index',array('idC'=>$cour->getIdC()));
         }
 
         return $this->render('cours/new.html.twig', [
@@ -71,6 +79,15 @@ class CoursController extends AbstractController
     public function show(Cours $cour): Response
     {
         return $this->render('cours/show.html.twig', [
+            'cour' => $cour,
+        ]);
+    }
+    /**
+     * @Route("/index/{idC}", name="coursF_show", methods={"GET"})
+     */
+    public function showF(Cours $cour): Response
+    {
+        return $this->render('cours/showF.html.twig', [
             'cour' => $cour,
         ]);
     }
@@ -108,4 +125,6 @@ class CoursController extends AbstractController
 
         return $this->redirectToRoute('cours_index');
     }
+
+
 }

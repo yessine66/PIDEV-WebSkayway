@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 /**
  * Cours
  *
@@ -39,11 +39,9 @@ class Cours
     private $nomC;
 
     /**
-     * @var string
+     * @var
      *
      * @ORM\Column(name="pdf", type="string", length=500, nullable=false)
-     * @Assert\NotBlank(message="vous devez remplir le champ pdf ")
-
      */
     private $pdf;
 
@@ -133,20 +131,17 @@ class Cours
         $this->nomC = $nomC;
     }
 
-    /**
-     * @return string
-     */
-    public function getPdf(): ?string
+
+    public function getPdf()
     {
         return $this->pdf;
     }
 
-    /**
-     * @param string $pdf
-     */
-    public function setPdf(string $pdf): void
+
+    public function setPdf($pdf)
     {
         $this->pdf = $pdf;
+        return $this;
     }
 
     /**
@@ -208,9 +203,10 @@ class Cours
     /**
      * @param \Utilisateur $id
      */
-    public function setId(\Utilisateur $id): void
+    public function setId(?Utilisateur $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -224,9 +220,15 @@ class Cours
     /**
      * @param \Categorie $idCategorie
      */
-    public function setIdCategorie(\Categorie $idCategorie): void
+    public function setIdCategorie(?Categorie $idCategorie): self
     {
         $this->idCategorie = $idCategorie;
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return  $this->nomC;
     }
 
 

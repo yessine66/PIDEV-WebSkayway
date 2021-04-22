@@ -27,6 +27,7 @@ class ActualiteController extends AbstractController
             'actualites' => $actualites,
         ]);
     }
+
     /**
      * @Route("/index", name="actualite_index", methods={"GET"})
      */
