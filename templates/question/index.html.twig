@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Question index{% endblock %}
  {% block content %}
      {% block body %}
          <h1>Question index</h1>
 
-         <table class="table">
+         <table  id ="tableac" >
              <thead>
+
+             <input type="text" id="search" name="search" class="form-control" placeholder="Search by .....">
              <tr>
                  <th>ID</th>
                  <th>Question</th>
@@ -83,7 +86,35 @@
              </div>
          </div>
 
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+         <script>
+             $(document).ready(function(){
+                 $('#search').keyup(function(){
+                     search_table($(this).val());
+                 });
+                 function search_table(value){
+                     $('#tableac tbody tr').each(function(){
+                         var found = 'false';
+                         $(this).each(function(){
+                             if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                             {
+                                 found = 'true';
+                             }
+                         });
+                         if(found === 'true')
+                         {
+                             $(this).show();
 
+                         }
+                         else
+                         {
+                             $(this).hide();
+
+                         }
+                     });
+                 }
+             });
+         </script>
 
      </form>
  {% endblock %}
