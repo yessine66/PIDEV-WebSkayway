@@ -1,0 +1,120 @@
+{% extends 'baseF.html.twig' %}
+
+
+{% block title %}Reclamation index{% endblock %}
+{% block contentfr %}
+    {% block bodyfr %}
+
+
+        <main xmlns="http://www.w3.org/1999/html">
+            <!--? slider Area Start-->
+            <section class="slider-area slider-area2">
+                <div class="slider-active">
+                    <!-- Single Slider -->
+                    <div class="single-slider slider-height2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-8 col-lg-11 col-md-12">
+                                    <div class="hero__caption hero__caption2">
+                                        <h1 data-animation="bounceIn" data-delay="0.2s">QUIZ 1</h1>
+                                        <!-- breadcrumb Start-->
+                                        <nav aria-label="breadcrumb">
+                                            <h3 class="text-heading">POO - Une seule réponse est bonne :)</h3>
+                                        </nav>
+                                        <!-- breadcrumb End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--? Blog Area Start-->
+            <section class="blog_area section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0">
+                            <div class="blog_left_sidebar">
+                                {% for question in questions %}
+                                <article class="blog_item">
+
+                                        <div class="blog_details">
+                                            <div class="blog_item_img">
+
+                                            </div>
+
+                                            <p>{{ question.textQ }}</p>
+
+                                            <br>
+
+
+
+                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Femme"> Option A
+                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Homme"> Option B
+                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Femme"> Option C
+                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Homme"> Option D
+
+
+                                          <br>
+                                        </div  >
+                                </article>
+
+                            {% else %}
+                                    <h1>no records found</h1>
+
+                            {% endfor %}
+                                <button class="btn" type="button"><a href="{{ path('reclamation_new') }}">Submit</a></button>
+
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="blog_right_sidebar">
+
+                                <aside class="single_sidebar_widget newsletter_widget">
+                                    <form action="#">
+                                        <h3 class="text-heading">Timer</h3>
+                                        <div id="countdown"></div>
+<script >
+                                        let startingMinutes = 1;
+
+
+                                        let time = startingMinutes * 60;
+
+                                        const countDownEl = document.getElementById('countdown');
+
+                                        setInterval(updateCountdown, 1000);
+
+                                        function updateCountdown() {
+                                        const minutes = Math.floor(time / 60);
+                                        let seconds = time % 60;
+
+                                        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                                        countDownEl.innerHTML = `${minutes} : ${seconds}`;
+                                        if (time > 0) {
+                                        time--;
+                                        } else {
+                                        countDownEl.innerHTML = `Le test n'est pas comptabilisé !`
+                                        }
+
+
+                                        }
+
+
+
+
+</script>
+
+                                    </form>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Blog Area End -->
+        </main>
+
+    {% endblock %}
+{% endblock %}
