@@ -34,7 +34,27 @@
                     <div class="row">
                         <div class="col-lg-8 mb-5 mb-lg-0">
                             <div class="blog_left_sidebar">
+                                <div class="blog_details">
 
+                                    <form  id="CatForm" method="post" action="{{ path('question_cat')}}" >
+                                        <select id="selectDo"   style="" onchange="myFunction(event); this.form.submit(); "  >
+                                            <option value="" disabled selected>Choisir catégorie spécifique..</option>
+                                            {% for c in questions %}
+                                                <option class="dropdown-item"  onclick="document.getElementById('CatForm').submit();" ><i class="ri-eye-fill mr-2"></i>{{ c.nameT}}</option>
+
+                                            {% endfor %}
+                                            <input  type="hidden" name="myText" id="myText" type="text" value="colors">
+
+
+
+                                            <script>function myFunction(e) {
+                                                    document.getElementById("myText").value = e.target.value
+                                                } </script>
+
+                                        </select>
+                                    </form>
+
+                                </div>
                                     <article class="blog_item">
                                         <div class="blog_item_img">
                                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
@@ -121,27 +141,7 @@
                                         </div>
                                     </article>
                                         </div>
-                                        <div class="blog_details">
 
-                                            <form  id="CatForm" method="post" action="{{ path('question_cat')}}" >
-                                                <select id="selectDo" class="btn btn-primary d-block w-100 mt-3"  style="" onchange="myFunction(event); this.form.submit(); "  >
-                                                    <option value="" disabled selected>Choose genre..</option>
-                                                    {% for c in questions %}
-                                                        <option class="dropdown-item"  onclick="document.getElementById('CatForm').submit();" ><i class="ri-eye-fill mr-2"></i>{{ c.nameT}}</option>
-
-                                                    {% endfor %}
-                                                    <input  type="hidden" name="myText" id="myText" type="text" value="colors">
-
-
-
-                                                    <script>function myFunction(e) {
-                                                            document.getElementById("myText").value = e.target.value
-                                                        } </script>
-
-                                                </select>
-                                            </form>
-
-                            </div>
                         </div>
                         <div class="col-lg-4">
 

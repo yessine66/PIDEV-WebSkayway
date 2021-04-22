@@ -106,8 +106,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/cache" />
       <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
       <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
-      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
-      <path value="$PROJECT_DIR$/vendor/mbezhanov/faker-provider-collection" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />

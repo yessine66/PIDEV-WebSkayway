@@ -6,6 +6,7 @@ use App\Entity\Question;
 use App\Form\QuestionType;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -163,6 +164,22 @@ class QuestionController extends AbstractController
         return $this->render('question/showF.html.twig', [
             'questions' => $questions,'categories' => $categories,
         ]);
+    }
+    /**
+     * @param QuestionRepository $repository
+     * @return Response
+     * @Route ("list" , name="triCategorieB")
+     */
+
+    function OrderByName(QuestionRepository $repository)
+    {
+
+        $questions=$repository->OrderByName();
+        return $this->render('question/index.html.twig', [
+            'questions' => $questions,
+        ]);
+
+
     }
 
 
