@@ -8,9 +8,19 @@
 
 {% block body %}
 
-    <h1>Utilisateur index</h1>
+    <h3>Utilisateurs</h3>
+<div class="table-wrapper">
+    <table class="fl-table" id="tableac">
 
-    <table class="table">
+        <div class="input-group">
+        <input type="search" class="form-control form-control-lg" id="search" name="search" class="form-control" placeholder="Search by .....">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-lg btn-default">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+
         <thead>
             <tr>
                 <th>Id</th>
@@ -56,7 +66,47 @@
         </tbody>
     </table>
 
+</div>
+
+
 <button type=“button” class="button-create"><a href="{{ path('utilisateur_new') }}">Create new</a></button>
+    <button type=“button” class="button-create"><a href="{{ path('utilisateur_triRole') }}">Organiser</a></button>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found === 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+
 
     <style>
         .button-create {
@@ -89,6 +139,124 @@
             font-weight: bold;
             color: red;
         }
+        h3{
+            text-align: center;
+            font-size: 30px;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: #014a3a;
+            padding: 30px 0;
+        }
+
+        /* Table Styles */
+
+        .table-wrapper{
+            margin: 10px 70px 70px;
+            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+        }
+
+        .fl-table {
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
+            background-color: white;
+        }
+
+        .fl-table td, .fl-table th {
+            text-align: center;
+            padding: 8px;
+        }
+
+        .fl-table td {
+            border-right: 1px solid #f8f8f8;
+            font-size: 12px;
+        }
+
+        .fl-table thead th {
+            color: #ffffff;
+            background: #4FC3A1;
+        }
+
+
+        .fl-table thead th:nth-child(odd) {
+            color: #ffffff;
+            background: #324960;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: #F8F8F8;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            .fl-table {
+                display: block;
+                width: 100%;
+            }
+            .table-wrapper:before{
+                content: "Scroll horizontally >";
+                display: block;
+                text-align: right;
+                font-size: 11px;
+                color: white;
+                padding: 0 0 10px;
+            }
+            .fl-table thead, .fl-table tbody, .fl-table thead th {
+                display: block;
+            }
+            .fl-table thead th:last-child{
+                border-bottom: none;
+            }
+            .fl-table thead {
+                float: left;
+            }
+            .fl-table tbody {
+                width: auto;
+                position: relative;
+                overflow-x: auto;
+            }
+            .fl-table td, .fl-table th {
+                padding: 20px .625em .625em .625em;
+                height: 60px;
+                vertical-align: middle;
+                box-sizing: border-box;
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: 120px;
+                font-size: 13px;
+                text-overflow: ellipsis;
+            }
+            .fl-table thead th {
+                text-align: left;
+                border-bottom: 1px solid #f7f7f9;
+            }
+            .fl-table tbody tr {
+                display: table-cell;
+            }
+            .fl-table tbody tr:nth-child(odd) {
+                background: none;
+            }
+            .fl-table tr:nth-child(even) {
+                background: transparent;
+            }
+            .fl-table tr td:nth-child(odd) {
+                background: #F8F8F8;
+                border-right: 1px solid #E6E4E4;
+            }
+            .fl-table tr td:nth-child(even) {
+                border-right: 1px solid #E6E4E4;
+            }
+            .fl-table tbody td {
+                display: block;
+                text-align: center;
+            }
+
     </style>
 
 {% endblock %}
