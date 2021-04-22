@@ -1,0 +1,156 @@
+{% extends 'baseF.html.twig' %}
+{% block contentfr %}
+
+    {% block bodyfr %}
+        <main>
+            <!--? slider Area Start-->
+            <section class="slider-area slider-area2">
+                <div class="slider-active">
+                    <!-- Single Slider -->
+                    <div class="single-slider slider-height2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-8 col-lg-11 col-md-12">
+                                    <div class="hero__caption hero__caption2">
+                                        <h1 data-animation="bounceIn" data-delay="0.2s">Catégorie des tests</h1>
+                                        <!-- breadcrumb Start-->
+                                        <nav aria-label="breadcrumb">
+                                            <h2 data-animation="bounceIn" data-delay="0.2s">Choisissez un test, et obtenez un certificat!</h2>
+                                            <ol class="breadcrumb">
+
+                                            </ol>
+                                        </nav>
+                                        <!-- breadcrumb End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--? Blog Area Start-->
+            <section class="blog_area section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mb-5 mb-lg-0">
+                            <div class="blog_left_sidebar">
+                                <div class="blog_details">
+
+                                    <form  id="CatForm" method="post" action="{{ path('question_cat')}}" >
+                                        <select id="selectDo"   style="" onchange="myFunction(event); this.form.submit(); "  >
+                                            <option value="" disabled selected>Choisir catégorie spécifique..</option>
+                                            {% for c in questions %}
+                                                <option class="dropdown-item"  onclick="document.getElementById('CatForm').submit();" ><i class="ri-eye-fill mr-2"></i>{{ c.nameT}}</option>
+
+                                            {% endfor %}
+                                            <input  type="hidden" name="myText" id="myText" type="text" value="colors">
+
+
+
+                                            <script>function myFunction(e) {
+                                                    document.getElementById("myText").value = e.target.value
+                                                } </script>
+
+                                        </select>
+                                    </form>
+
+                                </div>
+                                    <article class="blog_item">
+                                        <div class="blog_item_img">
+                                            <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
+
+
+                                            <style type="text/css">
+                                                a:link {
+                                                    text-decoration: none;
+                                                }
+
+                                                .order-card {
+                                                    color: rgb(255, 255, 255);
+                                                }
+
+                                                .bg-c-blue {
+                                                    background: #04868f;
+                                                }
+
+                                                .bg-c-green {
+                                                    background:#4C51BF;
+                                                }
+
+                                                .bg-c-yellow {
+                                                    background: #F56565;
+                                                }
+
+                                                .bg-c-pink {
+                                                    background: #663a30;
+                                                }
+
+
+                                                .card {
+
+                                                    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+                                                    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+                                                    border: 1px solid black;
+                                                    margin-bottom: 30px;
+                                                    -webkit-transition: all 0.3s ease-in-out;
+                                                    transition: all 0.3s ease-in-out;
+                                                }
+
+                                                .card .card-block {
+                                                    padding: 25px;
+                                                }
+
+                                                .order-card i {
+                                                    font-size: 26px;
+                                                }
+
+                                                .f-left {
+                                                    float: left;
+                                                }
+
+                                                .f-right {
+                                                    float: right;
+                                                }
+                                                header {
+                                                    left: 0px;
+                                                    right: 0px;
+                                                }
+                                            </style>
+
+                                            <br><br>
+
+                                            <div class="container">
+                                                <div class="row">
+
+                                                    {% for question in questions %}
+                                                    <div class="col-md-4 col-xl-6">
+
+                                                        <div class="card bg-c-blue order-card">
+                                                            <div class="card-block">
+                                                                <h3 class="m-b-20">QUIZ {{ question.nameT }}</h3>
+                                                                <h2 class="text-right"><i class="fas fa-book f-left"></i></h2>
+                                                                <button class="btn"><a href="{{ path('questionF_index') }}">Commencer le test!</a></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                        </div>
+
+                        </div>
+                        <div class="col-lg-4">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Blog Area End -->
+        </main>
+    {% endblock %}
+
+{% endblock %}

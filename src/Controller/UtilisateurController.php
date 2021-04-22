@@ -63,7 +63,7 @@ class UtilisateurController extends AbstractController
             $entityManager->persist($utilisateur);
             $entityManager->flush();
 
-            return $this->redirectToRoute('utilisateur_index');
+          //  return $this->redirectToRoute('utilisateur_index');
         }
 
         return $this->render('utilisateur/new.html.twig', [
@@ -116,6 +116,17 @@ class UtilisateurController extends AbstractController
         return $this->redirectToRoute('utilisateur_index');
     }
 
- 
+    /**
+     * @param UtilisateurRepository $repository
+     * @return Response
+     * @Route("triSQL",name="utilisateur_triRole")
+     */
+    function  orderByRoleSQL(UtilisateurRepository $repository){
+        $utilisateurs=$repository->orderByRole();
+        return $this->render('utilisateur/index.html.twig', [
+            'utilisateurs' => $utilisateurs,
+        ]);
+
+    }
 
 }

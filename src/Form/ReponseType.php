@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 class ReponseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -21,6 +21,7 @@ class ReponseType extends AbstractType
             ->add('textR4')
             ->add('id',EntityType::class,['class'=>Utilisateur::class,'choice_label'=>'username'])
             ->add('idQ',EntityType::class,['class'=>Question::class,'choice_label'=>'textQ'])
+            ->add('captcha', CaptchaType::class);
         ;
     }
 
