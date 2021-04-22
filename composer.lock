@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "422e1485b9c5db505244eb45c90cb435",
+    "content-hash": "5581ce6caa44afc82c8e1073e207cf32",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1846,22 +1846,22 @@
         },
         {
             "name": "gregwar/captcha-bundle",
-            "version": "v2.1.4",
+            "version": "v2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gregwar/CaptchaBundle.git",
-                "reference": "5e434e185951a1ab38875affca4c036cc172a20a"
+                "reference": "2f96c759abae9c914856b9b9fc909268ba98a625"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gregwar/CaptchaBundle/zipball/5e434e185951a1ab38875affca4c036cc172a20a",
-                "reference": "5e434e185951a1ab38875affca4c036cc172a20a",
+                "url": "https://api.github.com/repos/Gregwar/CaptchaBundle/zipball/2f96c759abae9c914856b9b9fc909268ba98a625",
+                "reference": "2f96c759abae9c914856b9b9fc909268ba98a625",
                 "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
                 "gregwar/captcha": "^1.1.9",
-                "php": "^7.1.3",
+                "php": ">=7.1.3",
                 "symfony/form": "~4.0|~5.0",
                 "symfony/framework-bundle": "~4.0|~5.0",
                 "symfony/translation": "~4.0|^5.0",
@@ -1905,9 +1905,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Gregwar/CaptchaBundle/issues",
-                "source": "https://github.com/Gregwar/CaptchaBundle/tree/v2.1.4"
+                "source": "https://github.com/Gregwar/CaptchaBundle/tree/v2.1.5"
             },
-            "time": "2021-01-09T00:01:13+00:00"
+            "time": "2021-04-20T07:20:37+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -2158,6 +2158,52 @@
                 "source": "https://github.com/mbezhanov/faker-provider-collection/tree/2.0.1"
             },
             "time": "2021-03-12T06:57:05+00:00"
+        },
+        {
+            "name": "mercuryseries/flashy-bundle",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/flashy-bundle.git",
+                "reference": "6ed47bd753f12b9ae41c2f3463e678490601db9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/flashy-bundle/zipball/6ed47bd753f12b9ae41c2f3463e678490601db9d",
+                "reference": "6ed47bd753f12b9ae41c2f3463e678490601db9d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0",
+                "symfony/config": "^3.4 || ^4.0 || ^5.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0",
+                "symfony/http-kernel": "^3.4 || ^4.0 || ^5.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4 || ^4.0 || ^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "MercurySeries\\FlashyBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honore Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Easy flash notifications in Symfony",
+            "support": {
+                "issues": "https://github.com/mercuryseries/flashy-bundle/issues",
+                "source": "https://github.com/mercuryseries/flashy-bundle/tree/v3.0.2"
+            },
+            "time": "2020-12-04T18:23:40+00:00"
         },
         {
             "name": "monolog/monolog",

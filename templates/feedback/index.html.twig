@@ -4,7 +4,8 @@
 {% block content %}
 {% block body %}
     <h1>Feedback index</h1>
-
+<div class="filter">
+</div>
     <table class="table">
         <thead>
             <tr>
@@ -12,7 +13,7 @@
                 <th>Objet</th>
                 <th>Text</th>
                 <th>Avis</th>
-                <th>actions</th>
+             <!--   <th>actions</th> -->
             </tr>
         </thead>
         <tbody>
@@ -22,10 +23,10 @@
                 <td>{{ feedback.objet }}</td>
                 <td>{{ feedback.text }}</td>
                 <td>{{ feedback.avis }}</td>
-                <td>
+             <!--   <td>
                     <a href="{{ path('feedback_show', {'idF': feedback.idF}) }}">show</a>
                     <a href="{{ path('feedback_edit', {'idF': feedback.idF}) }}">edit</a>
-                </td>
+                </td> -->
             </tr>
         {% else %}
             <tr>
@@ -35,6 +36,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('feedback_new') }}">Create new</a>
+   <!-- <a href="{{ path('feedback_new') }}">Create new</a> -->
 {% endblock %}
 {% endblock %}

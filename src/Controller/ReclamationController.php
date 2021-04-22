@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Reclamation;
 use App\Form\ReclamationType;
+use App\Repository\ReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use MercurySeries\FlashyBundle\FlashyNotifier;
+
 
 /**
  * @Route("/reclamation")
@@ -55,7 +58,7 @@ class ReclamationController extends AbstractController
             $entityManager->persist($reclamation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('reclamation_index');
+            return $this->redirectToRoute('reclamationF_index');
         }
 
         return $this->render('reclamation/new.html.twig', [
@@ -79,6 +82,7 @@ class ReclamationController extends AbstractController
          */
         public function showF(Reclamation $reclamation): Response
     {
+
         return $this->render('reclamation/showF.html.twig', [
             'reclamation' => $reclamation,
         ]);
@@ -87,15 +91,16 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/{idRec}/edit", name="reclamation_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Reclamation $reclamation): Response
+    public function edit(Request $request, Reclamation $reclamation,FlashyNotifier $flashy): Response
     {
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $flashy->info('Votre réclamation est modifié avec succés!');
             return $this->redirectToRoute('reclamationF_index');
+
         }
 
         return $this->render('reclamation/edit.html.twig', [
@@ -107,14 +112,20 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/{idRec}", name="reclamation_delete", methods={"POST"})
      */
-    public function delete(Request $request, Reclamation $reclamation): Response
+    public function delete(Request $request, Reclamation $reclamation,FlashyNotifier $flashy): Response
     {
         if ($this->isCsrfTokenValid('delete'.$reclamation->getIdRec(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($reclamation);
             $entityManager->flush();
         }
-
+        $flashy->warning('Votre réclamation est supprimé!', 'http://your-awesome-link.com');
         return $this->redirectToRoute('reclamationF_index');
     }
+
+
+
+
+
+
 }
