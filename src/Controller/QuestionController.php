@@ -4,10 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Question;
 use App\Form\QuestionType;
+use App\Entity\Reponse;
+use App\Form\ReponseType;
+use App\Repository\QuestionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 /**
  * @Route("/question")
@@ -24,6 +29,32 @@ class QuestionController extends AbstractController
             ->findAll();
 
         return $this->render('question/index.html.twig', [
+            'questions' => $questions,
+        ]);
+    }
+    /**
+     * @Route("/index", name="questionF_index", methods={"GET"})
+     */
+    public function indexF(): Response
+    {
+        $questions = $this->getDoctrine()
+            ->getRepository(Question::class)
+            ->findAll();
+
+        return $this->render('question/indexF.html.twig', [
+            'questions' => $questions,
+        ]);
+    }
+    /**
+     * @Route("/index1", name="questionF_show", methods={"GET"})
+     */
+    public function indexS(): Response
+    {
+        $questions = $this->getDoctrine()
+            ->getRepository(Question::class)
+            ->findAll();
+
+        return $this->render('question/showF.html.twig', [
             'questions' => $questions,
         ]);
     }
@@ -114,9 +145,42 @@ class QuestionController extends AbstractController
 
     }
 
+    /**
+     * @Route("/TriCat/", name="question_cat", methods={"POST"})
+     */
+    public function FindByCategorie(EntityManagerInterface $em,Request $request): Response
+    {
+        $data=$request->get('myText');
+        $queryBuilder = $em->getRepository(Question::class)->createQueryBuilder('q');
+        $queryBuilder->andWhere('q.nameT = :cat');
+        $queryBuilder->setParameter('cat', $data);
+        $questions = $queryBuilder->getQuery()->getResult();
 
 
+        $categories = $this->getDoctrine()
+            ->getRepository(Question::class)
+            ->findAll();
 
+        return $this->render('question/showF.html.twig', [
+            'questions' => $questions,'categories' => $categories,
+        ]);
+    }
+    /**
+     * @param QuestionRepository $repository
+     * @return Response
+     * @Route ("list" , name="triCategorieB")
+     */
+
+    function OrderByName(QuestionRepository $repository)
+    {
+
+        $questions=$repository->OrderByName();
+        return $this->render('question/index.html.twig', [
+            'questions' => $questions,
+        ]);
+
+
+    }
 
 
 }

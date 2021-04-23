@@ -1,6 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button ype="button" class="btn btn-success swalDefaultSuccess" onsubmit="myFunction()">{{ button_label|default('Save') }}</button>
+
 
 <style>
     .btn {
@@ -14,4 +15,10 @@
         color: white;
     }
 </style>
+
+<script>
+    function myFunction() {
+        alert("The form was submitted");
+    }
+</script>
 {{ form_end(form) }}

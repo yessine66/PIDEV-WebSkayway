@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"})})
  * @ORM\Entity
+ * @ORM\Entity (repositoryClass="App\Repository\UtilisateurRepository")
  */
 class Utilisateur implements UserInterface ,\Serializable
 {
