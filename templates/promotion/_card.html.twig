@@ -1,0 +1,79 @@
+<div class="card">
+
+
+    <img src="{{ asset('logoP/')~ promotion.idP.logoP ~''}}"  width="5%" height="auto" display="block"  border="0" alt="" class="card-img-top">
+    <div class ="card-body">
+
+
+        <div class="card-title text-dark" style="font-weight: bold;font-size: 1.5rem;" >
+            {{ promotion.idP.nomP }} <br>
+
+
+            <div class="card-title text-primary" style="font-weight: bold;font-size: 1rem;">
+                {{ promotion.codeP }}<br>
+                {{ promotion.reduction  }} %<br>
+
+
+                <div>
+
+                    {% for p in promotion %}
+                        <em class="text-primary">p.idP.nomP</em>
+                    {% endfor %}
+
+                </div>
+                <div class="card-title text-purple" style="font-weight: bolder;font-size: 1rem;">
+
+                    ({{ promotion.dated }} -<br>
+                    {{ promotion.datef }})<br>
+
+                    {% for p in promotion %}
+                        <em class="text-primary">p.idP.nomP</em>
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <style>
+        .grid{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-gap:20px;
+
+
+        }
+        .filter {
+
+            display:block;
+            position:fixed;
+            top: 90px;
+            left: 250px;
+
+        }
+
+
+    </style>
+
+
+
+</div>
+

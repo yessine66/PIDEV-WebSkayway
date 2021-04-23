@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
+use App\Form\SearchForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\PromotionRepository;
 
 /**
  * @Route("/promotion")
@@ -17,16 +20,51 @@ class PromotionController extends AbstractController
     /**
      * @Route("/", name="promotion_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(PromotionRepository $repository,Request $request): Response
+    {
+
+
+        $data= new SearchData();
+        $data->page=$request->get('page',1);
+        $form = $this->createForm(SearchForm::class, $data);
+        $form->handleRequest($request);
+        $promotions = $this->getDoctrine()
+            ->getRepository(Promotion::class);
+        $promotions = $repository->findSearch($data);
+
+        //dd($data);
+
+
+        /* $promotions = $this->getDoctrine()
+             ->getRepository(Promotion::class)
+             ->findAll();*/
+
+        return $this->render('promotion/index.html.twig', [
+            'promotions' => $promotions,
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/Front", name="promotion_indexR", methods={"GET"})
+     */
+    public function indexR(): Response
     {
         $promotions = $this->getDoctrine()
             ->getRepository(Promotion::class)
             ->findAll();
 
-        return $this->render('promotion/index.html.twig', [
+        return $this->render('promotion/indexR.html.twig', [
             'promotions' => $promotions,
         ]);
     }
+
+
+
+
+
+
+
 
     /**
      * @Route("/new", name="promotion_new", methods={"GET","POST"})
@@ -41,7 +79,7 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($promotion);
             $entityManager->flush();
-
+            $this->addFlash('success', 'promotion ajouté!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -71,7 +109,7 @@ class PromotionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Promotion modifié!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -90,8 +128,31 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($promotion);
             $entityManager->flush();
+            $this->addFlash('success', 'Promotion supprimé!');
         }
 
         return $this->redirectToRoute('promotion_index');
     }
+    /**
+     * @Route(" triRed", name="triRed")
+     */
+    public function TriRed(Request $request):Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $query = $entityManager->createQuery(
+            'SELECT p FROM App\Entity\Promotion p 
+            ORDER BY p.reduction DESC'
+        );
+
+        $promotions = $query->getResult();
+
+
+        return $this->render('promotion/index.html.twig',
+            array('promotions' => $promotions));
+
+
+    }
+
+
+
 }

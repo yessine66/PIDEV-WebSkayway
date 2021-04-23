@@ -5,17 +5,16 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 /**
  * Cours
- *
  * @ORM\Table(name="cours", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="id_categorie", columns={"id_categorie"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CoursRepository")
  */
 class Cours
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id_c", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -24,10 +23,8 @@ class Cours
 
     /**
      * @var string
-     *
      * @ORM\Column(name="nom_c", type="string", length=100, nullable=false)
      * @Assert\NotBlank(message="vous devez remplir le champ nom cours ")
-
      * @Assert\Length(
      *      min = 5,
      *      max = 50,
@@ -49,8 +46,7 @@ class Cours
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=250, nullable=false)
-     *  * @Assert\NotBlank(message="vous devez remplir le champ description ")
-
+     *   @Assert\NotBlank(message="vous devez remplir le champ description ")
      *       @Assert\Length(
      *      min = 10,
      *      max = 200,
