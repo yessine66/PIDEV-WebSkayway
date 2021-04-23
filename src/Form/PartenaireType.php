@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Partenaire;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,6 +19,7 @@ class PartenaireType extends AbstractType
             ->add('mailp')
             ->add('logop')
             ->add('id')
+            ->add('File',FileType::class)
         ;
     }
 
