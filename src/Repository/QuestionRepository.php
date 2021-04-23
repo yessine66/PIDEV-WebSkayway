@@ -24,9 +24,8 @@ class QuestionRepository extends ServiceEntityRepository
 
             ->orderBy('question.nameT','ASC')
             ->getQuery()->getResult();
+        $this->addFlash('success', 'Tri affectué!');
 
-
-        ; //select
 
 
     }

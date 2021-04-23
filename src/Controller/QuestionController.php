@@ -74,6 +74,7 @@ class QuestionController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('question_index');
+
         }
 
         return $this->render('question/new.html.twig', [
@@ -138,6 +139,7 @@ class QuestionController extends AbstractController
         );
 
         $question = $query->getResult();
+        $this->addFlash('success', 'Tri affectué!');
 
 
         return $this->render('question/index.html.twig',
@@ -175,6 +177,7 @@ class QuestionController extends AbstractController
     {
 
         $questions=$repository->OrderByName();
+
         return $this->render('question/index.html.twig', [
             'questions' => $questions,
         ]);
