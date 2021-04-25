@@ -63,7 +63,12 @@
                                             <nav>
                                                 <ul id="navigation">
                                                     <li class="active" ><a href="{{asset('index.html')}}">Home</a></li>
-                                                    <li><a href="{{path('themeF_index')}}">Courses</a></li>
+                                                    <li><a href="{{asset('#')}}">Cours & Test</a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{path('themeF_index')}}">Cours</a></li>
+                                                            <li><a href="{{path('questionF_show')}}">Test</a></li>
+                                                        </ul>
+                                                    </li>
                                                     <li><a href="{{path('coursF_index')}}">About</a></li>
                                                     <li><a href="{{asset('#')}}">Parteneriat & Promotion </a>
                                                         <ul class="submenu">

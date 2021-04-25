@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Partenaire;
 use App\Form\PartenaireType;
-use App\Repository\PartenaireRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\PartenaireRepository;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
-
-
 /**
  * @Route("/partenaire")
  */
@@ -30,7 +29,6 @@ class PartenaireController extends AbstractController
             'partenaires' => $partenaires,
         ]);
     }
-
     /**
      * @Route("/Front", name="partenaire_indexR", methods={"GET"})
      */
@@ -46,6 +44,7 @@ class PartenaireController extends AbstractController
     }
 
 
+
     /**
      * @Route("/new", name="partenaire_new", methods={"GET","POST"})
      */
@@ -56,10 +55,11 @@ class PartenaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $partenaire->upload();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($partenaire);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Partenaire ajouté!');
             return $this->redirectToRoute('partenaire_index');
         }
 
@@ -88,8 +88,9 @@ class PartenaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $partenaire->upload();
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Partenaire modifié!');
             return $this->redirectToRoute('partenaire_index');
         }
 
@@ -108,14 +109,11 @@ class PartenaireController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partenaire);
             $entityManager->flush();
+            $this->addFlash('success', 'Partenaire supprimé!');
         }
 
         return $this->redirectToRoute('partenaire_index');
     }
-
-
-
-
 
 
     /**
@@ -159,20 +157,17 @@ class PartenaireController extends AbstractController
                 ['alimentation',   $es]
             ]
         );
-        $pieChart->getOptions()->setTitle('Top domaines');
+        $pieChart->getOptions()->setTitle('Domaines des partenaires');
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setWidth(900);
         $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
-        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('1e6f5c');
         $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
         $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
         $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
 
         return $this->render('partenaire/statPart.html.twig', array('piechart' => $pieChart));
     }
-
-
-
 
     /**
      * @param PartenaireRepository $repository
@@ -190,6 +185,8 @@ class PartenaireController extends AbstractController
 
 
     }
+
+
 
 
 

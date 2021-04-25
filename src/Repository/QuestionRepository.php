@@ -18,7 +18,17 @@ class QuestionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Question::class);
     }
+    public function OrderByName()
+    {
+        return $this->createQueryBuilder('question')
 
+            ->orderBy('question.nameT','ASC')
+            ->getQuery()->getResult();
+        $this->addFlash('success', 'Tri affectué!');
+
+
+
+    }
     // /**
     //  * @return Question[] Returns an array of Question objects
     //  */

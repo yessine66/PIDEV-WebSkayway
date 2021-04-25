@@ -18,6 +18,9 @@ class PartenaireRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Partenaire::class);
     }
+
+
+
     public function OrderByMailQB()
     {
         return $this->createQueryBuilder('partenaire')
@@ -30,6 +33,9 @@ class PartenaireRepository extends ServiceEntityRepository
 
 
     }
+
+
+
     // /**
     //  * @return Partenaire[] Returns an array of Partenaire objects
     //  */
