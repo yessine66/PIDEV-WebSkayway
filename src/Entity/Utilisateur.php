@@ -313,8 +313,11 @@ class Utilisateur implements UserInterface ,\Serializable
 
 
 
-    public function __toString(): string
+    public function __toString(): ?string
     {
+        if(is_null($this->username)){
+            return  'NULL';
+        }
         return $this->username;
 
     }
