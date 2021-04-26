@@ -45,46 +45,5 @@ class Certificat
      */
     private $id;
 
-    public function getIdCertif(): ?int
-    {
-        return $this->idCertif;
-    }
-
-    public function getTitreCertif(): ?string
-    {
-        return $this->titreCertif;
-    }
-
-    public function setTitreCertif(?string $titreCertif): self
-    {
-        $this->titreCertif = $titreCertif;
-
-        return $this;
-    }
-
-    public function getDateCertif(): ?string
-    {
-        return $this->dateCertif;
-    }
-
-    public function setDateCertif(?string $dateCertif): self
-    {
-        $this->dateCertif = $dateCertif;
-
-        return $this;
-    }
-
-    public function getId(): ?Utilisateur
-    {
-        return $this->id;
-    }
-
-    public function setId(?Utilisateur $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
 
 }

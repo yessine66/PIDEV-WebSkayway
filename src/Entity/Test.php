@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Test
  *
- * @ORM\Table(name="test", indexes={@ORM\Index(name="id_c", columns={"id_c"}), @ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="id_c", columns={"id_c"}), @ORM\Index(name="id_q", columns={"id_q"}), @ORM\Index(name="id_r", columns={"id_r"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
  */
 class Test
@@ -55,57 +55,136 @@ class Test
      */
     private $id;
 
-    public function getIdTest(): ?int
+    /**
+     * @var \Question
+     *
+     * @ORM\ManyToOne(targetEntity="Question")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_q", referencedColumnName="id_q")
+     * })
+     */
+    private $idQ;
+
+    /**
+     * @var \Reponse
+     *
+     * @ORM\ManyToOne(targetEntity="Reponse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_r", referencedColumnName="id_r")
+     * })
+     */
+    private $idR;
+
+    /**
+     * @return int
+     */
+    public function getIdTest(): int
     {
         return $this->idTest;
     }
 
+    /**
+     * @param int $idTest
+     */
+    public function setIdTest(int $idTest): void
+    {
+        $this->idTest = $idTest;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getDateTest(): ?string
     {
         return $this->dateTest;
     }
 
-    public function setDateTest(?string $dateTest): self
+    /**
+     * @param string|null $dateTest
+     */
+    public function setDateTest(?string $dateTest): void
     {
         $this->dateTest = $dateTest;
-
-        return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getScore(): ?int
     {
         return $this->score;
     }
 
-    public function setScore(?int $score): self
+    /**
+     * @param int|null $score
+     */
+    public function setScore(?int $score): void
     {
         $this->score = $score;
-
-        return $this;
     }
 
-    public function getIdC(): ?Certificat
+    /**
+     * @return \Certificat
+     */
+    public function getIdC(): \Certificat
     {
         return $this->idC;
     }
 
-    public function setIdC(?Certificat $idC): self
+    /**
+     * @param \Certificat $idC
+     */
+    public function setIdC(\Certificat $idC): void
     {
         $this->idC = $idC;
-
-        return $this;
     }
 
-    public function getId(): ?Utilisateur
+    /**
+     * @return \Utilisateur
+     */
+    public function getId(): \Utilisateur
     {
         return $this->id;
     }
 
-    public function setId(?Utilisateur $id): self
+    /**
+     * @param \Utilisateur $id
+     */
+    public function setId(\Utilisateur $id): void
     {
         $this->id = $id;
+    }
 
-        return $this;
+    /**
+     * @return \Question
+     */
+    public function getIdQ(): \Question
+    {
+        return $this->idQ;
+    }
+
+    /**
+     * @param \Question $idQ
+     */
+    public function setIdQ(\Question $idQ): void
+    {
+        $this->idQ = $idQ;
+    }
+
+    /**
+     * @return \Reponse
+     */
+    public function getIdR(): \Reponse
+    {
+        return $this->idR;
+    }
+
+    /**
+     * @param \Reponse $idR
+     */
+    public function setIdR(\Reponse $idR): void
+    {
+        $this->idR = $idR;
     }
 
 
