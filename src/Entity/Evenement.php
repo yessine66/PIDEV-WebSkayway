@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EvenementRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Evenement
@@ -19,6 +22,7 @@ class Evenement
      * @ORM\Column(name="id_ev", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("evenements:read")
      */
     private $idEv;
 
@@ -34,6 +38,7 @@ class Evenement
      *      allowEmptyString = false
      *  )
      * @Assert\NotBlank(message="vous devez remplir le champ ")
+     * @Groups("evenements:read")
      */
     private $nomEv;
 
@@ -41,6 +46,7 @@ class Evenement
      * @var \DateTime|null
      *
      * @ORM\Column(name="date_ev", type="datetime", nullable=true)
+     * @Groups("evenements:read")
      */
     private $dateEv;
 
@@ -56,6 +62,7 @@ class Evenement
      *      allowEmptyString = false
      *  )
      * @Assert\NotBlank(message="vous devez remplir le champ espace ")
+     * @Groups("evenements:read")
      */
     private $espace;
 
@@ -64,6 +71,7 @@ class Evenement
      *
      * @ORM\Column(name="nombre_pl", type="integer", nullable=true)
      * @Assert\NotBlank(message="vous devez saisir le nombre de places ")
+     * @Groups("evenements:read")
      */
     private $nombrePl;
 
@@ -74,6 +82,7 @@ class Evenement
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+     * @Groups("evenements:read")
      */
     private $id;
 
@@ -146,6 +155,5 @@ class Evenement
     {
         return $this->nomEv ;
     }
-
 
 }

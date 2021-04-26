@@ -18,7 +18,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ path('actualite_index') }}">News</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('actualite_indexF') }}">News</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -45,7 +45,7 @@
                                 {{ actualite.description }}
                             </h2>
                             <h2 class="blog-head" style="color: #2d2d2d;">
-                                <a href="{{ path('evenement_show', {'idEv': actualite.idEv}) }}"> {{ actualite.idEv }}</a>
+                                <a href="{{ path('evenement_showEF', {'idEv': actualite.idEv.idEv}) }}"> {{ actualite.idEv }}</a>
                             </h2>
                             <h2 class="blog-head" style="color: #2d2d2d;">
                                 {{ actualite.dateAjout ? actualite.dateAjout|date('Y-m-d') : ''  }}
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <br><br>
-                    <button class="btn"><a href="{{ path('actualite_index') }}">Back</a></button>
+                    <button class="btn"><a href="{{ path('actualite_indexF') }}">Back</a></button>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">

@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Form\EvenementType;
+use Doctrine\ORM\Query\AST\Functions\DateDiffFunction;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/evenement")
@@ -29,14 +31,13 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/index", name="evenement_index", methods={"GET"})
+     * @Route("/index", name="evenement_indexF", methods={"GET"})
      */
-    public function indexF(): Response
+    public function indexF(Request $request): Response
     {
         $evenements = $this->getDoctrine()
             ->getRepository(Evenement::class)
             ->findAll();
-
         return $this->render('evenement/indexF.html.twig', [
             'evenements' => $evenements,
         ]);
@@ -76,7 +77,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/index/{idEv}", name="evenement_show", methods={"GET"})
+     * @Route("/index/{idEv}", name="evenement_showF", methods={"GET"})
      */
     public function showF(Evenement $evenement): Response
     {
@@ -118,4 +119,34 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('evenement_index');
     }
+
+    /**
+     * @Route("/{idEv}/reserve", name="evenement_reserve", methods={"GET"})
+     */
+    public function reserve($idEv): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $evenements = $em->getRepository(Evenement::class)->find($idEv);
+        $evenements->setNombrePl($evenements->getNombrePl()-1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->redirectToRoute('evenement_indexF');
+
+    }
+
+    /**
+     * @Route("/index/searchEvenementx ", name="searchEvenementx")
+     */
+    public function searchEvenementx(Request $request,NormalizerInterface $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $requestString=$request->get('searchValue');
+        $evenements = $repository->findStudentByIdEv($requestString);
+        $jsonContent = $Normalizer->normalize($evenements, 'json',['groups'=>' evenements:read']);
+        $retour=json_encode($jsonContent);
+        return new Response($retour);
+    }
+
 }
