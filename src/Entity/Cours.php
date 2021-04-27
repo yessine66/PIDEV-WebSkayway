@@ -76,6 +76,11 @@ class Cours
     private $image;
 
     /**
+     * @ORM\Column(name="note" , type="integer",nullable=false)
+     */
+    private $note;
+
+    /**
      * @var \Utilisateur
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
@@ -94,6 +99,7 @@ class Cours
      * })
      */
     private $idCategorie;
+
 
     /**
      * @return int
@@ -225,6 +231,18 @@ class Cours
     public function __toString(): string
     {
         return  $this->nomC;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    public function setNote(int $note): self
+    {
+        $this->note = $note;
+
+        return $this;
     }
 
 
