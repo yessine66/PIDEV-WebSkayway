@@ -2,11 +2,13 @@
 
 
     <img src="{{ asset('logoP/')~ promotion.idP.logoP ~''}}"  width="5%" height="auto" display="block"  border="0" alt="" class="card-img-top">
+
     <div class ="card-body">
 
 
         <div class="card-title text-dark" style="font-weight: bold;font-size: 1.5rem;" >
             {{ promotion.idP.nomP }} <br>
+
 
 
             <div class="card-title text-primary" style="font-weight: bold;font-size: 1rem;">
@@ -30,8 +32,12 @@
                         <em class="text-primary">p.idP.nomP</em>
                     {% endfor %}
 
-
                 </div>
+
+            </div>
+
+            <div>
+                <td><img  src="{{ qr_code_path('code promo:  ' ~ promotion.codeP  ~'\nnom partenaire:  ' ~ promotion.idP.nomP  ) }}"  width="30%" height="auto" display="block"  border="0"></td>
 
             </div>
 

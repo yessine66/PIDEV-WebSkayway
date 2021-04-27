@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Data\DataMail;
 use App\Entity\Partenaire;
+use App\Form\ContactMType;
 use App\Form\PartenaireType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -185,7 +187,97 @@ class PartenaireController extends AbstractController
 
 
     }
+    /**
+     * @Route("contactP", name="contactP")
+     */
+    public function contactP(Request $request, \Swift_Mailer $mailer, DataMail $dataMail,PartenaireRepository  $PartenaireRepository): Response
+    {
 
+        $partenaires = new Partenaire();
+        $form = $this->createForm(ContactMType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($partenaires);
+
+            $ContactPType = $form->getData();
+            //AA
+            //$data = $this->create_my_pdf_data();
+            // Create your file contents in the normal way, but don't write them to disk
+            //AA
+            //$data = create_my_pdf_data();
+
+// Create the attachment with your data
+            //AA
+            //$attachment = new Swift_Attachment($data);
+            /*$htmlContent = $this->renderView('partenaire/index.html.twig', [
+                'partenaires' => $PartenaireRepository->findAll(),
+            ]);*/
+            //$data = \Swift_Attachment::fromPath($htmlContent, 'G:\COMBOwebSOS3\Skyway-Web\Skyway-Web\public\img', 'G:\COMBOwebSOS3');
+            $message = (new \Swift_Message('SkyWay!'))
+                ->setFrom($ContactPType['from'])
+                ->setTo($ContactPType['to'])
+                ->setBody(
+                    $ContactPType['message'],
+                    'text/plain'
+                )
+                // ->attach($attachment);
+                //$message->attach($htmlContent);
+                //->attachFromPath('G:\COMBOwebSOS3\Skyway-Web\Skyway-Web\public\img')
+
+            ;
+            //$data = $this->create_my_pdf_data();
+            // Create your file contents in the normal way, but don't write them to disk
+            //$data = create_my_pdf_data();
+
+// Create the attachment with your data
+            //$attachment = new Swift_Attachment($data, 'my-file.pdf', 'application/pdf');
+
+// Attach it to the message
+            //$message->attach($attachment);
+            /*  foreach ($partenaire as $partenaire){
+                  $htmlContent = $this->renderView('show.html.twig', array('partenaire' => $partenaire));
+
+              }*/
+            /*    $htmlContent = $this->renderView('partenaire/index.html.twig', array('partenaires' => $partenaires));
+
+                $data = \Swift_Attachment::fromPath($htmlContent, 'letter.html', 'application/html');*/
+            /* $attachment = (new Swift_Attachment())
+               ->setFilename('my-file.pdf')
+
+                 ->setBody($data)
+             ;
+             $message->attach($attachment);
+             /********************/
+            $mailer->send($message);
+            $this->addFlash('success', 'MAIL Envoyé!');
+            return $this->redirectToRoute('contactP');
+        }
+
+
+
+
+
+
+
+
+
+        $this->addFlash('info', 'MAIL  non Envoyé!');
+
+
+
+
+        return $this->render('partenaire/contactP.html.twig', [
+
+            'form' => $form->createView(),
+        ]);
+
+
+    }
 
 
 

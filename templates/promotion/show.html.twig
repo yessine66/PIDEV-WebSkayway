@@ -29,7 +29,21 @@
             </tr>
             <tr>
                 <th>IDP</th>
-                <td>{{ promotion.partenaire.nomP }}</td>
+                <td>{{ promotion.idP.nomP }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td><img src="{{ asset('logoP/')~ promotion.idP.logop ~''}}"  width="30%" height="auto" display="block"  border="0"></td>
+
+            </tr>
+
+            <tr>
+                <th>Qr code</th>
+
+
+                <td><img  src="{{ qr_code_path('code promo:  ' ~ promotion.codeP  ~'\nnom partenaire:  ' ~ promotion.idP.nomP  ) }}"  width="30%" height="auto" display="block"  border="0"></td>
+
+                </td>
             </tr>
         </tbody>
     </table>

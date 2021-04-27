@@ -6,6 +6,8 @@ use App\Data\SearchData;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
 use App\Form\SearchForm;
+use App\Repository\PartenaireRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -152,6 +154,79 @@ class PromotionController extends AbstractController
 
 
     }
+
+
+
+
+
+
+
+
+
+    /**
+     * @param PartenaireRepository $repository
+     * @param \Swift_Mailer $mailer
+     * @param $partenaire
+     * @param $promotion
+     * @return Response
+     * @Route ("randommail" , name="randommail" ,methods={"GET","POST"})
+     */
+
+    public function RandomUserMail(PartenaireRepository $repository, \Swift_Mailer $mailer,UtilisateurRepository $repositoryy,PromotionRepository $repo)
+    {
+        $Utilisateur = $repositoryy->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+        $Promotion = $repo->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+
+        foreach ($Utilisateur as $Utilisateur) {
+            foreach ($Promotion as $Promotion)
+            {$message = (new \Swift_Message('GIIIIIIT!'))
+                ->setFrom('nour.helali@esprit.tn')
+                ->setTo($Utilisateur->getMail())
+
+                ->setBody(
+                    "Félicitations {$Utilisateur->getNom()} Vous avez gagner une réduction  {$Promotion->getReduction()} 
+                 chez {$Promotion->getIdp()->getNomp()} 
+                 votre code est {$Promotion->getCodep()}  ! ❤ " );
+
+                 $mailer->send($message);
+            }
+        }
+
+        return $this->render('promotion/game.html.twig', [
+            'promotion' => $Promotion,
+            'utilisateur' => $Utilisateur,
+        ]);
+
+    }
+
+    /**
+     * @Route ("play" , name="play" ,methods={"GET","POST"})
+     */
+    public function playWithUser (PromotionRepository $repository):Response
+    {
+        $promotions = $repository->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->execute();
+        return $this->render('promotion/indexR.html.twig', [
+            'promotions' => $promotions,
+        ]);
+
+
+
+
+    }
+
+
 
 
 

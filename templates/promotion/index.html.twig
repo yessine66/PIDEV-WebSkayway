@@ -62,7 +62,10 @@
                                         {% for p in promotion %}
                                             <em class="text-primary">p.idP.nomP</em>
                                         {% endfor %}
+                                        <div>
+                                            <td><img  src="{{ qr_code_path('code promo:  ' ~ promotion.codeP  ~'\nnom partenaire:  ' ~ promotion.idP.nomP  ) }}"  width="30%" height="auto" display="block"  border="0"></td>
 
+                                        </div>
                                         <div >
 
                                             <button type=“button” class="button-show" ><a href="{{ path('promotion_show', {'idProm': promotion.idProm}) }}">show</a></button>
@@ -157,7 +160,11 @@
 
                 {% endfor %}
             </div>
-            <button type=“button” class="button-create"><a href="{{ path('promotion_new') }}">Create new</a></button>
+        </div>
+        <button type=“button” class="button-create"><a href="{{ path('promotion_new') }}">Create new</a></button>
+        <div class="d-flex justify-content-end mb-2",style ="margin-top: 10rem"; >
+            <button type=“button” class="button-edit"><a href="{{ path('randommail') }}">Jouer !</a></button>
+        </div>
             <div class ="mt-4">
                 {{ knp_pagination_render(promotions) }}
             </div>

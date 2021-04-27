@@ -13,9 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="partenaire", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity (repositoryClass="App\Repository\PartenaireRepository")
- * @UniqueEntity(fields={"mailp"},
- * message="le mail d'un partenaire  doit etre unique"
- * )
+
  */
 class Partenaire
 {
@@ -55,7 +53,7 @@ class Partenaire
      * @ORM\Column(name="mailP", type="string", length=250, nullable=true)
      * @Assert\Email(message="l'email {{ value }} est nom valide")
      * @Assert\Length(min="5",
-     *     max="20",
+     *     max="40",
      *     minMessage="Doit contenir au min {{ limit }}",
      *     maxMessage="Doit contenir au max {{ limit }}"
      * )
