@@ -3,19 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Actualite;
-use App\Form\Actualite1Type;
+use App\Entity\Evenement;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/actualite")
+ * @Route("/")
  */
 class ActualiteController extends AbstractController
 {
     /**
-     * @Route("/", name="actualite_index", methods={"GET"})
+     * @Route("/actualite", name="actualite_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -29,7 +29,7 @@ class ActualiteController extends AbstractController
     }
 
     /**
-     * @Route("/index", name="actualite_index", methods={"GET"})
+     * @Route("/actualite/index", name="actualite_indexF", methods={"GET"})
      */
     public function indexF(): Response
     {
@@ -43,7 +43,7 @@ class ActualiteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="actualite_new", methods={"GET","POST"})
+     * @Route("/actualite/new", name="actualite_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -66,7 +66,7 @@ class ActualiteController extends AbstractController
     }
 
     /**
-     * @Route("/{idAc}", name="actualite_show", methods={"GET"})
+     * @Route("/actualite/{idAc}", name="actualite_show", methods={"GET"})
      */
     public function show(Actualite $actualite): Response
     {
@@ -75,7 +75,7 @@ class ActualiteController extends AbstractController
         ]);
     }
     /**
-     * @Route("/index/{idAc}", name="actualite_show", methods={"GET"})
+     * @Route("/actualite/index/{idAc}", name="actualite_showF", methods={"GET"})
      */
     public function showF(Actualite $actualite): Response
     {
@@ -85,7 +85,7 @@ class ActualiteController extends AbstractController
     }
 
     /**
-     * @Route("/{idAc}/edit", name="actualite_edit", methods={"GET","POST"})
+     * @Route("/actualite/{idAc}/edit", name="actualite_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Actualite $actualite): Response
     {
@@ -105,7 +105,7 @@ class ActualiteController extends AbstractController
     }
 
     /**
-     * @Route("/{idAc}", name="actualite_delete", methods={"POST"})
+     * @Route("/actualite/{idAc}", name="actualite_delete", methods={"POST"})
      */
     public function delete(Request $request, Actualite $actualite): Response
     {
@@ -116,5 +116,15 @@ class ActualiteController extends AbstractController
         }
 
         return $this->redirectToRoute('actualite_index');
+    }
+
+    /**
+     * @Route("/evenement/index/{idEv}", name="evenement_showEF", methods={"GET"})
+     */
+    public function showEF(Evenement $evenement): Response
+    {
+        return $this->render('evenement/showF.html.twig', [
+            'evenement' => $evenement,
+        ]);
     }
 }

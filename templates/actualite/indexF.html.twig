@@ -17,7 +17,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ path('actualite_index') }}">News</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('actualite_indexF') }}">News</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -38,7 +38,7 @@
                         <article class="blog_item">
                             <div class="blog_item_img">
                                 <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
-                                <a href="{{ path('actualite_show', {'idAc': actualite.idAc}) }}" class="blog_item_date">
+                                <a href="{{ path('actualite_showF', {'idAc': actualite.idAc}) }}" class="blog_item_date">
                                     <h3>{{ actualite.titreAc }}</h3>
                                 </a>
                             </div>
