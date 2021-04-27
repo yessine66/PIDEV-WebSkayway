@@ -35,28 +35,34 @@
                     <div class="row">
                         <div class="col-lg-8 mb-5 mb-lg-0">
                             <div class="blog_left_sidebar">
-                                {% for question in questions %}
+                                {% for q in questions %}
                                 <article class="blog_item">
+                                    <p>{{ q.textQ }}</p>
 
-                                        <div class="blog_details">
-                                            <div class="blog_item_img">
+                                    {% for r in reponse  %}
 
+                                   {% if q.idQ==r.getIdR() %}
+
+
+
+                                            <div>
+
+
+                                                <input type="radio" name="{{ q.idQ }}"  class="{{ q.idQ }}" value="{{ r.textR1 }}" />   {{ r.textR1  }} <br>
+                                                <input type="radio" name="{{ q.idQ }}" class="{{ q.idQ }}" value="{{  r.textR2  }}" />   {{ r.textR2 }} <br>
+                                                <input type="radio" name="{{ q.idQ}}" class="{{ q.idQ }}" value="{{ r.textR3 }}" />   {{ r.textR3 }} <br>
+                                                <input type="radio" name="{{ q.idQ }}" class="{{ q.idQ }}" value="{{  r.textR4  }}" />   {{ r.textR4  }} <br><br>
                                             </div>
 
-                                            <p>{{ question.textQ }}</p>
 
-                                            <br>
+{% endif %}
+                                            {% endfor %}
 
 
-
-                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Femme"> Option A
-                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Homme"> Option B
-                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Femme"> Option C
-                                            <input type="radio" class="switch-wrap d-flex justify-content-between" name="Genre" value="Homme"> Option D
 
 
                                           <br>
-                                        </div  >
+
                                 </article>
 
                             {% else %}

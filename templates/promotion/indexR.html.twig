@@ -1,0 +1,52 @@
+{% extends 'baseF.html.twig' %}
+
+{% block title %}Promotion index{% endblock %}
+{% block contentfr %}
+
+    <main>
+
+        <!--? slider Area Start-->
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+
+            </div>
+        </section>
+        <div  class="container",style ="top: 50rem";>
+
+            <div class="row",style ="margin-top: 50rem";>
+                <div class="col-md-9">
+                    <div class="grid",style ="margin-top: 50rem";>
+                        {% for promotion in promotions %}
+                            {% include 'promotion/_card.html.twig'with {promotion:promotion} only %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <button type=“button” class="button-back"><a href="{{ path('play') }}">Jouer</a></button>
+
+                <div style ="margin-top: 5rem;"></div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </main>
+
+
+
+
+{% endblock %}
+
+

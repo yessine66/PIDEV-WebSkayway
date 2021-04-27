@@ -41,8 +41,14 @@ class QuestionController extends AbstractController
             ->getRepository(Question::class)
             ->findAll();
 
+
+        $reponse = $this->getDoctrine()
+            ->getRepository(Reponse::class)
+            ->findAll();
+
+
         return $this->render('question/indexF.html.twig', [
-            'questions' => $questions,
+            'questions' => $questions,'reponse' => $reponse,
         ]);
     }
     /**

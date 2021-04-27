@@ -18,7 +18,7 @@
                                         <nav aria-label="breadcrumb">
                                             <ol class="breadcrumb">
                                                 <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
-                                                <li class="breadcrumb-item"><a href="{{ path('evenement_index') }}">Events</a></li>
+                                                <li class="breadcrumb-item"><a href="{{ path('evenement_indexF') }}">Events</a></li>
                                             </ol>
                                         </nav>
                                         <!-- breadcrumb End -->
@@ -50,9 +50,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <br><br>
+                            <br>
                             <div id="navigation">
-                                <li class="button-header margin-left"><a href="{{ path('evenement_index') }}" class="btn">Back</a></li>
+                                <li class="button-header margin-right">
+                                    <a href="{{ path('evenement_indexF') }}" class="btn">Back</a>
+                                    <a href="{{ path('evenement_reserve', {'idEv': evenement.idEv}) }}" class="btn">Participer</a>
+                                </li>
                                 </a>
                             </div>
                         </div>
