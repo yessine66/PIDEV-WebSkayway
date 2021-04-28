@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
+use App\Entity\Apprenant;
+use App\Entity\Enseignant;
 use App\Entity\Utilisateur;
+use App\Form\ApprenantType;
+use App\Form\EnseignantType;
 use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +28,8 @@ class UtilisateurController extends AbstractController
      */
     public function index(): Response
     {
-
+        $azz = $this->getUser()->getRole();
+    //dd($azz);
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
@@ -37,16 +42,41 @@ class UtilisateurController extends AbstractController
     /**
      * @Route("/new", name="utilisateur_new", methods={"GET","POST"})
      */
-    public function new(Request $request,UserPasswordEncoderInterface $encoder): Response
+    public function new(Request $request,Request $request2,Request $requestens,UserPasswordEncoderInterface $encoder): Response
     {
         $todaya = new \DateTime();
 
+        $apprenant = new Apprenant();
+        $formapprenant = $this->createForm(ApprenantType::class, $apprenant);
+
+        ///////////jdid
+        $enseignant = new Enseignant();
+        $formenseignant = $this->createForm(EnseignantType::class, $enseignant);
+
+
+
         $utilisateur = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $form->handleRequest($request2);
+        $formapprenant->handleRequest($request);
+        ////////jdid
+        $formenseignant->handleRequest($request2);
+        $checkrole = "";
+        if ($form->isSubmitted() && $form->isValid() ) {
+            $checkrole = $form->get('role')->getData();
             $password = $form->get('password')->getData();
+            $description = $formapprenant->get('description')->getData();
+            ////////jdid
+            $matier = $formenseignant->get('matiere')->getData();
+            $bibliographie = $formenseignant->get('bibliographie')->getData();
+            $specialite = $formenseignant->get('specialite')->getData();
+
+          // dd("description".$description);
+
+
+            //dd($description);
+
+            //dd($description);
           //  $utilisateur->setPassword($this->encoder->encodePassword($utilisateur,$password));
             $utilisateur->setPassword($encoder->encodePassword($utilisateur,$password));
             $utilisateur->setCreCompte($todaya);
@@ -59,6 +89,62 @@ class UtilisateurController extends AbstractController
                 $entityManager->flush();
 
             }
+
+            if($rolex=="apprenant"){
+
+
+
+               // $formapprenant->submit(array_merge(['description' => $request2->request->get('description'), $request2->request->get('description')]), true);
+
+
+                    //$apprenant->setDescription($description);
+
+
+                    //$description = $request2->request->get('description');
+                    $apprenant->setDescription($description);
+                    $apprenant->setId($utilisateur);
+                    $apprenant->setIdApp(9);
+
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($apprenant);
+                    $entityManager->flush();
+
+
+
+
+
+            }
+            if($rolex=="enseignant"){
+
+
+
+                // $formapprenant->submit(array_merge(['description' => $request2->request->get('description'), $request2->request->get('description')]), true);
+
+
+                //$apprenant->setDescription($description);
+
+
+                //$description = $request2->request->get('description');
+                $enseignant->setBibliographie($bibliographie);
+                $enseignant->setMatiere($matier);
+                $enseignant->setSpecialite($specialite);
+                $enseignant->setId($utilisateur);
+                $enseignant->setIdEns(6);
+
+              //  dd($enseignant);
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($enseignant);
+                $entityManager->flush();
+
+
+
+
+
+            }
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($utilisateur);
             $entityManager->flush();
@@ -69,6 +155,11 @@ class UtilisateurController extends AbstractController
         return $this->render('utilisateur/new.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form->createView(),
+            'apprenant' => $apprenant,
+            'formapprenant' => $formapprenant->createView(),
+            'enseignant'=>$enseignant,
+            'formenseignant'=>$formenseignant->createView(),
+
         ]);
     }
 

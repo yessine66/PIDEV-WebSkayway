@@ -1,7 +1,79 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'id': 'formuser'}}) }}
     {{ form_widget(form) }}
-    <button ype="button" class="btn btn-success swalDefaultSuccess" onsubmit="myFunction()">{{ button_label|default('Save') }}</button>
 
+
+
+  {{ form_start(formenseignant, {'attr': {'id': 'formens'}}) }}
+<div id="enseignantblock">
+    {{ form_widget(formenseignant) }}
+</div>
+
+
+
+
+
+{{ form_start(formapprenant, {'attr': {'id': 'formapp'}}) }}
+<div id="descriptionblock">
+    {{ form_widget(formapprenant) }}
+</div>
+{# <button type="submit" class="btn btn-success swalDefaultSuccess" style=""  id="subdesc">SAVE app</button> #}
+
+
+
+
+<button type="submit" class="btn btn-success swalDefaultSuccess" style=""   id="subdens">SAVE ens</button>
+{{ form_end(formapprenant) }}
+{{ form_end(formenseignant) }}
+    {# <button type="submit" class="btn btn-success swalDefaultSuccess" onsubmit="myFunction()" id="subuser">{{ button_label|default('Save') }}</button> #}
+{{ form_end(form) }}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#descriptionblock').hide();
+        $('#enseignantblock').hide();
+        $('#utilisateur_role').change(function() {
+            if($('#utilisateur_role').val() == "admin"){
+                $('#descriptionblock').hide();
+                $('#enseignantblock').hide();
+            }
+          else if(  $('#utilisateur_role').val() == "apprenant"){
+              $('#descriptionblock').show();
+              $('#enseignantblock').hide();
+
+          }
+
+          else if($('#utilisateur_role').val() == "enseignant"){
+              $('#enseignantblock').show();
+              $('#descriptionblock').hide();
+          }
+          else {
+              $('#descriptionblock').hide();
+              $('#enseignantblock').hide();
+          }
+
+        });
+    /*    $('#subdens').click(function(){
+            if(  $('#utilisateur_role').val() == "apprenant") {
+                $('.apprenant').submit();
+            }
+        }); */
+
+    });
+</script>
+<script>
+    function submitform() {
+    if(document.getElementById("utilisateur_role").value=="apprenant"){
+        //alert(document.getElementById("apprenant_description").value);
+
+        document.getElementById("fromapp").submit();
+
+     }
+
+
+    }
+</script>
 
 <style>
     .btn {
@@ -16,9 +88,4 @@
     }
 </style>
 
-<script>
-    function myFunction() {
-        alert("The form was submitted");
-    }
-</script>
-{{ form_end(form) }}
+

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enseignant index{% endblock %}
+
+{% block body %}
+    <h1>Enseignant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdEns</th>
+                <th>Matiere</th>
+                <th>Bibliographie</th>
+                <th>Specialite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enseignant in enseignants %}
+            <tr>
+                <td>{{ enseignant.idEns }}</td>
+                <td>{{ enseignant.matiere }}</td>
+                <td>{{ enseignant.bibliographie }}</td>
+                <td>{{ enseignant.specialite }}</td>
+                <td>
+                    <a href="{{ path('enseignant_show', {'idEns': enseignant.idEns}) }}">show</a>
+                    <a href="{{ path('enseignant_edit', {'idEns': enseignant.idEns}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('enseignant_new') }}">Create new</a>
+{% endblock %}
