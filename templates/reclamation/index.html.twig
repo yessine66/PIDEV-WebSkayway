@@ -4,9 +4,10 @@
 {% block content %}
 {% block body %}
     <h1>Reclamation index</h1>
-
+    <a class="btn btn-primary" href="{{ path('sortbytitleasc')}}">Sort</a>
     <table class="table" id="tableac">
         <input type="text" id="search" class="form-control" placeholder='Search'>
+
         <thead>
             <tr>
                 <th>IdRec</th>

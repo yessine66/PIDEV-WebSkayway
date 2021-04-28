@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/reclamation")
@@ -66,6 +67,43 @@ class ReclamationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    /**
+
+     * @Route("/consulterRec", name="contrat", methods={"GET"})
+     */
+    public function consulterContrat(ReclamationRepository  $or): Response
+    {
+
+
+        $rec=$or->findAll() ; // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('reclamation/rec.html.twig', [
+            'reclamations' => $rec,
+
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+    }
+
 
     /**
      * @Route("/index/{idRec}", name="reclamation_show", methods={"GET"})
@@ -85,6 +123,19 @@ class ReclamationController extends AbstractController
 
         return $this->render('reclamation/showF.html.twig', [
             'reclamation' => $reclamation,
+        ]);
+    }
+    /**
+     * @Route("/trie/nom", name="sortbytitleasc")
+     */
+    public function sortByTitleASC(ReclamationRepository  $reclamationRepository): Response
+    {
+
+        $reclamations=$reclamationRepository->sortByTitleASC();
+        // $events=$eventRepository->findAll();
+
+        return $this->render('reclamation/index.html.twig', [
+            'reclamations' => $reclamations,
         ]);
     }
 
@@ -122,8 +173,6 @@ class ReclamationController extends AbstractController
         $flashy->warning('Votre réclamation est supprimé!', 'http://your-awesome-link.com');
         return $this->redirectToRoute('reclamationF_index');
     }
-
-
 
 
 

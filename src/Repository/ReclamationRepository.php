@@ -19,6 +19,14 @@ class ReclamationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reclamation::class);
     }
 
+    public function sortByTitleASC()
+    {
+        $reclamation = $this->createQueryBuilder('r')
+            ->orderBy('r.objet', 'DESC');
+        $query = $reclamation->getQuery();
+        return $query->execute();
+
+    }
     // /**
     //  * @return Reclamation[] Returns an array of Reclamation objects
     //  */
