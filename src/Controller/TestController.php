@@ -2,9 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Exam;
+use App\Entity\LigneExam;
+use App\Entity\Question;
+use App\Entity\Reponse;
 use App\Entity\Test;
+use App\Entity\User;
+use App\Entity\Utilisateur;
 use App\Form\TestType;
+use App\Repository\TestRepository;
+use Doctrine\ORM\Mapping\OrderBy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,48 +24,101 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends AbstractController
 {
     /**
-     * @Route("/", name="test_index", methods={"GET"})
+     * @Route("/", name="test_index", methods={"GET","POST"})
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $tests = $this->getDoctrine()
             ->getRepository(Test::class)
             ->findAll();
 
+        $questions = $this->getDoctrine()
+           ->getRepository(Question::class)
+           ->findAll();
+
+        $reponses = $this->getDoctrine()
+            ->getRepository(Reponse::class)
+            ->findAll();
+
+
         return $this->render('test/index.html.twig', [
+           'tests' => $tests,'questions' => $questions,'reponses' => $reponses,
+        ]);
+    }
+
+    /**
+     * @Route("/indexBack", name="test_indexBack", methods={"GET","POST"})
+     */
+    public function indexBack(Request $request): Response
+    {
+        $tests = $this->getDoctrine()
+            ->getRepository(Test::class)
+            ->findAll();
+
+
+
+        return $this->render('test/indexBack.html.twig', [
             'tests' => $tests,
         ]);
     }
-
     /**
-     * @Route("/new", name="test_new", methods={"GET","POST"})
+     * @Route("/{idTest}/indexf", name="testf_index", methods={"GET"})
+     */
+    public function indexf(Test $test): Response
+    {
+        $tests = $this->getDoctrine()
+            ->getRepository(Test::class)
+            ->findAll();
+
+        return $this->render('test/index2.html.twig', [
+            'tests' => $tests,
+        ]);
+    }
+    /**
+     * @Route("/new", name="test_newwwww", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
-        $test = new Test();
-        $form = $this->createForm(TestType::class, $test);
-        $form->handleRequest($request);
+        $tests = $this->getDoctrine()
+            ->getRepository(Test::class)
+            ->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($test);
-            $entityManager->flush();
+        $questions = $this->getDoctrine()
+            ->getRepository(Question::class)
+            ->findAll();
 
-            return $this->redirectToRoute('test_index');
-        }
+        $reponses = $this->getDoctrine()
+            ->getRepository(Reponse::class)
+            ->findAll();
+        $score = $request->get('score');
+        $value = intval($score);
 
-        return $this->render('test/new.html.twig', [
-            'test' => $test,
-            'form' => $form->createView(),
+        $Test = new Test();
+        $Test->setDateTest(new\DateTime());
+        $Test->setScore($value);
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($Test);
+        $entityManager->flush();
+
+        return $this->render('test/index.html.twig', [
+            'tests' => $tests,'questions' => $questions,'reponses' => $reponses,
         ]);
     }
 
+
+
+
+
+
     /**
-     * @Route("/{idTest}", name="test_show", methods={"GET"})
+     * @Route("/test/index", name="testfd_index", methods={"GET"})
      */
-    public function show(Test $test): Response
+    public function showx(Test $test): Response
     {
-        return $this->render('test/show.html.twig', [
+
+        return $this->render('test/index.html.twig', [
             'test' => $test,
         ]);
     }
@@ -94,4 +156,9 @@ class TestController extends AbstractController
 
         return $this->redirectToRoute('test_index');
     }
+
+
+
+
+
 }

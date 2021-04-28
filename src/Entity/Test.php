@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Test
  *
  * @ORM\Table(name="test", indexes={@ORM\Index(name="id_c", columns={"id_c"}), @ORM\Index(name="id_q", columns={"id_q"}), @ORM\Index(name="id_r", columns={"id_r"}), @ORM\Index(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TestRepository")
  */
 class Test
 {
@@ -22,9 +22,9 @@ class Test
     private $idTest;
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="date_test", type="string", length=250, nullable=true)
+     * @ORM\Column(name="date_test", type="date", nullable=true)
      */
     private $dateTest;
 
@@ -56,26 +56,6 @@ class Test
     private $id;
 
     /**
-     * @var \Question
-     *
-     * @ORM\ManyToOne(targetEntity="Question")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_q", referencedColumnName="id_q")
-     * })
-     */
-    private $idQ;
-
-    /**
-     * @var \Reponse
-     *
-     * @ORM\ManyToOne(targetEntity="Reponse")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_r", referencedColumnName="id_r")
-     * })
-     */
-    private $idR;
-
-    /**
      * @return int
      */
     public function getIdTest(): int
@@ -92,17 +72,17 @@ class Test
     }
 
     /**
-     * @return string|null
+     * @return \DateTime|null
      */
-    public function getDateTest(): ?string
+    public function getDateTest(): ?\DateTime
     {
         return $this->dateTest;
     }
 
     /**
-     * @param string|null $dateTest
+     * @param \DateTime|null $dateTest
      */
-    public function setDateTest(?string $dateTest): void
+    public function setDateTest(?\DateTime $dateTest): void
     {
         $this->dateTest = $dateTest;
     }
@@ -155,37 +135,21 @@ class Test
         $this->id = $id;
     }
 
-    /**
-     * @return \Question
-     */
-    public function getIdQ(): \Question
-    {
-        return $this->idQ;
-    }
 
     /**
-     * @param \Question $idQ
+     * Test constructor.
      */
-    public function setIdQ(\Question $idQ): void
+    public function __construct()
     {
-        $this->idQ = $idQ;
+    }
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+
+        ]);
     }
 
-    /**
-     * @return \Reponse
-     */
-    public function getIdR(): \Reponse
-    {
-        return $this->idR;
-    }
-
-    /**
-     * @param \Reponse $idR
-     */
-    public function setIdR(\Reponse $idR): void
-    {
-        $this->idR = $idR;
-    }
 
 
 }

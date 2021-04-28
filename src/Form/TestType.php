@@ -16,8 +16,7 @@ class TestType extends AbstractType
             ->add('score')
             ->add('idC')
             ->add('id')
-            ->add('idQ')
-            ->add('idR')
+
         ;
     }
 
