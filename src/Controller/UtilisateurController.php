@@ -34,7 +34,7 @@ class UtilisateurController extends AbstractController
 
         $azz = $this->getUser()->getRole();
     //dd($azz);
-        dd($this->getUser());
+       // dd($this->getUser());
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
