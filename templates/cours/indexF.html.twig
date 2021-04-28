@@ -70,12 +70,14 @@
 
                                     </div>
                                     <div class="price">
-                                        <p>{{ cour.nbparticipant }}</p>
-
+                                        <p>{{ cour.nbparticipant }} participants</p>
                                     </div>
                                 </div>
-                                <a href="{{ path('coursF_show', {'idC': cour.idC}) }}" name="btn" class="border-btn border-btn2">S'inscrire au cours</a>
-                                 </div>
+                                <!--<a href="{# {{ path('coursF_show', {'idC': cour.idC}) }} #}" name="btn" class="border-btn border-btn2">S'inscrire au cours</a>
+                                <a href="{# {{ path('coursF_show', {'idC': cour.idC}) }}#}" name="btn" class="border-btn border-btn2">Commencer</a> -->
+                                <a href=" {{ path('coursF_show', {'idC': cour.idC}) }} " name="btn" class="border-btn border-btn2">Voir les détails</a>
+
+                            </div>
                         </div>
                     </div>
                 </div>
