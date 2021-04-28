@@ -2,12 +2,17 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
+use App\Form\SearchForm;
+use App\Repository\PartenaireRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\PromotionRepository;
 
 /**
  * @Route("/promotion")
@@ -17,16 +22,51 @@ class PromotionController extends AbstractController
     /**
      * @Route("/", name="promotion_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(PromotionRepository $repository,Request $request): Response
+    {
+
+
+        $data= new SearchData();
+        $data->page=$request->get('page',1);
+        $form = $this->createForm(SearchForm::class, $data);
+        $form->handleRequest($request);
+        $promotions = $this->getDoctrine()
+            ->getRepository(Promotion::class);
+        $promotions = $repository->findSearch($data);
+
+        //dd($data);
+
+
+        /* $promotions = $this->getDoctrine()
+             ->getRepository(Promotion::class)
+             ->findAll();*/
+
+        return $this->render('promotion/index.html.twig', [
+            'promotions' => $promotions,
+            'form'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/Front", name="promotion_indexR", methods={"GET"})
+     */
+    public function indexR(): Response
     {
         $promotions = $this->getDoctrine()
             ->getRepository(Promotion::class)
             ->findAll();
 
-        return $this->render('promotion/index.html.twig', [
+        return $this->render('promotion/indexR.html.twig', [
             'promotions' => $promotions,
         ]);
     }
+
+
+
+
+
+
+
 
     /**
      * @Route("/new", name="promotion_new", methods={"GET","POST"})
@@ -41,7 +81,7 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($promotion);
             $entityManager->flush();
-
+            $this->addFlash('success', 'promotion ajouté!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -71,7 +111,7 @@ class PromotionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Promotion modifié!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -90,8 +130,104 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($promotion);
             $entityManager->flush();
+            $this->addFlash('success', 'Promotion supprimé!');
         }
 
         return $this->redirectToRoute('promotion_index');
     }
+    /**
+     * @Route(" triRed", name="triRed")
+     */
+    public function TriRed(Request $request):Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $query = $entityManager->createQuery(
+            'SELECT p FROM App\Entity\Promotion p 
+            ORDER BY p.reduction DESC'
+        );
+
+        $promotions = $query->getResult();
+
+
+        return $this->render('promotion/index.html.twig',
+            array('promotions' => $promotions));
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /**
+     * @param PartenaireRepository $repository
+     * @param \Swift_Mailer $mailer
+     * @param $partenaire
+     * @param $promotion
+     * @return Response
+     * @Route ("randommail" , name="randommail" ,methods={"GET","POST"})
+     */
+
+    public function RandomUserMail(PartenaireRepository $repository, \Swift_Mailer $mailer,UtilisateurRepository $repositoryy,PromotionRepository $repo)
+    {
+        $Utilisateur = $repositoryy->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+        $Promotion = $repo->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+
+        foreach ($Utilisateur as $Utilisateur) {
+            foreach ($Promotion as $Promotion)
+            {$message = (new \Swift_Message('FEli!'))
+                ->setFrom('nour.helali@esprit.tn')
+                ->setTo($Utilisateur->getMail())
+
+                ->setBody(
+                    "Félicitations {$Utilisateur->getNom()} Vous avez gagner une réduction  {$Promotion->getReduction()} 
+                 chez {$Promotion->getIdp()->getNomp()} 
+                 votre code est {$Promotion->getCodep()}  ! ❤ " );
+
+                 $mailer->send($message);
+            }
+        }
+
+        return $this->render('promotion/game.html.twig', [
+            'promotion' => $Promotion,
+            'utilisateur' => $Utilisateur,
+        ]);
+
+    }
+
+    /**
+     * @Route ("play" , name="play" ,methods={"GET","POST"})
+     */
+    public function playWithUser (PromotionRepository $repository):Response
+    {
+        $promotions = $repository->createQueryBuilder('a')
+            ->orderBy('RAND()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+        return $this->render('promotion/indexR.html.twig', [
+            'promotions' => $promotions,
+        ]);
+
+
+
+
+    }
+
+
+
+
+
 }

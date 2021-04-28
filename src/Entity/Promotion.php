@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Promotion
  *
  * @ORM\Table(name="promotion", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="id_p", columns={"id_p"})})
  * @ORM\Entity (repositoryClass="App\Repository\PromotionRepository")
+ * @UniqueEntity(fields={"codeP"},
+ * message="le code  doit etre unique"
+ * )
  */
 class Promotion
 {
@@ -32,6 +37,10 @@ class Promotion
      * @var int|null
      *
      * @ORM\Column(name="reduction", type="integer", nullable=true)
+     * @Assert\NotEqualTo(
+     * value = 0,
+     * message = "La reduction  ne doit pas être égal à 0 "
+     * )
      */
     private $reduction;
 

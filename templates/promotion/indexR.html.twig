@@ -1,0 +1,73 @@
+{% extends 'baseF.html.twig' %}
+
+{% block title %}Promotion index{% endblock %}
+{% block contentfr %}
+
+    {% block bodyfr %}
+
+    <main>
+
+        <!--? slider Area Start-->
+        <!--? slider Area Start-->
+        <section class="slider-area slider-area2">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider slider-height2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-11 col-md-12">
+                                <div class="hero__caption hero__caption2">
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Promotion </h1>
+                                    <!-- breadcrumb Start-->
+ {#                                    <nav aria-label="breadcrumb">
+                                        <h3 class="text-heading">PROMOTION</h3>
+                                    </nav> #}
+                                    <!-- breadcrumb End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div  class="container",style ="top: 50rem";>
+            <div style ="margin-top: 5rem;"></div>
+            <div class="row",style ="margin-top: 50rem";>
+                <div class="col-md-9">
+                    <div class="grid",style ="margin-top: 50rem";>
+                        {% for promotion in promotions %}
+                            {% include 'promotion/_card.html.twig'with {promotion:promotion} only %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div style ="margin-top: 5rem;"></div>
+
+            <button type=“button” class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s" tabindex="0" style="animation-delay: 0.7s;"><a href="{{ path('play') }}">Jouer</a></button>
+
+                <div style ="margin-top: 5rem;"></div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </main>
+
+
+    {% endblock %}
+
+{% endblock %}
+
+

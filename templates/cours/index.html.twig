@@ -6,7 +6,15 @@
 {% block body %}
     <h1>Cours index</h1>
 
-    <table class="table">
+    <table class="table" id="tableac">
+
+        <div class="input-group mb-3">
+            <input type="text" id="search" class="form-control" placeholder='Search Keyword'>
+            <div class="input-group-append">
+                <button type=“button” class="form-control"><a href="{{ path('triName') }}">Faire un tri </a></button>
+            </div>
+        </div>
+
         <thead>
             <tr>
                 <th>IdC</th>
@@ -32,6 +40,35 @@
                     <a href="{{ path('cours_edit', {'idC': cour.idC}) }}">edit</a>
                 </td>
             </tr>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#search').keyup(function(){
+                        search_table($(this).val());
+                    });
+                    function search_table(value){
+                        $('#tableac tbody tr').each(function(){
+                            var found = 'false';
+                            $(this).each(function(){
+                                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                {
+                                    found = 'true';
+                                }
+                            });
+                            if(found === 'true')
+                            {
+                                $(this).show();
+
+                            }
+                            else
+                            {
+                                $(this).hide();
+
+                            }
+                        });
+                    }
+                });
+            </script>
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>
@@ -41,5 +78,8 @@
     </table>
 
     <a href="{{ path('cours_new') }}">Create new</a>
+
+
+
 {% endblock %}
 {% endblock %}

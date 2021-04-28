@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Question index{% endblock %}
  {% block content %}
+     {% for message in app.flashes('success') %}
+         <div class="alert alert-success">
+             {{ message }}
+         </div>
+     {% endfor %}
      {% block body %}
+
          <h1>Question index</h1>
 
-         <table class="table">
-             <thead>
+         <table >
              <tr>
                  <th>ID</th>
                  <th>Question</th>
@@ -80,6 +86,18 @@
                  <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
                      tri par nombre des points
                  </button>
+
+
+             </div>
+         </div>
+     <form role="search" id="nav-search-form" method="post" action="{ path('triCategorieB'){ }}">
+         <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+             <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                 <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                     tri par ordre de catégorie
+                 </button>
+
+
              </div>
          </div>
 

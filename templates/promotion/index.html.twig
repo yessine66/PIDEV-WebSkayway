@@ -1,78 +1,273 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Promotion index{% endblock %}
+{% block title %}Liste des promotions{% endblock %}
 {% block content %}
-{% block body %}
-    <h1>Promotion index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>IdProm</th>
-                <th>CodeP</th>
-                <th>Reduction</th>
-                <th>Dated</th>
-                <th>Datef</th>
-                <th>idp</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for promotion in promotions %}
-            <tr>
-                <td>{{ promotion.idProm }}</td>
-                <td>{{ promotion.codeP }}</td>
-                <td>{{ promotion.reduction }}</td>
-                <td>{{ promotion.dated }}</td>
-                <td>{{ promotion.datef }}</td>
-                <td>{{ promotion.idP.nomP }} </td>
-                <td>
-                    <button type=“button” class="button-show"><a href="{{ path('promotion_show', {'idProm': promotion.idProm}) }}">show</a></button>
-                    <button type=“button” class="button-edit"><a href="{{ path('promotion_edit', {'idProm': promotion.idProm}) }}">edit</a></button>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <button type=“button” class="button-create"><a href="{{ path('promotion_new') }}">Create new</a></button>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <style>
-        .button-create {
-            display: inline-block;
-            padding: 12px 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #fff3cd;
-            font-size: 16px;
-            font-weight: bold;
-            color: red;
-        }
-        .button-show {
-            display: inline-block;
-            padding: 12px 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #d3e0ea;
-            font-size: 16px;
-            font-weight: bold;
-            color: red;
-        }
-        .button-edit {
-            display: inline-block;
-            padding: 12px 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            background-color: #fde8cd;
-            font-size: 16px;
-            font-weight: bold;
-            color: red;
-        }
-    </style>
+    <div  class="container">
 
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'promotion/_filter.html.twig' with {form:form} only %}
+
+
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="d-flex justify-content-end mb-2",style ="margin-top: 10rem"; >
+                {{ knp_pagination_sortable(promotions,'Trier','p.reduction' )}}
+            </div>
+
+
+
+
+            <div class="grid">
+                {% for promotion in promotions %}
+
+                    <div class="card">
+
+
+                        <img src="{{ asset('logoP/')~ promotion.idP.logoP ~''}}"  width="10%" height="auto" display="block"  border="0" alt="" class="card-img-top">
+                        <div class ="card-body">
+
+
+                            <div class="card-title text-dark" style="font-weight: bold;font-size: 1.5rem;" >
+                                {{ promotion.idP.nomP }} <br>
+
+
+                                <div class="card-title text-primary" style="font-weight: bold;font-size: 1rem;">
+                                    {{ promotion.codeP }}<br>
+                                    {{ promotion.reduction  }} %<br>
+
+
+                                    <div>
+
+                                        {% for p in promotion %}
+                                            <em class="text-primary">p.idP.nomP</em>
+                                        {% endfor %}
+
+                                    </div>
+                                    <div class="card-title text-purple" style="font-weight: bolder;font-size: 1rem;">
+
+                                        ({{ promotion.dated }} -<br>
+                                        {{ promotion.datef }})<br>
+
+                                        {% for p in promotion %}
+                                            <em class="text-primary">p.idP.nomP</em>
+                                        {% endfor %}
+                                        <div>
+                                            <td><img  src="{{ qr_code_path('code promo:  ' ~ promotion.codeP  ~'\nnom partenaire:  ' ~ promotion.idP.nomP  ) }}"  width="30%" height="auto" display="block"  border="0"></td>
+
+                                        </div>
+                                        <div >
+
+                                            <button type=“button” class="button-show" ><a href="{{ path('promotion_show', {'idProm': promotion.idProm}) }}">show</a></button>
+                                            <button type=“button” class="button-edit"><a href="{{ path('promotion_edit', {'idProm': promotion.idProm}) }}">edit</a></button>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+                        <style>
+                            .grid{
+                                display:grid;
+                                grid-template-columns: repeat(3,1fr);
+                                grid-gap:20px;
+
+
+                            }
+                            .filter {
+
+                                display:block;
+                                position:fixed;
+                                top: 90px;
+                                left: 250px;
+
+                            }
+
+
+                        </style>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% endfor %}
+            </div>
+            <button type=“button” class="button-create"><a href="{{ path('promotion_new') }}">Create new</a></button>
+            <div class="d-flex justify-content-end mb-2",style ="margin-top: 10rem"; >
+                <div class="d-flex justify-content-end mb-2",style ="margin-right: 10rem"; >
+                <button type=“button” class="button-edit"><a href="{{ path('randommail') }}">Jouer !</a></button>
+            </div>
+        </div>
+
+            <div class ="mt-4">
+                {{ knp_pagination_render(promotions) }}
+            </div>
+
+        </div>
+    </div>
+    {% block body %}
+
+
+
+
+
+
+
+        <div style ="margin-top: 5rem;"></div>
+
+
+
+
+
+
+
+
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- recherche -->
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <style>
+            .button-create {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fff3cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+            .button-show {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #d3e0ea;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+            .button-edit {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fde8cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+        </style>
+
+
+
+    {% endblock %}
 {% endblock %}
-{% endblock %}
+
+

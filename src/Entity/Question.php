@@ -4,7 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use App\Entity\Reponse;
+use App\Form\ReponseType;
 /**
  * Question
  *
@@ -116,6 +117,28 @@ class Question
     {
         $this->nameT = $nameT;
     }
+
+    public function getDataFromAnotherEntity($textR1)
+    {
+        $query = 'select * from App\Entity\Reponse alpha where reponse.idQ = :question.idQ';
+        return $this->getEntityManager()
+            ->createQuery($query)
+            ->setParameter('textR1', $textR1)
+            ->getResult();
+    }
+    public function preAction(Question $args)
+    {
+        $textR1 = $args->getObject();
+        $entityManager = $args->getObjectManager();
+
+        if (method_exists($textR1, 'getTextR1')) {
+            if ($textR1->getTextR1() === null) {
+                $textR1->setTextR1($entityManager->getReference('App\Entity\Reponse', textR1));
+            }
+        }
+    }
+
+
 
 
 }

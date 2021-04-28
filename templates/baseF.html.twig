@@ -38,7 +38,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{{asset('assets/img/logo/loder.png')}}" alt="">
+                    <img src="{{asset('assets/img/logo/logoxx.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -65,18 +65,23 @@
                                             <nav>
                                                 <ul id="navigation">
                                                     <li class="active" ><a href="{{asset('index.html')}}">Home</a></li>
-                                                    <li><a href="{{path('themeF_index')}}">Courses</a></li>
+                                                    <li><a href="{{asset('#')}}">Cours & Test</a>
+                                                        <ul class="submenu">
+                                                            <li><a href="{{path('themeF_index')}}">Cours</a></li>
+                                                            <li><a href="{{path('questionF_show')}}">Test</a></li>
+                                                        </ul>
+                                                    </li>
                                                     <li><a href="{{path('coursF_index')}}">About</a></li>
                                                     <li><a href="{{asset('#')}}">Promotion </a>
                                                         <ul class="submenu">
                                                             <li><a href="{{path('partenaire_indexR')}}">Partenire</a></li>
-                                                            <li><a href="{{path('promotion_index')}}">Promotion</a></li>
+                                                            <li><a href="{{path('promotion_indexR')}}">Promotion</a></li>
                                                         </ul>
                                                     </li>
                                                     <li><a href="{{asset('#')}}">News & Events</a>
                                                         <ul class="submenu">
-                                                            <li><a href="{{path('actualite_index')}}">News</a></li>
-                                                            <li><a href="{{path('evenement_index')}}">Events</a></li>
+                                                            <li><a href="{{path('actualite_indexF')}}">News</a></li>
+                                                            <li><a href="{{path('evenement_indexF')}}">Events</a></li>
                                                         </ul>
                                                     </li>
                                                     <li><a href="#">Contact</a>
@@ -87,8 +92,8 @@
                                                         </ul>
                                                     </li>
                                                     <!-- Button -->
-                                                    <li class="button-header margin-left "><a href="{{asset('#')}}" class="btn">Join</a></li>
-                                                    <li class="button-header"><a href="{{asset('login.html')}}" class="btn btn3">Log in</a></li>
+                                                    <li class="button-header margin-left "><a href="{{path('utilisateur_showFront')}}" class="btn">Profile</a></li>
+                                                    <li class="button-header"><a href="{{path('logout')}}" class="btn btn3">Log Out</a></li>
                                                 </ul>
                                             </nav>
                                         </div>

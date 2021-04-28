@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
-
-
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Cours;
+use App\Entity\Stars;
 use App\Form\CoursType;
+use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/cours")
@@ -74,6 +74,17 @@ class CoursController extends AbstractController
     }
 
     /**
+     * @Route("/recherche" , name="Recherche", methods={"GET","POST"})
+     */
+    public function Recherche(Request $request, CoursRepository $CoursRepository): Response
+    {
+        $data=$request->get('Recherche');
+        $cours=$CoursRepository->findBy(['nomC'=>$data]);
+        return $this->render('cours/indexF.html.twig',[
+            'cours'=>$cours ]);
+
+    }
+    /**
      * @Route("/{idC}", name="cours_show", methods={"GET"})
      */
     public function show(Cours $cour): Response
@@ -124,6 +135,37 @@ class CoursController extends AbstractController
         }
 
         return $this->redirectToRoute('cours_index');
+    }
+
+
+    /**
+     * @param CoursRepository $repository
+     * @return Response
+     * @Route ("listname" , name="triName")
+     */
+
+    public function listAction(CoursRepository $repository)
+    {
+        $cours=$repository->findAllOrderedByName();
+        return $this->render('cours/index.html.twig', [
+            'cours' => $cours,
+        ]);
+    }
+
+    /**
+     * @Route("/{idC}/reserve", name="cours_reserve", methods={"GET"})
+     */
+    public function reserve($idC): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cours = $em->getRepository(Cours::class)->find($idC);
+        $cours->setNbparticipant($cours->getNbparticipant()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->redirectToRoute('coursF_index');
+
     }
 
 

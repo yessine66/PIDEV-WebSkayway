@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Partenaire
  *
  * @ORM\Table(name="partenaire", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity (repositoryClass="App\Repository\PartenaireRepository")
+
  */
 class Partenaire
 {
@@ -27,7 +32,7 @@ class Partenaire
      * @ORM\Column(name="nom_p", type="string", length=100, nullable=true)
      */
     private $nomP;
-
+    private $file;
     /**
      * @var string|null
      *
@@ -46,6 +51,12 @@ class Partenaire
      * @var string|null
      *
      * @ORM\Column(name="mailP", type="string", length=250, nullable=true)
+     * @Assert\Email(message="l'email {{ value }} est nom valide")
+     * @Assert\Length(min="5",
+     *     max="40",
+     *     minMessage="Doit contenir au min {{ limit }}",
+     *     maxMessage="Doit contenir au max {{ limit }}"
+     * )
      */
     private $mailp;
 
@@ -175,5 +186,74 @@ class Partenaire
         return $this;
     }
 
+
+
+
+
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+    }
+
+    public function getUploadDir()
+    {
+        return 'logoP';
+    }
+
+    public function getAbsolutRoot()
+    {
+        return $this->getUploadRoot().$this->logop ;
+    }
+
+    public function getWebPath()
+    {
+        return $this->getUploadDir().'/'.$this->logop;
+    }
+
+    public function getUploadRoot()
+    {
+        return __DIR__.'/../../public/'.$this->getUploadDir().'/';
+    }
+
+    public function upload()
+    {
+
+        if($this->file === null){
+            return;
+
+        }
+        $this->logop = $this->file->getClientOriginalName();
+        if(!is_dir($this->getUploadRoot()))
+        {
+            mkdir($this->getUploadRoot(),'0777',true);
+        }
+
+        $this->file->move($this->getUploadRoot(),$this->logop);
+        unset($this->file);
+    }
+
+
+    public function __toString(): ?string
+    {
+        if(is_null($this->nomP)) {
+            return 'NULL';
+        }
+        return $this->nomP;
+    }
 
 }

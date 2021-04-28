@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use App\Data\DataMail;
 use App\Entity\Partenaire;
+use App\Form\ContactMType;
 use App\Form\PartenaireType;
-use App\Repository\PartenaireRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\PartenaireRepository;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
-
-
 /**
  * @Route("/partenaire")
  */
@@ -30,7 +31,6 @@ class PartenaireController extends AbstractController
             'partenaires' => $partenaires,
         ]);
     }
-
     /**
      * @Route("/Front", name="partenaire_indexR", methods={"GET"})
      */
@@ -46,6 +46,7 @@ class PartenaireController extends AbstractController
     }
 
 
+
     /**
      * @Route("/new", name="partenaire_new", methods={"GET","POST"})
      */
@@ -56,10 +57,11 @@ class PartenaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $partenaire->upload();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($partenaire);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Partenaire ajouté!');
             return $this->redirectToRoute('partenaire_index');
         }
 
@@ -88,8 +90,9 @@ class PartenaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $partenaire->upload();
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Partenaire modifié!');
             return $this->redirectToRoute('partenaire_index');
         }
 
@@ -108,14 +111,11 @@ class PartenaireController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partenaire);
             $entityManager->flush();
+            $this->addFlash('success', 'Partenaire supprimé!');
         }
 
         return $this->redirectToRoute('partenaire_index');
     }
-
-
-
-
 
 
     /**
@@ -159,20 +159,17 @@ class PartenaireController extends AbstractController
                 ['alimentation',   $es]
             ]
         );
-        $pieChart->getOptions()->setTitle('Top domaines');
+        $pieChart->getOptions()->setTitle('Domaines des partenaires');
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setWidth(900);
         $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
-        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('1e6f5c');
         $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
         $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
         $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
 
         return $this->render('partenaire/statPart.html.twig', array('piechart' => $pieChart));
     }
-
-
-
 
     /**
      * @param PartenaireRepository $repository
@@ -190,6 +187,98 @@ class PartenaireController extends AbstractController
 
 
     }
+    /**
+     * @Route("contactP", name="contactP")
+     */
+    public function contactP(Request $request, \Swift_Mailer $mailer, DataMail $dataMail,PartenaireRepository  $PartenaireRepository): Response
+    {
+
+        $partenaires = new Partenaire();
+        $form = $this->createForm(ContactMType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($partenaires);
+
+            $ContactPType = $form->getData();
+            //AA
+            //$data = $this->create_my_pdf_data();
+            // Create your file contents in the normal way, but don't write them to disk
+            //AA
+            //$data = create_my_pdf_data();
+
+// Create the attachment with your data
+            //AA
+            //$attachment = new Swift_Attachment($data);
+            /*$htmlContent = $this->renderView('partenaire/index.html.twig', [
+                'partenaires' => $PartenaireRepository->findAll(),
+            ]);*/
+            //$data = \Swift_Attachment::fromPath($htmlContent, 'G:\COMBOwebSOS3\Skyway-Web\Skyway-Web\public\img', 'G:\COMBOwebSOS3');
+            $message = (new \Swift_Message('SkyWay!'))
+                ->setFrom($ContactPType['from'])
+                ->setTo($ContactPType['to'])
+                ->setBody(
+                    $ContactPType['message'],
+                    'text/plain'
+                )
+                // ->attach($attachment);
+                //$message->attach($htmlContent);
+                //->attachFromPath('G:\COMBOwebSOS3\Skyway-Web\Skyway-Web\public\img')
+
+            ;
+            //$data = $this->create_my_pdf_data();
+            // Create your file contents in the normal way, but don't write them to disk
+            //$data = create_my_pdf_data();
+
+// Create the attachment with your data
+            //$attachment = new Swift_Attachment($data, 'my-file.pdf', 'application/pdf');
+
+// Attach it to the message
+            //$message->attach($attachment);
+            /*  foreach ($partenaire as $partenaire){
+                  $htmlContent = $this->renderView('show.html.twig', array('partenaire' => $partenaire));
+
+              }*/
+            /*    $htmlContent = $this->renderView('partenaire/index.html.twig', array('partenaires' => $partenaires));
+
+                $data = \Swift_Attachment::fromPath($htmlContent, 'letter.html', 'application/html');*/
+            /* $attachment = (new Swift_Attachment())
+               ->setFilename('my-file.pdf')
+
+                 ->setBody($data)
+             ;
+             $message->attach($attachment);
+             /********************/
+            $mailer->send($message);
+            $this->addFlash('success', 'MAIL Envoyé!');
+            return $this->redirectToRoute('contactP');
+        }
+
+
+
+
+
+
+
+
+
+        $this->addFlash('info', 'MAIL  non Envoyé!');
+
+
+
+
+        return $this->render('partenaire/contactP.html.twig', [
+
+            'form' => $form->createView(),
+        ]);
+
+
+    }
+
 
 
 

@@ -1,0 +1,27 @@
+{% extends 'baseF.html.twig' %}
+{% block contentfr %}
+    <div class="card">
+    <div class="card-header">
+        <h3 class="card-title">vos avis</h3>
+    </div>
+
+    <div class="card-body p-0">
+        <table id="star" class="table table-striped">
+            <thead>
+            <tr >
+                <th>ID</th>
+                <th>rate</th>
+            {# <th>commentaire</th> #}
+                <th>modifier</th>
+                <th>delete</th>
+            </tr  >
+            </thead>
+            <tr {% for c in stars %} >
+                <td> {{ c.id }}</td>
+                <td> {{  c.rateindexx }}</td>
+                {# <td> {{  c.commentaire }}</td> #}
+            </tr {% endfor %} >
+        </table>
+
+    </div>
+{% endblock contentfr %}
