@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Reponse
  *
@@ -184,7 +185,7 @@ class Reponse
     public function setId(?Utilisateur $id): self
     {
         $this->id = $id;
-return $this;
+        return $this;
 
     }
 
@@ -200,8 +201,6 @@ return $this;
         $this->idQ = $idQ;
         return $this;
     }
-
-
 
 
 }

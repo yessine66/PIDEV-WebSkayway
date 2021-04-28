@@ -1,112 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Utilisateur index{% endblock %}
 
+{% block title %}Tests{% endblock %}
 {% block content %}
 
 
-
 {% block body %}
+    <h1>Test index</h1>
 
-    <h3>Utilisateurs</h3>
-<div class="table-wrapper">
-    <table class="fl-table" id="tableac">
-
-        <div class="input-group">
-        <input type="search" class="form-control form-control-lg" id="search" name="search" class="form-control" placeholder="Search by .....">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-lg btn-default">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
-
+    <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Mail</th>
-                <th>Age</th>
-                <th>Tel</th>
-                <th>Genre</th>
-                <th>DateNaiss</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>CreCompte</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>IdTest</th>
+            <th>Date Test</th>
+            <th>Score</th>
+        </tr>
         </thead>
         <tbody>
-        {% for utilisateur in utilisateurs %}
+        {% for test in tests %}
             <tr>
-                <td>{{ utilisateur.id }}</td>
-                <td>{{ utilisateur.nom }}</td>
-                <td>{{ utilisateur.prenom }}</td>
-                <td>{{ utilisateur.mail }}</td>
-                <td>{{ utilisateur.age }}</td>
-                <td>{{ utilisateur.tel }}</td>
-                <td>{{ utilisateur.genre }}</td>
-                <td>{{ utilisateur.dateNaiss ? utilisateur.dateNaiss|date('Y-m-d') : '' }}</td>
-                <td>{{ utilisateur.username }}</td>
-                <td>{{ utilisateur.password }}</td>
-                <td>{{ utilisateur.role }}</td>
-                <td>{{ utilisateur.creCompte ? utilisateur.creCompte|date('Y-m-d') : '' }}</td>
-                <td>
-                    <button type=“button” class="button-show"><a href="{{ path('utilisateur_show', {'id': utilisateur.id}) }}">show</a></button>
-                    <button type=“button” class="button-edit"><a href="{{ path('utilisateur_edit', {'id': utilisateur.id}) }}">edit</a></button>
-                </td>
+                <td>{{ test.idTest }}</td>
+                <td>{{ test.dateTest ? test.dateTest|date('Y-m-d') : '' }}</td>
+                <td>{{ test.score }}</td>
+
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-</div>
-
-
-<button type=“button” class="button-create"><a href="{{ path('utilisateur_new') }}">Create new</a></button>
-    <button type=“button” class="button-create"><a href="{{ path('utilisateur_triRole') }}">Organiser</a></button>
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#search').keyup(function(){
-                search_table($(this).val());
-            });
-            function search_table(value){
-                $('#tableac tbody tr').each(function(){
-                    var found = 'false';
-                    $(this).each(function(){
-                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
-                        {
-                            found = 'true';
-                        }
-                    });
-                    if(found === 'true')
-                    {
-                        $(this).show();
-
-                    }
-                    else
-                    {
-                        $(this).hide();
-
-                    }
-                });
-            }
-        });
-    </script>
-
-
-
-
 
     <style>
         .button-create {
@@ -258,6 +182,5 @@
             }}
 
     </style>
-
 {% endblock %}
 {% endblock %}

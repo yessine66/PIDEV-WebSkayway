@@ -51,7 +51,7 @@ class StarsController extends AbstractController
             }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            return $this->redirectToRoute('list_stars');
+            return $this->redirectToRoute('coursF_show',["idC"=>$idC]);
         }
         // return $this->render('stars/ajoutstars.html.twig', [
         //         "idevent" => $idevent,

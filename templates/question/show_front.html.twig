@@ -1,0 +1,80 @@
+{% extends 'baseF.html.twig' %}
+
+{% block title %}Question{% endblock %}
+{% block contentfr %}
+    {% block body %}
+        <h1>Question</h1>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>IdQ</th>
+                <td>{{ question.idQ }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    {% for r in reponse %}
+
+                        {% if question.idQ==r.getIdR() %}
+
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                    <input id="ok" type="radio" name="{{ question.idQ }}" class="{{ question.idQ }}"
+                           value="{{ question.nbrPoint }}" onclick="r={{ question.nbrPoint }}"/>   {{ r.textR1 }} <br>
+                    <input id="okk" type="radio" name="{{ question.idQ }}" class="{{ question.idQ }}"
+                           value="{{ question.nbrPoint }}"/>   {{ r.textR2 }} <br>
+                    <input type="radio" name="{{ question.idQ }}" class="{{ question.idQ }}"
+                           value="{{ question.nbrPoint }}"/>   {{ r.textR3 }} <br>
+                    <input type="radio" name="{{ question.idQ }}" class="{{ question.idQ }}"
+                           value="{{ question.nbrPoint }}"/>   {{ r.textR4 }} <br><br>
+                        {% endif %}
+                        <script>
+                            function valider() {
+                                var score = 0;
+                                var spare = document.getElementById('ok');
+                                if (spare.checked) {
+                                    score = score + {{ question.nbrPoint }};
+                                    alert("Checked " + score);
+                                }
+                            }
+                        </script>
+
+                    {% endfor %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="button" name="ProcessButton" value="Voir la note" id="valider" onclick="valider()">
+        <button type=“button” class="button-back"><a href="{{ path('test_index') }}">Back to list</a></button>
+        {% for t in test %}
+            <script> {{ t.score }} = score ;</script>
+            <input type="hidden" name="score" id="score" value="0">
+        {% endfor %}
+        <style>
+
+
+            .button-edit {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fde8cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+
+            .button-back {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fff3cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+        </style>
+    {% endblock %}
+{% endblock %}

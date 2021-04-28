@@ -152,5 +152,21 @@ class CoursController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{idC}/reserve", name="cours_reserve", methods={"GET"})
+     */
+    public function reserve($idC): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cours = $em->getRepository(Cours::class)->find($idC);
+        $cours->setNbparticipant($cours->getNbparticipant()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->redirectToRoute('coursF_index');
+
+    }
+
 
 }
