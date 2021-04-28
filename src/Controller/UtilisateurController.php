@@ -22,14 +22,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UtilisateurController extends AbstractController
 {
+//$userxo = $this->getUser()->getId();
+
 
     /**
      * @Route("/", name="utilisateur_index", methods={"GET"})
      */
     public function index(): Response
     {
+        $userxo = $this->getUser()->getId();
+
         $azz = $this->getUser()->getRole();
     //dd($azz);
+        dd($this->getUser());
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
@@ -163,11 +168,30 @@ class UtilisateurController extends AbstractController
         ]);
     }
 
+
+
+
+    /**
+     * @Route("showFront", name="utilisateur_showFront", methods={"GET"})
+     */
+    public function showFront(Utilisateur $utilisateur): Response
+    {
+        //dd($this->getUser())
+       // $utilisateur=$this->getUser();
+        return $this->render('utilisateur/showFront.html.twig', [
+            'utilisateur' => $utilisateur,
+        ]);
+    }
+
+
+
+
     /**
      * @Route("/{id}", name="utilisateur_show", methods={"GET"})
      */
     public function show(Utilisateur $utilisateur): Response
     {
+      //  dd($this->getUser()->getUsername());
         return $this->render('utilisateur/show.html.twig', [
             'utilisateur' => $utilisateur,
         ]);

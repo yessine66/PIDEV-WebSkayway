@@ -187,7 +187,7 @@ class PromotionController extends AbstractController
 
         foreach ($Utilisateur as $Utilisateur) {
             foreach ($Promotion as $Promotion)
-            {$message = (new \Swift_Message('GIIIIIIT!'))
+            {$message = (new \Swift_Message('FEli!'))
                 ->setFrom('nour.helali@esprit.tn')
                 ->setTo($Utilisateur->getMail())
 
@@ -214,7 +214,7 @@ class PromotionController extends AbstractController
     {
         $promotions = $repository->createQueryBuilder('a')
             ->orderBy('RAND()')
-            ->setMaxResults(3)
+            ->setMaxResults(1)
             ->getQuery()
             ->execute();
         return $this->render('promotion/indexR.html.twig', [
