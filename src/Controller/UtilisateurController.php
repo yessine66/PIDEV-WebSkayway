@@ -28,7 +28,8 @@ class UtilisateurController extends AbstractController
      */
     public function index(): Response
     {
-
+        $azz = $this->getUser()->getRole();
+    //dd($azz);
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
