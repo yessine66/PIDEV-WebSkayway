@@ -21,6 +21,8 @@ class Enseignant
      */
     private $idEns;
 
+
+
     /**
      * @var string|null
      *
@@ -45,12 +47,20 @@ class Enseignant
     /**
      * @var \Utilisateur
      *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\ManyToOne(targetEntity="Utilisateur", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
+
+    /**
+     * @param int $idEns
+     */
+    public function setIdEns(int $idEns): void
+    {
+        $this->idEns = $idEns;
+    }
 
     public function getIdEns(): ?int
     {

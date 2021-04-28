@@ -21,6 +21,8 @@ class Apprenant
      */
     private $idApp;
 
+
+
     /**
      * @var string|null
      *
@@ -31,12 +33,21 @@ class Apprenant
     /**
      * @var \Utilisateur
      *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\ManyToOne(targetEntity="Utilisateur", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
+
+
+    /**
+     * @param int $idApp
+     */
+    public function setIdApp(int $idApp): void
+    {
+        $this->idApp = $idApp;
+    }
 
     public function getIdApp(): ?int
     {

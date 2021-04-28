@@ -58,22 +58,26 @@
                                 </p>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
+                                        <!--  <div class="rating">
+                                              <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star-half"></i>
-                                        </div>
+                                            <a style="margin-top: 7px;" href="{{ path('add_stars',{'idC': cour.idC}) }}" class="btn btn-card">feed-back</a>
+
+                                        </div>-->
 
                                     </div>
                                     <div class="price">
-                                        <p>{{ cour.nbparticipant }}</p>
-
+                                        <p>{{ cour.nbparticipant }} participants</p>
                                     </div>
                                 </div>
-                                <a href="{{ path('coursF_show', {'idC': cour.idC}) }}" name="btn" class="border-btn border-btn2">S'inscrire au cours</a>
-                                 </div>
+                                <!--<a href="{# {{ path('coursF_show', {'idC': cour.idC}) }} #}" name="btn" class="border-btn border-btn2">S'inscrire au cours</a>
+                                <a href="{# {{ path('coursF_show', {'idC': cour.idC}) }}#}" name="btn" class="border-btn border-btn2">Commencer</a> -->
+                                <a href=" {{ path('coursF_show', {'idC': cour.idC}) }} " name="btn" class="border-btn border-btn2">Voir les détails</a>
+
+                            </div>
                         </div>
                     </div>
                 </div>

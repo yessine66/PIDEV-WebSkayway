@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Cours;
+use App\Entity\Stars;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -149,6 +150,22 @@ class CoursController extends AbstractController
         return $this->render('cours/index.html.twig', [
             'cours' => $cours,
         ]);
+    }
+
+    /**
+     * @Route("/{idC}/reserve", name="cours_reserve", methods={"GET"})
+     */
+    public function reserve($idC): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $cours = $em->getRepository(Cours::class)->find($idC);
+        $cours->setNbparticipant($cours->getNbparticipant()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        return $this->redirectToRoute('coursF_index');
+
     }
 
 
