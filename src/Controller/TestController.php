@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
 use App\Entity\Exam;
 use App\Entity\LigneExam;
 use App\Entity\Question;
@@ -12,11 +13,20 @@ use App\Entity\Utilisateur;
 use App\Form\TestType;
 use App\Repository\TestRepository;
 use Doctrine\ORM\Mapping\OrderBy;
+use Spatie\CalendarLinks\Link;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Admin;
+use App\Entity\Apprenant;
+use App\Entity\Enseignant;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Bundle\SnappyBundle\Snappy;
+use Knp\Snappy\Pdf;
+
+use Knp\Bundle\SnappyBundle\DependencyInjection;
 
 /**
  * @Route("/test")
@@ -62,16 +72,16 @@ class TestController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{idTest}/indexf", name="testf_index", methods={"GET"})
+     * @Route("{idTest}/indexcert", name="test_indexcert", methods={"GET","POST"})
      */
-    public function indexf(Test $test): Response
+    public function indexf(Request $request,TestRepository $testRepository): Response
     {
-        $tests = $this->getDoctrine()
+        $test = $this->getDoctrine()
             ->getRepository(Test::class)
-            ->findAll();
+            ->findOneBy(['id'=>'177']);
 
-        return $this->render('test/index2.html.twig', [
-            'tests' => $tests,
+        return $this->render('test/indexcert.html.twig', [
+            'test' => $test,
         ]);
     }
     /**
@@ -95,6 +105,8 @@ class TestController extends AbstractController
 
         $Test = new Test();
         $Test->setDateTest(new\DateTime());
+        $userxo = $this->getUser();
+       $Test->setId($userxo);
         $Test->setScore($value);
 
 
@@ -156,8 +168,32 @@ class TestController extends AbstractController
 
         return $this->redirectToRoute('test_index');
     }
+/**
+ * @Route ("/pdf", name="test_pdf")
+ */
+public function indexpdf(Request $request, Pdf $snappy){
+   //$snappy= $this->get("knp_snappy.pdf");
+    $html = $this->renderView("test/pdf.html.twig", array(
+        "title"=>"Fraj Yessine",
+        "contenue" => "POO"
+
+    ));
+   $snappy->setOption("enable-local-file-access",true);
+    $filename = "custom_pdf_from_twig";
+    return new Response(
+        $snappy->getOutputFromHtml($html),
+        200,
+        array(
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename ="'.$filename.'.pdf"'
+        )
+    );
 
 
+
+
+
+}
 
 
 

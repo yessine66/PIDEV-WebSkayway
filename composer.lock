@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "ff9815d04c8b85ecfef00769d2881e25",
+    "content-hash": "ad3edb294dee37914f47ffe63c855e75",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2406,6 +2407,140 @@
             "time": "2020-12-17T08:19:16+00:00"
         },
         {
+            "name": "knplabs/knp-snappy",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/snappy.git",
+                "reference": "7bac60fb729147b7ccd8532c07df3f52a4afa8a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/7bac60fb729147b7ccd8532c07df3f52a4afa8a4",
+                "reference": "7bac60fb729147b7ccd8532c07df3f52a4afa8a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "psr/log": "^1.0",
+                "symfony/process": "~3.4||~4.3||~5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~7.4"
+            },
+            "suggest": {
+                "h4cc/wkhtmltoimage-amd64": "Provides wkhtmltoimage-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "h4cc/wkhtmltoimage-i386": "Provides wkhtmltoimage-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+                "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Snappy\\": "src/Knp/Snappy"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/snappy/contributors"
+                }
+            ],
+            "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+            "homepage": "http://github.com/KnpLabs/snappy",
+            "keywords": [
+                "knp",
+                "knplabs",
+                "pdf",
+                "snapshot",
+                "thumbnail",
+                "wkhtmltopdf"
+            ],
+            "support": {
+                "issues": "https://github.com/KnpLabs/snappy/issues",
+                "source": "https://github.com/KnpLabs/snappy/tree/master"
+            },
+            "time": "2020-01-20T08:30:30+00:00"
+        },
+        {
+            "name": "knplabs/knp-snappy-bundle",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
+                "reference": "0f81887b0379a2731b869289bf3d880f34dfd423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/0f81887b0379a2731b869289bf3d880f34dfd423",
+                "reference": "0f81887b0379a2731b869289bf3d880f34dfd423",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-snappy": "^1.2",
+                "php": ">=7.2.5",
+                "symfony/framework-bundle": "^4.4|^5.1"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.11",
+                "symfony/asset": "^4.4|^5.1",
+                "symfony/finder": "^4.4|^5.1",
+                "symfony/phpunit-bridge": "^4.4|^5.1",
+                "symfony/security-csrf": "^4.4|^5.1",
+                "symfony/templating": "^4.4|^5.1",
+                "symfony/validator": "^4.4|^5.1",
+                "symfony/yaml": "^4.4|^5.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Bundle\\SnappyBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
+                }
+            ],
+            "description": "Easily create PDF and images in Symfony by converting Twig/HTML templates.",
+            "homepage": "http://github.com/KnpLabs/KnpSnappyBundle",
+            "keywords": [
+                "bundle",
+                "knp",
+                "knplabs",
+                "pdf",
+                "snappy"
+            ],
+            "support": {
+                "issues": "https://github.com/KnpLabs/KnpSnappyBundle/issues",
+                "source": "https://github.com/KnpLabs/KnpSnappyBundle/tree/v1.8.0"
+            },
+            "time": "2020-11-16T07:45:16+00:00"
+        },
+        {
             "name": "laminas/laminas-code",
             "version": "3.4.1",
             "source": {
@@ -3170,6 +3305,64 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v5.6.1"
             },
             "time": "2020-08-25T19:10:18+00:00"
+        },
+        {
+            "name": "spatie/calendar-links",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/calendar-links.git",
+                "reference": "aa984fb84d218cc8962b8f89ef46437298534c24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/calendar-links/zipball/aa984fb84d218cc8962b8f89ef46437298534c24",
+                "reference": "aa984fb84d218cc8962b8f89ef46437298534c24",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0",
+                "spatie/phpunit-snapshot-assertions": "^4.0",
+                "vimeo/psalm": "^4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\CalendarLinks\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate add to calendar links for Google, iCal and other calendar systems",
+            "homepage": "https://github.com/spatie/calendar-links",
+            "keywords": [
+                "calendar-links",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/calendar-links/issues",
+                "source": "https://github.com/spatie/calendar-links/tree/1.6.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-04-22T15:16:31+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

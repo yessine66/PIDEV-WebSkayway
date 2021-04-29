@@ -1,57 +1,10 @@
 
-
-{#
-
-<main class="login-body" data-vide-bg="assets/img/login-bg.mp4" style="position: relative;"><div style="position: absolute; z-index: -1; inset: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;"><video autoplay="" loop="" muted="" style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); visibility: visible; opacity: 1; width: auto; height: 1302px;"><source src="assets/img/login-bg.mp4" type="video/mp4"><source src="assets/img/login-bg.webm" type="video/webm"><source src="assets/img/login-bg.ogv" type="video/ogg"></video></div>
-#}
-    <!-- Login Admin -->
-{#
-<form class="form-default" action="login-bg.mp4" method="POST">
-
-    <div class="login-form">
-        <!-- logo-login -->
-        <div class="logo-login">
-            <a href="index.html"><img src="assets/img/logo/loder.png" alt=""></a>
-        </div>
-        <h2>Login Here</h2>
-        <div class="form-input">
-            <label for="name">Email</label>
-            <input type="email" name="email" placeholder="Email">
-        </div>
-        <div class="form-input">
-            <label for="name">Password</label>
-            <input type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-input pt-30">
-            <input type="submit" name="submit" value="login">
-        </div>
-
-        <!-- Forget Password -->
-        <a href="#" class="forget">Forget Password</a>
-        <!-- Forget Password -->
-        <a href="register.html" class="registration">Registration</a>
-    </div>
-</form>
-#}
-{#
-<form class="login-container" id="form1" action="{{ path('login') }}" method="post">
-    <p><input type="text" id="username" name="_username" value="{{ last_username }}"></p>
-    <p><input type="password" id="password" name="_password"></p>
-    <p><input type="submit"  name="button" id="button" value="Valider"></p>
-</form>
-
-<!-- /end login form -->
-</main>
-
-
-#}
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> App landing</title>
+    <title> Forget Password</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -92,7 +45,7 @@
 
 <main class="login-body" data-vide-bg="assets/img/login-bg.mp4">
     <!-- Login Admin -->
-    <form class="login-container" id="form1" action="{{ path('login') }}" method="post">
+    <form class="login-container" id="form9" action="{{ path('login') }}" method="get">
 
 
         <div class="login-form">
@@ -100,23 +53,17 @@
             <div class="logo-login">
                 <a href="index.html"><img src="assets/img/logo/logoxx.png" alt=""></a>
             </div>
-            <h2>Login Here</h2>
+            <h2>Recover Your Password</h2>
             <div class="form-input">
-                <label for="name">Username</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}">
+                <label for="name">Mail</label>
+                <input type="text" name="mail" placeholder="Mail...">
             </div>
-            <div class="form-input">
-                <label for="name">Password</label>
-                <input type="password" id="password" name="_password">
-            </div>
+
             <div class="form-input pt-30">
                 <input type="submit"  name="button" id="button" value="Valider">
             </div>
 
-            <!-- Forget Password -->
-            <a href="{{ path('forget') }}" class="forget">Forget Password</a>
-            <!-- Forget Password -->
-            <a href="{{path('account_new')}}" class="registration">Registration</a>
+            <a href="{{path('login')}}" class="registration">Back</a>
         </div>
     </form>
     <!-- /end login form -->

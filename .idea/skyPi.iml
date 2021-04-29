@@ -123,6 +123,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/endroid/installer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/beberlei/doctrineextensions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mercuryseries/flashy-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/calendar-links" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

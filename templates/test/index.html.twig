@@ -65,8 +65,8 @@
 
 
                 {% endfor %}
-                <form method="post" action="{{ path('test_newwwww') }}">
-                    <input type="submit" onclick="valider()" name="ProcessButton" value="Voir la note">
+                <form method="post" action="{{ path('test_indexcert', {'idTest':   'tests.idTest|last'}) }}">
+                    <input type="submit" onclick="valider()" name="ProcessButton" value="Voir le résultat">
                     <input type="hidden" name="score" id="score" type="number">
                 </form>
 
@@ -83,7 +83,7 @@
         <h3 class="text-heading">Timer</h3>
         <div id="countdown"></div>
         <script>
-            let startingMinutes = 0.1;
+            let startingMinutes = 30;
 
 
             let time = startingMinutes * 60;
@@ -137,7 +137,7 @@
 
 
         </script>
-    {% endblock %}
+
 
     </form>
     </aside>
@@ -147,6 +147,7 @@
     </div>
     </section>
     <!-- Blog Area End -->
+    {% endblock %}
     </main>
 
 {% endblock %}

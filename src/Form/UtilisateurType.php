@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 class UtilisateurType extends AbstractType
 {
@@ -43,6 +44,11 @@ class UtilisateurType extends AbstractType
             ])
            //->add('saveAndAdd', SubmitType::class)
             //->add('creCompte')
+           ->add('captcha', CaptchaType::class, array(
+               'width' => 200,
+               'height' => 50,
+               'length' => 6,
+           ));
         ;
     }
 
