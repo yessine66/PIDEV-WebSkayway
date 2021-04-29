@@ -4,10 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Feedback;
 use App\Form\FeedbackType;
+use App\Repository\ReclamationRepository;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\FeedbackRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/feedback")
@@ -30,16 +35,56 @@ class FeedbackController extends AbstractController
     /**
      * @Route("/index", name="feedbackF_index", methods={"GET"})
      */
-    public function indexf(): Response
+    public function indexf(FeedbackRepository $feedbackRepository,PaginatorInterface $paginator,Request $request): Response
     {
-        $feedbacks = $this->getDoctrine()
-            ->getRepository(Feedback::class)
-            ->findAll();
 
+
+            $data = $paginator->paginate(
+            $feedbackRepository->findAll() ,
+            $request->query->getInt('page' , 1) ,
+            3
+        );
         return $this->render('feedback/indexF.html.twig', [
-            'feedbacks' => $feedbacks,
+            'feedback' => $data,
         ]);
     }
+    /**
+
+     * @Route("/consulterFeed", name="contrat", methods={"GET"})
+     */
+    public function consulterContrat(FeedbackRepository $or): Response
+    {
+
+
+        $rec=$or->findAll() ; // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('feedback/feed.html.twig', [
+            'feedbacks' => $rec,
+
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+    }
+
 
     /**
      * @Route("/new", name="feedback_new", methods={"GET","POST"})
@@ -73,6 +118,7 @@ class FeedbackController extends AbstractController
             'feedback' => $feedback,
         ]);
     }
+
     /**
      * @Route("/index/{idF}", name="feedback_showF", methods={"GET"})
      */
@@ -116,4 +162,16 @@ class FeedbackController extends AbstractController
 
         return $this->redirectToRoute('feedbackF_index');
     }
+    /**
+     * @Route("/recherche" , name="Recherche",methods={"GET","POST"})
+     */
+    function Recherche(Request $request, FeedbackRepository $feedbackRepository): Response
+    {
+        $data=$request->get('Recherche');
+        $feedbacks=$feedbackRepository->findBy(['avis'=>$data]);
+        return $this->render('feedback/indexF.html.twig',[
+            'feedback'=>$feedbacks ]);
+
+    }
+
 }

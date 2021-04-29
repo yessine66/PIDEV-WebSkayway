@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReclamationRepository")
  */
 class Reclamation
 {
@@ -47,6 +49,7 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="date_envoi", type="string", length=50, nullable=false)
+
      */
     private $dateEnvoi;
 
@@ -54,6 +57,7 @@ class Reclamation
      * @var string|null
      *
      * @ORM\Column(name="cours", type="string", length=50, nullable=true)
+
      */
     private $cours;
 
@@ -61,6 +65,7 @@ class Reclamation
      * @var string|null
      *
      * @ORM\Column(name="enseignant", type="string", length=50, nullable=true)
+
      */
     private $enseignant;
 
@@ -71,6 +76,7 @@ class Reclamation
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+
      */
     private $id;
 
@@ -143,6 +149,9 @@ class Reclamation
     {
         return $this->id;
     }
+
+
+
 
     public function setId(?Utilisateur $id): self
     {

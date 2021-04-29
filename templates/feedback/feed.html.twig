@@ -1,0 +1,33 @@
+
+        <table class="table" id="tableac">
+
+            <thead>
+            <tr>
+                <th>IdF</th>
+                <th>Objet</th>
+                <th>Text</th>
+                <th>Avis</th>
+                <!--   <th>actions</th> -->
+            </tr>
+            </thead>
+            <tbody>
+            {% for feedback in feedback %}
+                <tr>
+                    <td>{{ feedback.idF }}</td>
+                    <td>{{ feedback.objet }}</td>
+                    <td>{{ feedback.text }}</td>
+                    <td>{{ feedback.avis }}</td>
+                    <!--   <td>
+                    <a href="{{ path('feedback_show', {'idF': feedback.idF}) }}">show</a>
+                    <a href="{{ path('feedback_edit', {'idF': feedback.idF}) }}">edit</a>
+                </td> -->
+
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+

@@ -1,13 +1,18 @@
 {% extends 'baseF.html.twig' %}
-
+{% block head %}
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+{% endblock %}
 {% block title %}Reclamation index{% endblock %}
 {% block contentfr %}
+
 {% block bodyfr %}
 
 
 
 
 <main>
+
     <!--? slider Area Start-->
     <section class="slider-area slider-area2">
         <div class="slider-active">
@@ -17,12 +22,13 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-11 col-md-12">
                             <div class="hero__caption hero__caption2">
-                                <h1 data-animation="bounceIn" data-delay="0.2s">Company insights</h1>
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Reclamations</h1>
                                 <!-- breadcrumb Start-->
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ asset('index.html') }}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ asset('#') }}">Blog</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ asset('#') }}">Contact</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('reclamationF_index') }}">Reclamation</a></li>
                                     </ol>
                                 </nav>
                                 <!-- breadcrumb End -->
@@ -59,6 +65,8 @@
                                         <li><a href="{{ path('reclamation_showF', {'idRec': reclamation.idRec}) }}"><i class="fa fa-user"></i> show</a></li>
                                         <li><a href="{{ path('reclamation_delete', {'idRec': reclamation.idRec}) }}"><i class="fa fa-trash"></i> delete</a></li>
                                         <li><a href="{{ path('reclamation_edit', {'idRec': reclamation.idRec}) }}"><i class="fa fa-edit"></i> edit</a></li>
+
+
                                     </ul>
                                 </div>
 
@@ -93,26 +101,19 @@
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <form action="#">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                               onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = 'Search Keyword'">
-                                        <div class="input-group-append">
-                                            <button class="btns" type="button"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                        type="submit">Search</button>
+                                <h4 class="widget_title" style="color: #2d2d2d;">Recherche</h4>
+                                <form method="post" action="{{ path('Recherche') }}" role="Recherche" class="sr-input-func">
+                                    <input type="text" placeholder="Recherche..."  name="Recherche" class="search-int form-control">
+                                    <a href="#"><i class="fa fa-search"></i></a>
+                                </form>
                             </form>
+
                         </aside>
                         <aside class="single_sidebar_widget newsletter_widget">
                             <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
                             <form action="#">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                    <input type="text" id="search" class="form-control" placeholder="Search">
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                         type="submit">Subscribe</button>
@@ -123,8 +124,18 @@
             </div>
         </div>
     </section>
-    <!-- Blog Area End -->
-</main>
 
+</main>
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    {% endblock %}
+    {% block javascripts %}
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Load Flashy default JavaScript -->
+        <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% endblock %}
 {% endblock %}

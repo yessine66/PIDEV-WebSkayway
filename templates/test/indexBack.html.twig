@@ -12,6 +12,7 @@
         <thead>
         <tr>
             <th>IdTest</th>
+            <th>User </th>
             <th>Date Test</th>
             <th>Score</th>
         </tr>
@@ -20,6 +21,7 @@
         {% for test in tests %}
             <tr>
                 <td>{{ test.idTest }}</td>
+                <td>{{ test.id.username }}</td>
                 <td>{{ test.dateTest ? test.dateTest|date('Y-m-d') : '' }}</td>
                 <td>{{ test.score }}</td>
 

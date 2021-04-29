@@ -4,15 +4,17 @@
 {% block content %}
 {% block body %}
     <h1>Feedback index</h1>
-
-    <table class="table">
+<div class="filter">
+</div>
+    <table class="table" id="tableac">
+        <input type="text" id="search" class="form-control" placeholder='Search'>
         <thead>
             <tr>
                 <th>IdF</th>
                 <th>Objet</th>
                 <th>Text</th>
                 <th>Avis</th>
-                <th>actions</th>
+             <!--   <th>actions</th> -->
             </tr>
         </thead>
         <tbody>
@@ -22,11 +24,69 @@
                 <td>{{ feedback.objet }}</td>
                 <td>{{ feedback.text }}</td>
                 <td>{{ feedback.avis }}</td>
-                <td>
+             <!--   <td>
                     <a href="{{ path('feedback_show', {'idF': feedback.idF}) }}">show</a>
                     <a href="{{ path('feedback_edit', {'idF': feedback.idF}) }}">edit</a>
-                </td>
+                </td> -->
             </tr>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
+"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#search').keyup(function(){
+                        search_table($(this).val());
+                    });
+                    function search_table(value){
+                        $('#tableac tbody tr').each(function(){
+                            var found = 'false';
+                            $(this).each(function(){
+                                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                {
+                                    found = 'true';
+                                }
+                            });
+                            if(found === 'true')
+                            {
+                                $(this).show();
+
+                            }
+                            else
+                            {
+                                $(this).hide();
+
+                            }
+                        });
+                    }
+                });
+            </script><script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $('#search').keyup(function(){
+                        search_table($(this).val());
+                    });
+                    function search_table(value){
+                        $('#tableac tbody tr').each(function(){
+                            var found = 'false';
+                            $(this).each(function(){
+                                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                                {
+                                    found = 'true';
+                                }
+                            });
+                            if(found === 'true')
+                            {
+                                $(this).show();
+
+                            }
+                            else
+                            {
+                                $(this).hide();
+
+                            }
+                        });
+                    }
+                });
+            </script>
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
@@ -35,6 +95,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('feedback_new') }}">Create new</a>
+   <!-- <a href="{{ path('feedback_new') }}">Create new</a> -->
 {% endblock %}
 {% endblock %}
