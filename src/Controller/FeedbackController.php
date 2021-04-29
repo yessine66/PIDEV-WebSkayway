@@ -48,41 +48,6 @@ class FeedbackController extends AbstractController
             'feedback' => $data,
         ]);
     }
-
-
-
-    /**
-     * @Route("/new", name="feedback_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $feedback = new Feedback();
-        $form = $this->createForm(FeedbackType::class, $feedback);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($feedback);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('feedbackF_index');
-        }
-
-        return $this->render('feedback/new.html.twig', [
-            'feedback' => $feedback,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{idF}", name="feedback_show", methods={"GET"})
-     */
-    public function show(Feedback $feedback): Response
-    {
-        return $this->render('feedback/show.html.twig', [
-            'feedback' => $feedback,
-        ]);
-    }
     /**
 
      * @Route("/consulterFeed", name="contrat", methods={"GET"})
@@ -119,6 +84,41 @@ class FeedbackController extends AbstractController
         ]);
 
     }
+
+
+    /**
+     * @Route("/new", name="feedback_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $feedback = new Feedback();
+        $form = $this->createForm(FeedbackType::class, $feedback);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($feedback);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('feedbackF_index');
+        }
+
+        return $this->render('feedback/new.html.twig', [
+            'feedback' => $feedback,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{idF}", name="feedback_show", methods={"GET"})
+     */
+    public function show(Feedback $feedback): Response
+    {
+        return $this->render('feedback/show.html.twig', [
+            'feedback' => $feedback,
+        ]);
+    }
+
     /**
      * @Route("/index/{idF}", name="feedback_showF", methods={"GET"})
      */
