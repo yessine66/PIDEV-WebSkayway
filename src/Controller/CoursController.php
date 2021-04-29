@@ -10,7 +10,7 @@ use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Knp\Component\Pager\PaginatorInterface;
 /**
  * @Route("/cours")
  */
@@ -19,7 +19,7 @@ class CoursController extends AbstractController
     /**
      * @Route("/index", name="coursF_index", methods={"GET"})
      */
-    public function indexF(): Response
+    public function indexF(PaginatorInterface $paginator): Response
     {
         $cours = $this->getDoctrine()
             ->getRepository(Cours::class)
