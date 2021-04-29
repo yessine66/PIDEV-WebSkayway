@@ -74,7 +74,7 @@ class ReclamationController extends AbstractController
 
             $email = (new Email())
                     ->from('ibtihelawledsoula@gmail.com')
-                    ->to('ibtihel.awledsoula@esprit.tn')
+                    ->to('yessine.fraj@esprit.tn')
                     ->subject('New Claim '.$form["objet"]->getData().'')
                     ->text('Sending emails is fun again!')
                     ->html('<p> A new claim has been created 
