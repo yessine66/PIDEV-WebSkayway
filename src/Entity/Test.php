@@ -122,7 +122,7 @@ class Test
     /**
      * @return \Utilisateur
      */
-    public function getId(): \Utilisateur
+    public function getId(): ?Utilisateur
     {
         return $this->id;
     }
@@ -130,9 +130,10 @@ class Test
     /**
      * @param \Utilisateur $id
      */
-    public function setId(\Utilisateur $id): void
+    public function setId(?Utilisateur $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
 

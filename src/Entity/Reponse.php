@@ -74,22 +74,7 @@ class Reponse
      */
     private $idQ;
 
-    /**
-     * Reponse constructor.
-     * @param string $textR1
-     * @param string $textR2
-     * @param string $textR3
-     * @param string $textR4
-     * @param \Question $idQ
-     */
-    public function __construct(string $textR1, string $textR2, string $textR3, string $textR4, \Question $idQ)
-    {
-        $this->textR1 = $textR1;
-        $this->textR2 = $textR2;
-        $this->textR3 = $textR3;
-        $this->textR4 = $textR4;
-        $this->idQ = $idQ;
-    }
+   
 
     /**
      * @return int

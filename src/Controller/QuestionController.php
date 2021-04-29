@@ -9,6 +9,7 @@ use App\Form\QuestionType;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
 use App\Repository\QuestionRepository;
+use Spatie\CalendarLinks\Link;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -216,4 +217,32 @@ class QuestionController extends AbstractController
     }
 
 
+    public function CalendarRedirect(Test $test)
+    {
+        $eventDate = $test->getDateTest();
+
+        $from =\DateTime::createFromFormat('Y-m-d', $eventDate->format('Y-m-d'));
+        $to = \DateTime::createFromFormat('Y-m-d', $eventDate->format('Y-m-d'));
+
+        $link = Link::create('Test à faire: tâche', $from, $to)
+            ->description($test->getDescription())
+            ->address( $test->getLocationEvent());
+        echo $link->google();
+        $path =  $link->google();
+
+
+
+
+        $path= $this->CalendarRedirect($test);
+        $session= $this->get('session');
+        $session->set('path',$path);
+
+
+        return $this->redirect($session->get('path'));
+
+
+
+        // return $this->redirect($link->google());
+
+    }
 }
