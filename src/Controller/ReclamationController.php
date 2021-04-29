@@ -8,10 +8,21 @@ use App\Repository\ReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Entity\Admin;
+use App\Entity\Apprenant;
+use App\Entity\Enseignant;
+use App\Entity\Utilisateur;
+use App\Form\ApprenantType;
+use App\Form\EnseignantType;
+use App\Form\UtilisateurType;
+use App\Repository\UtilisateurRepository;
+
 
 /**
  * @Route("/reclamation")
@@ -48,16 +59,32 @@ class ReclamationController extends AbstractController
      /**
      * @Route("/new", name="reclamation_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, MailerInterface $mailer): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $idUserCo= $this->getUser();
+           // dd($idUserCo);
+            $reclamation->setId($idUserCo);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reclamation);
             $entityManager->flush();
+
+            $email = (new Email())
+                    ->from('ibtihelawledsoula@gmail.com')
+                    ->to('ibtihel.awledsoula@esprit.tn')
+                    ->subject('New Claim '.$form["objet"]->getData().'')
+                    ->text('Sending emails is fun again!')
+                    ->html('<p> A new claim has been created 
+                               <br> Text='.$reclamation->getTextR().'
+                               <br> Date='.$reclamation->getDateEnvoi().'
+                             <br>  Cours='.$reclamation->getCours().'
+                             <br> Enseignant='.$reclamation->getEnseignant().' </p>');
+
+
+        $mailer->send($email);
 
             return $this->redirectToRoute('reclamationF_index');
         }
@@ -66,6 +93,7 @@ class ReclamationController extends AbstractController
             'reclamation' => $reclamation,
             'form' => $form->createView(),
         ]);
+
     }
     /**
 
@@ -165,6 +193,7 @@ class ReclamationController extends AbstractController
      */
     public function delete(Request $request, Reclamation $reclamation,FlashyNotifier $flashy): Response
     {
+
         if ($this->isCsrfTokenValid('delete'.$reclamation->getIdRec(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($reclamation);

@@ -57,6 +57,10 @@
                                         <br>
                                         <ul class="blog-info-link">
                                             <li><a href="{{ path('feedback_showF', {'idF': feedback.idF}) }}"><i class="fa fa-user"></i> show</a></li>
+                                            {% if app.user.id == false %}
+
+
+                                            {% endif %}
                                             <li><a href="{{ path('feedback_delete', {'idF': feedback.idF}) }}"><i class="fa fa-trash"></i> delete</a></li>
                                             <li><a href="{{ path('feedback_edit', {'idF': feedback.idF}) }}"><i class="fa fa-edit"></i> edit</a></li>
                                         </ul>

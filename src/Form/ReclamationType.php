@@ -23,7 +23,8 @@ class ReclamationType extends AbstractType
             ->add('dateEnvoi')
             ->add('cours')
             ->add('enseignant')
-            ->add('id')
+           // ->add('id')
+
         ;
     }
 
