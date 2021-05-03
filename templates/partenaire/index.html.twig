@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des partenaires {% endblock %}
+
+{% block body %}
+    {% block content%}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1> Liste des partenaires </h1>
+
+
+
+        <table id ="tableac" class="table" >
+            <input type="text" id="search" name="search" class="form-control" placeholder="rechercher .....">
+            <thead>
+            <tr>
+                <th>Id Partenaire</th>
+                <th>Nom Partenaire</th>
+                <th>Domaine</th>
+                <th>Date Partenariat</th>
+                <th>Mail</th>
+                <th>Logo</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for partenaire in partenaires %}
+                <tr>
+                    <td>{{ partenaire.idP }}</td>
+                    <td>{{ partenaire.nomP }}</td>
+                    <td>{{ partenaire.domaine }}</td>
+                    <td>{{ partenaire.dateP }}</td>
+                    <td>{{ partenaire.mailp }}</td>
+                    <td><img src="{{ asset('logoP/')~ partenaire.logop ~''}}"  width="30%" height="auto" display="block"  border="0"></td>
+                    <td>
+                        <button type=“button” class="button-show"><a href="{{ path('partenaire_show', {'idP': partenaire.idP}) }}">show</a></button>
+                        <button type=“button” class="button-edit"><a href="{{ path('partenaire_edit', {'idP': partenaire.idP}) }}">edit</a></button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <button type=“button” class="button-create"><a href="{{ path('partenaire_new') }}">Create new</a></button>
+        <button type=“button” class="button-create"><a href="{{ path('triM') }}">trier</a></button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <style>
+            .button-create {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fff3cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+            .button-show {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #d3e0ea;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+            .button-edit {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #fde8cd;
+                font-size: 16px;
+                font-weight: bold;
+                color: red;
+            }
+        </style>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#search').keyup(function(){
+                    search_table($(this).val());
+                });
+                function search_table(value){
+                    $('#tableac tbody tr').each(function(){
+                        var found = 'false';
+                        $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                        });
+                        if(found === 'true')
+                        {
+                            $(this).show();
+
+                        }
+                        else
+                        {
+                            $(this).hide();
+
+                        }
+                    });
+                }
+            });
+        </script>
+
+    {% endblock %}
+{% endblock %}

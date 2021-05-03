@@ -1,0 +1,74 @@
+{% extends 'baseF.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+{% block contentfr %}
+{% block bodyfr %}
+<main>
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Company insights</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ asset('index.html') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ asset('#') }}">Blog</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start-->
+    <section class="blog_area section-padding">
+        <div class="container">
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdRec</th>
+                <td>{{ reclamation.idRec }}</td>
+            </tr>
+            <tr>
+                <th>Objet</th>
+                <td>{{ reclamation.objet }}</td>
+            </tr>
+            <tr>
+                <th>TextR</th>
+                <td>{{ reclamation.textR }}</td>
+            </tr>
+            <tr>
+                <th>DateEnvoi</th>
+                <td>{{ reclamation.dateEnvoi }}</td>
+            </tr>
+            <tr>
+                <th>Cours</th>
+                <td>{{ reclamation.cours }}</td>
+            </tr>
+            <tr>
+                <th>Enseignant</th>
+                <td>{{ reclamation.enseignant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamation_index') }}">back to list</a>
+
+    <a href="{{ path('reclamation_edit', {'idRec': reclamation.idRec}) }}">edit</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+        </div>
+    </section>
+{% endblock %}
+{% endblock %}

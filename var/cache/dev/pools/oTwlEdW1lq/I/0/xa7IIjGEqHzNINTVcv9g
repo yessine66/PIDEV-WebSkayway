@@ -1,0 +1,44 @@
+<?php //%255BApp%255CEntity%255CReclamation%2524objet%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'objet',
+            ],
+            'length' => [
+                50,
+            ],
+            'maxMessage' => [
+                1 => 'l objet doit contenir au maximum {{ limit }} caractéres ',
+            ],
+            'minMessage' => [
+                1 => 'l objet doit contenir au moins {{ limit }} caractéres ',
+            ],
+            'max' => [
+                1 => 25,
+            ],
+            'min' => [
+                1 => 4,
+            ],
+            'allowEmptyString' => [
+                1 => false,
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

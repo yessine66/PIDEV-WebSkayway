@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponse index{% endblock %}
+ {% block content %}
+     {% block body %}
+
+         <h1>Reponse index</h1>
+
+         <table  id ="tableac" >
+             <thead>
+
+             <input type="text" id="search" name="search" class="form-control" placeholder="Search by .....">
+             <thead>
+             <tr>
+                 <th>ID</th>
+                 <th>Réponse correcte</th>
+                 <th>Réponse incorrecte 1</th>
+                 <th>Réponse incorrecte 2</th>
+                 <th>Réponse incorrecte 3</th>
+                 <th>user</th>
+                 <th>Question</th>
+                 <th>actions</th>
+             </tr>
+             </thead>
+             <tbody>
+             {% for reponse in reponses %}
+                 <tr>
+                     <td>{{ reponse.idR }}</td>
+                     <td>{{ reponse.textR1 }}</td>
+                     <td>{{ reponse.textR2 }}</td>
+                     <td>{{ reponse.textR3 }}</td>
+                     <td>{{ reponse.textR4 }}</td>
+                     <td>{{ reponse.id.username }}</td>
+                     <td>{{ reponse.idQ.textQ }}</td>
+
+                     <td>
+                         <button type=“button” class="button-show"><a href="{{ path('reponse_show', {'idR': reponse.idR}) }}">show</a></button>
+                         <button type=“button” class="button-edit"><a href="{{ path('reponse_edit', {'idR': reponse.idR}) }}">edit</a></button>
+                     </td>
+                 </tr>
+             {% else %}
+                 <tr>
+                     <td colspan="7">no records found</td>
+                 </tr>
+             {% endfor %}
+             </tbody>
+         </table>
+
+         <button type=“button” class="button-create"><a href="{{ path('reponse_new') }}">Create new</a></button>
+
+         <style>
+
+             .button-create {
+                 display: inline-block;
+                 padding: 12px 18px;
+                 cursor: pointer;
+                 border-radius: 5px;
+                 background-color: #fff3cd;
+                 font-size: 16px;
+                 font-weight: bold;
+                 color: red;
+             }
+             .button-show {
+                 display: inline-block;
+                 padding: 12px 18px;
+                 cursor: pointer;
+                 border-radius: 5px;
+                 background-color: #d3e0ea;
+                 font-size: 16px;
+                 font-weight: bold;
+                 color: red;
+             }
+             .button-edit {
+                 display: inline-block;
+                 padding: 12px 18px;
+                 cursor: pointer;
+                 border-radius: 5px;
+                 background-color: #fde8cd;
+                 font-size: 16px;
+                 font-weight: bold;
+                 color: red;
+             }
+
+         </style>
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+         <script>
+             $(document).ready(function(){
+                 $('#search').keyup(function(){
+                     search_table($(this).val());
+                 });
+                 function search_table(value){
+                     $('#tableac tbody tr').each(function(){
+                         var found = 'false';
+                         $(this).each(function(){
+                             if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                             {
+                                 found = 'true';
+                             }
+                         });
+                         if(found === 'true')
+                         {
+                             $(this).show();
+
+                         }
+                         else
+                         {
+                             $(this).hide();
+
+                         }
+                     });
+                 }
+             });
+         </script>
+     {% endblock %}
+
+ {% endblock %}

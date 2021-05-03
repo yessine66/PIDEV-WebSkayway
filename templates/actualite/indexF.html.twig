@@ -1,0 +1,107 @@
+{% extends 'baseF.html.twig' %}
+{% block contentfr %}
+
+{% block bodyfr %}
+<main>
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Actualités</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('home_contoller') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ path('actualite_indexF') }}">News</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start-->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for actualite in actualites %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
+                                <a href="{{ path('actualite_showF', {'idAc': actualite.idAc}) }}" class="blog_item_date">
+                                    <h3>{{ actualite.titreAc }}</h3>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <ul>
+                                <li>
+                                    <h2 class="blog-head" style="color: #2d2d2d;">{{ actualite.description }}</h2>
+                                </li>
+                                <li><i class="blog-info-link" style="float: right;">{{ actualite.dateAjout ? actualite.dateAjout|date('Y-m-d') : '' }}</i></li>
+                                </ul>
+                            </div>
+
+                        </article>
+                        {% else %}
+                            <h1>no records found</h1>
+                        {% endfor %}
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="{{ asset('#') }}" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="{{ asset('#') }}" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="{{ asset('#') }}" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="{{ asset('#') }}" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                               onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btns" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Search</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Area End -->
+</main>
+{% endblock %}
+
+{% endblock %}

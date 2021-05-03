@@ -1,0 +1,66 @@
+{% extends 'baseF.html.twig' %}
+
+{% block title %}Feedback{% endblock %}
+{% block contentfr %}
+{% block bodyfr %}
+<main>
+    <!--? slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">Company insights</h1>
+                                <!-- breadcrumb Start-->
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ asset('index.html') }}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ asset('#') }}">Blog</a></li>
+                                    </ol>
+                                </nav>
+                                <!-- breadcrumb End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start-->
+    <section class="blog_area section-padding">
+        <div class="container">
+    <h1>Feedback</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdF</th>
+                <td>{{ feedback.idF }}</td>
+            </tr>
+            <tr>
+                <th>Objet</th>
+                <td>{{ feedback.objet }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ feedback.text }}</td>
+            </tr>
+            <tr>
+                <th>Avis</th>
+                <td>{{ feedback.avis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('feedback_index') }}">back to list</a>
+
+    <a href="{{ path('feedback_edit', {'idF': feedback.idF}) }}">edit</a>
+
+    {{ include('feedback/_delete_form.html.twig') }}
+        </div>
+    </section>
+{% endblock %}
+{% endblock %}
