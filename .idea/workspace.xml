@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="780cf354-a910-4a8d-a223-ac992d6c65b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/skyPi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/skyPi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,6 +213,7 @@
       <workItem from="1619585525746" duration="2692000" />
       <workItem from="1619600582079" duration="4522000" />
       <workItem from="1619612951050" duration="37026000" />
+      <workItem from="1620086316361" duration="2130000" />
     </task>
     <servers />
   </component>
