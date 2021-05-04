@@ -15,6 +15,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * message="le code  doit etre unique"
  * )
  */
+
+
 class Promotion
 {
     /**
