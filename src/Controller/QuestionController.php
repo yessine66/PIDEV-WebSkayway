@@ -245,4 +245,5 @@ class QuestionController extends AbstractController
         // return $this->redirect($link->google());
 
     }
+
 }

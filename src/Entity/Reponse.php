@@ -74,7 +74,7 @@ class Reponse
      */
     private $idQ;
 
-   
+
 
     /**
      * @return int

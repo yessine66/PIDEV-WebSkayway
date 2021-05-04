@@ -41,6 +41,7 @@ return [
         '/partenairelist' => [[['_route' => 'triM', '_controller' => 'App\\Controller\\PartenaireController::OrderByMailQB'], null, null, null, false, false, null]],
         '/partenairecontactP' => [[['_route' => 'contactP', '_controller' => 'App\\Controller\\PartenaireController::contactP'], null, null, null, false, false, null]],
         '/promotion' => [[['_route' => 'promotion_index', '_controller' => 'App\\Controller\\PromotionController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/promotion/p' => [[['_route' => 'p', '_controller' => 'App\\Controller\\PromotionController::a'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promotion/Front' => [[['_route' => 'promotion_indexR', '_controller' => 'App\\Controller\\PromotionController::indexR'], null, ['GET' => 0], null, false, false, null]],
         '/promotion/new' => [[['_route' => 'promotion_new', '_controller' => 'App\\Controller\\PromotionController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promotion triRed' => [[['_route' => 'triRed', '_controller' => 'App\\Controller\\PromotionController::TriRed'], null, null, null, false, false, null]],
