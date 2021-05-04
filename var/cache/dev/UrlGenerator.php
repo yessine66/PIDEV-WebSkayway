@@ -76,6 +76,7 @@ return [
     'triM' => [[], ['_controller' => 'App\\Controller\\PartenaireController::OrderByMailQB'], [], [['text', '/partenairelist']], [], []],
     'contactP' => [[], ['_controller' => 'App\\Controller\\PartenaireController::contactP'], [], [['text', '/partenairecontactP']], [], []],
     'promotion_index' => [[], ['_controller' => 'App\\Controller\\PromotionController::index'], [], [['text', '/promotion/']], [], []],
+    'p' => [[], ['_controller' => 'App\\Controller\\PromotionController::a'], [], [['text', '/promotion/p']], [], []],
     'promotion_indexR' => [[], ['_controller' => 'App\\Controller\\PromotionController::indexR'], [], [['text', '/promotion/Front']], [], []],
     'promotion_new' => [[], ['_controller' => 'App\\Controller\\PromotionController::new'], [], [['text', '/promotion/new']], [], []],
     'promotion_show' => [['idProm'], ['_controller' => 'App\\Controller\\PromotionController::show'], [], [['variable', '/', '[^/]++', 'idProm'], ['text', '/promotion']], [], []],
