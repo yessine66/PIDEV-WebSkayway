@@ -5055,15 +5055,7 @@
       <argument type="service" id="security.authentication.retry_entry_point"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.n7K7cE4"/>
-        <argument type="collection">
-          <argument>ROLE_ADMIN</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-    </service>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false"/>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.untracked_token_storage"/>
@@ -5554,9 +5546,6 @@
         <argument key="security.firewall.map.context.dev" type="service" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
-    </service>
-    <service id=".security.request_matcher.n7K7cE4" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/utilisateur</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -6579,7 +6568,21 @@
         <argument key="repository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.H8HAa9s" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Mc2uw4H" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\UtilisateurRepository"/>
+        <argument key="serializerInterfacex" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.vYnVyT4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uuYpl0Q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActualiteController::delete" type="service" id=".service_locator.6V16CKq"/>
@@ -6655,8 +6658,10 @@
         <argument key="App\Controller\ThemeController::delete" type="service" id=".service_locator.kPFVabb"/>
         <argument key="App\Controller\ThemeController::edit" type="service" id=".service_locator.kPFVabb"/>
         <argument key="App\Controller\ThemeController::show" type="service" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\UtilisateurController::addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
         <argument key="App\Controller\UtilisateurController::delete" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController::edit" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
         <argument key="App\Controller\UtilisateurController::new" type="service" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\UtilisateurController::orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\UtilisateurController::show" type="service" id=".service_locator.z1iWlPx"/>
@@ -6734,8 +6739,10 @@
         <argument key="App\Controller\ThemeController:delete" type="service" id=".service_locator.kPFVabb"/>
         <argument key="App\Controller\ThemeController:edit" type="service" id=".service_locator.kPFVabb"/>
         <argument key="App\Controller\ThemeController:show" type="service" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\UtilisateurController:addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
         <argument key="App\Controller\UtilisateurController:delete" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController:edit" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
         <argument key="App\Controller\UtilisateurController:new" type="service" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\UtilisateurController:orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\UtilisateurController:show" type="service" id=".service_locator.z1iWlPx"/>
@@ -7319,12 +7326,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.H8HAa9s"/>
+      <argument type="service" id=".service_locator.uuYpl0Q"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.H8HAa9s"/>
+      <argument type="service" id=".service_locator.uuYpl0Q"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7773,7 +7780,7 @@
     <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.H8HAa9s"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.uuYpl0Q"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

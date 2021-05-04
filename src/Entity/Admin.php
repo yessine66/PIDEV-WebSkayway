@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Admin
@@ -18,6 +19,7 @@ class Admin
      * @ORM\Column(name="id_adm", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("utilisateur")
      */
     private $idAdm;
 
@@ -28,6 +30,7 @@ class Admin
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+     * @Groups("utilisateur")
      */
     private $id;
 

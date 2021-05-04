@@ -10,12 +10,16 @@ use App\Form\ApprenantType;
 use App\Form\EnseignantType;
 use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/utilisateur")
@@ -38,6 +42,28 @@ class UtilisateurController extends AbstractController
         $utilisateurs = $this->getDoctrine()
             ->getRepository(Utilisateur::class)
             ->findAll();
+
+
+        $datas = array();
+        foreach ($utilisateurs as $key => $utilisateur){
+            $datas[$key]['id'] = $utilisateur->getId();
+            $datas[$key]['nom'] = $utilisateur->getNom();
+            $datas[$key]['prenom'] = $utilisateur->getPrenom();
+            $datas[$key]['mail'] = $utilisateur->getMail();
+            $datas[$key]['age'] = $utilisateur->getAge();
+            $datas[$key]['tel'] = $utilisateur->getTel();
+            $datas[$key]['genre'] = $utilisateur->getGenre();
+            $datas[$key]['dateNaiss'] = $utilisateur->getDateNaiss();
+            $datas[$key]['username'] = $utilisateur->getUsername();
+            $datas[$key]['password'] = $utilisateur->getPassword();
+            $datas[$key]['role'] = $utilisateur->getRole();
+            $datas[$key]['creCompte'] = $utilisateur->getCreCompte();
+
+
+        }
+        $rec= new JsonResponse($datas);
+        dd($rec);
+
 
         return $this->render('utilisateur/index.html.twig', [
             'utilisateurs' => $utilisateurs,
@@ -244,4 +270,64 @@ class UtilisateurController extends AbstractController
 
     }
 
+    /**
+     * @Route("liste",name="liste", methods={"GET"})
+     */
+    /*public function getUtilisateurs(UtilisateurRepository $repo, SerializerInterface $serializerInterfacex){
+        $utilisateurs=$repo->findAll();
+        $json=$serializerInterfacex->serialize($utilisateurs,'json',["groups"=>"utilisateurs"]);
+        dd($json);
+
+    }*/
+
+
+    public function getUtilisateurs(UtilisateurRepository $repo, SerializerInterface $serializerInterfacex){
+        $utilisateurs=$repo->findAll();
+        $json=$serializerInterfacex->serialize($utilisateurs,'json',["groups"=>"utilisateurs"]);
+        $result = new JsonResponse($utilisateurs);
+
+
+
+        $datas = array();
+        foreach ($utilisateurs as $key => $utilisateur){
+            $datas[$key]['id'] = $utilisateur->getId();
+            $datas[$key]['nom'] = $utilisateur->getNom();
+            $datas[$key]['prenom'] = $utilisateur->getPrenom();
+            $datas[$key]['mail'] = $utilisateur->getMail();
+            $datas[$key]['age'] = $utilisateur->getAge();
+            $datas[$key]['tel'] = $utilisateur->getTel();
+            $datas[$key]['genre'] = $utilisateur->getGenre();
+            $datas[$key]['dateNaiss'] = $utilisateur->getDateNaiss();
+            $datas[$key]['username'] = $utilisateur->getUsername();
+            $datas[$key]['password'] = $utilisateur->getPassword();
+            $datas[$key]['role'] = $utilisateur->getRole();
+            $datas[$key]['creCompte'] = $utilisateur->getCreCompte();
+
+
+        }
+        $rec= new JsonResponse($datas);
+        dd($rec->getContent());
+
+    }
+
+
+    /**
+     * @Route ("add",name="add_utilisateur")
+     */
+    public function addUtilisateur(Request $request,SerializerInterface $serializer , EntityManagerInterface $em){
+        $content=$request->getContent();
+        $data=$serializer->deserialize($content,Utilisateur::class,'json');
+        $em->persist($data);
+        $em->flush();
+       // $x="hihi";
+     //   dd($content);
+        return new Response('utilisateur added seccesfully');
+
+
+
+    }
+
+
+
 }
+

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Enseignant
@@ -18,6 +19,7 @@ class Enseignant
      * @ORM\Column(name="id_ens", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("utilisateur")
      */
     private $idEns;
 
@@ -27,6 +29,7 @@ class Enseignant
      * @var string|null
      *
      * @ORM\Column(name="matiere", type="string", length=50, nullable=true)
+     * @Groups("utilisateur")
      */
     private $matiere;
 
@@ -34,6 +37,7 @@ class Enseignant
      * @var string|null
      *
      * @ORM\Column(name="bibliographie", type="text", length=65535, nullable=true)
+     * @Groups("utilisateur")
      */
     private $bibliographie;
 
@@ -41,6 +45,7 @@ class Enseignant
      * @var string|null
      *
      * @ORM\Column(name="specialite", type="string", length=250, nullable=true)
+     * @Groups("utilisateur")
      */
     private $specialite;
 
@@ -51,6 +56,7 @@ class Enseignant
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+     * @Groups("utilisateur")
      */
     private $id;
 

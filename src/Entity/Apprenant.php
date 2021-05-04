@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Apprenant
@@ -18,6 +19,7 @@ class Apprenant
      * @ORM\Column(name="id_app", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("utilisateur")
      */
     private $idApp;
 
@@ -27,6 +29,7 @@ class Apprenant
      * @var string|null
      *
      * @ORM\Column(name="description", type="string", length=50, nullable=true)
+     * @Groups("utilisateur")
      */
     private $description;
 
@@ -37,6 +40,7 @@ class Apprenant
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
+     * @Groups("utilisateur")
      */
     private $id;
 

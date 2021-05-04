@@ -8,6 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Utilisateur
@@ -24,6 +25,7 @@ class Utilisateur implements UserInterface ,\Serializable
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("utilisateur")
      */
     private $id;
 
@@ -32,6 +34,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="nom", type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $nom;
 
@@ -40,6 +43,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="prenom", type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $prenom;
 
@@ -51,6 +55,7 @@ class Utilisateur implements UserInterface ,\Serializable
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email."
      * )
+     * @Groups("utilisateur")
      */
     private $mail;
 
@@ -59,6 +64,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="age", type="integer", nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $age;
 
@@ -67,6 +73,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="tel", type="integer", nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $tel;
 
@@ -75,6 +82,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="genre", type="string", length=10, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $genre;
 
@@ -83,6 +91,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="date_naiss", type="date", nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $dateNaiss;
 
@@ -91,6 +100,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="username", type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $username;
 
@@ -99,6 +109,7 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="password", type="string", length=100, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $password;
 
@@ -107,12 +118,14 @@ class Utilisateur implements UserInterface ,\Serializable
      *
      * @ORM\Column(name="role", type="string", length=25, nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
+     * @Groups("utilisateur")
      */
     private $role;
 
     /**
      * @var \DateTime $creCompte
      * @ORM\Column(name="cre_compte", type="datetime", nullable=false)
+     * @Groups("utilisateur")
      */
     private $creCompte;
 

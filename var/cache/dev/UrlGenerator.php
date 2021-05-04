@@ -136,6 +136,8 @@ return [
     'utilisateur_edit' => [['id'], ['_controller' => 'App\\Controller\\UtilisateurController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/utilisateur']], [], []],
     'utilisateur_delete' => [['id'], ['_controller' => 'App\\Controller\\UtilisateurController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/utilisateur']], [], []],
     'utilisateur_triRole' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::orderByRoleSQL'], [], [['text', '/utilisateurtriSQL']], [], []],
+    'liste' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::getUtilisateurs'], [], [['text', '/utilisateurliste']], [], []],
+    'add_utilisateur' => [[], ['_controller' => 'App\\Controller\\UtilisateurController::addUtilisateur'], [], [['text', '/utilisateuradd']], [], []],
     'qr_code_generate' => [['builder', 'data'], ['_controller' => 'Endroid\\QrCodeBundle\\Controller\\GenerateController'], [], [['variable', '/', '[^/]++', 'data'], ['variable', '/', '[^/]++', 'builder'], ['text', '/qr-code']], [], []],
     'logout' => [[], [], [], [['text', '/logout']], [], []],
     'gregwar_captcha.generate_captcha' => [['key'], ['_controller' => 'Gregwar\\CaptchaBundle\\Controller\\CaptchaController::generateCaptchaAction'], [], [['variable', '/', '[^/]++', 'key'], ['text', '/_gcb/generate-captcha']], [], []],

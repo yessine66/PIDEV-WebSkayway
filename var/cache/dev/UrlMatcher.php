@@ -75,6 +75,8 @@ return [
         '/utilisateur/new' => [[['_route' => 'utilisateur_new', '_controller' => 'App\\Controller\\UtilisateurController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/utilisateurshowFront' => [[['_route' => 'utilisateur_showFront', '_controller' => 'App\\Controller\\UtilisateurController::showFront'], null, ['GET' => 0], null, false, false, null]],
         '/utilisateurtriSQL' => [[['_route' => 'utilisateur_triRole', '_controller' => 'App\\Controller\\UtilisateurController::orderByRoleSQL'], null, null, null, false, false, null]],
+        '/utilisateurliste' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\UtilisateurController::getUtilisateurs'], null, ['GET' => 0], null, false, false, null]],
+        '/utilisateuradd' => [[['_route' => 'add_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::addUtilisateur'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
