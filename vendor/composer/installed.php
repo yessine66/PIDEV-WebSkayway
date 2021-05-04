@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f4f5587cf1b4d3bb35d9d280391e78ffc8c2d051',
+    'reference' => 'd4d63a6cf3bfd33a1fef941c98d45b3e98f8f4fc',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f4f5587cf1b4d3bb35d9d280391e78ffc8c2d051',
+      'reference' => 'd4d63a6cf3bfd33a1fef941c98d45b3e98f8f4fc',
     ),
     'bacon/bacon-qr-code' => 
     array (
@@ -1293,12 +1293,12 @@
     ),
     'symfony/web-server-bundle' => 
     array (
-      'pretty_version' => 'v4.4.21',
-      'version' => '4.4.21.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a3a7b8044cecd8df158984e05fea122d4f668a9f',
+      'reference' => '0080dcf62a5caa9d0e8ec93450d11e2bbbb3a36a',
     ),
     'symfony/yaml' => 
     array (
