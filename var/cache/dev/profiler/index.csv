@@ -639,3 +639,13 @@ acb396,127.0.0.1,GET,http://127.0.0.1:8000/logoP/student.png,1620092420,,404
 5e12c6,127.0.0.1,GET,http://127.0.0.1:8000/qr-code/default/code%20promo:%20%20kfc12%0Anom%20partenaire:%20%20kfc,1620092420,,200
 eb892d,127.0.0.1,GET,http://127.0.0.1:8000/site.webmanifest,1620092421,bee542,404
 bee542,127.0.0.1,GET,http://127.0.0.1:8000/site.webmanifest,1620092421,,404
+d3e588,127.0.0.1,GET,http://127.0.0.1:8000/,1620094155,,404
+edd393,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/,1620094161,,200
+529da1,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user1-128x128.jpg,1620094161,ac6f1b,404
+ac6f1b,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user1-128x128.jpg,1620094161,,404
+bcee0f,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user3-128x128.jpg,1620094161,dd19c9,404
+dd19c9,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user3-128x128.jpg,1620094161,,404
+0bcf6c,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user8-128x128.jpg,1620094162,661cf2,404
+661cf2,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user8-128x128.jpg,1620094162,,404
+56b924,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/css/StylesheetB.css,1620094162,b1a056,404
+b1a056,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/css/StylesheetB.css,1620094162,,404

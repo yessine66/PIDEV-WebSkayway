@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PromotionRepository;
 
+
 /**
  * @Route("/promotion")
  */
@@ -21,6 +22,9 @@ class PromotionController extends AbstractController
 {
     /**
      * @Route("/", name="promotion_index", methods={"GET"})
+     * @param PromotionRepository $repository
+     * @param Request $request
+     * @return Response
      */
     public function index(PromotionRepository $repository,Request $request): Response
     {
@@ -34,8 +38,8 @@ class PromotionController extends AbstractController
             ->getRepository(Promotion::class);
         $promotions = $repository->findSearch($data);
 
-        //dd($data);
-
+        // dump($promotions);
+        // die;
 
         /* $promotions = $this->getDoctrine()
              ->getRepository(Promotion::class)
@@ -48,6 +52,29 @@ class PromotionController extends AbstractController
     }
 
     /**
+     * @Route("/p", name="p",methods={"GET","POST"})
+     */
+    public function a(PromotionRepository $repository,Request $request): Response
+    {
+        $promotions = $this->getDoctrine()
+            ->getRepository(Promotion::class)
+            ->findAll();
+
+        dd( $promotions);
+        /* return $this->render('promotion/index.html.twig', [
+             'promotions' => $promotions,
+         ]);*/
+    }
+
+
+
+
+
+
+
+
+
+    /**
      * @Route("/Front", name="promotion_indexR", methods={"GET"})
      */
     public function indexR(): Response
@@ -55,6 +82,7 @@ class PromotionController extends AbstractController
         $promotions = $this->getDoctrine()
             ->getRepository(Promotion::class)
             ->findAll();
+
 
         return $this->render('promotion/indexR.html.twig', [
             'promotions' => $promotions,
@@ -84,6 +112,7 @@ class PromotionController extends AbstractController
             $this->addFlash('success', 'promotion ajouté!');
             return $this->redirectToRoute('promotion_index');
         }
+
 
         return $this->render('promotion/new.html.twig', [
             'promotion' => $promotion,
@@ -196,7 +225,7 @@ class PromotionController extends AbstractController
                  chez {$Promotion->getIdp()->getNomp()} 
                  votre code est {$Promotion->getCodep()}  ! ❤ " );
 
-                 $mailer->send($message);
+                $mailer->send($message);
             }
         }
 
