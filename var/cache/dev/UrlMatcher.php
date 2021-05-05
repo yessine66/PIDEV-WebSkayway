@@ -78,6 +78,8 @@ return [
         '/utilisateurtriSQL' => [[['_route' => 'utilisateur_triRole', '_controller' => 'App\\Controller\\UtilisateurController::orderByRoleSQL'], null, null, null, false, false, null]],
         '/utilisateurliste' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\UtilisateurController::getUtilisateurs'], null, ['GET' => 0], null, false, false, null]],
         '/utilisateuradd' => [[['_route' => 'add_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::addUtilisateur'], null, null, null, false, false, null]],
+        '/utilisateurdisplayUtilisateurJson' => [[['_route' => 'display_utilisata_json', '_controller' => 'App\\Controller\\UtilisateurController::allUtilisateurJson'], null, null, null, false, false, null]],
+        '/utilisateurdetailUtilisateurJson' => [[['_route' => 'detail_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::detailUtilisateurJson'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -217,10 +219,15 @@ return [
                         .'|(*:1338)'
                     .')'
                 .')'
-                .'|/utilisateur/([^/]++)(?'
-                    .'|(*:1373)'
-                    .'|/edit(*:1387)'
-                    .'|(*:1396)'
+                .'|/utilisateur/(?'
+                    .'|([^/]++)(?'
+                        .'|(*:1376)'
+                        .'|/edit(*:1390)'
+                        .'|(*:1399)'
+                    .')'
+                    .'|addUtilisateurJson(*:1427)'
+                    .'|deleteUtilisateurJson(*:1457)'
+                    .'|updateUtilisateurJson(*:1487)'
                 .')'
             .')/?$}sD',
     ],
@@ -290,10 +297,13 @@ return [
         1315 => [[['_route' => 'theme_show', '_controller' => 'App\\Controller\\ThemeController::show'], ['idT'], ['GET' => 0], null, false, true, null]],
         1329 => [[['_route' => 'theme_edit', '_controller' => 'App\\Controller\\ThemeController::edit'], ['idT'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         1338 => [[['_route' => 'theme_delete', '_controller' => 'App\\Controller\\ThemeController::delete'], ['idT'], ['POST' => 0], null, false, true, null]],
-        1373 => [[['_route' => 'utilisateur_show', '_controller' => 'App\\Controller\\UtilisateurController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1387 => [[['_route' => 'utilisateur_edit', '_controller' => 'App\\Controller\\UtilisateurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1396 => [
-            [['_route' => 'utilisateur_delete', '_controller' => 'App\\Controller\\UtilisateurController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        1376 => [[['_route' => 'utilisateur_show', '_controller' => 'App\\Controller\\UtilisateurController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1390 => [[['_route' => 'utilisateur_edit', '_controller' => 'App\\Controller\\UtilisateurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1399 => [[['_route' => 'utilisateur_delete', '_controller' => 'App\\Controller\\UtilisateurController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1427 => [[['_route' => 'add_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::ajouterUtilisateurJson'], [], null, null, false, false, null]],
+        1457 => [[['_route' => 'delete_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::deleteUtilisateurJson'], [], null, null, false, false, null]],
+        1487 => [
+            [['_route' => 'update_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::modifierUtilisateurJson'], [], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

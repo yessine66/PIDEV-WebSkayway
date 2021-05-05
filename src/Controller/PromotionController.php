@@ -8,7 +8,9 @@ use App\Form\PromotionType;
 use App\Form\SearchForm;
 use App\Repository\PartenaireRepository;
 use App\Repository\UtilisateurRepository;
+use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,6 +46,24 @@ class PromotionController extends AbstractController
         /* $promotions = $this->getDoctrine()
              ->getRepository(Promotion::class)
              ->findAll();*/
+
+
+        $datas = array();
+
+        foreach ($promotions as $key => $promotion){
+            $datas[$key]['idProm'] = $promotion->getIdProm();
+            $datas[$key]['codeP'] = $promotion->getCodeP();
+            $datas[$key]['reduction'] = $promotion->getReduction();
+            $datas[$key]['dated'] = $promotion->getDated();
+            $datas[$key]['datef'] = $promotion->getDatef();
+            $datas[$key]['id'] = $promotion->getId();
+            $datas[$key]['idP'] = $promotion->getIdP();
+
+        }
+
+        $rec= new JsonResponse($datas);
+        //dd($rec->getContent());
+
 
         return $this->render('promotion/index.html.twig', [
             'promotions' => $promotions,
