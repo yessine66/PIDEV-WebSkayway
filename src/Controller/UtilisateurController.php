@@ -50,7 +50,7 @@ class UtilisateurController extends AbstractController
             ->findAll();
 
 
-        $datas = array();
+     /*   $datas = array();
         foreach ($utilisateurs as $key => $utilisateur){
             $datas[$key]['id'] = $utilisateur->getId();
             $datas[$key]['nom'] = $utilisateur->getNom();
@@ -66,8 +66,8 @@ class UtilisateurController extends AbstractController
             $datas[$key]['creCompte'] = $utilisateur->getCreCompte();
 
 
-        }
-        $rec= new JsonResponse($datas);
+        }*/
+      //  $rec= new JsonResponse($datas);
        // dd($rec->getContent());
 
 
@@ -382,7 +382,7 @@ class UtilisateurController extends AbstractController
 
     /******************Ajouter utilisateur*****************************************/
     /**
-     * @Route("/addUtilisateurJson", name="add_reclamation_json")
+     * @Route("addUtilisateurJson", name="add_reclamation_json")
      * @Method("POST")
      */
 
@@ -402,7 +402,7 @@ class UtilisateurController extends AbstractController
         $passwordxi = $request->query->get("password");
         $rolexi = $request->query->get("role");
         $em = $this->getDoctrine()->getManager();
-        $creComptexi = new \DateTime('creCompte');
+        $creComptexi = new \DateTime('now');
 
 
         $utilisateur->setNom($nomxi);
@@ -414,7 +414,7 @@ class UtilisateurController extends AbstractController
         $utilisateur->setDateNaiss($dateNaissxi);
         $utilisateur->setUsername($usernamexi);
         $utilisateur->setPassword($passwordxi);
-        $utilisateur->setRole($rolexi);
+        $utilisateur->setRole("apprenant");
         $utilisateur->setCreCompte($creComptexi);
 
         $em->persist($utilisateur);
@@ -428,7 +428,7 @@ class UtilisateurController extends AbstractController
     /******************Supprimer Utilisateur*****************************************/
 
     /**
-     * @Route("/deleteUtilisateurJson", name="delete_reclamation_json")
+     * @Route("deleteUtilisateurJson", name="delete_reclamation_json")
      * @Method("DELETE")
      */
 
@@ -455,26 +455,11 @@ class UtilisateurController extends AbstractController
 
     /******************Modifier Utilisateur*****************************************/
     /**
-     * @Route("/updateUtilisateurJson", name="update_reclamation_json")
+     * @Route("updateUtilisateurJson", name="update_reclamation_json")
      * @Method("PUT")
      */
     public function modifierUtilisateurJson(Request $request) {
 
-        /*
-        $em = $this->getDoctrine()->getManager();
-        $reclamation = $this->getDoctrine()->getManager()
-            ->getRepository(Reclamation::class)
-            ->find($request->get("id"));
-
-        $reclamation->setObjet($request->get("objet"));
-        $reclamation->setDescription($request->get("description"));
-
-        $em->persist($reclamation);
-        $em->flush();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($reclamation);
-        return new JsonResponse("Reclamation a ete modifiee avec success.");
-        */
 
         $em = $this->getDoctrine()->getManager();
         $utilisateur = $this->getDoctrine()->getManager()
@@ -511,20 +496,13 @@ class UtilisateurController extends AbstractController
     public function allUtilisateurJson()
     {
 
-/*
 
-        $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->findAll();
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($reclamation);
-
-        return new JsonResponse($formatted);
-*/
 
         $utilisateur = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->findAll();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($utilisateur);
 
-        dd(new JsonResponse($formatted));
+        //dd(new JsonResponse($formatted));
         return new JsonResponse($formatted);
 
     }
@@ -540,21 +518,7 @@ class UtilisateurController extends AbstractController
 
     public function detailUtilisateurJson(Request $request)
     {
-/*
-        $id = $request->get("id");
 
-        $em = $this->getDoctrine()->getManager();
-        $reclamation = $this->getDoctrine()->getManager()->getRepository(Reclamation::class)->find($id);
-        $encoder = new JsonEncoder();
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getDescription();
-        });
-        $serializer = new Serializer([$normalizer], [$encoder]);
-        $formatted = $serializer->normalize($reclamation);
-        return new JsonResponse($formatted);
-
-        */
 
         $id = $request->get("id");
 
@@ -571,7 +535,12 @@ class UtilisateurController extends AbstractController
 
        // $x=new JsonResponse($formatted);
         return new JsonResponse($formatted);
+
     }
+
+
+
+
 
 
 

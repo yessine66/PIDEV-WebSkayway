@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerCDxMfoY\srcApp_KernelDevDebugContainer([
     'container.build_hash' => 'CDxMfoY',
-    'container.build_id' => 'a772bcf1',
-    'container.build_time' => 1620180369,
+    'container.build_id' => '3a4fed69',
+    'container.build_time' => 1620235940,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerCDxMfoY');
