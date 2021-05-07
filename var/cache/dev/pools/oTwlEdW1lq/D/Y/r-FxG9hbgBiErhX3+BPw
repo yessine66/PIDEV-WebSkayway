@@ -13,7 +13,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'date_naiss',
             ],
             'type' => [
-                'date',
+                'datetime',
             ],
             'nullable' => [
                 true,

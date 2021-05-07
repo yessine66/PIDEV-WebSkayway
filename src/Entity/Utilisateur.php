@@ -89,7 +89,7 @@ class Utilisateur implements UserInterface ,\Serializable
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="date_naiss", type="date", nullable=true)
+     * @ORM\Column(name="date_naiss", type="datetime", nullable=true)
      * @Assert\NotBlank(message="Please fill out this field ;) ")
      * @Groups("utilisateur")
      */
