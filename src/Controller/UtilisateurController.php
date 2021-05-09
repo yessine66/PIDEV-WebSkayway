@@ -377,6 +377,13 @@ class UtilisateurController extends AbstractController
 
 
 
+    function clean($string) {
+        $string = str_replace('-', '', $string); // Replaces all spaces with hyphens.
+
+        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+    }
+
+
 
     ///////////////////////////////////////////*************************JSON************************//////////////////////////////////////////////////
 
@@ -404,6 +411,28 @@ class UtilisateurController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $creComptexi = new \DateTime('now');
 
+        $datox = new \DateTime();
+
+
+
+
+        //satrin tasli7 date 
+
+        $dateNaissxi = str_replace('-', '', $dateNaissxi);
+
+        $didi= preg_replace('/[^A-Za-z0-9\-]/', '', $dateNaissxi);
+
+
+
+
+
+        $didi = \DateTime::createFromFormat('Ymd',$dateNaissxi);
+
+       // dd($didi);
+
+
+       // $dateNaissxi = new \DateTime('dateNaiss');
+
 
         $utilisateur->setNom($nomxi);
         $utilisateur->setPrenom($prenomxi);
@@ -411,7 +440,9 @@ class UtilisateurController extends AbstractController
         $utilisateur->setAge($agexi);
         $utilisateur->setTel($telxi);
         $utilisateur->setGenre($genrexi);
-        $utilisateur->setDateNaiss($dateNaissxi);
+        //$utilisateur->setDateNaiss($dateNaissxi);
+        $utilisateur->setDateNaiss($didi);
+
         $utilisateur->setUsername($usernamexi);
         $utilisateur->setPassword($passwordxi);
         $utilisateur->setRole("apprenant");
