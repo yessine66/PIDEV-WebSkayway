@@ -20,3 +20,7 @@
 ###< symfony/web-server-bundle ###
 *.xml
 *.xml
+.idea/workspace.xml
+.idea/workspace.xml
+config/packages/security.yaml
+var/cache/dev/profiler/index.csv

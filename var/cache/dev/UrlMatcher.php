@@ -87,6 +87,13 @@ return [
         '/utilisateur/new' => [[['_route' => 'utilisateur_new', '_controller' => 'App\\Controller\\UtilisateurController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/utilisateurshowFront' => [[['_route' => 'utilisateur_showFront', '_controller' => 'App\\Controller\\UtilisateurController::showFront'], null, ['GET' => 0], null, false, false, null]],
         '/utilisateurtriSQL' => [[['_route' => 'utilisateur_triRole', '_controller' => 'App\\Controller\\UtilisateurController::orderByRoleSQL'], null, null, null, false, false, null]],
+        '/utilisateurliste' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\UtilisateurController::getUtilisateurs'], null, ['GET' => 0], null, false, false, null]],
+        '/utilisateuradd' => [[['_route' => 'add_utilisateur', '_controller' => 'App\\Controller\\UtilisateurController::addUtilisateur'], null, null, null, false, false, null]],
+        '/utilisateuraddUtilisateurJson' => [[['_route' => 'add_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::ajouterUtilisateurJson'], null, null, null, false, false, null]],
+        '/utilisateurdeleteUtilisateurJson' => [[['_route' => 'delete_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::deleteUtilisateurJson'], null, null, null, false, false, null]],
+        '/utilisateurupdateUtilisateurJson' => [[['_route' => 'update_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::modifierUtilisateurJson'], null, null, null, false, false, null]],
+        '/utilisateurdisplayUtilisateurJson' => [[['_route' => 'display_utilisata_json', '_controller' => 'App\\Controller\\UtilisateurController::allUtilisateurJson'], null, null, null, false, false, null]],
+        '/utilisateurdetailUtilisateurJson' => [[['_route' => 'detail_reclamation_json', '_controller' => 'App\\Controller\\UtilisateurController::detailUtilisateurJson'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
