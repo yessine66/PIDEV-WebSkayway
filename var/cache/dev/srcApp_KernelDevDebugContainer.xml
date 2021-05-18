@@ -6439,6 +6439,13 @@
         <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
       </argument>
     </service>
+    <service id=".service_locator.JhiXwSl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service" id="App\Repository\PartenaireRepository"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.vgBtsnM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6465,6 +6472,27 @@
       <argument type="collection">
         <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
         <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.q2Jk9FI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="partenaireRepository" type="service" id="App\Repository\PartenaireRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.dslhFXg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\PartenaireRepository"/>
+        <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Dbr0wMZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="promotionRepository" type="service" id="App\Repository\PromotionRepository"/>
+        <argument key="serializerInterface" type="service" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.K7kNnn4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6589,9 +6617,6 @@
         <argument key="repository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
-<<<<<<< HEAD
-    <service id=".service_locator.T5TYJiK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-=======
     <service id=".service_locator.Mc2uw4H" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6606,8 +6631,13 @@
         <argument key="serializer" type="service" id="serializer"/>
       </argument>
     </service>
-    <service id=".service_locator.y46fpjx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
->>>>>>> 573007c5f17c61b12a0cd82d5086275a863ca4ad
+    <service id=".service_locator.ccM2MGC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="passwordEncoder" type="service" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.FxlHf9e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActualiteController::delete" type="service" id=".service_locator.6V16CKq"/>
@@ -6644,6 +6674,7 @@
         <argument key="App\Controller\FeedbackController::show" type="service" id=".service_locator.iPNoo2d"/>
         <argument key="App\Controller\FeedbackController::showF" type="service" id=".service_locator.iPNoo2d"/>
         <argument key="App\Controller\PartenaireController::OrderByMailQB" type="service" id=".service_locator.V2Slyks"/>
+        <argument key="App\Controller\PartenaireController::allPartenaireAction" type="service" id=".service_locator.JhiXwSl"/>
         <argument key="App\Controller\PartenaireController::contactP" type="service" id=".service_locator.oh0wzvT"/>
         <argument key="App\Controller\PartenaireController::delete" type="service" id=".service_locator.njGqpVl"/>
         <argument key="App\Controller\PartenaireController::edit" type="service" id=".service_locator.njGqpVl"/>
@@ -6651,9 +6682,15 @@
         <argument key="App\Controller\PartenaireController::statistiques" type="service" id=".service_locator.wC7QnM3"/>
         <argument key="App\Controller\PromotionController::RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
         <argument key="App\Controller\PromotionController::a" type="service" id=".service_locator.uNJ7tqe"/>
+        <argument key="App\Controller\PromotionController::ajouterPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController::allPromotionAction" type="service" id=".service_locator.dslhFXg"/>
         <argument key="App\Controller\PromotionController::delete" type="service" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController::detailPartAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController::edit" type="service" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController::getCos" type="service" id=".service_locator.Dbr0wMZ"/>
+        <argument key="App\Controller\PromotionController::idPartAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController::index" type="service" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController::modifierPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController::playWithUser" type="service" id=".service_locator.vgBtsnM"/>
         <argument key="App\Controller\PromotionController::show" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\QuestionController::CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
@@ -6690,11 +6727,13 @@
         <argument key="App\Controller\UtilisateurController::addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
         <argument key="App\Controller\UtilisateurController::delete" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController::edit" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::editProfile" type="service" id=".service_locator.ccM2MGC"/>
         <argument key="App\Controller\UtilisateurController::getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
         <argument key="App\Controller\UtilisateurController::new" type="service" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\UtilisateurController::orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\UtilisateurController::show" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController::showFront" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::signupActionJSON" type="service" id=".service_locator.ccM2MGC"/>
         <argument key="App\Controller\ActualiteController:delete" type="service" id=".service_locator.6V16CKq"/>
         <argument key="App\Controller\ActualiteController:edit" type="service" id=".service_locator.6V16CKq"/>
         <argument key="App\Controller\ActualiteController:show" type="service" id=".service_locator.6V16CKq"/>
@@ -6729,6 +6768,7 @@
         <argument key="App\Controller\FeedbackController:show" type="service" id=".service_locator.iPNoo2d"/>
         <argument key="App\Controller\FeedbackController:showF" type="service" id=".service_locator.iPNoo2d"/>
         <argument key="App\Controller\PartenaireController:OrderByMailQB" type="service" id=".service_locator.V2Slyks"/>
+        <argument key="App\Controller\PartenaireController:allPartenaireAction" type="service" id=".service_locator.JhiXwSl"/>
         <argument key="App\Controller\PartenaireController:contactP" type="service" id=".service_locator.oh0wzvT"/>
         <argument key="App\Controller\PartenaireController:delete" type="service" id=".service_locator.njGqpVl"/>
         <argument key="App\Controller\PartenaireController:edit" type="service" id=".service_locator.njGqpVl"/>
@@ -6736,9 +6776,15 @@
         <argument key="App\Controller\PartenaireController:statistiques" type="service" id=".service_locator.wC7QnM3"/>
         <argument key="App\Controller\PromotionController:RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
         <argument key="App\Controller\PromotionController:a" type="service" id=".service_locator.uNJ7tqe"/>
+        <argument key="App\Controller\PromotionController:ajouterPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController:allPromotionAction" type="service" id=".service_locator.dslhFXg"/>
         <argument key="App\Controller\PromotionController:delete" type="service" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController:detailPartAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController:edit" type="service" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController:getCos" type="service" id=".service_locator.Dbr0wMZ"/>
+        <argument key="App\Controller\PromotionController:idPartAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController:index" type="service" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController:modifierPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
         <argument key="App\Controller\PromotionController:playWithUser" type="service" id=".service_locator.vgBtsnM"/>
         <argument key="App\Controller\PromotionController:show" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\QuestionController:CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
@@ -6775,11 +6821,13 @@
         <argument key="App\Controller\UtilisateurController:addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
         <argument key="App\Controller\UtilisateurController:delete" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController:edit" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:editProfile" type="service" id=".service_locator.ccM2MGC"/>
         <argument key="App\Controller\UtilisateurController:getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
         <argument key="App\Controller\UtilisateurController:new" type="service" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\UtilisateurController:orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\UtilisateurController:show" type="service" id=".service_locator.z1iWlPx"/>
         <argument key="App\Controller\UtilisateurController:showFront" type="service" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:signupActionJSON" type="service" id=".service_locator.ccM2MGC"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7359,20 +7407,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-<<<<<<< HEAD
-      <argument type="service" id=".service_locator.T5TYJiK"/>
-=======
-      <argument type="service" id=".service_locator.y46fpjx"/>
->>>>>>> 573007c5f17c61b12a0cd82d5086275a863ca4ad
+      <argument type="service" id=".service_locator.FxlHf9e"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-<<<<<<< HEAD
-      <argument type="service" id=".service_locator.T5TYJiK"/>
-=======
-      <argument type="service" id=".service_locator.y46fpjx"/>
->>>>>>> 573007c5f17c61b12a0cd82d5086275a863ca4ad
+      <argument type="service" id=".service_locator.FxlHf9e"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7821,11 +7861,7 @@
     <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-<<<<<<< HEAD
-    <service id="argument_resolver.controller_locator" alias=".service_locator.T5TYJiK"/>
-=======
-    <service id="argument_resolver.controller_locator" alias=".service_locator.y46fpjx"/>
->>>>>>> 573007c5f17c61b12a0cd82d5086275a863ca4ad
+    <service id="argument_resolver.controller_locator" alias=".service_locator.FxlHf9e"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

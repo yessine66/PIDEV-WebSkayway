@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Data\SearchData;
+use App\Entity\Partenaire;
 use App\Entity\Promotion;
 use App\Form\PromotionType;
 use App\Form\SearchForm;
 use App\Repository\PartenaireRepository;
 use App\Repository\UtilisateurRepository;
-use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +23,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Validator\Constraints\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
@@ -57,24 +56,6 @@ class PromotionController extends AbstractController
         /* $promotions = $this->getDoctrine()
              ->getRepository(Promotion::class)
              ->findAll();*/
-
-
-        $datas = array();
-
-        foreach ($promotions as $key => $promotion){
-            $datas[$key]['idProm'] = $promotion->getIdProm();
-            $datas[$key]['codeP'] = $promotion->getCodeP();
-            $datas[$key]['reduction'] = $promotion->getReduction();
-            $datas[$key]['dated'] = $promotion->getDated();
-            $datas[$key]['datef'] = $promotion->getDatef();
-            $datas[$key]['id'] = $promotion->getId();
-            $datas[$key]['idP'] = $promotion->getIdP();
-
-        }
-
-        $rec= new JsonResponse($datas);
-        //dd($rec->getContent());
-
 
         return $this->render('promotion/index.html.twig', [
             'promotions' => $promotions,
@@ -126,7 +107,7 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($promotion);
             $entityManager->flush();
-            $this->addFlash('success', 'promotion ajoutÃ©!');
+            $this->addFlash('success', 'promotion ajouté!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -158,7 +139,7 @@ class PromotionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Promotion modifiÃ©!');
+            $this->addFlash('success', 'Promotion modifié!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -177,7 +158,7 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($promotion);
             $entityManager->flush();
-            $this->addFlash('success', 'Promotion supprimÃ©!');
+            $this->addFlash('success', 'Promotion supprimé!');
         }
 
         return $this->redirectToRoute('promotion_index');
@@ -239,9 +220,9 @@ class PromotionController extends AbstractController
                 ->setTo($Utilisateur->getMail())
 
                 ->setBody(
-                    "FÃ©licitations {$Utilisateur->getNom()} Vous avez gagner une rÃ©duction  {$Promotion->getReduction()} 
+                    "Félicitations {$Utilisateur->getNom()} Vous avez gagner une réduction  {$Promotion->getReduction()} 
                  chez {$Promotion->getIdp()->getNomp()} 
-                 votre code est {$Promotion->getCodep()}  ! â¤ " );
+                 votre code est {$Promotion->getCodep()}  ! ❤ " );
 
                 $mailer->send($message);
             }
@@ -306,22 +287,27 @@ class PromotionController extends AbstractController
      * @Method("POST")
      */
 
-    public function ajouterPromotionAction(Request $request)
+    public function ajouterPromotionAction(Request $request,PartenaireRepository $partenaireRepository)
     {
         $promotion = new Promotion();
         $codeP = $request->query->get("codeP");
         $reduction = $request->query->get("reduction");
         $dated= $request->query->get("dated");
         $datef = $request->query->get("datef");
+        $partenaire= $request->query->get("idP");
         // $idP = $request->query->get("idP");
         $em = $this->getDoctrine()->getManager();
         //$date = new \DateTime('now');
-
+        /*
+         $user = $userRepository->findOneBy(['id' => $student]);
+                $cos->setIdStudent($user);*/
         $promotion->setCodeP($codeP);
         $promotion->setReduction($reduction);
         $promotion->setDated($dated);
         $promotion->setDatef($datef);
-        // $promotion->setDatef($idP);
+        //
+        $idP= $partenaireRepository->findOneBy(['idP' => $partenaire]);
+        $promotion->setIdP($idP);
         // $promotion->setEtat(0);
 
         $em->persist($promotion);
@@ -360,19 +346,20 @@ class PromotionController extends AbstractController
      * @Method("PUT")
      */
 
-    public function modifierPromotionAction(Request $request)
+    public function modifierPromotionAction(Request $request,PartenaireRepository $partenaireRepository)
     {
         $em = $this->getDoctrine()->getManager();
         $promotion= $this->getDoctrine()->getManager()
             ->getRepository(Promotion::class)
             ->find($request->get("idProm"));
-
+        $partenaire= $request->query->get("idP");
         $promotion->setCodeP($request->get("codeP"));
         $promotion->setReduction($request->get("reduction"));
         $promotion->setDated($request->get("dated"));
         $promotion->setDatef($request->get("datef"));
         // $promotion->setIdP($request->get("idP"));
-
+        $idP= $partenaireRepository->findOneBy(['idP' => $partenaire]);
+        $promotion->setIdP($idP);
         $em->persist($promotion);
         $em->flush();
         $serializer = new Serializer([new ObjectNormalizer()]);
@@ -422,17 +409,21 @@ class PromotionController extends AbstractController
 
 
     /**
-     * @Route("lis", name="promotion_lis",methods={"GET","POST"})
+     * @Route ("lis", name="promotion_lis")
+     * @param PromotionRepository $repository
+     * @param ParteanaireRepository $repo
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @return JsonResponse
      */
-    public function displayAPI()
+    public function allPromotionAction(PromotionRepository $repository,Request $request,SerializerInterface $serializer,PartenaireRepository $repo)
     {
-
         $promotion = $this->getDoctrine()->getManager()->getRepository(Promotion::class)->findAll();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($promotion);
 
         return new JsonResponse($formatted);
-
+        // return new JsonResponse($json);
     }
     /**
      * @Route("det", name="detail_promotion")
@@ -457,10 +448,108 @@ class PromotionController extends AbstractController
         // dd($x->getContent());
         return new JsonResponse($formatted);
     }
+    /**
+     * @Route("detp", name="detail_promotion")
+     * @Method("GET")
+     */
+
+    //Detail Reclamation
+    public function detailPartAction(Request $request,PartenaireRepository $partenaireRepository)
+    {
+        $partenaire= $request->query->get("idP");
 
 
 
+        $em = $this->getDoctrine()->getManager();
+        $idP= $partenaireRepository->findOneBy(['idP' => $partenaire]);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getDescription();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($idP);
+        $x=new JsonResponse($formatted);
+        // dd($x->getContent());
+        return new JsonResponse($formatted);
+    }
 
+    /**
+     * @Route("idp", name="detail_promotion")
+     * @Method("GET")
+     */
+
+    //Detail Reclamation
+    public function idPartAction(Request $request,PartenaireRepository $partenaireRepository)
+    {
+        $partenaire= $request->query->get("idP");
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $idP= $partenaireRepository->findOneBy(['idP' => $partenaire]);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getDescription();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($idP);
+        $x=new JsonResponse($formatted);
+        // dd($x->getContent());
+        return new JsonResponse($formatted);
+    }
+
+
+    /*
+      public function addCos(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializerInterface, UserRepository $userRepository, CostudyingtypeRepository $costudyingtypeRepository)
+        {
+            $cos = new CoStudying();
+            $description = $request->query->get("description");
+            $typeid = $request->query->get("type");
+            $rating = $request->query->get("rating");
+            $niveau = $request->query->get("niveau");
+            $student = $request->query->get("idStudent");
+           // $file = $request->query->get("file");
+            $file = "Business Model CanvasJSON.pdf";
+            $em = $this->getDoctrine()->getManager();
+            $date = new \DateTime('now');
+
+            $cos->setDescription($description);
+            $cos->setCreatedDate($date);
+            $cos->setNiveau($niveau);
+            $cos->setRating($rating);
+            $cos->setFile($file);
+            $type = $costudyingtypeRepository->findOneBy(['id' => $typeid]);
+            $cos->setType($type);
+            $user = $userRepository->findOneBy(['id' => $student]);
+            $cos->setIdStudent($user);
+            $em->persist($cos);
+            $em->flush();
+
+            $serializer = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serializer->normalize("CoStudying content added successfully");
+            return new JsonResponse($formatted);
+        }*/
+
+// corr aff
+    /**
+     * @Route ("displayi", name="display_cos")
+     */
+    public function getCos(PromotionRepository $promotionRepository, SerializerInterface $serializerInterface)
+    {
+        $cos = $this->getDoctrine()->getManager()->getRepository(Promotion::class)->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($cos , 'json', [AbstractNormalizer::ATTRIBUTES => ['idProm','codeP','reduction','dated','datef','idP'=>['nomP']]]);
+        // $formatted = $serializer->normalize($cos , 'json', [AbstractNormalizer::ATTRIBUTES => ['idProm']]);
+        return new JsonResponse($formatted);
+        /*
+          $promotion = $this->getDoctrine()->getManager()->getRepository(Promotion::class)->findAll();
+                $serializer = new Serializer([new ObjectNormalizer()]);
+                $formatted = $serializer->normalize($promotion);
+
+                return new JsonResponse($formatted);*/
+    }
 
 
 

@@ -4,15 +4,37 @@ namespace App\Controller;
 
 use App\Data\DataMail;
 use App\Entity\Partenaire;
+use App\Entity\Promotion;
 use App\Form\ContactMType;
 use App\Form\PartenaireType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PartenaireRepository;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+/**********************/
+
+use App\Repository\UtilisateurRepository;
+
+use App\Repository\PromotionRepository;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Validator\Constraints\Json;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
+use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
+/**
+/**************************/
 /**
  * @Route("/partenaire")
  */
@@ -279,9 +301,135 @@ class PartenaireController extends AbstractController
 
     }
 
+    /******************************************************/
+    //JSONNN
+
+
+    /**
+     * @Route ("add", name="partenaire_add", methods={"GET","POST"})
+     * @Method("POST")
+     */
+
+    public function ajouterPartenaireAction(Request $request)
+    {
+        $partenaire = new Partenaire();
+        $nomP = $request->query->get("nomP");
+        $domaine = $request->query->get("domaine");
+        $dateP = $request->query->get("dateP");
+        $mailp= $request->query->get("mailp");
+        $logop = $request->query->get("logop");
+        // $idP = $request->query->get("idP");
+        $em = $this->getDoctrine()->getManager();
+        //$date = new \DateTime('now');
+
+        $partenaire->setNomP($nomP);
+        $partenaire->setDomaine($domaine);
+        $partenaire->setDateP($dateP);
+        $partenaire->setMailp($mailp);
+        $partenaire->setLogop($logop);
+        // $promotion->setDatef($idP);
+        // $promotion->setEtat(0);
+
+        $em->persist($partenaire);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($partenaire);
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * @Route ("del", name="partenaire_del", methods={"GET","POST"})
+     * @Method("DELETE")
+     */
+
+    public function supprimerPartenaireAction(Request $request)
+    {
+        $idP= $request->get("idP");
+
+        $em = $this->getDoctrine()->getManager();
+        $partenaire= $em->getRepository( Partenaire::class)->find($idP);
+        if($partenaire!=null ) {
+            $em->remove($partenaire);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("partenaire a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id partenaire invalide.");
+
+    }
+    /**
+     * @Route ("up", name="partenaire_up")
+     * @Method("PUT")
+     */
+
+    public function modifierPartenaireAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $partenaire= $this->getDoctrine()->getManager()
+            ->getRepository(Partenaire::class)
+            ->find($request->get("idP"));
+
+        $partenaire->setNomP($request->get("nomP"));
+        $partenaire->setDomaine($request->get("domaine"));
+        $partenaire->setDateP($request->get("dateP"));
+        $partenaire->setMailp($request->get("mailp"));
+        $partenaire->setLogop($request->get("logop"));
+        // $promotion->setIdP($request->get("idP"));
+
+        $em->persist($partenaire);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($partenaire);
+        return new JsonResponse("partenaire a ete modifiee avec success.");
 
 
 
+
+    }
+
+
+    /**
+     * @Route ("lis", name="partenaire_lis")
+     * @param PartenaireRepository $repository
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @return JsonResponse
+     */
+    public function allPartenaireAction(PartenaireRepository $repository,Request $request,SerializerInterface $serializer)
+    {
+        $partenaire = $this->getDoctrine()->getManager()->getRepository(Partenaire::class)->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($partenaire);
+
+        return new JsonResponse($formatted);
+        // return new JsonResponse($json);
+    }
+    /**
+     * @Route("det", name="detail_partenaire")
+     * @Method("GET")
+     */
+
+    //Detail Reclamation
+    public function detailPartenaireAction(Request $request)
+    {
+        $idP = $request->get("idP");
+
+        $em = $this->getDoctrine()->getManager();
+        $partenaire = $this->getDoctrine()->getManager()->getRepository(Partenaire::class)->find($idP);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getDescription();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($partenaire);
+        $x=new JsonResponse($formatted);
+        // dd($x->getContent());
+        return new JsonResponse($formatted);
+    }
 
 
 

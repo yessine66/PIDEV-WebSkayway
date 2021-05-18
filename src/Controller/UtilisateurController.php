@@ -571,6 +571,163 @@ class UtilisateurController extends AbstractController
 
 
 
+    ////////////////////////////////////////////////LOGIN///////////////////////////////////////////////////////////////
+
+
+
+    /**
+     * @Route ("signupJSON" , name ="app_register")
+     */
+
+    public function signupActionJSON(Request $request ,UserPasswordEncoderInterface  $passwordEncoder){
+
+        $noml= $request->query->get("nom");
+        $prenoml = $request->query->get("prenom");
+        $maill= $request->query->get("mail");
+        $agel = $request->query->get("age");
+        $tell= $request->query->get("tel");
+        $genrel = $request->query->get("genre");
+        $dateNaissl = $request->query->get("dateNaiss");
+        $usernamel = $request->query->get("username");
+        $passwordl = $request->query->get("password");
+        $rolel = $request->query->get("role");
+        //$creComptel = $request->query->get("creCompte");
+        $creComptexi = new \DateTime('now');
+
+        //controle saisi mail
+
+        /* if(!filter_var($maill,FILTRE_VALIDATE_EMAIL)){
+             return new Response("mail invalid !!");
+         }*/
+
+        $utilisateur = new Utilisateur();
+        $utilisateur->setNom($noml);
+        $utilisateur->setPrenom($prenoml);
+        $utilisateur->setMail($maill);
+        $utilisateur->setAge($agel);
+        $utilisateur->setTel($tell);
+        $utilisateur->setGenre($genrel);
+        $utilisateur->setDateNaiss(new \DateTime($dateNaissl));
+        $utilisateur->setUsername($usernamel);
+        $utilisateur->setPassword(
+            $passwordEncoder->encodePassword(
+                $utilisateur,
+                $passwordl
+            )
+        );
+        //dd($rolel);
+        $utilisateur->setRole($rolel);
+        $utilisateur->setCreCompte($creComptexi);
+
+
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($utilisateur);
+            $em->flush();
+
+            return  new JsonResponse("Account is created" , 200);
+
+        }catch (\Exception $ex)
+        {
+            return  new Response("exception signup account".$ex->getMessage());
+        }
+
+
+    }
+
+
+
+
+    /**
+     *
+     * @Route ("signinJSON" , name ="app_login_JSON" )
+     */
+
+    public  function signinActionJSON(Request  $request){
+
+        $usernamel = $request->query->get("username");
+        $passwordl = $request->query->get("password");
+
+        $em=$this->getDoctrine()->getManager();
+        $utilisateur = $em->getRepository(Utilisateur::class)->findOneBy(['username'=>$usernamel]);
+
+        if($utilisateur){
+            if(password_verify($passwordl,$utilisateur->getPassword())){
+                $serializer = new Serializer([new ObjectNormalizer()]);
+                $formatted =$serializer->normalize($utilisateur);
+                return new JsonResponse($formatted);
+            }
+            else{
+                return  new Response("Password incorrect");
+            }
+
+        }
+        else{
+            return  new Response("Username incorrect");
+        }
+
+
+    }
+
+
+
+    /**
+     * @Route ("editProfileJSON" , name ="app_edit_profile_JSON")
+     */
+
+    public  function editProfile(Request $request ,UserPasswordEncoderInterface  $passwordEncoder){
+
+        $ide = $request->get("id");
+        $nome=$request->query->get("nom");
+        $prenome=$request->query->get("prenom");
+        $maile=$request->query->get("mail");
+        $agee=$request->query->get("age");
+        $telee=$request->query->get("tel");
+        $genree=$request->query->get("genre");
+        $usernamee=$request->query->get("username");
+        $passworde=$request->query->get("password");
+        $em=$this->getDoctrine()->getManager();
+        $utilisateur = $em->getRepository(Utilisateur::class)->find($ide);
+
+
+
+
+        $utilisateur->setNom($nome);
+        $utilisateur->setPrenom($prenome);
+        $utilisateur->setMail($maile);
+        $utilisateur->setAge($agee);
+        $utilisateur->setTel($telee);
+        $utilisateur->setGenre($genree);
+        $utilisateur->setUsername($usernamee);
+        $utilisateur->setPassword(
+            $passwordEncoder->encodePassword(
+                $utilisateur,
+                $passworde
+            )
+        );
+
+
+
+
+
+        try{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($utilisateur);
+            $em->flush();
+
+            return  new JsonResponse("Account is updated" , 200);
+
+        }catch (\Exception $ex)
+        {
+            return  new Response("exception account modification".$ex->getMessage());
+        }
+
+    }
+
+
+
+
 
 
 

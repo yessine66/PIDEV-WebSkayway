@@ -1960,3 +1960,22 @@ c17920,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user1-128x128.jp
 a022d6,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user3-128x128.jpg,1620509764,275963,404
 275963,127.0.0.1,GET,http://127.0.0.1:8000/utilisateur/dist/img/user3-128x128.jpg,1620509764,,404
 >>>>>>> 573007c5f17c61b12a0cd82d5086275a863ca4ad
+e4e5ab,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin1591,1621379380,,200
+ffb675,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin111,1621379400,,200
+478341,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621379727,51b1e6,500
+51b1e6,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621379727,,500
+ef1fb1,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621379901,01af5d,500
+01af5d,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621379901,,500
+ef1d46,127.0.0.1,GET,http://127.0.0.1:8000/promotionup?codeP=abbbb&dated=7%2F7%2F8&datef=1%2F1%2F1&idProm=12&reduction=545,1621379998,,200
+ee949b,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621380054,,200
+f315cd,127.0.0.1,GET,http://127.0.0.1:8000/promotionlis,1621380094,,200
+30273b,127.0.0.1,GET,http://127.0.0.1:8000/partenairelis,1621380369,6cf2e2,500
+6cf2e2,127.0.0.1,GET,http://127.0.0.1:8000/partenairelis,1621380369,,500
+9a93b0,127.0.0.1,GET,http://127.0.0.1:8000/partenairelis,1621380569,,200
+9b5e40,127.0.0.1,GET,http://127.0.0.1:8000/partenaireadd?dateP=1%2F1%2F1&domaine=alimentation22&logop=logo&mailp=test1%40gmail&nomP=test2,1621380616,,200
+88d957,127.0.0.1,GET,http://127.0.0.1:8000/partenairelis,1621380621,,200
+5f420d,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=username&username=testlogin111,1621380762,,200
+deaa0c,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin111,1621380768,,200
+52ad73,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin1211,1621380816,,200
+703031,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin111,1621380835,,200
+3d3f45,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin111,1621380920,,200
