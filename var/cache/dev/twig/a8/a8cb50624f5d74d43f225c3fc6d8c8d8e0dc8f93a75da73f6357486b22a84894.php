@@ -227,6 +227,6 @@ class __TwigTemplate_5b65e09fc1760e6237b6ca64cc51c1e95b9b4aae328e6a745e3225cc3e9
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/exception.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
+", "@WebProfiler/Collector/exception.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\exception.html.twig");
     }
 }

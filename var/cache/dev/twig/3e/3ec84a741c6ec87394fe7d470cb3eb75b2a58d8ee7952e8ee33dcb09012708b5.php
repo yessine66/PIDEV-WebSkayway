@@ -158,6 +158,6 @@ class __TwigTemplate_4ca21023591303f0308552baeebbc7b2d43523dce70a4d6ce6c5b124391
     <a href=\"{{ path('cours_index') }}\">back to list</a>
 {% endblock %}
 {% endblock %}
-", "cours/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\new.html.twig");
+", "cours/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\new.html.twig");
     }
 }

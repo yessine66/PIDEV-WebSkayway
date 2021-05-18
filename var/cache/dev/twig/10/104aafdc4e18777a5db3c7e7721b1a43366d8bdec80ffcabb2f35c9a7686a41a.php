@@ -122,6 +122,6 @@ class __TwigTemplate_c0b5bf750ce9d2cbb32fe5d477e65adcab048b34ad7a441a9690ad3450e
         {% endfor %}
     </tbody>
 </table>
-", "@WebProfiler/Profiler/table.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\table.html.twig");
+", "@WebProfiler/Profiler/table.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\table.html.twig");
     }
 }

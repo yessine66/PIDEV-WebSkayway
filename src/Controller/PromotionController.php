@@ -13,8 +13,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PromotionRepository;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Validator\Constraints\Json;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
 /**
  * @Route("/promotion")
  */
@@ -51,20 +62,7 @@ class PromotionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/p", name="p",methods={"GET","POST"})
-     */
-    public function a(PromotionRepository $repository,Request $request): Response
-    {
-        $promotions = $this->getDoctrine()
-            ->getRepository(Promotion::class)
-            ->findAll();
 
-        dd( $promotions);
-        /* return $this->render('promotion/index.html.twig', [
-             'promotions' => $promotions,
-         ]);*/
-    }
 
 
 
@@ -90,17 +88,16 @@ class PromotionController extends AbstractController
     }
 
 
-
-
-
-
-
-
     /**
      * @Route("/new", name="promotion_new", methods={"GET","POST"})
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @return Response
      */
     public function new(Request $request): Response
     {
+
+
         $promotion = new Promotion();
         $form = $this->createForm(PromotionType::class, $promotion);
         $form->handleRequest($request);
@@ -109,9 +106,10 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($promotion);
             $entityManager->flush();
-            $this->addFlash('success', 'promotion ajouté!');
+            $this->addFlash('success', 'promotion ajoutÃ©!');
             return $this->redirectToRoute('promotion_index');
         }
+
 
 
         return $this->render('promotion/new.html.twig', [
@@ -140,7 +138,7 @@ class PromotionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'Promotion modifié!');
+            $this->addFlash('success', 'Promotion modifiÃ©!');
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -159,7 +157,7 @@ class PromotionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($promotion);
             $entityManager->flush();
-            $this->addFlash('success', 'Promotion supprimé!');
+            $this->addFlash('success', 'Promotion supprimÃ©!');
         }
 
         return $this->redirectToRoute('promotion_index');
@@ -221,9 +219,9 @@ class PromotionController extends AbstractController
                 ->setTo($Utilisateur->getMail())
 
                 ->setBody(
-                    "Félicitations {$Utilisateur->getNom()} Vous avez gagner une réduction  {$Promotion->getReduction()} 
+                    "FÃ©licitations {$Utilisateur->getNom()} Vous avez gagner une rÃ©duction  {$Promotion->getReduction()} 
                  chez {$Promotion->getIdp()->getNomp()} 
-                 votre code est {$Promotion->getCodep()}  ! ❤ " );
+                 votre code est {$Promotion->getCodep()}  ! â¤ " );
 
                 $mailer->send($message);
             }
@@ -254,6 +252,197 @@ class PromotionController extends AbstractController
 
 
     }
+
+    /******************************************************/
+    //JSONNN
+
+    /**
+     * @Route("/p", name="p",methods={"GET","POST"})
+     * @param PromotionRepository $repository
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @return Response
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     */
+    public function a (PromotionRepository $repository,Request $request,SerializerInterface $serializer): Response
+    {
+        //$promotions = $repository
+        //  ->findAll();
+        $repository=$this->getDoctrine()->getRepository(Promotion::class);
+        $promotions=$repository->findAll();
+        //$json=$serializer->serialize($promotions,'json',['groups'=>'promotions']);
+        $json=$serializer->serialize($promotions,'json',['groups'=>'promotion']);
+
+        dd( $json);
+        /* return $this->render('promotion/index.html.twig', [
+             'promotions' => $promotions,
+         ]);*/
+        //return new Response(json_encode($json));
+    }
+
+
+    /**
+     * @Route ("add", name="promotion_add", methods={"GET","POST"})
+     * @Method("POST")
+     */
+
+    public function ajouterPromotionAction(Request $request)
+    {
+        $promotion = new Promotion();
+        $codeP = $request->query->get("codeP");
+        $reduction = $request->query->get("reduction");
+        $dated= $request->query->get("dated");
+        $datef = $request->query->get("datef");
+        // $idP = $request->query->get("idP");
+        $em = $this->getDoctrine()->getManager();
+        //$date = new \DateTime('now');
+
+        $promotion->setCodeP($codeP);
+        $promotion->setReduction($reduction);
+        $promotion->setDated($dated);
+        $promotion->setDatef($datef);
+        // $promotion->setDatef($idP);
+        // $promotion->setEtat(0);
+
+        $em->persist($promotion);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($promotion);
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route ("del", name="promotion_del", methods={"GET","POST"})
+     * @Method("DELETE")
+     */
+
+    public function supprimerPromotionAction(Request $request)
+    {
+        $idProm = $request->get("idProm");
+
+        $em = $this->getDoctrine()->getManager();
+        $promotion= $em->getRepository( Promotion::class)->find($idProm);
+        if($promotion!=null ) {
+            $em->remove($promotion);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("promotiona ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id promotion invalide.");
+
+    }
+    /**
+     * @Route ("up", name="promotion_up")
+     * @Method("PUT")
+     */
+
+    public function modifierPromotionAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promotion= $this->getDoctrine()->getManager()
+            ->getRepository(Promotion::class)
+            ->find($request->get("idProm"));
+
+        $promotion->setCodeP($request->get("codeP"));
+        $promotion->setReduction($request->get("reduction"));
+        $promotion->setDated($request->get("dated"));
+        $promotion->setDatef($request->get("datef"));
+        // $promotion->setIdP($request->get("idP"));
+
+        $em->persist($promotion);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($promotion);
+        return new JsonResponse("PROMOTION a ete modifiee avec success.");
+//OLFA
+        //   $promotion=$this->getDoctrine()->getRepository(Classe::class)->find($idProm);
+        /*$idProm = $request->get("idProm");
+
+        $em = $this->getDoctrine()->getManager();
+        $promotion= $em->getRepository( Promotion::class)->find($idProm);
+
+        $en=$this->getDoctrine()->getManager();
+        $promotion->setCodeP($request->get("codeP"));
+        $promotion->setReduction($request->get("reduction"));
+        $promotion->setDated($request->get("dated"));
+        $promotion->setDatef($request->get("datef"));
+        $en->flush();
+        $encoder = array (new JsonEncoder());
+        $normalizer = array(new ObjectNormalizer());
+        $normalizer[0]->setIgnoredAttributes(array('partenaire','utilisateur'));
+        // $normalizer->setIgnoredAttributes(['enseignants']);
+        $normalizer[0]->setCircularReferenceLimit(1);
+        $normalizer[0]->setCircularReferenceHandler(function ($object) {
+            return $object->getIdProm();
+        });
+
+        $serializer = new Serializer($normalizer, $encoder);
+
+        $formatted = $serializer->serialize($promotion, 'json');
+        $formatted1 = $serializer->normalize($promotion);
+        return new JsonResponse($formatted1);
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+    }
+
+
+    /**
+     * @Route("lis", name="promotion_lis",methods={"GET","POST"})
+     */
+    public function displayAPI()
+    {
+
+        $promotion = $this->getDoctrine()->getManager()->getRepository(Promotion::class)->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($promotion);
+
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * @Route("det", name="detail_promotion")
+     * @Method("GET")
+     */
+
+    //Detail Reclamation
+    public function detailPromotionAction(Request $request)
+    {
+        $idProm = $request->get("idProm");
+
+        $em = $this->getDoctrine()->getManager();
+        $reclamation = $this->getDoctrine()->getManager()->getRepository(Promotion::class)->find($idProm);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getDescription();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($reclamation);
+        $x=new JsonResponse($formatted);
+        // dd($x->getContent());
+        return new JsonResponse($formatted);
+    }
+
+
+
+
+
+
 
 
 

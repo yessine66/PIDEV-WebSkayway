@@ -131,6 +131,6 @@ class __TwigTemplate_77dcb4de2b8201a84b1c9e4476e9f7e5c1c91b3343d52272ae5a0ecb291
     </span>
 {{ title }}
 </a>
-", "pagination/sortable.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\pagination\\sortable.html.twig");
+", "pagination/sortable.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\pagination\\sortable.html.twig");
     }
 }

@@ -174,6 +174,6 @@ class __TwigTemplate_888528f7a3df1238fad43a8a912a284c52a6854ff55ffd1bcae5ed1953e
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\open.html.twig");
     }
 }

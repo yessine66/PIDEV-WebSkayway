@@ -248,6 +248,6 @@ class __TwigTemplate_6e8cf3df2a9ddf340bfaf2eb7ad6a44ae0099ecfb2df773ff2b3765d42a
         <a href=\"{{ path('actualite_new') }}\">Create new</a>
     {% endblock %}
 {% endblock %}
-", "actualite/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\actualite\\index.html.twig");
+", "actualite/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\actualite\\index.html.twig");
     }
 }

@@ -1,13 +1,21 @@
 <?php
 
 namespace App\Controller;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use App\Entity\Promotion;
 use App\Entity\Question;
 use App\Entity\Test;
 use App\Form\TestType;
 use App\Form\QuestionType;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
+use App\Repository\PromotionRepository;
 use App\Repository\QuestionRepository;
 use Spatie\CalendarLinks\Link;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +23,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Serializer\SerializerAwareInterface;
 
 
 /**
@@ -25,14 +35,29 @@ class QuestionController extends AbstractController
     /**
      * @Route("/", name="question_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(SerializerInterface $serializerInterface): Response
     {
-        $questions = $this->getDoctrine()
+        $question = $this->getDoctrine()
             ->getRepository(Question::class)
             ->findAll();
+        $json=$serializerInterface->serialize($question,'json',['groups'=>'question']);
+       // $json=$serializerInterface->serialize($question,'json',['groups'=>'question']);
+/*
+        $datas = array();
+        foreach ($questions as $key => $question){
+            $datas[$key]['idQ'] = $question->getIdQ();
+            $datas[$key]['textQ'] = $question->getTextQ();
+            $datas[$key]['nbrPoint'] = $question->getNbrPoint();
+            $datas[$key]['nameT'] = $question->getNameT();
+
+
+        }
+        $rec= new JsonResponse($datas);*/
+       // dd($rec->getContent());
+
 
         return $this->render('question/index.html.twig', [
-            'questions' => $questions,
+            'questions' => $question,
         ]);
     }
 
@@ -73,7 +98,7 @@ class QuestionController extends AbstractController
     /**
      * @Route("/new", name="question_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request) : Response
     {
         $question = new Question();
         $form = $this->createForm(QuestionType::class, $question);
@@ -83,7 +108,6 @@ class QuestionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($question);
             $entityManager->flush();
-
             return $this->redirectToRoute('question_index');
 
         }
@@ -93,6 +117,120 @@ class QuestionController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route ("/add", name="question_add", methods={"GET","POST"})
+     */
+
+    public function AddAPI(Request $request)
+    {
+
+        $q = new Question();
+        $q->setTextQ($request->get('textQ'));
+        $q->setNbrPoint($request->get('nbrPoint'));
+        $q->setNameT($request->get('nameT'));
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($q);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($q);
+        return new JsonResponse($formatted);
+    }
+
+
+
+    /**
+     * @Route ("del", name="question_del", methods={"GET","POST"})
+     * @Method("DELETE")
+     */
+
+    public function deleteAPI(Request $request) {
+        $idQ = $request->get("idQ");
+        $em = $this->getDoctrine()->getManager();
+        $question = $em->getRepository(Question::class)->find($idQ);
+        if($question!=null ) {
+            $em->remove($question);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("Question a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }
+        return new JsonResponse("id Question invalide.");
+
+
+    }
+    /**
+     * @Route("update", name="question_update",methods={"GET","POST"})
+     * @Method("PUT")
+     */
+    public function updateAPI(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $question = $this->getDoctrine()->getManager()
+            ->getRepository(Question::class)
+            ->find($request->get("idQ"));
+
+        $question->setNbrPoint($request->get("nbrPoint"));
+        $question->setTextQ($request->get("textQ"));
+        $question->setNameT($request->get("nameT"));
+        $em->persist($question);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($question);
+        return new JsonResponse("Question a ete modifiee avec success.");
+
+    }
+
+    /**
+     * @Route("/display", name="question_display",methods={"GET","POST"})
+     */
+    public function displayAPI()
+    {
+
+        $question = $this->getDoctrine()->getManager()->getRepository(Question::class)->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($question);
+
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route ("/displayi", name="display_cos")
+     */
+    public function getCos(QuestionRepository $coStudyingRepository, SerializerInterface $serializerInterface)
+    {
+        $cos = $this->getDoctrine()->getManager()->getRepository(Question::class)->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($cos , 'json', [AbstractNormalizer::ATTRIBUTES => ['idQ','textQ','nbrPoint','nameT']]);
+        return new JsonResponse($formatted);
+
+    }
+    /**
+     * @Route("/detail", name="detail_reclamation",methods={"GET","POST"})
+     */
+    public function detailsAPI(Request $request)
+    {
+        $idQ = $request->get("idQ");
+
+        $em = $this->getDoctrine()->getManager();
+        $question = $this->getDoctrine()->getManager()->getRepository(Question::class)->find($idQ);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getDescription();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($question);
+        //dd(new JsonResponse($formatted));
+        $x=new JsonResponse($formatted);
+        dd($x->getContent());
+        return new JsonResponse($formatted);
+
+    }
+
 
     /**
      * @Route("/{idQ}", name="question_show", methods={"GET"})
@@ -178,6 +316,18 @@ class QuestionController extends AbstractController
     }
 
     /**
+     * @Route("/question/papa/", name="question_papa",methods={"GET"})
+     */
+    public function abo(QuestionRepository $repository, Request $request): Response
+    {     $questions = $this->getDoctrine()
+        ->getRepository(Question::class)
+        ->findAll();
+
+        dd($questions);
+
+    }
+
+    /**
      * @Route("/TriCat/", name="question_cat", methods={"POST"})
      */
     public function FindByCategorie(EntityManagerInterface $em, Request $request): Response
@@ -245,5 +395,9 @@ class QuestionController extends AbstractController
         // return $this->redirect($link->google());
 
     }
+
+
+
+
 
 }

@@ -81,6 +81,6 @@ class __TwigTemplate_bd22cc5a2d73fea90ba359dd21b2b5f1da34a5eb6cab617b0c717f02b96
     <button class=\"btn\">Delete</button>
 
 </form>
-", "reclamation/_delete_form.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\_delete_form.html.twig");
+", "reclamation/_delete_form.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\_delete_form.html.twig");
     }
 }

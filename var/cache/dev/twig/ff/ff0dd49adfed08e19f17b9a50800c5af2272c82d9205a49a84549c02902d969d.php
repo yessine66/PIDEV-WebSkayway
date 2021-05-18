@@ -318,6 +318,6 @@ class __TwigTemplate_999d66de7607abf1d515c534e95cdaf2af9bc1032c19a7149c24a9d43d2
             {% endif %}
         </ul>
     </nav>
-{% endif %}", "cours/courspage.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\courspage.html.twig");
+{% endif %}", "cours/courspage.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\courspage.html.twig");
     }
 }

@@ -317,6 +317,6 @@ nom partenaire:  ") . twig_get_attribute($this->env, $this->source, twig_get_att
 
     {{ include('promotion/_delete_form.html.twig') }}
 {% endblock %}
-{% endblock %}", "promotion/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\show.html.twig");
+{% endblock %}", "promotion/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\show.html.twig");
     }
 }

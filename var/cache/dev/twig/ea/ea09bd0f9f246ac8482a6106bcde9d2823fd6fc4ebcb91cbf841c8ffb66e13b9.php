@@ -756,6 +756,6 @@ nom partenaire:  ") . twig_get_attribute($this->env, $this->source, twig_get_att
 {% endblock %}
 
 
-", "promotion/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\index.html.twig");
+", "promotion/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\index.html.twig");
     }
 }

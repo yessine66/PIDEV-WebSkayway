@@ -89,6 +89,6 @@ class __TwigTemplate_c42e15be1940707b9cc180673ca228ccd08187af18bf563e04967da8d1b
         ?>
     </div>
 <?php endif ?>
-", "@Framework/Form/week_widget.html.php", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\week_widget.html.php");
+", "@Framework/Form/week_widget.html.php", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\symfony\\framework-bundle\\Resources\\views\\Form\\week_widget.html.php");
     }
 }

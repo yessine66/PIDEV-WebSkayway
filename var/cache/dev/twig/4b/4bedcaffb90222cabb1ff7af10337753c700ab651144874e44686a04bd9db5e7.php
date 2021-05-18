@@ -124,6 +124,6 @@ class __TwigTemplate_7f948eb678a1ca64c8e0b67aed1be9a4d9feaaa552352241884d21f2f80
             </script>
         </div>
     </div>
-{% endblock %}", "partenaire/statPart.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\partenaire\\statPart.html.twig");
+{% endblock %}", "partenaire/statPart.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\partenaire\\statPart.html.twig");
     }
 }

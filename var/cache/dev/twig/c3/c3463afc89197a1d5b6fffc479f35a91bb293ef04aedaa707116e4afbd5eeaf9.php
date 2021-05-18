@@ -460,6 +460,6 @@ class __TwigTemplate_ce1a57695c31f9f8804abe090eb069cea6722a25463da6c5f5a1ab24c55
     {% endblock %}
 {% endblock %}
 
-", "stars/ajoutstars.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\stars\\ajoutstars.html.twig");
+", "stars/ajoutstars.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\stars\\ajoutstars.html.twig");
     }
 }

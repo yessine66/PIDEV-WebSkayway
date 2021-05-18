@@ -312,6 +312,6 @@ class __TwigTemplate_01aa5a4dd6a0a3947270c68fd96502ac14b3922a770bb1e5e11b185d095
 </html>
 
 
-", "security/forgetSMS.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\security\\forgetSMS.html.twig");
+", "security/forgetSMS.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\security\\forgetSMS.html.twig");
     }
 }

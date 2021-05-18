@@ -154,6 +154,6 @@ class __TwigTemplate_442a87c07ca69750be2d2b97834ad3b9b26ba450d91e5e0c6c76fd4e7fb
 
         <a href=\"{{ path('actualite_index') }}\">back to list</a>
     {% endblock %}
-{% endblock %}", "actualite/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\actualite\\new.html.twig");
+{% endblock %}", "actualite/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\actualite\\new.html.twig");
     }
 }

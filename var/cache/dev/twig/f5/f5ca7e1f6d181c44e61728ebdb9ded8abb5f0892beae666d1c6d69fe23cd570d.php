@@ -154,6 +154,6 @@ class __TwigTemplate_3f00f34893927dd31df14a2cae5b42d7a7d4b7588a7dcf5244f1be431ca
     </ul>
 </div>
 {% endblock %}
-", "stars/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\stars\\index.html.twig");
+", "stars/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\stars\\index.html.twig");
     }
 }

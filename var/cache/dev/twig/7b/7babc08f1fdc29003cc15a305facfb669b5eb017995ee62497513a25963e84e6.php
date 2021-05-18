@@ -237,6 +237,6 @@ class __TwigTemplate_99c5ca1bc4c210225578ca0e26e36629762cce88fc823455e0491e63d06
     {{ include('reclamation/_delete_form.html.twig') }}
 {% endblock %}
 {% endblock %}
-", "reclamation/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\show.html.twig");
+", "reclamation/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\show.html.twig");
     }
 }

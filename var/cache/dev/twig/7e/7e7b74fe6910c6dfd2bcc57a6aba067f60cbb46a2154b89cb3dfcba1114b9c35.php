@@ -341,6 +341,6 @@ class __TwigTemplate_0adac4ffff5557411a62c42a0a8c70bd133096b4fff0693e2794b995f33
 
 {% endblock %}
 {% endblock %}
-", "cours/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\index.html.twig");
+", "cours/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\index.html.twig");
     }
 }

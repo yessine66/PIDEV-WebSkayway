@@ -208,6 +208,6 @@ class __TwigTemplate_6f65b7ccb75a9c8b1d7ebfd3620aa5fa566e27fc0cf52207d7fff1af54b
     {{ include('categorie/_delete_form.html.twig') }}
 {% endblock %}
 {% endblock %}
-", "categorie/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\categorie\\show.html.twig");
+", "categorie/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\categorie\\show.html.twig");
     }
 }

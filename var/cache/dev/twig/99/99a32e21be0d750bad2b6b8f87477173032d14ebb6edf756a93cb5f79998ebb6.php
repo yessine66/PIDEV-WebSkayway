@@ -228,6 +228,6 @@ class __TwigTemplate_2fcdc1745595adaf15835684ae0f1aea055ea590847ea4ed7edf4492efc
     </div>
 </section>
 {% endblock %}
-{% endblock %}", "reclamation/edit.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\edit.html.twig");
+{% endblock %}", "reclamation/edit.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\edit.html.twig");
     }
 }

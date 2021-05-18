@@ -291,6 +291,6 @@ nom partenaire:  ") . twig_get_attribute($this->env, $this->source, twig_get_att
 
     </div>
 
-{% endblock %}", "promotion/game.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\game.html.twig");
+{% endblock %}", "promotion/game.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\game.html.twig");
     }
 }

@@ -79,6 +79,6 @@ class __TwigTemplate_937d9751a64b26e0cd39aa969fa5abce63685e1b817843b8e0c602eff99
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ cour.idC) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "cours/_delete_form.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\_delete_form.html.twig");
+", "cours/_delete_form.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\_delete_form.html.twig");
     }
 }

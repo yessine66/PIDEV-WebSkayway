@@ -360,6 +360,6 @@ class __TwigTemplate_a87a34f9f8e26532c68319c4b3d81d6a4e52c2e35117d4db801802d1880
    <!-- <a href=\"{{ path('feedback_new') }}\">Create new</a> -->
 {% endblock %}
 {% endblock %}
-", "feedback/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\feedback\\index.html.twig");
+", "feedback/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\feedback\\index.html.twig");
     }
 }

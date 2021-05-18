@@ -545,6 +545,6 @@ class __TwigTemplate_2c430295d259d212dd733983530e7dc6aef6c0e248a419f55e8bf3cc28b
         </main>
     {% endblock %}
 {% endblock %}
-", "categorie/indexF.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\categorie\\indexF.html.twig");
+", "categorie/indexF.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\categorie\\indexF.html.twig");
     }
 }

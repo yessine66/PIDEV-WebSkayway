@@ -133,6 +133,6 @@ class __TwigTemplate_42bc01b922390c25cf479a0f3a9d40dcb472eb029f31ccc0ecb5130d762
 
     <a href=\"{{ path('test_index') }}\">back to list</a>
 {% endblock %}
-", "test/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\test\\new.html.twig");
+", "test/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\test\\new.html.twig");
     }
 }

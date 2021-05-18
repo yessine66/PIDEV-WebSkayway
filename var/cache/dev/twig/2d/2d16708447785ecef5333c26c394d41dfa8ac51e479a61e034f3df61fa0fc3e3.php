@@ -158,6 +158,6 @@ class __TwigTemplate_2247e7d9b5733363e840099e1d1566cb277e11cde1be66162e835d3575d
     <a href=\"{{ path('categorie_index') }}\">back to list</a>
 {% endblock %}
 {% endblock %}
-", "categorie/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\categorie\\new.html.twig");
+", "categorie/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\categorie\\new.html.twig");
     }
 }

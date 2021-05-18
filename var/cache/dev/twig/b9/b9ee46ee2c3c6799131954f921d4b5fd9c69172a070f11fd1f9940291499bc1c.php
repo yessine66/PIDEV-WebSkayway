@@ -282,6 +282,6 @@ class __TwigTemplate_555a17fb727e0836e8350cae3f9fb421f3fd674042671fab9bb76903c8b
 
     {{ include('partenaire/_delete_form.html.twig') }}
 {% endblock %}
-{% endblock %}", "partenaire/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\partenaire\\show.html.twig");
+{% endblock %}", "partenaire/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\partenaire\\show.html.twig");
     }
 }

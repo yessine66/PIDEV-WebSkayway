@@ -205,6 +205,6 @@ class __TwigTemplate_57daff6d95a55b1783ed62ce94ec5de2697affd7dca8f2d85d9623511a5
         {{ form_end (form) }}
     {% endblock %}
 {% endblock %}
-", "partenaire/contactP.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\partenaire\\contactP.html.twig");
+", "partenaire/contactP.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\partenaire\\contactP.html.twig");
     }
 }

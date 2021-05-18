@@ -73,6 +73,6 @@ class __TwigTemplate_da607345950c24e90f16cd090f66f226ed67d0fc197e2f017d819b26c20
         return new Source("{% extends 'baseF.html.twig' %}
 
 
-", "home_contoller/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\home_contoller\\index.html.twig");
+", "home_contoller/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\home_contoller\\index.html.twig");
     }
 }

@@ -241,6 +241,6 @@ class __TwigTemplate_5b3c383d59eb30f517f294d103bb08e9577c7f8d0bc0cdbc250ebcba5f5
     {{ include('cours/_delete_form.html.twig') }}
 {% endblock %}
 {% endblock %}
-", "cours/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\show.html.twig");
+", "cours/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\show.html.twig");
     }
 }

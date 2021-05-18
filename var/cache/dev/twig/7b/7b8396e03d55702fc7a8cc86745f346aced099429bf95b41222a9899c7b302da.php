@@ -1671,6 +1671,6 @@ class __TwigTemplate_9abdf31cde7ae2c245a38c59a8030cca8d3f7e7c26cd22f7b459389313c
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\doctrine\\doctrine-bundle\\Resources\\views\\Collector\\db.html.twig");
     }
 }

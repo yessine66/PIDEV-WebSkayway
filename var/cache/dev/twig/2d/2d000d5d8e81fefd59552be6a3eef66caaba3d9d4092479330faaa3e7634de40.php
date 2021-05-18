@@ -537,6 +537,6 @@ class __TwigTemplate_9b9c70a1eeb39bc178248aef40152823fbb5db9a5cc0001968c520439ca
     {% endblock %}
     </main>
 
-{% endblock %}", "test/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\test\\index.html.twig");
+{% endblock %}", "test/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\test\\index.html.twig");
     }
 }

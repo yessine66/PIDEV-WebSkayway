@@ -233,6 +233,6 @@ class __TwigTemplate_f4ed3ea4e54319bf8665c460ea91d9126dc297788676e408afe1b1b3b7a
     <a href=\"{{ path('categorie_new') }}\">Create new</a>
 {% endblock %}
 {% endblock %}
-", "categorie/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\categorie\\index.html.twig");
+", "categorie/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\categorie\\index.html.twig");
     }
 }

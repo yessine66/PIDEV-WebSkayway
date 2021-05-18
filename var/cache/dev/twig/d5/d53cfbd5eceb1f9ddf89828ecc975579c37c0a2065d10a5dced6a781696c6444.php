@@ -275,6 +275,6 @@ class __TwigTemplate_3123a264c570755d84ccf647a13d4dcfa8623e256f4ce75785e4159f850
     </body>
 </html>
 {% block after_html %}{% endblock %}
-", "@Twig/layout.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
+", "@Twig/layout.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\vendor\\symfony\\twig-bundle\\Resources\\views\\layout.html.twig");
     }
 }

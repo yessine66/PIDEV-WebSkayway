@@ -41,17 +41,28 @@ return [
         '/partenairelist' => [[['_route' => 'triM', '_controller' => 'App\\Controller\\PartenaireController::OrderByMailQB'], null, null, null, false, false, null]],
         '/partenairecontactP' => [[['_route' => 'contactP', '_controller' => 'App\\Controller\\PartenaireController::contactP'], null, null, null, false, false, null]],
         '/promotion' => [[['_route' => 'promotion_index', '_controller' => 'App\\Controller\\PromotionController::index'], null, ['GET' => 0], null, true, false, null]],
-        '/promotion/p' => [[['_route' => 'p', '_controller' => 'App\\Controller\\PromotionController::a'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promotion/Front' => [[['_route' => 'promotion_indexR', '_controller' => 'App\\Controller\\PromotionController::indexR'], null, ['GET' => 0], null, false, false, null]],
         '/promotion/new' => [[['_route' => 'promotion_new', '_controller' => 'App\\Controller\\PromotionController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promotion triRed' => [[['_route' => 'triRed', '_controller' => 'App\\Controller\\PromotionController::TriRed'], null, null, null, false, false, null]],
         '/promotionrandommail' => [[['_route' => 'randommail', '_controller' => 'App\\Controller\\PromotionController::RandomUserMail'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/promotionplay' => [[['_route' => 'play', '_controller' => 'App\\Controller\\PromotionController::playWithUser'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/promotionadd' => [[['_route' => 'promotion_add', '_controller' => 'App\\Controller\\PromotionController::ajouterPromotionAction'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/promotiondel' => [[['_route' => 'promotion_del', '_controller' => 'App\\Controller\\PromotionController::supprimerPromotionAction'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/promotionup' => [[['_route' => 'promotion_up', '_controller' => 'App\\Controller\\PromotionController::modifierPromotionAction'], null, null, null, false, false, null]],
+        '/promotionlis' => [[['_route' => 'promotion_lis', '_controller' => 'App\\Controller\\PromotionController::displayAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/promotiondet' => [[['_route' => 'detail_promotion', '_controller' => 'App\\Controller\\PromotionController::detailPromotionAction'], null, null, null, false, false, null]],
         '/question' => [[['_route' => 'question_index', '_controller' => 'App\\Controller\\QuestionController::index'], null, ['GET' => 0], null, true, false, null]],
         '/question/index' => [[['_route' => 'questionF_index', '_controller' => 'App\\Controller\\QuestionController::indexF'], null, ['GET' => 0], null, false, false, null]],
         '/question/index1' => [[['_route' => 'questionF_show', '_controller' => 'App\\Controller\\QuestionController::indexS'], null, ['GET' => 0], null, false, false, null]],
         '/question/new' => [[['_route' => 'question_new', '_controller' => 'App\\Controller\\QuestionController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/question/add' => [[['_route' => 'question_add', '_controller' => 'App\\Controller\\QuestionController::AddAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/questiondel' => [[['_route' => 'question_del', '_controller' => 'App\\Controller\\QuestionController::deleteAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/questionupdate' => [[['_route' => 'question_update', '_controller' => 'App\\Controller\\QuestionController::updateAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/question/display' => [[['_route' => 'question_display', '_controller' => 'App\\Controller\\QuestionController::displayAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/question/displayi' => [[['_route' => 'display_cos', '_controller' => 'App\\Controller\\QuestionController::getCos'], null, null, null, false, false, null]],
+        '/question/detail' => [[['_route' => 'detail_reclamation', '_controller' => 'App\\Controller\\QuestionController::detailsAPI'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/question/question/tri' => [[['_route' => '/question/tri', '_controller' => 'App\\Controller\\QuestionController::Tri'], null, null, null, false, false, null]],
+        '/question/question/papa' => [[['_route' => 'question_papa', '_controller' => 'App\\Controller\\QuestionController::abo'], null, ['GET' => 0], null, true, false, null]],
         '/questionlist' => [[['_route' => 'triCategorieB', '_controller' => 'App\\Controller\\QuestionController::OrderByName'], null, null, null, false, false, null]],
         '/reclamation/index' => [[['_route' => 'reclamation_index', '_controller' => 'App\\Controller\\ReclamationController::index'], null, ['GET' => 0], null, false, false, null]],
         '/reclamation' => [[['_route' => 'reclamationF_index', '_controller' => 'App\\Controller\\ReclamationController::indexf'], null, ['GET' => 0], null, true, false, null]],
@@ -165,60 +176,63 @@ return [
                         .'|/edit(*:869)'
                         .'|(*:877)'
                     .')'
-                    .'|romotion/([^/]++)(?'
-                        .'|(*:906)'
-                        .'|/edit(*:919)'
-                        .'|(*:927)'
+                    .'|romotion/(?'
+                        .'|([^/]++)(?'
+                            .'|(*:909)'
+                            .'|/edit(*:922)'
+                            .'|(*:930)'
+                        .')'
+                        .'|p(*:940)'
                     .')'
                 .')'
                 .'|/q(?'
                     .'|uestion/(?'
-                        .'|([^/]++)(*:961)'
-                        .'|front_q(*:976)'
+                        .'|([^/]++)(*:974)'
+                        .'|front_q(*:989)'
                         .'|([^/]++)(?'
-                            .'|/edit(*:1000)'
-                            .'|(*:1009)'
+                            .'|/edit(*:1013)'
+                            .'|(*:1022)'
                         .')'
-                        .'|TriCat(*:1025)'
+                        .'|TriCat(*:1038)'
                     .')'
-                    .'|r\\-code/([^/]++)/([^/]++)(*:1060)'
+                    .'|r\\-code/([^/]++)/([^/]++)(*:1073)'
                 .')'
                 .'|/re(?'
                     .'|clamation/(?'
-                        .'|index/([^/]++)(*:1103)'
+                        .'|index/([^/]++)(*:1116)'
                         .'|([^/]++)(?'
-                            .'|(*:1123)'
-                            .'|/edit(*:1137)'
-                            .'|(*:1146)'
+                            .'|(*:1136)'
+                            .'|/edit(*:1150)'
+                            .'|(*:1159)'
                         .')'
                     .')'
                     .'|ponse/([^/]++)(?'
-                        .'|(*:1174)'
-                        .'|/edit(*:1188)'
-                        .'|(*:1197)'
+                        .'|(*:1187)'
+                        .'|/edit(*:1201)'
+                        .'|(*:1210)'
                     .')'
                 .')'
                 .'|/t(?'
                     .'|est(?'
-                        .'|([^/]++)/indexcert(*:1237)'
+                        .'|([^/]++)/indexcert(*:1250)'
                         .'|/(?'
                             .'|([^/]++)(?'
-                                .'|/edit(*:1266)'
-                                .'|(*:1275)'
+                                .'|/edit(*:1279)'
+                                .'|(*:1288)'
                             .')'
-                            .'|pdf(*:1288)'
+                            .'|pdf(*:1301)'
                         .')'
                     .')'
                     .'|heme/([^/]++)(?'
-                        .'|(*:1315)'
-                        .'|/edit(*:1329)'
-                        .'|(*:1338)'
+                        .'|(*:1328)'
+                        .'|/edit(*:1342)'
+                        .'|(*:1351)'
                     .')'
                 .')'
                 .'|/utilisateur/([^/]++)(?'
-                    .'|(*:1373)'
-                    .'|/edit(*:1387)'
-                    .'|(*:1396)'
+                    .'|(*:1386)'
+                    .'|/edit(*:1400)'
+                    .'|(*:1409)'
                 .')'
             .')/?$}sD',
     ],
@@ -265,32 +279,33 @@ return [
         856 => [[['_route' => 'partenaire_show', '_controller' => 'App\\Controller\\PartenaireController::show'], ['idP'], ['GET' => 0], null, false, true, null]],
         869 => [[['_route' => 'partenaire_edit', '_controller' => 'App\\Controller\\PartenaireController::edit'], ['idP'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         877 => [[['_route' => 'partenaire_delete', '_controller' => 'App\\Controller\\PartenaireController::delete'], ['idP'], ['POST' => 0], null, false, true, null]],
-        906 => [[['_route' => 'promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['idProm'], ['GET' => 0], null, false, true, null]],
-        919 => [[['_route' => 'promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['idProm'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        927 => [[['_route' => 'promotion_delete', '_controller' => 'App\\Controller\\PromotionController::delete'], ['idProm'], ['POST' => 0], null, false, true, null]],
-        961 => [[['_route' => 'question_show', '_controller' => 'App\\Controller\\QuestionController::show'], ['idQ'], ['GET' => 0], null, false, true, null]],
-        976 => [[['_route' => 'question_show_front', '_controller' => 'App\\Controller\\QuestionController::show_front'], [], ['GET' => 0], null, false, false, null]],
-        1000 => [[['_route' => 'question_edit', '_controller' => 'App\\Controller\\QuestionController::edit'], ['idQ'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1009 => [[['_route' => 'question_delete', '_controller' => 'App\\Controller\\QuestionController::delete'], ['idQ'], ['POST' => 0], null, false, true, null]],
-        1025 => [[['_route' => 'question_cat', '_controller' => 'App\\Controller\\QuestionController::FindByCategorie'], [], ['POST' => 0], null, true, false, null]],
-        1060 => [[['_route' => 'qr_code_generate', '_controller' => 'Endroid\\QrCodeBundle\\Controller\\GenerateController'], ['builder', 'data'], null, null, false, true, null]],
-        1103 => [[['_route' => 'reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['idRec'], ['GET' => 0], null, false, true, null]],
-        1123 => [[['_route' => 'reclamation_showF', '_controller' => 'App\\Controller\\ReclamationController::showF'], ['idRec'], ['GET' => 0], null, false, true, null]],
-        1137 => [[['_route' => 'reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['idRec'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1146 => [[['_route' => 'reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['idRec'], ['POST' => 0], null, false, true, null]],
-        1174 => [[['_route' => 'reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['idR'], ['GET' => 0], null, false, true, null]],
-        1188 => [[['_route' => 'reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['idR'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1197 => [[['_route' => 'reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['idR'], ['POST' => 0], null, false, true, null]],
-        1237 => [[['_route' => 'test_indexcert', '_controller' => 'App\\Controller\\TestController::indexf'], ['idTest'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1266 => [[['_route' => 'test_edit', '_controller' => 'App\\Controller\\TestController::edit'], ['idTest'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1275 => [[['_route' => 'test_delete', '_controller' => 'App\\Controller\\TestController::delete'], ['idTest'], ['POST' => 0], null, false, true, null]],
-        1288 => [[['_route' => 'test_pdf', '_controller' => 'App\\Controller\\TestController::indexpdf'], [], null, null, false, false, null]],
-        1315 => [[['_route' => 'theme_show', '_controller' => 'App\\Controller\\ThemeController::show'], ['idT'], ['GET' => 0], null, false, true, null]],
-        1329 => [[['_route' => 'theme_edit', '_controller' => 'App\\Controller\\ThemeController::edit'], ['idT'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1338 => [[['_route' => 'theme_delete', '_controller' => 'App\\Controller\\ThemeController::delete'], ['idT'], ['POST' => 0], null, false, true, null]],
-        1373 => [[['_route' => 'utilisateur_show', '_controller' => 'App\\Controller\\UtilisateurController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1387 => [[['_route' => 'utilisateur_edit', '_controller' => 'App\\Controller\\UtilisateurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1396 => [
+        909 => [[['_route' => 'promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['idProm'], ['GET' => 0], null, false, true, null]],
+        922 => [[['_route' => 'promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['idProm'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        930 => [[['_route' => 'promotion_delete', '_controller' => 'App\\Controller\\PromotionController::delete'], ['idProm'], ['POST' => 0], null, false, true, null]],
+        940 => [[['_route' => 'p', '_controller' => 'App\\Controller\\PromotionController::a'], [], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        974 => [[['_route' => 'question_show', '_controller' => 'App\\Controller\\QuestionController::show'], ['idQ'], ['GET' => 0], null, false, true, null]],
+        989 => [[['_route' => 'question_show_front', '_controller' => 'App\\Controller\\QuestionController::show_front'], [], ['GET' => 0], null, false, false, null]],
+        1013 => [[['_route' => 'question_edit', '_controller' => 'App\\Controller\\QuestionController::edit'], ['idQ'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1022 => [[['_route' => 'question_delete', '_controller' => 'App\\Controller\\QuestionController::delete'], ['idQ'], ['POST' => 0], null, false, true, null]],
+        1038 => [[['_route' => 'question_cat', '_controller' => 'App\\Controller\\QuestionController::FindByCategorie'], [], ['POST' => 0], null, true, false, null]],
+        1073 => [[['_route' => 'qr_code_generate', '_controller' => 'Endroid\\QrCodeBundle\\Controller\\GenerateController'], ['builder', 'data'], null, null, false, true, null]],
+        1116 => [[['_route' => 'reclamation_show', '_controller' => 'App\\Controller\\ReclamationController::show'], ['idRec'], ['GET' => 0], null, false, true, null]],
+        1136 => [[['_route' => 'reclamation_showF', '_controller' => 'App\\Controller\\ReclamationController::showF'], ['idRec'], ['GET' => 0], null, false, true, null]],
+        1150 => [[['_route' => 'reclamation_edit', '_controller' => 'App\\Controller\\ReclamationController::edit'], ['idRec'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1159 => [[['_route' => 'reclamation_delete', '_controller' => 'App\\Controller\\ReclamationController::delete'], ['idRec'], ['POST' => 0], null, false, true, null]],
+        1187 => [[['_route' => 'reponse_show', '_controller' => 'App\\Controller\\ReponseController::show'], ['idR'], ['GET' => 0], null, false, true, null]],
+        1201 => [[['_route' => 'reponse_edit', '_controller' => 'App\\Controller\\ReponseController::edit'], ['idR'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1210 => [[['_route' => 'reponse_delete', '_controller' => 'App\\Controller\\ReponseController::delete'], ['idR'], ['POST' => 0], null, false, true, null]],
+        1250 => [[['_route' => 'test_indexcert', '_controller' => 'App\\Controller\\TestController::indexf'], ['idTest'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1279 => [[['_route' => 'test_edit', '_controller' => 'App\\Controller\\TestController::edit'], ['idTest'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1288 => [[['_route' => 'test_delete', '_controller' => 'App\\Controller\\TestController::delete'], ['idTest'], ['POST' => 0], null, false, true, null]],
+        1301 => [[['_route' => 'test_pdf', '_controller' => 'App\\Controller\\TestController::indexpdf'], [], null, null, false, false, null]],
+        1328 => [[['_route' => 'theme_show', '_controller' => 'App\\Controller\\ThemeController::show'], ['idT'], ['GET' => 0], null, false, true, null]],
+        1342 => [[['_route' => 'theme_edit', '_controller' => 'App\\Controller\\ThemeController::edit'], ['idT'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1351 => [[['_route' => 'theme_delete', '_controller' => 'App\\Controller\\ThemeController::delete'], ['idT'], ['POST' => 0], null, false, true, null]],
+        1386 => [[['_route' => 'utilisateur_show', '_controller' => 'App\\Controller\\UtilisateurController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1400 => [[['_route' => 'utilisateur_edit', '_controller' => 'App\\Controller\\UtilisateurController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1409 => [
             [['_route' => 'utilisateur_delete', '_controller' => 'App\\Controller\\UtilisateurController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

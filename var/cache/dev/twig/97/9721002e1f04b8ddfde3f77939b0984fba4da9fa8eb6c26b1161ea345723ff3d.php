@@ -140,6 +140,6 @@ class __TwigTemplate_bf66c0882e9154bdc79657671ba6c71ddb33dcb122cad0fa9faec77ac23
 
     {{ include('apprenant/_delete_form.html.twig') }}
 {% endblock %}
-", "apprenant/edit.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\apprenant\\edit.html.twig");
+", "apprenant/edit.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\apprenant\\edit.html.twig");
     }
 }

@@ -2241,6 +2241,6 @@ class __TwigTemplate_152833077e099ac0bd5756e7360e9ac57f1f652fdea4e7af2d9001218c2
 {% endblock %}
 </body>
 </html>
-", "baseF.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\baseF.html.twig");
+", "baseF.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\baseF.html.twig");
     }
 }

@@ -103,6 +103,6 @@ class __TwigTemplate_77dc5c14d7ab54804db3c4e65f9502701d1180b1228fbb6865fb5d0fa17
     <script>
         flashy(\"{{ message.message }}\", \"{{ message.link }}\");
     </script>
-{% endfor %}", "@MercurySeriesFlashy/flashy.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\bundles\\MercurySeriesFlashyBundle\\flashy.html.twig");
+{% endfor %}", "@MercurySeriesFlashy/flashy.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\bundles\\MercurySeriesFlashyBundle\\flashy.html.twig");
     }
 }

@@ -227,6 +227,6 @@ class __TwigTemplate_ffbc13aeb14c524efaf95de9493efc08bd99bd5820d59c82ac80b96c7e1
 
 </div>
 
-", "partenaire/_card.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\partenaire\\_card.html.twig");
+", "partenaire/_card.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\partenaire\\_card.html.twig");
     }
 }

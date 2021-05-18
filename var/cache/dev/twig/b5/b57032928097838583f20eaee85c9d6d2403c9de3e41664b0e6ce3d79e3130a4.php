@@ -205,6 +205,6 @@ class __TwigTemplate_087fe6bc6eaf73a34300c83bde2bd95861b2e730472038d6c277376f70f
 
     <a href=\"{{ path('apprenant_new') }}\">Create new</a>
 {% endblock %}
-", "apprenant/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\apprenant\\index.html.twig");
+", "apprenant/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\apprenant\\index.html.twig");
     }
 }

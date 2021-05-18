@@ -84,6 +84,6 @@ class __TwigTemplate_a34cfb72a105fd46b5c0e0adcc02a5c37fb0e6d5a0535e274964c9f1953
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "actualite/_form.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\actualite\\_form.html.twig");
+", "actualite/_form.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\actualite\\_form.html.twig");
     }
 }

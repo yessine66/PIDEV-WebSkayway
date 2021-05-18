@@ -246,6 +246,6 @@ class __TwigTemplate_79b4278d400a5db18f86ce01a62cb4e0baf467c6eab409b2dde84ab86dc
     {% endfor %}
     </tbody>
 </table>
-{% endblock %}", "reclamation/rec.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\rec.html.twig");
+{% endblock %}", "reclamation/rec.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\rec.html.twig");
     }
 }

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd4d63a6cf3bfd33a1fef941c98d45b3e98f8f4fc',
+    'reference' => 'c3dd6eda072b882063bad22f0d0508dc523cbb9e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd4d63a6cf3bfd33a1fef941c98d45b3e98f8f4fc',
+      'reference' => 'c3dd6eda072b882063bad22f0d0508dc523cbb9e',
     ),
     'bacon/bacon-qr-code' => 
     array (
@@ -608,12 +608,12 @@ private static $installed = array (
     ),
     'sensio/framework-extra-bundle' => 
     array (
-      'pretty_version' => 'v5.6.1',
-      'version' => '5.6.1.0',
+      'pretty_version' => 'v6.1.2',
+      'version' => '6.1.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '430d14c01836b77c28092883d195a43ce413ee32',
+      'reference' => '676262b7a65a1033befbcf59e180d072df7504b6',
     ),
     'spatie/calendar-links' => 
     array (
@@ -1177,12 +1177,12 @@ private static $installed = array (
     ),
     'symfony/serializer' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9fa36329a06282e1fc856b84f645472a410c3922',
+      'reference' => '9db284ce4b1194797ad2ac6ad5406c5b416a9bb4',
     ),
     'symfony/service-contracts' => 
     array (

@@ -252,6 +252,6 @@ class __TwigTemplate_f7b376992f2ed643f4a1a1010dc4e3b029d5dfd30532290d689b753f537
             <!-- Blog Area End -->
         </main>
 
-{% endblock %}", "test/index2.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\test\\index2.html.twig");
+{% endblock %}", "test/index2.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\test\\index2.html.twig");
     }
 }

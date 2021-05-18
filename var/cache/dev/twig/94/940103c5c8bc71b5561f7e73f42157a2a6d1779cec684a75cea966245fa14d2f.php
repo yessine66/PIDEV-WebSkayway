@@ -1665,6 +1665,6 @@ class __TwigTemplate_c21e23a8c44053db0c242f6a41a327755916361ca023272b6906c89d980
 </body>
 </html>
 
-", "base.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\base.html.twig");
     }
 }

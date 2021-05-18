@@ -378,6 +378,6 @@ class __TwigTemplate_e0c939f153a21320b33182ff7782aba5ba9383e70ddeca876f4b0611680
 {% endblock %}
 {% endblock %}
 
-", "reclamation/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\index.html.twig");
+", "reclamation/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\index.html.twig");
     }
 }

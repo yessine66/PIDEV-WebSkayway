@@ -278,6 +278,6 @@ nom partenaire:  ") . twig_get_attribute($this->env, $this->source, twig_get_att
 
 </div>
 
-", "promotion/_card.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\_card.html.twig");
+", "promotion/_card.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\_card.html.twig");
     }
 }

@@ -576,6 +576,6 @@ class __TwigTemplate_c2d0aa76c458cff4ea6836cd5dc6ca8389fe9db20bd4cc8668258fdaa8f
 </main>
 {% endblock %}
 {% endblock %}
-", "cours/indexF.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\cours\\indexF.html.twig");
+", "cours/indexF.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\cours\\indexF.html.twig");
     }
 }

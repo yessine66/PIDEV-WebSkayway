@@ -186,6 +186,6 @@ class __TwigTemplate_9d1bc8d4e95bb4fb41646fd4a5ea7aaa83c3f036804885401df08c903fa
 
     {{ include('promotion/_delete_form.html.twig') }}
 {% endblock %}
-{% endblock %}", "promotion/edit.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\edit.html.twig");
+{% endblock %}", "promotion/edit.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\edit.html.twig");
     }
 }

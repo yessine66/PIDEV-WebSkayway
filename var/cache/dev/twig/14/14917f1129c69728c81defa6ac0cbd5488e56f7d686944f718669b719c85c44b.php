@@ -232,6 +232,6 @@ class __TwigTemplate_01d104759eb10aa030f1fec2b47e4dc9db2b838b86c97fca684ac7cea9d
 
         {{ include('question/_delete_form.html.twig') }}
     {% endblock %}
-{% endblock %}", "question/show.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\question\\show.html.twig");
+{% endblock %}", "question/show.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\question\\show.html.twig");
     }
 }

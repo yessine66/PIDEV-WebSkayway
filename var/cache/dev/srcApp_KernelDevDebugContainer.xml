@@ -1621,6 +1621,12 @@
       <argument type="service" id=".debug.http_client" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger" on-invalid="ignore"/>
     </service>
+    <service id="mailer.transport_factory.gmail" class="Symfony\Component\Mailer\Bridge\Google\Transport\GmailTransportFactory">
+      <tag name="mailer.transport_factory"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id=".debug.http_client" on-invalid="ignore"/>
+      <argument type="service" id="monolog.logger" on-invalid="ignore"/>
+    </service>
     <service id="mailer.transport_factory.null" class="Symfony\Component\Mailer\Transport\NullTransportFactory">
       <tag name="mailer.transport_factory"/>
       <argument type="service" id="debug.event_dispatcher"/>
@@ -3456,6 +3462,7 @@
     <service id="serializer.name_converter.camel_case_to_snake_case" class="Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter" public="false"/>
     <service id="serializer.name_converter.metadata_aware" class="Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter" public="false">
       <argument type="service" id="serializer.mapping.class_metadata_factory"/>
+      <argument type="service" id="serializer.name_converter.camel_case_to_snake_case"/>
     </service>
     <service id="property_info.serializer_extractor" class="Symfony\Component\PropertyInfo\Extractor\SerializerExtractor" public="false">
       <tag name="property_info.list_extractor" priority="-999"/>
@@ -6464,22 +6471,42 @@
         <argument key="repositoryy" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.uNJ7tqe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.K7kNnn4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="serializerInterface" type="service" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.gPgvdLX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="coStudyingRepository" type="service" id="App\Repository\QuestionRepository"/>
+        <argument key="serializerInterface" type="service" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.JBaRZUT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="question" type="service" id=".errored..service_locator.JBaRZUT.App\Entity\Question"/>
       </argument>
     </service>
-    <service id=".service_locator.ipjTSUc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
     <service id=".service_locator.cO4iday" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repository" type="service" id="App\Repository\QuestionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ipjTSUc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.fHnHsjS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6573,7 +6600,7 @@
         <argument key="repository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.O8KP0D0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.T5TYJiK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActualiteController::delete" type="service" id=".service_locator.6V16CKq"/>
@@ -6616,7 +6643,7 @@
         <argument key="App\Controller\PartenaireController::show" type="service" id=".service_locator.njGqpVl"/>
         <argument key="App\Controller\PartenaireController::statistiques" type="service" id=".service_locator.wC7QnM3"/>
         <argument key="App\Controller\PromotionController::RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
-        <argument key="App\Controller\PromotionController::a" type="service" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController::a" type="service" id=".service_locator.uNJ7tqe"/>
         <argument key="App\Controller\PromotionController::delete" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\PromotionController::edit" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\PromotionController::index" type="service" id=".service_locator.vgBtsnM"/>
@@ -6625,8 +6652,11 @@
         <argument key="App\Controller\QuestionController::CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
         <argument key="App\Controller\QuestionController::FindByCategorie" type="service" id=".service_locator.ipjTSUc"/>
         <argument key="App\Controller\QuestionController::OrderByName" type="service" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController::abo" type="service" id=".service_locator.cO4iday"/>
         <argument key="App\Controller\QuestionController::delete" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\QuestionController::edit" type="service" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController::getCos" type="service" id=".service_locator.gPgvdLX"/>
+        <argument key="App\Controller\QuestionController::index" type="service" id=".service_locator.K7kNnn4"/>
         <argument key="App\Controller\QuestionController::show" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\QuestionController::show_front" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\ReclamationController::consulterContrat" type="service" id=".service_locator.IPLr04z"/>
@@ -6696,7 +6726,7 @@
         <argument key="App\Controller\PartenaireController:show" type="service" id=".service_locator.njGqpVl"/>
         <argument key="App\Controller\PartenaireController:statistiques" type="service" id=".service_locator.wC7QnM3"/>
         <argument key="App\Controller\PromotionController:RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
-        <argument key="App\Controller\PromotionController:a" type="service" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController:a" type="service" id=".service_locator.uNJ7tqe"/>
         <argument key="App\Controller\PromotionController:delete" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\PromotionController:edit" type="service" id=".service_locator.Wm6VqsM"/>
         <argument key="App\Controller\PromotionController:index" type="service" id=".service_locator.vgBtsnM"/>
@@ -6705,8 +6735,11 @@
         <argument key="App\Controller\QuestionController:CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
         <argument key="App\Controller\QuestionController:FindByCategorie" type="service" id=".service_locator.ipjTSUc"/>
         <argument key="App\Controller\QuestionController:OrderByName" type="service" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController:abo" type="service" id=".service_locator.cO4iday"/>
         <argument key="App\Controller\QuestionController:delete" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\QuestionController:edit" type="service" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController:getCos" type="service" id=".service_locator.gPgvdLX"/>
+        <argument key="App\Controller\QuestionController:index" type="service" id=".service_locator.K7kNnn4"/>
         <argument key="App\Controller\QuestionController:show" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\QuestionController:show_front" type="service" id=".service_locator.JBaRZUT"/>
         <argument key="App\Controller\ReclamationController:consulterContrat" type="service" id=".service_locator.IPLr04z"/>
@@ -7315,12 +7348,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.O8KP0D0"/>
+      <argument type="service" id=".service_locator.T5TYJiK"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.O8KP0D0"/>
+      <argument type="service" id=".service_locator.T5TYJiK"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -7769,7 +7802,7 @@
     <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.O8KP0D0"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.T5TYJiK"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

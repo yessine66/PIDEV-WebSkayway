@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerTKqB6dO/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerSxcOChl/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -322,6 +322,7 @@ $classes[] = 'Symfony\Component\Mailer\EventListener\MessageLoggerListener';
 $classes[] = 'Symfony\Component\Mailer\Mailer';
 $classes[] = 'Symfony\Component\Mailer\Transport\Transports';
 $classes[] = 'Symfony\Component\Mailer\Transport';
+$classes[] = 'Symfony\Component\Mailer\Bridge\Google\Transport\GmailTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\NullTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\SendmailTransportFactory';
 $classes[] = 'Symfony\Component\Mailer\Transport\Smtp\EsmtpTransportFactory';
@@ -472,6 +473,7 @@ $classes[] = 'Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer
 $classes[] = 'Symfony\Component\Serializer\Normalizer\DateTimeNormalizer';
 $classes[] = 'Symfony\Component\Serializer\Normalizer\ConstraintViolationListNormalizer';
 $classes[] = 'Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter';
+$classes[] = 'Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter';
 $classes[] = 'Symfony\Component\Serializer\Normalizer\DateTimeZoneNormalizer';
 $classes[] = 'Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer';
 $classes[] = 'Symfony\Component\Serializer\Normalizer\DataUriNormalizer';

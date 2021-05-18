@@ -107,6 +107,6 @@ class __TwigTemplate_116a611751a6beb9a59b19d3337d54d6b6bff54430d216c77428c5a0d11
     </style>
 
 </form>
-", "promotion/_delete_form.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\promotion\\_delete_form.html.twig");
+", "promotion/_delete_form.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\promotion\\_delete_form.html.twig");
     }
 }

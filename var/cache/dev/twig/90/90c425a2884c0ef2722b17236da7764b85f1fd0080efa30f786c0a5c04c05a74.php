@@ -187,6 +187,6 @@ class __TwigTemplate_ddff1cfbc9b37f8dc6b3b5aced3640e64477eaabefeda0ce3143ac069c5
     </style>
 
 {% endblock %}
-{% endblock %}", "partenaire/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\partenaire\\new.html.twig");
+{% endblock %}", "partenaire/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\partenaire\\new.html.twig");
     }
 }

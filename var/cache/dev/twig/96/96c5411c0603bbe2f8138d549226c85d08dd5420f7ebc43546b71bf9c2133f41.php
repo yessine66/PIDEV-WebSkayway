@@ -370,6 +370,6 @@ class __TwigTemplate_55a9066ca437fc8ef1191ae75fb05e8a39e30a8fb8f1a21bedbf28e8158
 {% endblock %}
 
 {% endblock %}
-", "actualite/indexF.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\actualite\\indexF.html.twig");
+", "actualite/indexF.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\actualite\\indexF.html.twig");
     }
 }

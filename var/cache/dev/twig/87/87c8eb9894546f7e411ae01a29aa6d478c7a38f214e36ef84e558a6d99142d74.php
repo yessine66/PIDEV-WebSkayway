@@ -252,6 +252,6 @@ class __TwigTemplate_0955a5a9584bc50903f3be7fc5b345e070803d7e5a832dfdef31320b2d2
 
          {{ form_end (form) }}
      {% endblock %}
- {% endblock %}", "question/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\question\\new.html.twig");
+ {% endblock %}", "question/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\question\\new.html.twig");
     }
 }

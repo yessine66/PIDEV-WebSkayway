@@ -390,6 +390,6 @@ class __TwigTemplate_6ad4c872d77e1017b353d9efbaf3aef5763a255e634e16b7d8fa8abde05
 
 
      </form>
- {% endblock %}", "question/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\question\\index.html.twig");
+ {% endblock %}", "question/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\question\\index.html.twig");
     }
 }

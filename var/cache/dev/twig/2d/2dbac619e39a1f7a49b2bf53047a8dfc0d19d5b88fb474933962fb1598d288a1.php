@@ -509,6 +509,6 @@ class __TwigTemplate_2257ad850a0b6fa4b9daa64bbf77c1b2179d0ea63c0c07b761d19f67e1c
 
 </body>
 </html>
-", "security/registration.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\security\\registration.html.twig");
+", "security/registration.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\security\\registration.html.twig");
     }
 }

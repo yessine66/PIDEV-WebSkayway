@@ -222,6 +222,6 @@ class __TwigTemplate_bbdca3894323e532fe6f7cc15661f7484feff8e81396ea3c9eb3a24994b
     </section>
 {% endblock %}
 {% endblock %}
-", "feedback/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\feedback\\new.html.twig");
+", "feedback/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\feedback\\new.html.twig");
     }
 }

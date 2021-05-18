@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Reponse;
 use App\Form\ReponseType;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Question
  *
@@ -20,6 +21,7 @@ class Question
      * @ORM\Column(name="id_q", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups({"question"})
      */
     private $idQ;
 
@@ -28,6 +30,7 @@ class Question
      *
      * @ORM\Column(name="text_q", type="string", length=250, nullable=true)
      * @Assert\NotBlank
+     * @Groups({"question"})
      */
     private $textQ;
 
@@ -36,12 +39,13 @@ class Question
      *
      * @ORM\Column(name="nbr_point", type="integer", nullable=true)
      * @Assert\LessThanOrEqual(5)
+     * @Groups({"question"})
      */
     private $nbrPoint;
 
     /**
      * @var string|null
-     *
+     *  @Groups({"question"})
      * @ORM\Column(name="name_t", type="string", length=250, nullable=true)
      * Assert\Length([
     'min' => 0,

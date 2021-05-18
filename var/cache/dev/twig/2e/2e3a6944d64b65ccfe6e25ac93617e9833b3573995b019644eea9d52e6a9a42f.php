@@ -550,6 +550,6 @@ class __TwigTemplate_9fe0ffe651a2386649b3a4b10a0cb16f777fdfac2938eac11b3cba30e0f
     {% endblock %}
     {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 {% endblock %}
-{% endblock %}", "reclamation/indexF.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\reclamation\\indexF.html.twig");
+{% endblock %}", "reclamation/indexF.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\reclamation\\indexF.html.twig");
     }
 }

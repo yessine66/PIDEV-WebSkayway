@@ -237,6 +237,6 @@ class __TwigTemplate_1dd59a1cf4a0e48cea1431db9f693a30f9f38117818ff30e103543c9da0
     <a href=\"{{ path('theme_new') }}\">Create new</a>
 {% endblock %}
 {% endblock %}
-", "theme/index.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\theme\\index.html.twig");
+", "theme/index.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\theme\\index.html.twig");
     }
 }

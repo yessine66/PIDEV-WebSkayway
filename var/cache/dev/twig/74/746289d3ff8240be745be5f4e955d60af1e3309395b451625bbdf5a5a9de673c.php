@@ -133,6 +133,6 @@ class __TwigTemplate_ee34e34d0eb3ba1e5f1eda00d3d83aeb801801024871f97c584ef059d4b
 
     <a href=\"{{ path('enseignant_index') }}\">back to list</a>
 {% endblock %}
-", "enseignant/new.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\enseignant\\new.html.twig");
+", "enseignant/new.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\enseignant\\new.html.twig");
     }
 }

@@ -362,6 +362,6 @@ class __TwigTemplate_bec86138c92409565dce52f5057e46ce3d2d95f0303338c446438c24af9
             }
         </style>
     {% endblock %}
-{% endblock %}", "question/show_front.html.twig", "C:\\wamp64\\www\\PIDEV-WebSkayway\\templates\\question\\show_front.html.twig");
+{% endblock %}", "question/show_front.html.twig", "C:\\xampp\\htdocs\\PIDEV-WebSkayway\\templates\\question\\show_front.html.twig");
     }
 }
