@@ -2061,3 +2061,7 @@ a17ca2,127.0.0.1,POST,http://127.0.0.1:8000/utilisateursigninJSON?password=azeza
 92d0be,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=fzef&username=testlogin111,1621392519,,200
 8f4920,127.0.0.1,GET,http://127.0.0.1:8000/utilisateursigninJSON?password=mimi&username=testlogin111,1621392528,,200
 96b1a4,127.0.0.1,POST,http://127.0.0.1:8000/utilisateurdisplayUtilisateurJson,1621392528,,200
+5bfc1d,127.0.0.1,GET,http://127.0.0.1:8001/,1621598767,,404
+feb5e0,127.0.0.1,GET,http://127.0.0.1:8001/favicon.ico,1621598770,44a85f,404
+44a85f,127.0.0.1,GET,http://127.0.0.1:8001/favicon.ico,1621598770,,404
+377e24,127.0.0.1,GET,http://127.0.0.1:8001/utilisateurdisplayUtilisateurJson,1621598796,,200

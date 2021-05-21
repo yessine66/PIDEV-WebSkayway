@@ -2620,7 +2620,7 @@
       <argument>null</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
       <argument>C:\wamp64\www\PIDEV-WebSkayway</argument>
-      <argument type="service" id="debug.file_link_formatter.url_format"/>
+      <argument type="service_closure" id="debug.file_link_formatter.url_format"/>
     </service>
     <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch">
       <tag name="kernel.reset" method="reset"/>
@@ -2637,7 +2637,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="data_collector.router"/>
+          <argument type="service_closure" id="data_collector.router"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
@@ -2645,7 +2645,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
@@ -2653,7 +2653,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="response_listener"/>
+          <argument type="service_closure" id="response_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>0</argument>
@@ -2661,7 +2661,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="streamed_response_listener"/>
+          <argument type="service_closure" id="streamed_response_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-1024</argument>
@@ -2669,7 +2669,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="locale_listener"/>
+          <argument type="service_closure" id="locale_listener"/>
           <argument>setDefaultLocale</argument>
         </argument>
         <argument>100</argument>
@@ -2677,7 +2677,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="locale_listener"/>
+          <argument type="service_closure" id="locale_listener"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>16</argument>
@@ -2685,7 +2685,7 @@
       <call method="addListener">
         <argument>kernel.finish_request</argument>
         <argument type="collection">
-          <argument type="service" id="locale_listener"/>
+          <argument type="service_closure" id="locale_listener"/>
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>0</argument>
@@ -2693,7 +2693,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="validate_request_listener"/>
+          <argument type="service_closure" id="validate_request_listener"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>256</argument>
@@ -2701,7 +2701,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id=".legacy_resolve_controller_name_subscriber"/>
+          <argument type="service_closure" id=".legacy_resolve_controller_name_subscriber"/>
           <argument>resolveControllerName</argument>
         </argument>
         <argument>24</argument>
@@ -2709,7 +2709,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="disallow_search_engine_index_response_listener"/>
+          <argument type="service_closure" id="disallow_search_engine_index_response_listener"/>
           <argument>onResponse</argument>
         </argument>
         <argument>-255</argument>
@@ -2717,7 +2717,7 @@
       <call method="addListener">
         <argument>kernel.controller_arguments</argument>
         <argument type="collection">
-          <argument type="service" id="exception_listener"/>
+          <argument type="service_closure" id="exception_listener"/>
           <argument>onControllerArguments</argument>
         </argument>
         <argument>0</argument>
@@ -2725,7 +2725,7 @@
       <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
-          <argument type="service" id="exception_listener"/>
+          <argument type="service_closure" id="exception_listener"/>
           <argument>logKernelException</argument>
         </argument>
         <argument>0</argument>
@@ -2733,7 +2733,7 @@
       <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
-          <argument type="service" id="exception_listener"/>
+          <argument type="service_closure" id="exception_listener"/>
           <argument>onKernelException</argument>
         </argument>
         <argument>-128</argument>
@@ -2741,7 +2741,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="locale_aware_listener"/>
+          <argument type="service_closure" id="locale_aware_listener"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>15</argument>
@@ -2749,7 +2749,7 @@
       <call method="addListener">
         <argument>kernel.finish_request</argument>
         <argument type="collection">
-          <argument type="service" id="locale_aware_listener"/>
+          <argument type="service_closure" id="locale_aware_listener"/>
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>-15</argument>
@@ -2757,7 +2757,7 @@
       <call method="addListener">
         <argument>console.error</argument>
         <argument type="collection">
-          <argument type="service" id="console.error_listener"/>
+          <argument type="service_closure" id="console.error_listener"/>
           <argument>onConsoleError</argument>
         </argument>
         <argument>-128</argument>
@@ -2765,7 +2765,7 @@
       <call method="addListener">
         <argument>console.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="console.error_listener"/>
+          <argument type="service_closure" id="console.error_listener"/>
           <argument>onConsoleTerminate</argument>
         </argument>
         <argument>-128</argument>
@@ -2773,7 +2773,7 @@
       <call method="addListener">
         <argument>console.error</argument>
         <argument type="collection">
-          <argument type="service" id="console.suggest_missing_package_subscriber"/>
+          <argument type="service_closure" id="console.suggest_missing_package_subscriber"/>
           <argument>onConsoleError</argument>
         </argument>
         <argument>0</argument>
@@ -2781,7 +2781,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="session_listener"/>
+          <argument type="service_closure" id="session_listener"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>128</argument>
@@ -2789,7 +2789,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="session_listener"/>
+          <argument type="service_closure" id="session_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-1000</argument>
@@ -2797,7 +2797,7 @@
       <call method="addListener">
         <argument>kernel.finish_request</argument>
         <argument type="collection">
-          <argument type="service" id="session_listener"/>
+          <argument type="service_closure" id="session_listener"/>
           <argument>onFinishRequest</argument>
         </argument>
         <argument>0</argument>
@@ -2805,7 +2805,7 @@
       <call method="addListener">
         <argument>Symfony\Component\Mailer\Event\MessageEvent</argument>
         <argument type="collection">
-          <argument type="service" id="mailer.envelope_listener"/>
+          <argument type="service_closure" id="mailer.envelope_listener"/>
           <argument>onMessage</argument>
         </argument>
         <argument>-255</argument>
@@ -2813,7 +2813,7 @@
       <call method="addListener">
         <argument>Symfony\Component\Mailer\Event\MessageEvent</argument>
         <argument type="collection">
-          <argument type="service" id="mailer.logger_message_listener"/>
+          <argument type="service_closure" id="mailer.logger_message_listener"/>
           <argument>onMessage</argument>
         </argument>
         <argument>-255</argument>
@@ -2821,7 +2821,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="profiler_listener"/>
+          <argument type="service_closure" id="profiler_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-100</argument>
@@ -2829,7 +2829,7 @@
       <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
-          <argument type="service" id="profiler_listener"/>
+          <argument type="service_closure" id="profiler_listener"/>
           <argument>onKernelException</argument>
         </argument>
         <argument>0</argument>
@@ -2837,7 +2837,7 @@
       <call method="addListener">
         <argument>kernel.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="profiler_listener"/>
+          <argument type="service_closure" id="profiler_listener"/>
           <argument>onKernelTerminate</argument>
         </argument>
         <argument>-1024</argument>
@@ -2845,7 +2845,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="data_collector.request"/>
+          <argument type="service_closure" id="data_collector.request"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
@@ -2853,7 +2853,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="data_collector.request"/>
+          <argument type="service_closure" id="data_collector.request"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>0</argument>
@@ -2861,7 +2861,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument type="service_closure" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
         </argument>
         <argument>2048</argument>
@@ -2869,7 +2869,7 @@
       <call method="addListener">
         <argument>console.command</argument>
         <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument type="service_closure" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
         </argument>
         <argument>2048</argument>
@@ -2877,7 +2877,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="router_listener"/>
+          <argument type="service_closure" id="router_listener"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>32</argument>
@@ -2885,7 +2885,7 @@
       <call method="addListener">
         <argument>kernel.finish_request</argument>
         <argument type="collection">
-          <argument type="service" id="router_listener"/>
+          <argument type="service_closure" id="router_listener"/>
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>0</argument>
@@ -2893,7 +2893,7 @@
       <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
-          <argument type="service" id="router_listener"/>
+          <argument type="service_closure" id="router_listener"/>
           <argument>onKernelException</argument>
         </argument>
         <argument>-64</argument>
@@ -2901,7 +2901,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="web_link.add_link_header_listener"/>
+          <argument type="service_closure" id="web_link.add_link_header_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>0</argument>
@@ -2909,7 +2909,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.controller.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.controller.listener"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
@@ -2917,7 +2917,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.converter.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.converter.listener"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
@@ -2925,7 +2925,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.view.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.view.listener"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>-128</argument>
@@ -2933,7 +2933,7 @@
       <call method="addListener">
         <argument>kernel.view</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.view.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.view.listener"/>
           <argument>onKernelView</argument>
         </argument>
         <argument>0</argument>
@@ -2941,7 +2941,7 @@
       <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.cache.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.cache.listener"/>
           <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
@@ -2949,7 +2949,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.cache.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.cache.listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>0</argument>
@@ -2957,7 +2957,7 @@
       <call method="addListener">
         <argument>kernel.controller_arguments</argument>
         <argument type="collection">
-          <argument type="service" id="sensio_framework_extra.security.listener"/>
+          <argument type="service_closure" id="sensio_framework_extra.security.listener"/>
           <argument>onKernelControllerArguments</argument>
         </argument>
         <argument>0</argument>
@@ -2965,7 +2965,7 @@
       <call method="addListener">
         <argument>kernel.controller_arguments</argument>
         <argument type="collection">
-          <argument type="service" id="framework_extra_bundle.event.is_granted"/>
+          <argument type="service_closure" id="framework_extra_bundle.event.is_granted"/>
           <argument>onKernelControllerArguments</argument>
         </argument>
         <argument>0</argument>
@@ -2973,7 +2973,7 @@
       <call method="addListener">
         <argument>Symfony\Component\Mailer\Event\MessageEvent</argument>
         <argument type="collection">
-          <argument type="service" id="twig.mailer.message_listener"/>
+          <argument type="service_closure" id="twig.mailer.message_listener"/>
           <argument>onMessage</argument>
         </argument>
         <argument>0</argument>
@@ -2981,7 +2981,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="web_profiler.debug_toolbar"/>
+          <argument type="service_closure" id="web_profiler.debug_toolbar"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-128</argument>
@@ -2989,7 +2989,7 @@
       <call method="addListener">
         <argument>console.command</argument>
         <argument type="collection">
-          <argument type="service" id="monolog.handler.console"/>
+          <argument type="service_closure" id="monolog.handler.console"/>
           <argument>onCommand</argument>
         </argument>
         <argument>255</argument>
@@ -2997,7 +2997,7 @@
       <call method="addListener">
         <argument>console.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="monolog.handler.console"/>
+          <argument type="service_closure" id="monolog.handler.console"/>
           <argument>onTerminate</argument>
         </argument>
         <argument>-255</argument>
@@ -3005,7 +3005,7 @@
       <call method="addListener">
         <argument>console.command</argument>
         <argument type="collection">
-          <argument type="service" id="debug.dump_listener"/>
+          <argument type="service_closure" id="debug.dump_listener"/>
           <argument>configure</argument>
         </argument>
         <argument>1024</argument>
@@ -3013,7 +3013,7 @@
       <call method="addListener">
         <argument>console.error</argument>
         <argument type="collection">
-          <argument type="service" id="maker.console_error_listener"/>
+          <argument type="service_closure" id="maker.console_error_listener"/>
           <argument>onConsoleError</argument>
         </argument>
         <argument>0</argument>
@@ -3021,7 +3021,7 @@
       <call method="addListener">
         <argument>console.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="maker.console_error_listener"/>
+          <argument type="service_closure" id="maker.console_error_listener"/>
           <argument>onConsoleTerminate</argument>
         </argument>
         <argument>0</argument>
@@ -3029,7 +3029,7 @@
       <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
-          <argument type="service" id="security.rememberme.response_listener"/>
+          <argument type="service_closure" id="security.rememberme.response_listener"/>
           <argument>onKernelResponse</argument>
         </argument>
         <argument>0</argument>
@@ -3037,7 +3037,7 @@
       <call method="addListener">
         <argument>debug.security.authorization.vote</argument>
         <argument type="collection">
-          <argument type="service" id="debug.security.voter.vote_listener"/>
+          <argument type="service_closure" id="debug.security.voter.vote_listener"/>
           <argument>onVoterVote</argument>
         </argument>
         <argument>0</argument>
@@ -3045,7 +3045,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="debug.security.firewall"/>
+          <argument type="service_closure" id="debug.security.firewall"/>
           <argument>configureLogoutUrlGenerator</argument>
         </argument>
         <argument>8</argument>
@@ -3053,7 +3053,7 @@
       <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
-          <argument type="service" id="debug.security.firewall"/>
+          <argument type="service_closure" id="debug.security.firewall"/>
           <argument>onKernelRequest</argument>
         </argument>
         <argument>8</argument>
@@ -3061,7 +3061,7 @@
       <call method="addListener">
         <argument>kernel.finish_request</argument>
         <argument type="collection">
-          <argument type="service" id="debug.security.firewall"/>
+          <argument type="service_closure" id="debug.security.firewall"/>
           <argument>onKernelFinishRequest</argument>
         </argument>
         <argument>0</argument>
@@ -3069,7 +3069,7 @@
       <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
-          <argument type="service" id="swiftmailer.email_sender.listener"/>
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
           <argument>onException</argument>
         </argument>
         <argument>0</argument>
@@ -3077,7 +3077,7 @@
       <call method="addListener">
         <argument>kernel.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="swiftmailer.email_sender.listener"/>
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
           <argument>onTerminate</argument>
         </argument>
         <argument>0</argument>
@@ -3085,7 +3085,7 @@
       <call method="addListener">
         <argument>console.error</argument>
         <argument type="collection">
-          <argument type="service" id="swiftmailer.email_sender.listener"/>
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
           <argument>onException</argument>
         </argument>
         <argument>0</argument>
@@ -3093,7 +3093,7 @@
       <call method="addListener">
         <argument>console.terminate</argument>
         <argument type="collection">
-          <argument type="service" id="swiftmailer.email_sender.listener"/>
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
           <argument>onTerminate</argument>
         </argument>
         <argument>0</argument>
@@ -3101,7 +3101,7 @@
       <call method="addListener">
         <argument>knp_pager.before</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
           <argument>before</argument>
         </argument>
         <argument>0</argument>
@@ -3109,7 +3109,7 @@
       <call method="addListener">
         <argument>knp_pager.pagination</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.paginate"/>
           <argument>pagination</argument>
         </argument>
         <argument>0</argument>
@@ -3117,7 +3117,7 @@
       <call method="addListener">
         <argument>knp_pager.before</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.sortable"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.sortable"/>
           <argument>before</argument>
         </argument>
         <argument>1</argument>
@@ -3125,7 +3125,7 @@
       <call method="addListener">
         <argument>knp_pager.before</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.filtration"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.filtration"/>
           <argument>before</argument>
         </argument>
         <argument>1</argument>
@@ -3133,7 +3133,7 @@
       <call method="addListener">
         <argument>knp_pager.pagination</argument>
         <argument type="collection">
-          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
           <argument>pagination</argument>
         </argument>
         <argument>1</argument>
@@ -3290,11 +3290,6 @@
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
     </service>
-    <service id=".3_PhpArrayAdapter~iTZ84fO" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\PIDEV-WebSkayway\var\cache\dev/annotations.php</argument>
-      <argument type="service" id="cache.annotations"/>
-      <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
-    </service>
     <service id=".2_ArrayAdapter~iTZ84fO" class="Symfony\Component\Cache\Adapter\ArrayAdapter" public="false"/>
     <service id=".1_DoctrineProvider~iTZ84fO" class="Symfony\Component\Cache\DoctrineProvider" public="false">
       <argument type="service" id=".2_ArrayAdapter~iTZ84fO"/>
@@ -3310,12 +3305,14 @@
         <argument>class_exists</argument>
       </call>
     </service>
-    <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
+    <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\PsrCachedReader" public="false">
       <tag name="annotations.cached_reader"/>
       <argument type="service" id="annotations.reader"/>
-      <argument type="service" id=".1_DoctrineProvider~iTZ84fO"/>
+      <argument type="service">
+        <service class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
+      </argument>
       <argument>true</argument>
-      <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
+      <property name="cacheProviderBackup" type="service_closure" id="annotations.cache_adapter"/>
     </service>
     <service id="annotations.filesystem_cache_adapter" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false">
       <argument></argument>
@@ -3332,9 +3329,15 @@
       <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
       <argument>true</argument>
     </service>
+    <service id="annotations.cache_adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <tag name="container.hot_path"/>
+      <argument>C:\wamp64\www\PIDEV-WebSkayway\var\cache\dev/annotations.php</argument>
+      <argument type="service" id="cache.annotations"/>
+      <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+    </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
       <tag name="container.hot_path"/>
-      <argument type="service" id=".3_PhpArrayAdapter~iTZ84fO"/>
+      <argument type="service" id="annotations.cache_adapter"/>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor" public="false">
       <argument>false</argument>
@@ -4730,7 +4733,7 @@
       <argument type="service" id="monolog.logger" on-invalid="null"/>
       <call method="setDefinition">
         <argument>Doctrine\Migrations\Version\MigrationFactory</argument>
-        <argument type="service" id="doctrine.migrations.container_aware_migrations_factory"/>
+        <argument type="service_closure" id="doctrine.migrations.container_aware_migrations_factory"/>
       </call>
       <factory class="Doctrine\Migrations\DependencyFactory" method="fromEntityManager"/>
     </service>
@@ -4921,7 +4924,7 @@
             <argument>null</argument>
             <argument>null</argument>
             <argument>12</argument>
-            <argument>2y</argument>
+            <argument>1</argument>
           </argument>
         </argument>
       </argument>
@@ -5346,6 +5349,7 @@
       <argument></argument>
       <argument></argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>true</argument>
     </service>
     <service id="debug.security.access.decision_manager" class="Symfony\Component\Security\Core\Authorization\TraceableAccessDecisionManager" public="false">
       <argument type="service" id="debug.security.access.decision_manager.inner"/>
@@ -5544,8 +5548,8 @@
     <service id=".service_locator.iuGr.fa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="security.firewall.map.context.dev" type="service" id="security.firewall.map.context.dev"/>
-        <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
+        <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
+        <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
@@ -6050,22 +6054,22 @@
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="base64" type="service" id="container.env_var_processor"/>
-        <argument key="bool" type="service" id="container.env_var_processor"/>
-        <argument key="const" type="service" id="container.env_var_processor"/>
-        <argument key="csv" type="service" id="container.env_var_processor"/>
-        <argument key="default" type="service" id="container.env_var_processor"/>
-        <argument key="file" type="service" id="container.env_var_processor"/>
-        <argument key="float" type="service" id="container.env_var_processor"/>
-        <argument key="int" type="service" id="container.env_var_processor"/>
-        <argument key="json" type="service" id="container.env_var_processor"/>
-        <argument key="key" type="service" id="container.env_var_processor"/>
-        <argument key="query_string" type="service" id="container.env_var_processor"/>
-        <argument key="require" type="service" id="container.env_var_processor"/>
-        <argument key="resolve" type="service" id="container.env_var_processor"/>
-        <argument key="string" type="service" id="container.env_var_processor"/>
-        <argument key="trim" type="service" id="container.env_var_processor"/>
-        <argument key="url" type="service" id="container.env_var_processor"/>
+        <argument key="base64" type="service_closure" id="container.env_var_processor"/>
+        <argument key="bool" type="service_closure" id="container.env_var_processor"/>
+        <argument key="const" type="service_closure" id="container.env_var_processor"/>
+        <argument key="csv" type="service_closure" id="container.env_var_processor"/>
+        <argument key="default" type="service_closure" id="container.env_var_processor"/>
+        <argument key="file" type="service_closure" id="container.env_var_processor"/>
+        <argument key="float" type="service_closure" id="container.env_var_processor"/>
+        <argument key="int" type="service_closure" id="container.env_var_processor"/>
+        <argument key="json" type="service_closure" id="container.env_var_processor"/>
+        <argument key="key" type="service_closure" id="container.env_var_processor"/>
+        <argument key="query_string" type="service_closure" id="container.env_var_processor"/>
+        <argument key="require" type="service_closure" id="container.env_var_processor"/>
+        <argument key="resolve" type="service_closure" id="container.env_var_processor"/>
+        <argument key="string" type="service_closure" id="container.env_var_processor"/>
+        <argument key="trim" type="service_closure" id="container.env_var_processor"/>
+        <argument key="url" type="service_closure" id="container.env_var_processor"/>
       </argument>
     </service>
     <service id="maker.auto_command.make_auth" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false">
@@ -6331,522 +6335,522 @@
     <service id=".service_locator.6V16CKq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="actualite" type="service" id=".errored..service_locator.6V16CKq.App\Entity\Actualite"/>
+        <argument key="actualite" type="service_closure" id=".errored..service_locator.6V16CKq.App\Entity\Actualite"/>
       </argument>
     </service>
     <service id=".service_locator.Zv43S_n" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="evenement" type="service" id=".errored..service_locator.Zv43S_n.App\Entity\Evenement"/>
+        <argument key="evenement" type="service_closure" id=".errored..service_locator.Zv43S_n.App\Entity\Evenement"/>
       </argument>
     </service>
     <service id=".service_locator.zj1sE8e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="apprenant" type="service" id=".errored..service_locator.zj1sE8e.App\Entity\Apprenant"/>
+        <argument key="apprenant" type="service_closure" id=".errored..service_locator.zj1sE8e.App\Entity\Apprenant"/>
       </argument>
     </service>
     <service id=".service_locator.RdXN6Y1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="categorie" type="service" id=".errored..service_locator.RdXN6Y1.App\Entity\Categorie"/>
+        <argument key="categorie" type="service_closure" id=".errored..service_locator.RdXN6Y1.App\Entity\Categorie"/>
       </argument>
     </service>
     <service id=".service_locator.n8gOTNr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="paginator" type="service" id="knp_paginator"/>
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
       </argument>
     </service>
     <service id=".service_locator.O0iTA_h" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="CoursRepository" type="service" id="App\Repository\CoursRepository"/>
+        <argument key="CoursRepository" type="service_closure" id="App\Repository\CoursRepository"/>
       </argument>
     </service>
     <service id=".service_locator.YQMTKaC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="cour" type="service" id=".errored..service_locator.YQMTKaC.App\Entity\Cours"/>
+        <argument key="cour" type="service_closure" id=".errored..service_locator.YQMTKaC.App\Entity\Cours"/>
       </argument>
     </service>
     <service id=".service_locator.Mi526Og" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\CoursRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\CoursRepository"/>
       </argument>
     </service>
     <service id=".service_locator.g6HL7Fl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="enseignant" type="service" id=".errored..service_locator.g6HL7Fl.App\Entity\Enseignant"/>
+        <argument key="enseignant" type="service_closure" id=".errored..service_locator.g6HL7Fl.App\Entity\Enseignant"/>
       </argument>
     </service>
     <service id=".service_locator.4wRfwhS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="Normalizer" type="service" id="serializer"/>
+        <argument key="Normalizer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.Q.kjEIq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="feedbackRepository" type="service" id="App\Repository\FeedbackRepository"/>
-        <argument key="paginator" type="service" id="knp_paginator"/>
+        <argument key="feedbackRepository" type="service_closure" id="App\Repository\FeedbackRepository"/>
+        <argument key="paginator" type="service_closure" id="knp_paginator"/>
       </argument>
     </service>
     <service id=".service_locator.03ymK9i" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="or" type="service" id="App\Repository\FeedbackRepository"/>
+        <argument key="or" type="service_closure" id="App\Repository\FeedbackRepository"/>
       </argument>
     </service>
     <service id=".service_locator.iPNoo2d" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="feedback" type="service" id=".errored..service_locator.iPNoo2d.App\Entity\Feedback"/>
+        <argument key="feedback" type="service_closure" id=".errored..service_locator.iPNoo2d.App\Entity\Feedback"/>
       </argument>
     </service>
     <service id=".service_locator.B8an6iK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="feedbackRepository" type="service" id="App\Repository\FeedbackRepository"/>
+        <argument key="feedbackRepository" type="service_closure" id="App\Repository\FeedbackRepository"/>
       </argument>
     </service>
     <service id=".service_locator.njGqpVl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="partenaire" type="service" id=".errored..service_locator.njGqpVl.App\Entity\Partenaire"/>
+        <argument key="partenaire" type="service_closure" id=".errored..service_locator.njGqpVl.App\Entity\Partenaire"/>
       </argument>
     </service>
     <service id=".service_locator.wC7QnM3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="PartenaireRepository" type="service" id="App\Repository\PartenaireRepository"/>
+        <argument key="PartenaireRepository" type="service_closure" id="App\Repository\PartenaireRepository"/>
       </argument>
     </service>
     <service id=".service_locator.V2Slyks" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\PartenaireRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PartenaireRepository"/>
       </argument>
     </service>
     <service id=".service_locator.oh0wzvT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="PartenaireRepository" type="service" id="App\Repository\PartenaireRepository"/>
-        <argument key="dataMail" type="service" id="App\Data\DataMail"/>
-        <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+        <argument key="PartenaireRepository" type="service_closure" id="App\Repository\PartenaireRepository"/>
+        <argument key="dataMail" type="service_closure" id="App\Data\DataMail"/>
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
       </argument>
     </service>
     <service id=".service_locator.JhiXwSl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\PartenaireRepository"/>
-        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PartenaireRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.vgBtsnM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
     </service>
     <service id=".service_locator.Wm6VqsM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="promotion" type="service" id=".errored..service_locator.Wm6VqsM.App\Entity\Promotion"/>
+        <argument key="promotion" type="service_closure" id=".errored..service_locator.Wm6VqsM.App\Entity\Promotion"/>
       </argument>
     </service>
     <service id=".service_locator.PhrnA48" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
-        <argument key="repo" type="service" id="App\Repository\PromotionRepository"/>
-        <argument key="repository" type="service" id="App\Repository\PartenaireRepository"/>
-        <argument key="repositoryy" type="service" id="App\Repository\UtilisateurRepository"/>
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+        <argument key="repo" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PartenaireRepository"/>
+        <argument key="repositoryy" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id=".service_locator.uNJ7tqe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
-        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.q2Jk9FI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="partenaireRepository" type="service" id="App\Repository\PartenaireRepository"/>
+        <argument key="partenaireRepository" type="service_closure" id="App\Repository\PartenaireRepository"/>
       </argument>
     </service>
     <service id=".service_locator.dslhFXg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repo" type="service" id="App\Repository\PartenaireRepository"/>
-        <argument key="repository" type="service" id="App\Repository\PromotionRepository"/>
-        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="repo" type="service_closure" id="App\Repository\PartenaireRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.Dbr0wMZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="promotionRepository" type="service" id="App\Repository\PromotionRepository"/>
-        <argument key="serializerInterface" type="service" id="serializer"/>
+        <argument key="promotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="serializerInterface" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.K7kNnn4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="serializerInterface" type="service" id="serializer"/>
+        <argument key="serializerInterface" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.gPgvdLX" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="coStudyingRepository" type="service" id="App\Repository\QuestionRepository"/>
-        <argument key="serializerInterface" type="service" id="serializer"/>
+        <argument key="coStudyingRepository" type="service_closure" id="App\Repository\QuestionRepository"/>
+        <argument key="serializerInterface" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.JBaRZUT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="question" type="service" id=".errored..service_locator.JBaRZUT.App\Entity\Question"/>
+        <argument key="question" type="service_closure" id=".errored..service_locator.JBaRZUT.App\Entity\Question"/>
       </argument>
     </service>
     <service id=".service_locator.cO4iday" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\QuestionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\QuestionRepository"/>
       </argument>
     </service>
     <service id=".service_locator.ipjTSUc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.fHnHsjS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="test" type="service" id=".errored..service_locator.fHnHsjS.App\Entity\Test"/>
+        <argument key="test" type="service_closure" id=".errored..service_locator.fHnHsjS.App\Entity\Test"/>
       </argument>
     </service>
     <service id=".service_locator.iP8eVIx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="mailer" type="service" id="mailer.mailer"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
       </argument>
     </service>
     <service id=".service_locator.IPLr04z" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="or" type="service" id="App\Repository\ReclamationRepository"/>
+        <argument key="or" type="service_closure" id="App\Repository\ReclamationRepository"/>
       </argument>
     </service>
     <service id=".service_locator.Yrn9bQF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="reclamation" type="service" id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation"/>
+        <argument key="reclamation" type="service_closure" id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation"/>
       </argument>
     </service>
     <service id=".service_locator.bJ2nGqo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="reclamationRepository" type="service" id="App\Repository\ReclamationRepository"/>
+        <argument key="reclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
       </argument>
     </service>
     <service id=".service_locator.DHnK5mE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="flashy" type="service" id="mercuryseries_flashy.flashy_notifier"/>
-        <argument key="reclamation" type="service" id=".errored..service_locator.DHnK5mE.App\Entity\Reclamation"/>
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="reclamation" type="service_closure" id=".errored..service_locator.DHnK5mE.App\Entity\Reclamation"/>
       </argument>
     </service>
     <service id=".service_locator.9WLlcG9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="reponse" type="service" id=".errored..service_locator.9WLlcG9.App\Entity\Reponse"/>
+        <argument key="reponse" type="service_closure" id=".errored..service_locator.9WLlcG9.App\Entity\Reponse"/>
       </argument>
     </service>
     <service id=".service_locator.g.xob4v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
+        <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
     <service id=".service_locator.jmvbEvf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="encoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
     <service id=".service_locator.8ZuNAXa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
       </argument>
     </service>
     <service id=".service_locator.9_EkgkI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="testRepository" type="service" id="App\Repository\TestRepository"/>
+        <argument key="testRepository" type="service_closure" id="App\Repository\TestRepository"/>
       </argument>
     </service>
     <service id=".service_locator.w7_pocN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="snappy" type="service" id="knp_snappy.pdf"/>
+        <argument key="snappy" type="service_closure" id="knp_snappy.pdf"/>
       </argument>
     </service>
     <service id=".service_locator.kPFVabb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="theme" type="service" id=".errored..service_locator.kPFVabb.App\Entity\Theme"/>
+        <argument key="theme" type="service_closure" id=".errored..service_locator.kPFVabb.App\Entity\Theme"/>
       </argument>
     </service>
     <service id=".service_locator.z1iWlPx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="utilisateur" type="service" id=".errored..service_locator.z1iWlPx.App\Entity\Utilisateur"/>
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.z1iWlPx.App\Entity\Utilisateur"/>
       </argument>
     </service>
     <service id=".service_locator.ZwDlruq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\UtilisateurRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id=".service_locator.Mc2uw4H" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repo" type="service" id="App\Repository\UtilisateurRepository"/>
-        <argument key="serializerInterfacex" type="service" id="serializer"/>
+        <argument key="repo" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+        <argument key="serializerInterfacex" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.vYnVyT4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
-        <argument key="serializer" type="service" id="serializer"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
     <service id=".service_locator.ccM2MGC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="passwordEncoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="passwordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
     <service id=".service_locator.FxlHf9e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\ActualiteController::delete" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController::edit" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController::show" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController::showEF" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\ActualiteController::showF" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ApprenantController::delete" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\ApprenantController::edit" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\ApprenantController::show" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\CategorieController::delete" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CategorieController::edit" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CategorieController::show" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CoursController::Recherche" type="service" id=".service_locator.O0iTA_h"/>
-        <argument key="App\Controller\CoursController::delete" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController::edit" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController::indexF" type="service" id=".service_locator.n8gOTNr"/>
-        <argument key="App\Controller\CoursController::listAction" type="service" id=".service_locator.Mi526Og"/>
-        <argument key="App\Controller\CoursController::show" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController::showF" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\EnseignantController::delete" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EnseignantController::edit" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EnseignantController::show" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EvenementController::delete" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController::edit" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController::searchEvenementx" type="service" id=".service_locator.4wRfwhS"/>
-        <argument key="App\Controller\EvenementController::show" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController::showF" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\FeedbackController::Recherche" type="service" id=".service_locator.B8an6iK"/>
-        <argument key="App\Controller\FeedbackController::consulterContrat" type="service" id=".service_locator.03ymK9i"/>
-        <argument key="App\Controller\FeedbackController::delete" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController::edit" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController::indexf" type="service" id=".service_locator.Q.kjEIq"/>
-        <argument key="App\Controller\FeedbackController::show" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController::showF" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\PartenaireController::OrderByMailQB" type="service" id=".service_locator.V2Slyks"/>
-        <argument key="App\Controller\PartenaireController::allPartenaireAction" type="service" id=".service_locator.JhiXwSl"/>
-        <argument key="App\Controller\PartenaireController::contactP" type="service" id=".service_locator.oh0wzvT"/>
-        <argument key="App\Controller\PartenaireController::delete" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController::edit" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController::show" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController::statistiques" type="service" id=".service_locator.wC7QnM3"/>
-        <argument key="App\Controller\PromotionController::RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
-        <argument key="App\Controller\PromotionController::a" type="service" id=".service_locator.uNJ7tqe"/>
-        <argument key="App\Controller\PromotionController::ajouterPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController::allPromotionAction" type="service" id=".service_locator.dslhFXg"/>
-        <argument key="App\Controller\PromotionController::delete" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\PromotionController::detailPartAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController::edit" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\PromotionController::getCos" type="service" id=".service_locator.Dbr0wMZ"/>
-        <argument key="App\Controller\PromotionController::idPartAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController::index" type="service" id=".service_locator.vgBtsnM"/>
-        <argument key="App\Controller\PromotionController::modifierPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController::playWithUser" type="service" id=".service_locator.vgBtsnM"/>
-        <argument key="App\Controller\PromotionController::show" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\QuestionController::CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\QuestionController::FindByCategorie" type="service" id=".service_locator.ipjTSUc"/>
-        <argument key="App\Controller\QuestionController::OrderByName" type="service" id=".service_locator.cO4iday"/>
-        <argument key="App\Controller\QuestionController::abo" type="service" id=".service_locator.cO4iday"/>
-        <argument key="App\Controller\QuestionController::delete" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController::edit" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController::getCos" type="service" id=".service_locator.gPgvdLX"/>
-        <argument key="App\Controller\QuestionController::index" type="service" id=".service_locator.K7kNnn4"/>
-        <argument key="App\Controller\QuestionController::show" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController::show_front" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\ReclamationController::consulterContrat" type="service" id=".service_locator.IPLr04z"/>
-        <argument key="App\Controller\ReclamationController::delete" type="service" id=".service_locator.DHnK5mE"/>
-        <argument key="App\Controller\ReclamationController::edit" type="service" id=".service_locator.DHnK5mE"/>
-        <argument key="App\Controller\ReclamationController::new" type="service" id=".service_locator.iP8eVIx"/>
-        <argument key="App\Controller\ReclamationController::show" type="service" id=".service_locator.Yrn9bQF"/>
-        <argument key="App\Controller\ReclamationController::showF" type="service" id=".service_locator.Yrn9bQF"/>
-        <argument key="App\Controller\ReclamationController::sortByTitleASC" type="service" id=".service_locator.bJ2nGqo"/>
-        <argument key="App\Controller\ReponseController::delete" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\ReponseController::edit" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\ReponseController::show" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\SecurityController::forgetPassword" type="service" id=".service_locator.8ZuNAXa"/>
-        <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.jmvbEvf"/>
-        <argument key="App\Controller\TestController::delete" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\TestController::edit" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\TestController::indexf" type="service" id=".service_locator.9_EkgkI"/>
-        <argument key="App\Controller\TestController::indexpdf" type="service" id=".service_locator.w7_pocN"/>
-        <argument key="App\Controller\TestController::showx" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\ThemeController::delete" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\ThemeController::edit" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\ThemeController::show" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\UtilisateurController::addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
-        <argument key="App\Controller\UtilisateurController::delete" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController::edit" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController::editProfile" type="service" id=".service_locator.ccM2MGC"/>
-        <argument key="App\Controller\UtilisateurController::getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
-        <argument key="App\Controller\UtilisateurController::new" type="service" id=".service_locator.jmvbEvf"/>
-        <argument key="App\Controller\UtilisateurController::orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
-        <argument key="App\Controller\UtilisateurController::show" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController::showFront" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController::signupActionJSON" type="service" id=".service_locator.ccM2MGC"/>
-        <argument key="App\Controller\ActualiteController:delete" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController:edit" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController:show" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ActualiteController:showEF" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\ActualiteController:showF" type="service" id=".service_locator.6V16CKq"/>
-        <argument key="App\Controller\ApprenantController:delete" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\ApprenantController:edit" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\ApprenantController:show" type="service" id=".service_locator.zj1sE8e"/>
-        <argument key="App\Controller\CategorieController:delete" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CategorieController:edit" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CategorieController:show" type="service" id=".service_locator.RdXN6Y1"/>
-        <argument key="App\Controller\CoursController:Recherche" type="service" id=".service_locator.O0iTA_h"/>
-        <argument key="App\Controller\CoursController:delete" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController:edit" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController:indexF" type="service" id=".service_locator.n8gOTNr"/>
-        <argument key="App\Controller\CoursController:listAction" type="service" id=".service_locator.Mi526Og"/>
-        <argument key="App\Controller\CoursController:show" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\CoursController:showF" type="service" id=".service_locator.YQMTKaC"/>
-        <argument key="App\Controller\EnseignantController:delete" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EnseignantController:edit" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EnseignantController:show" type="service" id=".service_locator.g6HL7Fl"/>
-        <argument key="App\Controller\EvenementController:delete" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController:edit" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController:searchEvenementx" type="service" id=".service_locator.4wRfwhS"/>
-        <argument key="App\Controller\EvenementController:show" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\EvenementController:showF" type="service" id=".service_locator.Zv43S_n"/>
-        <argument key="App\Controller\FeedbackController:Recherche" type="service" id=".service_locator.B8an6iK"/>
-        <argument key="App\Controller\FeedbackController:consulterContrat" type="service" id=".service_locator.03ymK9i"/>
-        <argument key="App\Controller\FeedbackController:delete" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController:edit" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController:indexf" type="service" id=".service_locator.Q.kjEIq"/>
-        <argument key="App\Controller\FeedbackController:show" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\FeedbackController:showF" type="service" id=".service_locator.iPNoo2d"/>
-        <argument key="App\Controller\PartenaireController:OrderByMailQB" type="service" id=".service_locator.V2Slyks"/>
-        <argument key="App\Controller\PartenaireController:allPartenaireAction" type="service" id=".service_locator.JhiXwSl"/>
-        <argument key="App\Controller\PartenaireController:contactP" type="service" id=".service_locator.oh0wzvT"/>
-        <argument key="App\Controller\PartenaireController:delete" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController:edit" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController:show" type="service" id=".service_locator.njGqpVl"/>
-        <argument key="App\Controller\PartenaireController:statistiques" type="service" id=".service_locator.wC7QnM3"/>
-        <argument key="App\Controller\PromotionController:RandomUserMail" type="service" id=".service_locator.PhrnA48"/>
-        <argument key="App\Controller\PromotionController:a" type="service" id=".service_locator.uNJ7tqe"/>
-        <argument key="App\Controller\PromotionController:ajouterPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController:allPromotionAction" type="service" id=".service_locator.dslhFXg"/>
-        <argument key="App\Controller\PromotionController:delete" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\PromotionController:detailPartAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController:edit" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\PromotionController:getCos" type="service" id=".service_locator.Dbr0wMZ"/>
-        <argument key="App\Controller\PromotionController:idPartAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController:index" type="service" id=".service_locator.vgBtsnM"/>
-        <argument key="App\Controller\PromotionController:modifierPromotionAction" type="service" id=".service_locator.q2Jk9FI"/>
-        <argument key="App\Controller\PromotionController:playWithUser" type="service" id=".service_locator.vgBtsnM"/>
-        <argument key="App\Controller\PromotionController:show" type="service" id=".service_locator.Wm6VqsM"/>
-        <argument key="App\Controller\QuestionController:CalendarRedirect" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\QuestionController:FindByCategorie" type="service" id=".service_locator.ipjTSUc"/>
-        <argument key="App\Controller\QuestionController:OrderByName" type="service" id=".service_locator.cO4iday"/>
-        <argument key="App\Controller\QuestionController:abo" type="service" id=".service_locator.cO4iday"/>
-        <argument key="App\Controller\QuestionController:delete" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController:edit" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController:getCos" type="service" id=".service_locator.gPgvdLX"/>
-        <argument key="App\Controller\QuestionController:index" type="service" id=".service_locator.K7kNnn4"/>
-        <argument key="App\Controller\QuestionController:show" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\QuestionController:show_front" type="service" id=".service_locator.JBaRZUT"/>
-        <argument key="App\Controller\ReclamationController:consulterContrat" type="service" id=".service_locator.IPLr04z"/>
-        <argument key="App\Controller\ReclamationController:delete" type="service" id=".service_locator.DHnK5mE"/>
-        <argument key="App\Controller\ReclamationController:edit" type="service" id=".service_locator.DHnK5mE"/>
-        <argument key="App\Controller\ReclamationController:new" type="service" id=".service_locator.iP8eVIx"/>
-        <argument key="App\Controller\ReclamationController:show" type="service" id=".service_locator.Yrn9bQF"/>
-        <argument key="App\Controller\ReclamationController:showF" type="service" id=".service_locator.Yrn9bQF"/>
-        <argument key="App\Controller\ReclamationController:sortByTitleASC" type="service" id=".service_locator.bJ2nGqo"/>
-        <argument key="App\Controller\ReponseController:delete" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\ReponseController:edit" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\ReponseController:show" type="service" id=".service_locator.9WLlcG9"/>
-        <argument key="App\Controller\SecurityController:forgetPassword" type="service" id=".service_locator.8ZuNAXa"/>
-        <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.jmvbEvf"/>
-        <argument key="App\Controller\TestController:delete" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\TestController:edit" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\TestController:indexf" type="service" id=".service_locator.9_EkgkI"/>
-        <argument key="App\Controller\TestController:indexpdf" type="service" id=".service_locator.w7_pocN"/>
-        <argument key="App\Controller\TestController:showx" type="service" id=".service_locator.fHnHsjS"/>
-        <argument key="App\Controller\ThemeController:delete" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\ThemeController:edit" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\ThemeController:show" type="service" id=".service_locator.kPFVabb"/>
-        <argument key="App\Controller\UtilisateurController:addUtilisateur" type="service" id=".service_locator.vYnVyT4"/>
-        <argument key="App\Controller\UtilisateurController:delete" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController:edit" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController:editProfile" type="service" id=".service_locator.ccM2MGC"/>
-        <argument key="App\Controller\UtilisateurController:getUtilisateurs" type="service" id=".service_locator.Mc2uw4H"/>
-        <argument key="App\Controller\UtilisateurController:new" type="service" id=".service_locator.jmvbEvf"/>
-        <argument key="App\Controller\UtilisateurController:orderByRoleSQL" type="service" id=".service_locator.ZwDlruq"/>
-        <argument key="App\Controller\UtilisateurController:show" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController:showFront" type="service" id=".service_locator.z1iWlPx"/>
-        <argument key="App\Controller\UtilisateurController:signupActionJSON" type="service" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\ActualiteController::delete" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController::edit" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController::show" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController::showEF" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\ActualiteController::showF" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ApprenantController::delete" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\ApprenantController::edit" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\ApprenantController::show" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\CategorieController::delete" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CategorieController::edit" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CategorieController::show" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CoursController::Recherche" type="service_closure" id=".service_locator.O0iTA_h"/>
+        <argument key="App\Controller\CoursController::delete" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController::edit" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController::indexF" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\CoursController::listAction" type="service_closure" id=".service_locator.Mi526Og"/>
+        <argument key="App\Controller\CoursController::show" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController::showF" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\EnseignantController::delete" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EnseignantController::edit" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EnseignantController::show" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EvenementController::delete" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController::edit" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController::searchEvenementx" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\EvenementController::show" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController::showF" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\FeedbackController::Recherche" type="service_closure" id=".service_locator.B8an6iK"/>
+        <argument key="App\Controller\FeedbackController::consulterContrat" type="service_closure" id=".service_locator.03ymK9i"/>
+        <argument key="App\Controller\FeedbackController::delete" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController::edit" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController::indexf" type="service_closure" id=".service_locator.Q.kjEIq"/>
+        <argument key="App\Controller\FeedbackController::show" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController::showF" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\PartenaireController::OrderByMailQB" type="service_closure" id=".service_locator.V2Slyks"/>
+        <argument key="App\Controller\PartenaireController::allPartenaireAction" type="service_closure" id=".service_locator.JhiXwSl"/>
+        <argument key="App\Controller\PartenaireController::contactP" type="service_closure" id=".service_locator.oh0wzvT"/>
+        <argument key="App\Controller\PartenaireController::delete" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController::edit" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController::show" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController::statistiques" type="service_closure" id=".service_locator.wC7QnM3"/>
+        <argument key="App\Controller\PromotionController::RandomUserMail" type="service_closure" id=".service_locator.PhrnA48"/>
+        <argument key="App\Controller\PromotionController::a" type="service_closure" id=".service_locator.uNJ7tqe"/>
+        <argument key="App\Controller\PromotionController::ajouterPromotionAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController::allPromotionAction" type="service_closure" id=".service_locator.dslhFXg"/>
+        <argument key="App\Controller\PromotionController::delete" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController::detailPartAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController::edit" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController::getCos" type="service_closure" id=".service_locator.Dbr0wMZ"/>
+        <argument key="App\Controller\PromotionController::idPartAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController::index" type="service_closure" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController::modifierPromotionAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController::playWithUser" type="service_closure" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController::show" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\QuestionController::CalendarRedirect" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\QuestionController::FindByCategorie" type="service_closure" id=".service_locator.ipjTSUc"/>
+        <argument key="App\Controller\QuestionController::OrderByName" type="service_closure" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController::abo" type="service_closure" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController::delete" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController::edit" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController::getCos" type="service_closure" id=".service_locator.gPgvdLX"/>
+        <argument key="App\Controller\QuestionController::index" type="service_closure" id=".service_locator.K7kNnn4"/>
+        <argument key="App\Controller\QuestionController::show" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController::show_front" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\ReclamationController::consulterContrat" type="service_closure" id=".service_locator.IPLr04z"/>
+        <argument key="App\Controller\ReclamationController::delete" type="service_closure" id=".service_locator.DHnK5mE"/>
+        <argument key="App\Controller\ReclamationController::edit" type="service_closure" id=".service_locator.DHnK5mE"/>
+        <argument key="App\Controller\ReclamationController::new" type="service_closure" id=".service_locator.iP8eVIx"/>
+        <argument key="App\Controller\ReclamationController::show" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController::showF" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController::sortByTitleASC" type="service_closure" id=".service_locator.bJ2nGqo"/>
+        <argument key="App\Controller\ReponseController::delete" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\ReponseController::edit" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\ReponseController::show" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\SecurityController::forgetPassword" type="service_closure" id=".service_locator.8ZuNAXa"/>
+        <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="App\Controller\SecurityController::registration" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\TestController::delete" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\TestController::edit" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\TestController::indexf" type="service_closure" id=".service_locator.9_EkgkI"/>
+        <argument key="App\Controller\TestController::indexpdf" type="service_closure" id=".service_locator.w7_pocN"/>
+        <argument key="App\Controller\TestController::showx" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\ThemeController::delete" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\ThemeController::edit" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\ThemeController::show" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\UtilisateurController::addUtilisateur" type="service_closure" id=".service_locator.vYnVyT4"/>
+        <argument key="App\Controller\UtilisateurController::delete" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::edit" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::editProfile" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\UtilisateurController::getUtilisateurs" type="service_closure" id=".service_locator.Mc2uw4H"/>
+        <argument key="App\Controller\UtilisateurController::new" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\UtilisateurController::orderByRoleSQL" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController::show" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::showFront" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::signupActionJSON" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\ActualiteController:delete" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController:edit" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController:show" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ActualiteController:showEF" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\ActualiteController:showF" type="service_closure" id=".service_locator.6V16CKq"/>
+        <argument key="App\Controller\ApprenantController:delete" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\ApprenantController:edit" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\ApprenantController:show" type="service_closure" id=".service_locator.zj1sE8e"/>
+        <argument key="App\Controller\CategorieController:delete" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CategorieController:edit" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CategorieController:show" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CoursController:Recherche" type="service_closure" id=".service_locator.O0iTA_h"/>
+        <argument key="App\Controller\CoursController:delete" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController:edit" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController:indexF" type="service_closure" id=".service_locator.n8gOTNr"/>
+        <argument key="App\Controller\CoursController:listAction" type="service_closure" id=".service_locator.Mi526Og"/>
+        <argument key="App\Controller\CoursController:show" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\CoursController:showF" type="service_closure" id=".service_locator.YQMTKaC"/>
+        <argument key="App\Controller\EnseignantController:delete" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EnseignantController:edit" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EnseignantController:show" type="service_closure" id=".service_locator.g6HL7Fl"/>
+        <argument key="App\Controller\EvenementController:delete" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController:edit" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController:searchEvenementx" type="service_closure" id=".service_locator.4wRfwhS"/>
+        <argument key="App\Controller\EvenementController:show" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\EvenementController:showF" type="service_closure" id=".service_locator.Zv43S_n"/>
+        <argument key="App\Controller\FeedbackController:Recherche" type="service_closure" id=".service_locator.B8an6iK"/>
+        <argument key="App\Controller\FeedbackController:consulterContrat" type="service_closure" id=".service_locator.03ymK9i"/>
+        <argument key="App\Controller\FeedbackController:delete" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController:edit" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController:indexf" type="service_closure" id=".service_locator.Q.kjEIq"/>
+        <argument key="App\Controller\FeedbackController:show" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\FeedbackController:showF" type="service_closure" id=".service_locator.iPNoo2d"/>
+        <argument key="App\Controller\PartenaireController:OrderByMailQB" type="service_closure" id=".service_locator.V2Slyks"/>
+        <argument key="App\Controller\PartenaireController:allPartenaireAction" type="service_closure" id=".service_locator.JhiXwSl"/>
+        <argument key="App\Controller\PartenaireController:contactP" type="service_closure" id=".service_locator.oh0wzvT"/>
+        <argument key="App\Controller\PartenaireController:delete" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController:edit" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController:show" type="service_closure" id=".service_locator.njGqpVl"/>
+        <argument key="App\Controller\PartenaireController:statistiques" type="service_closure" id=".service_locator.wC7QnM3"/>
+        <argument key="App\Controller\PromotionController:RandomUserMail" type="service_closure" id=".service_locator.PhrnA48"/>
+        <argument key="App\Controller\PromotionController:a" type="service_closure" id=".service_locator.uNJ7tqe"/>
+        <argument key="App\Controller\PromotionController:ajouterPromotionAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController:allPromotionAction" type="service_closure" id=".service_locator.dslhFXg"/>
+        <argument key="App\Controller\PromotionController:delete" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController:detailPartAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController:edit" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\PromotionController:getCos" type="service_closure" id=".service_locator.Dbr0wMZ"/>
+        <argument key="App\Controller\PromotionController:idPartAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController:index" type="service_closure" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController:modifierPromotionAction" type="service_closure" id=".service_locator.q2Jk9FI"/>
+        <argument key="App\Controller\PromotionController:playWithUser" type="service_closure" id=".service_locator.vgBtsnM"/>
+        <argument key="App\Controller\PromotionController:show" type="service_closure" id=".service_locator.Wm6VqsM"/>
+        <argument key="App\Controller\QuestionController:CalendarRedirect" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\QuestionController:FindByCategorie" type="service_closure" id=".service_locator.ipjTSUc"/>
+        <argument key="App\Controller\QuestionController:OrderByName" type="service_closure" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController:abo" type="service_closure" id=".service_locator.cO4iday"/>
+        <argument key="App\Controller\QuestionController:delete" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController:edit" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController:getCos" type="service_closure" id=".service_locator.gPgvdLX"/>
+        <argument key="App\Controller\QuestionController:index" type="service_closure" id=".service_locator.K7kNnn4"/>
+        <argument key="App\Controller\QuestionController:show" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\QuestionController:show_front" type="service_closure" id=".service_locator.JBaRZUT"/>
+        <argument key="App\Controller\ReclamationController:consulterContrat" type="service_closure" id=".service_locator.IPLr04z"/>
+        <argument key="App\Controller\ReclamationController:delete" type="service_closure" id=".service_locator.DHnK5mE"/>
+        <argument key="App\Controller\ReclamationController:edit" type="service_closure" id=".service_locator.DHnK5mE"/>
+        <argument key="App\Controller\ReclamationController:new" type="service_closure" id=".service_locator.iP8eVIx"/>
+        <argument key="App\Controller\ReclamationController:show" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController:showF" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\ReclamationController:sortByTitleASC" type="service_closure" id=".service_locator.bJ2nGqo"/>
+        <argument key="App\Controller\ReponseController:delete" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\ReponseController:edit" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\ReponseController:show" type="service_closure" id=".service_locator.9WLlcG9"/>
+        <argument key="App\Controller\SecurityController:forgetPassword" type="service_closure" id=".service_locator.8ZuNAXa"/>
+        <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="App\Controller\SecurityController:registration" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\TestController:delete" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\TestController:edit" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\TestController:indexf" type="service_closure" id=".service_locator.9_EkgkI"/>
+        <argument key="App\Controller\TestController:indexpdf" type="service_closure" id=".service_locator.w7_pocN"/>
+        <argument key="App\Controller\TestController:showx" type="service_closure" id=".service_locator.fHnHsjS"/>
+        <argument key="App\Controller\ThemeController:delete" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\ThemeController:edit" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\ThemeController:show" type="service_closure" id=".service_locator.kPFVabb"/>
+        <argument key="App\Controller\UtilisateurController:addUtilisateur" type="service_closure" id=".service_locator.vYnVyT4"/>
+        <argument key="App\Controller\UtilisateurController:delete" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:edit" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:editProfile" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\UtilisateurController:getUtilisateurs" type="service_closure" id=".service_locator.Mc2uw4H"/>
+        <argument key="App\Controller\UtilisateurController:new" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\UtilisateurController:orderByRoleSQL" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController:show" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:showFront" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:signupActionJSON" type="service_closure" id=".service_locator.ccM2MGC"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service" id="doctrine.orm.validator.unique"/>
-        <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service" id="security.validator.user_password"/>
-        <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service" id="validator.email"/>
-        <argument key="Symfony\Component\Validator\Constraints\ExpressionValidator" type="service" id="validator.expression"/>
-        <argument key="Symfony\Component\Validator\Constraints\NotCompromisedPasswordValidator" type="service" id="validator.not_compromised_password"/>
-        <argument key="doctrine.orm.validator.unique" type="service" id="doctrine.orm.validator.unique"/>
-        <argument key="security.validator.user_password" type="service" id="security.validator.user_password"/>
-        <argument key="validator.expression" type="service" id="validator.expression"/>
+        <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service_closure" id="doctrine.orm.validator.unique"/>
+        <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service_closure" id="security.validator.user_password"/>
+        <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service_closure" id="validator.email"/>
+        <argument key="Symfony\Component\Validator\Constraints\ExpressionValidator" type="service_closure" id="validator.expression"/>
+        <argument key="Symfony\Component\Validator\Constraints\NotCompromisedPasswordValidator" type="service_closure" id="validator.not_compromised_password"/>
+        <argument key="doctrine.orm.validator.unique" type="service_closure" id="doctrine.orm.validator.unique"/>
+        <argument key="security.validator.user_password" type="service_closure" id="security.validator.user_password"/>
+        <argument key="validator.expression" type="service_closure" id="validator.expression"/>
       </argument>
     </service>
     <service id=".service_locator._cmka45" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="inline" type="service" id="fragment.renderer.inline"/>
+        <argument key="inline" type="service_closure" id="fragment.renderer.inline"/>
       </argument>
     </service>
     <service id="debug.argument_resolver.request_attribute" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
@@ -6892,29 +6896,29 @@
     <service id=".service_locator.LiX1_CN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Form\ActualiteType" type="service" id="App\Form\ActualiteType"/>
-        <argument key="App\Form\ApprenantType" type="service" id="App\Form\ApprenantType"/>
-        <argument key="App\Form\CategorieType" type="service" id="App\Form\CategorieType"/>
-        <argument key="App\Form\ContactMType" type="service" id="App\Form\ContactMType"/>
-        <argument key="App\Form\CoursType" type="service" id="App\Form\CoursType"/>
-        <argument key="App\Form\EnseignantType" type="service" id="App\Form\EnseignantType"/>
-        <argument key="App\Form\EvenementType" type="service" id="App\Form\EvenementType"/>
-        <argument key="App\Form\FeedbackType" type="service" id="App\Form\FeedbackType"/>
-        <argument key="App\Form\PartenaireType" type="service" id="App\Form\PartenaireType"/>
-        <argument key="App\Form\PromotionType" type="service" id="App\Form\PromotionType"/>
-        <argument key="App\Form\QuestionType" type="service" id="App\Form\QuestionType"/>
-        <argument key="App\Form\ReclamationType" type="service" id="App\Form\ReclamationType"/>
-        <argument key="App\Form\ReponseType" type="service" id="App\Form\ReponseType"/>
-        <argument key="App\Form\SearchForm" type="service" id="App\Form\SearchForm"/>
-        <argument key="App\Form\StarsType" type="service" id="App\Form\StarsType"/>
-        <argument key="App\Form\TestType" type="service" id="App\Form\TestType"/>
-        <argument key="App\Form\ThemeType" type="service" id="App\Form\ThemeType"/>
-        <argument key="App\Form\UtilisateurType" type="service" id="App\Form\UtilisateurType"/>
-        <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service" id="gregwar_captcha.type"/>
-        <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
-        <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
-        <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
-        <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service" id="form.type.form"/>
+        <argument key="App\Form\ActualiteType" type="service_closure" id="App\Form\ActualiteType"/>
+        <argument key="App\Form\ApprenantType" type="service_closure" id="App\Form\ApprenantType"/>
+        <argument key="App\Form\CategorieType" type="service_closure" id="App\Form\CategorieType"/>
+        <argument key="App\Form\ContactMType" type="service_closure" id="App\Form\ContactMType"/>
+        <argument key="App\Form\CoursType" type="service_closure" id="App\Form\CoursType"/>
+        <argument key="App\Form\EnseignantType" type="service_closure" id="App\Form\EnseignantType"/>
+        <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
+        <argument key="App\Form\FeedbackType" type="service_closure" id="App\Form\FeedbackType"/>
+        <argument key="App\Form\PartenaireType" type="service_closure" id="App\Form\PartenaireType"/>
+        <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
+        <argument key="App\Form\QuestionType" type="service_closure" id="App\Form\QuestionType"/>
+        <argument key="App\Form\ReclamationType" type="service_closure" id="App\Form\ReclamationType"/>
+        <argument key="App\Form\ReponseType" type="service_closure" id="App\Form\ReponseType"/>
+        <argument key="App\Form\SearchForm" type="service_closure" id="App\Form\SearchForm"/>
+        <argument key="App\Form\StarsType" type="service_closure" id="App\Form\StarsType"/>
+        <argument key="App\Form\TestType" type="service_closure" id="App\Form\TestType"/>
+        <argument key="App\Form\ThemeType" type="service_closure" id="App\Form\ThemeType"/>
+        <argument key="App\Form\UtilisateurType" type="service_closure" id="App\Form\UtilisateurType"/>
+        <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
+        <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
+        <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
+        <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
+        <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service_closure" id="form.type.form"/>
       </argument>
     </service>
     <service id=".debug.http_client" class="Symfony\Component\HttpClient\TraceableHttpClient">
@@ -7086,23 +7090,23 @@
     <service id=".service_locator.bpvU51K" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
+        <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
     <service id=".service_locator.d.GGjW2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Repository\CoursRepository" type="service" id="App\Repository\CoursRepository"/>
-        <argument key="App\Repository\FeedbackRepository" type="service" id="App\Repository\FeedbackRepository"/>
-        <argument key="App\Repository\PartenaireRepository" type="service" id="App\Repository\PartenaireRepository"/>
-        <argument key="App\Repository\PromotionRepository" type="service" id="App\Repository\PromotionRepository"/>
-        <argument key="App\Repository\QuestionRechercheRepository" type="service" id="App\Repository\QuestionRechercheRepository"/>
-        <argument key="App\Repository\QuestionRepository" type="service" id="App\Repository\QuestionRepository"/>
-        <argument key="App\Repository\ReclamationRepository" type="service" id="App\Repository\ReclamationRepository"/>
-        <argument key="App\Repository\ReponseRepository" type="service" id="App\Repository\ReponseRepository"/>
-        <argument key="App\Repository\StarsRepository" type="service" id="App\Repository\StarsRepository"/>
-        <argument key="App\Repository\TestRepository" type="service" id="App\Repository\TestRepository"/>
-        <argument key="App\Repository\UtilisateurRepository" type="service" id="App\Repository\UtilisateurRepository"/>
+        <argument key="App\Repository\CoursRepository" type="service_closure" id="App\Repository\CoursRepository"/>
+        <argument key="App\Repository\FeedbackRepository" type="service_closure" id="App\Repository\FeedbackRepository"/>
+        <argument key="App\Repository\PartenaireRepository" type="service_closure" id="App\Repository\PartenaireRepository"/>
+        <argument key="App\Repository\PromotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="App\Repository\QuestionRechercheRepository" type="service_closure" id="App\Repository\QuestionRechercheRepository"/>
+        <argument key="App\Repository\QuestionRepository" type="service_closure" id="App\Repository\QuestionRepository"/>
+        <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+        <argument key="App\Repository\ReponseRepository" type="service_closure" id="App\Repository\ReponseRepository"/>
+        <argument key="App\Repository\StarsRepository" type="service_closure" id="App\Repository\StarsRepository"/>
+        <argument key="App\Repository\TestRepository" type="service_closure" id="App\Repository\TestRepository"/>
+        <argument key="App\Repository\UtilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id="debug.security.voter.security.access.authenticated_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
@@ -7123,34 +7127,34 @@
     <service id=".service_locator.V.o0zE7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="translation.loader.csv" type="service" id="translation.loader.csv"/>
-        <argument key="translation.loader.dat" type="service" id="translation.loader.dat"/>
-        <argument key="translation.loader.ini" type="service" id="translation.loader.ini"/>
-        <argument key="translation.loader.json" type="service" id="translation.loader.json"/>
-        <argument key="translation.loader.mo" type="service" id="translation.loader.mo"/>
-        <argument key="translation.loader.php" type="service" id="translation.loader.php"/>
-        <argument key="translation.loader.po" type="service" id="translation.loader.po"/>
-        <argument key="translation.loader.qt" type="service" id="translation.loader.qt"/>
-        <argument key="translation.loader.res" type="service" id="translation.loader.res"/>
-        <argument key="translation.loader.xliff" type="service" id="translation.loader.xliff"/>
-        <argument key="translation.loader.yml" type="service" id="translation.loader.yml"/>
+        <argument key="translation.loader.csv" type="service_closure" id="translation.loader.csv"/>
+        <argument key="translation.loader.dat" type="service_closure" id="translation.loader.dat"/>
+        <argument key="translation.loader.ini" type="service_closure" id="translation.loader.ini"/>
+        <argument key="translation.loader.json" type="service_closure" id="translation.loader.json"/>
+        <argument key="translation.loader.mo" type="service_closure" id="translation.loader.mo"/>
+        <argument key="translation.loader.php" type="service_closure" id="translation.loader.php"/>
+        <argument key="translation.loader.po" type="service_closure" id="translation.loader.po"/>
+        <argument key="translation.loader.qt" type="service_closure" id="translation.loader.qt"/>
+        <argument key="translation.loader.res" type="service_closure" id="translation.loader.res"/>
+        <argument key="translation.loader.xliff" type="service_closure" id="translation.loader.xliff"/>
+        <argument key="translation.loader.yml" type="service_closure" id="translation.loader.yml"/>
       </argument>
     </service>
     <service id=".service_locator.vdmMuyE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="doctrine" type="service" id="doctrine" on-invalid="ignore"/>
-        <argument key="form.factory" type="service" id="form.factory" on-invalid="ignore"/>
-        <argument key="http_kernel" type="service" id="http_kernel" on-invalid="ignore"/>
-        <argument key="parameter_bag" type="service" id="parameter_bag" on-invalid="ignore"/>
-        <argument key="request_stack" type="service" id="request_stack" on-invalid="ignore"/>
-        <argument key="router" type="service" id="router.default" on-invalid="ignore"/>
-        <argument key="security.authorization_checker" type="service" id="security.authorization_checker" on-invalid="ignore"/>
-        <argument key="security.csrf.token_manager" type="service" id="security.csrf.token_manager" on-invalid="ignore"/>
-        <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore"/>
-        <argument key="serializer" type="service" id="serializer" on-invalid="ignore"/>
-        <argument key="session" type="service" id="session" on-invalid="ignore"/>
-        <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
+        <argument key="doctrine" type="service_closure" id="doctrine" on-invalid="ignore"/>
+        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
+        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
+        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
+        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
+        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
+        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
+        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
+        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
+        <argument key="serializer" type="service_closure" id="serializer" on-invalid="ignore"/>
+        <argument key="session" type="service_closure" id="session" on-invalid="ignore"/>
+        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
     <service id=".service_locator.vdmMuyE.App\Controller\ActualiteController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7264,7 +7268,7 @@
     <service id=".service_locator.XSes1R5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="translator" type="service" id="translator.data_collector"/>
+        <argument key="translator" type="service_closure" id="translator.data_collector"/>
       </argument>
     </service>
     <service id=".service_locator.XSes1R5.translation.warmer" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7276,7 +7280,7 @@
     <service id=".service_locator.n0p5GNi" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="routing.loader" type="service" id="routing.loader"/>
+        <argument key="routing.loader" type="service_closure" id="routing.loader"/>
       </argument>
     </service>
     <service id=".service_locator.n0p5GNi.router.default" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7288,7 +7292,7 @@
     <service id=".service_locator.m90YCjy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="router" type="service" id="router.default"/>
+        <argument key="router" type="service_closure" id="router.default"/>
       </argument>
     </service>
     <service id=".service_locator.m90YCjy.router.cache_warmer" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7300,7 +7304,7 @@
     <service id=".service_locator.C2Thyvr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
+        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
     <service id=".service_locator.C2Thyvr.sensio_framework_extra.view.listener" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7312,7 +7316,7 @@
     <service id=".service_locator.o9nGMXB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="twig" type="service" id="twig"/>
+        <argument key="twig" type="service_closure" id="twig"/>
       </argument>
     </service>
     <service id=".service_locator.o9nGMXB.twig.template_cache_warmer" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7324,35 +7328,35 @@
     <service id=".service_locator.wnlveDj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="reverse_container" type="service" id="reverse_container" on-invalid="ignore_uninitialized"/>
+        <argument key="reverse_container" type="service_closure" id="reverse_container" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id=".service_locator.Bppmeg3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="initialized_session" type="service" id="session" on-invalid="ignore_uninitialized"/>
-        <argument key="request_stack" type="service" id="request_stack"/>
-        <argument key="session" type="service" id="session" on-invalid="ignore"/>
-        <argument key="session_storage" type="service" id="session.storage.native" on-invalid="ignore"/>
+        <argument key="initialized_session" type="service_closure" id="session" on-invalid="ignore_uninitialized"/>
+        <argument key="request_stack" type="service_closure" id="request_stack"/>
+        <argument key="session" type="service_closure" id="session" on-invalid="ignore"/>
+        <argument key="session_storage" type="service_closure" id="session.storage.native" on-invalid="ignore"/>
       </argument>
     </service>
     <service id=".service_locator.XwZNkPh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="kernel" type="service" id="kernel"/>
+        <argument key="kernel" type="service_closure" id="kernel"/>
       </argument>
     </service>
     <service id=".service_locator.XjnY8xG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="session" type="service" id="session"/>
+        <argument key="session" type="service_closure" id="session"/>
       </argument>
     </service>
     <service id=".service_locator.6zQlgQt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="security.authorization_checker" type="service" id="security.authorization_checker"/>
-        <argument key="security.token_storage" type="service" id="security.token_storage"/>
+        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker"/>
+        <argument key="security.token_storage" type="service_closure" id="security.token_storage"/>
       </argument>
     </service>
     <service id="debug.validator.inner" class="Symfony\Component\Validator\Validator\ValidatorInterface" public="false">
@@ -7542,100 +7546,100 @@
     <service id=".service_locator.7ZbdT7F" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
-        <argument key="console.command.about" type="service" id="console.command.about"/>
-        <argument key="console.command.assets_install" type="service" id="console.command.assets_install"/>
-        <argument key="console.command.cache_clear" type="service" id="console.command.cache_clear"/>
-        <argument key="console.command.cache_pool_clear" type="service" id="console.command.cache_pool_clear"/>
-        <argument key="console.command.cache_pool_delete" type="service" id="console.command.cache_pool_delete"/>
-        <argument key="console.command.cache_pool_list" type="service" id="console.command.cache_pool_list"/>
-        <argument key="console.command.cache_pool_prune" type="service" id="console.command.cache_pool_prune"/>
-        <argument key="console.command.cache_warmup" type="service" id="console.command.cache_warmup"/>
-        <argument key="console.command.config_debug" type="service" id="console.command.config_debug"/>
-        <argument key="console.command.config_dump_reference" type="service" id="console.command.config_dump_reference"/>
-        <argument key="console.command.container_debug" type="service" id="console.command.container_debug"/>
-        <argument key="console.command.container_lint" type="service" id="console.command.container_lint"/>
-        <argument key="console.command.debug_autowiring" type="service" id="console.command.debug_autowiring"/>
-        <argument key="console.command.event_dispatcher_debug" type="service" id="console.command.event_dispatcher_debug"/>
-        <argument key="console.command.form_debug" type="service" id="console.command.form_debug"/>
-        <argument key="console.command.router_debug" type="service" id="console.command.router_debug"/>
-        <argument key="console.command.router_match" type="service" id="console.command.router_match"/>
-        <argument key="console.command.secrets_decrypt_to_local" type="service" id="console.command.secrets_decrypt_to_local"/>
-        <argument key="console.command.secrets_encrypt_from_local" type="service" id="console.command.secrets_encrypt_from_local"/>
-        <argument key="console.command.secrets_generate_key" type="service" id="console.command.secrets_generate_key"/>
-        <argument key="console.command.secrets_list" type="service" id="console.command.secrets_list"/>
-        <argument key="console.command.secrets_remove" type="service" id="console.command.secrets_remove"/>
-        <argument key="console.command.secrets_set" type="service" id="console.command.secrets_set"/>
-        <argument key="console.command.translation_debug" type="service" id="console.command.translation_debug"/>
-        <argument key="console.command.translation_update" type="service" id="console.command.translation_update"/>
-        <argument key="console.command.xliff_lint" type="service" id="console.command.xliff_lint"/>
-        <argument key="console.command.yaml_lint" type="service" id="console.command.yaml_lint"/>
-        <argument key="doctrine.cache_clear_metadata_command" type="service" id="doctrine.cache_clear_metadata_command"/>
-        <argument key="doctrine.cache_clear_query_cache_command" type="service" id="doctrine.cache_clear_query_cache_command"/>
-        <argument key="doctrine.cache_clear_result_command" type="service" id="doctrine.cache_clear_result_command"/>
-        <argument key="doctrine.cache_collection_region_command" type="service" id="doctrine.cache_collection_region_command"/>
-        <argument key="doctrine.clear_entity_region_command" type="service" id="doctrine.clear_entity_region_command"/>
-        <argument key="doctrine.clear_query_region_command" type="service" id="doctrine.clear_query_region_command"/>
-        <argument key="doctrine.database_create_command" type="service" id="doctrine.database_create_command"/>
-        <argument key="doctrine.database_drop_command" type="service" id="doctrine.database_drop_command"/>
-        <argument key="doctrine.database_import_command" type="service" id="doctrine.database_import_command"/>
-        <argument key="doctrine.ensure_production_settings_command" type="service" id="doctrine.ensure_production_settings_command"/>
-        <argument key="doctrine.fixtures_load_command" type="service" id="doctrine.fixtures_load_command"/>
-        <argument key="doctrine.mapping_convert_command" type="service" id="doctrine.mapping_convert_command"/>
-        <argument key="doctrine.mapping_import_command" type="service" id="doctrine.mapping_import_command"/>
-        <argument key="doctrine.mapping_info_command" type="service" id="doctrine.mapping_info_command"/>
-        <argument key="doctrine.query_dql_command" type="service" id="doctrine.query_dql_command"/>
-        <argument key="doctrine.query_sql_command" type="service" id="doctrine.query_sql_command"/>
-        <argument key="doctrine.schema_create_command" type="service" id="doctrine.schema_create_command"/>
-        <argument key="doctrine.schema_drop_command" type="service" id="doctrine.schema_drop_command"/>
-        <argument key="doctrine.schema_update_command" type="service" id="doctrine.schema_update_command"/>
-        <argument key="doctrine.schema_validate_command" type="service" id="doctrine.schema_validate_command"/>
-        <argument key="doctrine_migrations.current_command" type="service" id="doctrine_migrations.current_command"/>
-        <argument key="doctrine_migrations.diff_command" type="service" id="doctrine_migrations.diff_command"/>
-        <argument key="doctrine_migrations.dump_schema_command" type="service" id="doctrine_migrations.dump_schema_command"/>
-        <argument key="doctrine_migrations.execute_command" type="service" id="doctrine_migrations.execute_command"/>
-        <argument key="doctrine_migrations.generate_command" type="service" id="doctrine_migrations.generate_command"/>
-        <argument key="doctrine_migrations.latest_command" type="service" id="doctrine_migrations.latest_command"/>
-        <argument key="doctrine_migrations.migrate_command" type="service" id="doctrine_migrations.migrate_command"/>
-        <argument key="doctrine_migrations.rollup_command" type="service" id="doctrine_migrations.rollup_command"/>
-        <argument key="doctrine_migrations.status_command" type="service" id="doctrine_migrations.status_command"/>
-        <argument key="doctrine_migrations.sync_metadata_command" type="service" id="doctrine_migrations.sync_metadata_command"/>
-        <argument key="doctrine_migrations.up_to_date_command" type="service" id="doctrine_migrations.up_to_date_command"/>
-        <argument key="doctrine_migrations.version_command" type="service" id="doctrine_migrations.version_command"/>
-        <argument key="doctrine_migrations.versions_command" type="service" id="doctrine_migrations.versions_command"/>
-        <argument key="maker.auto_command.make_auth" type="service" id="maker.auto_command.make_auth"/>
-        <argument key="maker.auto_command.make_command" type="service" id="maker.auto_command.make_command"/>
-        <argument key="maker.auto_command.make_controller" type="service" id="maker.auto_command.make_controller"/>
-        <argument key="maker.auto_command.make_crud" type="service" id="maker.auto_command.make_crud"/>
-        <argument key="maker.auto_command.make_docker_database" type="service" id="maker.auto_command.make_docker_database"/>
-        <argument key="maker.auto_command.make_entity" type="service" id="maker.auto_command.make_entity"/>
-        <argument key="maker.auto_command.make_fixtures" type="service" id="maker.auto_command.make_fixtures"/>
-        <argument key="maker.auto_command.make_form" type="service" id="maker.auto_command.make_form"/>
-        <argument key="maker.auto_command.make_message" type="service" id="maker.auto_command.make_message"/>
-        <argument key="maker.auto_command.make_messenger_middleware" type="service" id="maker.auto_command.make_messenger_middleware"/>
-        <argument key="maker.auto_command.make_migration" type="service" id="maker.auto_command.make_migration"/>
-        <argument key="maker.auto_command.make_registration_form" type="service" id="maker.auto_command.make_registration_form"/>
-        <argument key="maker.auto_command.make_reset_password" type="service" id="maker.auto_command.make_reset_password"/>
-        <argument key="maker.auto_command.make_serializer_encoder" type="service" id="maker.auto_command.make_serializer_encoder"/>
-        <argument key="maker.auto_command.make_serializer_normalizer" type="service" id="maker.auto_command.make_serializer_normalizer"/>
-        <argument key="maker.auto_command.make_subscriber" type="service" id="maker.auto_command.make_subscriber"/>
-        <argument key="maker.auto_command.make_test" type="service" id="maker.auto_command.make_test"/>
-        <argument key="maker.auto_command.make_twig_extension" type="service" id="maker.auto_command.make_twig_extension"/>
-        <argument key="maker.auto_command.make_user" type="service" id="maker.auto_command.make_user"/>
-        <argument key="maker.auto_command.make_validator" type="service" id="maker.auto_command.make_validator"/>
-        <argument key="maker.auto_command.make_voter" type="service" id="maker.auto_command.make_voter"/>
-        <argument key="monolog.command.server_log" type="service" id="monolog.command.server_log"/>
-        <argument key="security.command.user_password_encoder" type="service" id="security.command.user_password_encoder"/>
-        <argument key="swiftmailer.command.debug" type="service" id="swiftmailer.command.debug"/>
-        <argument key="swiftmailer.command.new_email" type="service" id="swiftmailer.command.new_email"/>
-        <argument key="swiftmailer.command.send_email" type="service" id="swiftmailer.command.send_email"/>
-        <argument key="twig.command.debug" type="service" id="twig.command.debug"/>
-        <argument key="twig.command.lint" type="service" id="twig.command.lint"/>
-        <argument key="var_dumper.command.server_dump" type="service" id="var_dumper.command.server_dump"/>
-        <argument key="web_server.command.server_run" type="service" id="web_server.command.server_run"/>
-        <argument key="web_server.command.server_start" type="service" id="web_server.command.server_start"/>
-        <argument key="web_server.command.server_status" type="service" id="web_server.command.server_status"/>
-        <argument key="web_server.command.server_stop" type="service" id="web_server.command.server_stop"/>
+        <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
+        <argument key="console.command.about" type="service_closure" id="console.command.about"/>
+        <argument key="console.command.assets_install" type="service_closure" id="console.command.assets_install"/>
+        <argument key="console.command.cache_clear" type="service_closure" id="console.command.cache_clear"/>
+        <argument key="console.command.cache_pool_clear" type="service_closure" id="console.command.cache_pool_clear"/>
+        <argument key="console.command.cache_pool_delete" type="service_closure" id="console.command.cache_pool_delete"/>
+        <argument key="console.command.cache_pool_list" type="service_closure" id="console.command.cache_pool_list"/>
+        <argument key="console.command.cache_pool_prune" type="service_closure" id="console.command.cache_pool_prune"/>
+        <argument key="console.command.cache_warmup" type="service_closure" id="console.command.cache_warmup"/>
+        <argument key="console.command.config_debug" type="service_closure" id="console.command.config_debug"/>
+        <argument key="console.command.config_dump_reference" type="service_closure" id="console.command.config_dump_reference"/>
+        <argument key="console.command.container_debug" type="service_closure" id="console.command.container_debug"/>
+        <argument key="console.command.container_lint" type="service_closure" id="console.command.container_lint"/>
+        <argument key="console.command.debug_autowiring" type="service_closure" id="console.command.debug_autowiring"/>
+        <argument key="console.command.event_dispatcher_debug" type="service_closure" id="console.command.event_dispatcher_debug"/>
+        <argument key="console.command.form_debug" type="service_closure" id="console.command.form_debug"/>
+        <argument key="console.command.router_debug" type="service_closure" id="console.command.router_debug"/>
+        <argument key="console.command.router_match" type="service_closure" id="console.command.router_match"/>
+        <argument key="console.command.secrets_decrypt_to_local" type="service_closure" id="console.command.secrets_decrypt_to_local"/>
+        <argument key="console.command.secrets_encrypt_from_local" type="service_closure" id="console.command.secrets_encrypt_from_local"/>
+        <argument key="console.command.secrets_generate_key" type="service_closure" id="console.command.secrets_generate_key"/>
+        <argument key="console.command.secrets_list" type="service_closure" id="console.command.secrets_list"/>
+        <argument key="console.command.secrets_remove" type="service_closure" id="console.command.secrets_remove"/>
+        <argument key="console.command.secrets_set" type="service_closure" id="console.command.secrets_set"/>
+        <argument key="console.command.translation_debug" type="service_closure" id="console.command.translation_debug"/>
+        <argument key="console.command.translation_update" type="service_closure" id="console.command.translation_update"/>
+        <argument key="console.command.xliff_lint" type="service_closure" id="console.command.xliff_lint"/>
+        <argument key="console.command.yaml_lint" type="service_closure" id="console.command.yaml_lint"/>
+        <argument key="doctrine.cache_clear_metadata_command" type="service_closure" id="doctrine.cache_clear_metadata_command"/>
+        <argument key="doctrine.cache_clear_query_cache_command" type="service_closure" id="doctrine.cache_clear_query_cache_command"/>
+        <argument key="doctrine.cache_clear_result_command" type="service_closure" id="doctrine.cache_clear_result_command"/>
+        <argument key="doctrine.cache_collection_region_command" type="service_closure" id="doctrine.cache_collection_region_command"/>
+        <argument key="doctrine.clear_entity_region_command" type="service_closure" id="doctrine.clear_entity_region_command"/>
+        <argument key="doctrine.clear_query_region_command" type="service_closure" id="doctrine.clear_query_region_command"/>
+        <argument key="doctrine.database_create_command" type="service_closure" id="doctrine.database_create_command"/>
+        <argument key="doctrine.database_drop_command" type="service_closure" id="doctrine.database_drop_command"/>
+        <argument key="doctrine.database_import_command" type="service_closure" id="doctrine.database_import_command"/>
+        <argument key="doctrine.ensure_production_settings_command" type="service_closure" id="doctrine.ensure_production_settings_command"/>
+        <argument key="doctrine.fixtures_load_command" type="service_closure" id="doctrine.fixtures_load_command"/>
+        <argument key="doctrine.mapping_convert_command" type="service_closure" id="doctrine.mapping_convert_command"/>
+        <argument key="doctrine.mapping_import_command" type="service_closure" id="doctrine.mapping_import_command"/>
+        <argument key="doctrine.mapping_info_command" type="service_closure" id="doctrine.mapping_info_command"/>
+        <argument key="doctrine.query_dql_command" type="service_closure" id="doctrine.query_dql_command"/>
+        <argument key="doctrine.query_sql_command" type="service_closure" id="doctrine.query_sql_command"/>
+        <argument key="doctrine.schema_create_command" type="service_closure" id="doctrine.schema_create_command"/>
+        <argument key="doctrine.schema_drop_command" type="service_closure" id="doctrine.schema_drop_command"/>
+        <argument key="doctrine.schema_update_command" type="service_closure" id="doctrine.schema_update_command"/>
+        <argument key="doctrine.schema_validate_command" type="service_closure" id="doctrine.schema_validate_command"/>
+        <argument key="doctrine_migrations.current_command" type="service_closure" id="doctrine_migrations.current_command"/>
+        <argument key="doctrine_migrations.diff_command" type="service_closure" id="doctrine_migrations.diff_command"/>
+        <argument key="doctrine_migrations.dump_schema_command" type="service_closure" id="doctrine_migrations.dump_schema_command"/>
+        <argument key="doctrine_migrations.execute_command" type="service_closure" id="doctrine_migrations.execute_command"/>
+        <argument key="doctrine_migrations.generate_command" type="service_closure" id="doctrine_migrations.generate_command"/>
+        <argument key="doctrine_migrations.latest_command" type="service_closure" id="doctrine_migrations.latest_command"/>
+        <argument key="doctrine_migrations.migrate_command" type="service_closure" id="doctrine_migrations.migrate_command"/>
+        <argument key="doctrine_migrations.rollup_command" type="service_closure" id="doctrine_migrations.rollup_command"/>
+        <argument key="doctrine_migrations.status_command" type="service_closure" id="doctrine_migrations.status_command"/>
+        <argument key="doctrine_migrations.sync_metadata_command" type="service_closure" id="doctrine_migrations.sync_metadata_command"/>
+        <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id="doctrine_migrations.up_to_date_command"/>
+        <argument key="doctrine_migrations.version_command" type="service_closure" id="doctrine_migrations.version_command"/>
+        <argument key="doctrine_migrations.versions_command" type="service_closure" id="doctrine_migrations.versions_command"/>
+        <argument key="maker.auto_command.make_auth" type="service_closure" id="maker.auto_command.make_auth"/>
+        <argument key="maker.auto_command.make_command" type="service_closure" id="maker.auto_command.make_command"/>
+        <argument key="maker.auto_command.make_controller" type="service_closure" id="maker.auto_command.make_controller"/>
+        <argument key="maker.auto_command.make_crud" type="service_closure" id="maker.auto_command.make_crud"/>
+        <argument key="maker.auto_command.make_docker_database" type="service_closure" id="maker.auto_command.make_docker_database"/>
+        <argument key="maker.auto_command.make_entity" type="service_closure" id="maker.auto_command.make_entity"/>
+        <argument key="maker.auto_command.make_fixtures" type="service_closure" id="maker.auto_command.make_fixtures"/>
+        <argument key="maker.auto_command.make_form" type="service_closure" id="maker.auto_command.make_form"/>
+        <argument key="maker.auto_command.make_message" type="service_closure" id="maker.auto_command.make_message"/>
+        <argument key="maker.auto_command.make_messenger_middleware" type="service_closure" id="maker.auto_command.make_messenger_middleware"/>
+        <argument key="maker.auto_command.make_migration" type="service_closure" id="maker.auto_command.make_migration"/>
+        <argument key="maker.auto_command.make_registration_form" type="service_closure" id="maker.auto_command.make_registration_form"/>
+        <argument key="maker.auto_command.make_reset_password" type="service_closure" id="maker.auto_command.make_reset_password"/>
+        <argument key="maker.auto_command.make_serializer_encoder" type="service_closure" id="maker.auto_command.make_serializer_encoder"/>
+        <argument key="maker.auto_command.make_serializer_normalizer" type="service_closure" id="maker.auto_command.make_serializer_normalizer"/>
+        <argument key="maker.auto_command.make_subscriber" type="service_closure" id="maker.auto_command.make_subscriber"/>
+        <argument key="maker.auto_command.make_test" type="service_closure" id="maker.auto_command.make_test"/>
+        <argument key="maker.auto_command.make_twig_extension" type="service_closure" id="maker.auto_command.make_twig_extension"/>
+        <argument key="maker.auto_command.make_user" type="service_closure" id="maker.auto_command.make_user"/>
+        <argument key="maker.auto_command.make_validator" type="service_closure" id="maker.auto_command.make_validator"/>
+        <argument key="maker.auto_command.make_voter" type="service_closure" id="maker.auto_command.make_voter"/>
+        <argument key="monolog.command.server_log" type="service_closure" id="monolog.command.server_log"/>
+        <argument key="security.command.user_password_encoder" type="service_closure" id="security.command.user_password_encoder"/>
+        <argument key="swiftmailer.command.debug" type="service_closure" id="swiftmailer.command.debug"/>
+        <argument key="swiftmailer.command.new_email" type="service_closure" id="swiftmailer.command.new_email"/>
+        <argument key="swiftmailer.command.send_email" type="service_closure" id="swiftmailer.command.send_email"/>
+        <argument key="twig.command.debug" type="service_closure" id="twig.command.debug"/>
+        <argument key="twig.command.lint" type="service_closure" id="twig.command.lint"/>
+        <argument key="var_dumper.command.server_dump" type="service_closure" id="var_dumper.command.server_dump"/>
+        <argument key="web_server.command.server_run" type="service_closure" id="web_server.command.server_run"/>
+        <argument key="web_server.command.server_start" type="service_closure" id="web_server.command.server_start"/>
+        <argument key="web_server.command.server_status" type="service_closure" id="web_server.command.server_status"/>
+        <argument key="web_server.command.server_stop" type="service_closure" id="web_server.command.server_stop"/>
       </argument>
     </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false">
@@ -7701,10 +7705,10 @@
     <service id=".service_locator.ZoarNAe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="Endroid\QrCodeBundle\Twig\QrCodeRuntime" type="service" id="Endroid\QrCodeBundle\Twig\QrCodeRuntime"/>
-        <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service" id="twig.runtime.security_csrf"/>
-        <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service" id="twig.runtime.httpkernel"/>
-        <argument key="Symfony\Component\Form\FormRenderer" type="service" id="twig.form.renderer"/>
+        <argument key="Endroid\QrCodeBundle\Twig\QrCodeRuntime" type="service_closure" id="Endroid\QrCodeBundle\Twig\QrCodeRuntime"/>
+        <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
+        <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service_closure" id="twig.runtime.httpkernel"/>
+        <argument key="Symfony\Component\Form\FormRenderer" type="service_closure" id="twig.form.renderer"/>
       </argument>
     </service>
     <service id="Psr\Container\ContainerInterface" alias="service_container" public="false"/>

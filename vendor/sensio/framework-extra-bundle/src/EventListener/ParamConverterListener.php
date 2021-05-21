@@ -76,7 +76,7 @@ class ParamConverterListener implements EventSubscriberInterface
     {
         foreach ($r->getParameters() as $param) {
             $type = $param->getType();
-            $class = null !== $type && !$type->isBuiltin() ? $type->getName() : null;
+            $class = $this->getParamClassByType($type);
             if (null !== $class && $request instanceof $class) {
                 continue;
             }
@@ -102,6 +102,21 @@ class ParamConverterListener implements EventSubscriberInterface
         }
 
         return $configurations;
+    }
+
+    private function getParamClassByType(?\ReflectionType $type): ?string
+    {
+        if (null === $type) {
+            return null;
+        }
+
+        foreach ($type instanceof \ReflectionUnionType ? $type->getTypes() : [$type] as $type) {
+            if (!$type->isBuiltin()) {
+                return $type->getName();
+            }
+        }
+
+        return null;
     }
 
     /**

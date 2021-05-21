@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerUFpW7fh/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerUvuN3ki/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -103,10 +103,9 @@ $classes[] = 'Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin';
 $classes[] = 'Endroid\QrCode\Writer\PngWriter';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
-$classes[] = 'Symfony\Component\Cache\DoctrineProvider';
 $classes[] = 'Symfony\Component\Cache\Adapter\PhpArrayAdapter';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer';
-$classes[] = 'Doctrine\Common\Annotations\CachedReader';
+$classes[] = 'Doctrine\Common\Annotations\PsrCachedReader';
 $classes[] = 'Doctrine\Common\Annotations\AnnotationReader';
 $classes[] = 'Doctrine\Common\Annotations\AnnotationRegistry';
 $classes[] = 'Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory';
@@ -231,6 +230,7 @@ $classes[] = 'Doctrine\Migrations\Configuration\EntityManager\ManagerRegistryEnt
 $classes[] = 'Doctrine\ORM\Mapping\Driver\AnnotationDriver';
 $classes[] = 'Doctrine\ORM\EntityManager';
 $classes[] = 'Doctrine\ORM\Configuration';
+$classes[] = 'Symfony\Component\Cache\DoctrineProvider';
 $classes[] = 'Doctrine\Persistence\Mapping\Driver\MappingDriverChain';
 $classes[] = 'Doctrine\ORM\Mapping\UnderscoreNamingStrategy';
 $classes[] = 'Doctrine\ORM\Mapping\DefaultQuoteStrategy';
